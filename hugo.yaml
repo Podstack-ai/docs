@@ -1,5 +1,3 @@
-theme: E25DX
-
 enableGitInfo: false
 
 defaultContentLanguage: en
@@ -10,7 +8,7 @@ languages:
     languageName: English
     languageCode: en-US
     contentDir: content/en
-    title: Podstack
+    title: PodStack
     params:
       description: Site Description
 
@@ -44,6 +42,11 @@ params:
   author:
     name: Name
     url: https://github.com/username
+
+  logo:
+    image: /images/logo.png
+    title: PodStack
+    subtitle: GPU Cloud Platform
 
   home:
     heading: Your next
