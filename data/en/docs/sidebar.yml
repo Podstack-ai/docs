@@ -4,10 +4,14 @@
 
 - title: Basics
   pages:
-    - title: Hello World
-    - title: Installation
-    - title: Configuration  
+    - title: Getting Started
 
-- title: Beyond The Basics
+- title: Core Concepts
   pages:
-    - title: Modules
+    - title: Configuration
+    - title: Advanced Features
+
+- title: Reference & Support
+  pages:
+    - title: API Reference
+    - title: Troubleshooting

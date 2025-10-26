@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default `en-US` }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Page not found">
+  <meta name="robots" content="noindex, nofollow">
+  <title>404 - Page Not Found · {{ .Site.Title }}</title>
+  <link rel="canonical" href="{{ .Site.BaseURL }}">
+
+  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/home.css") (resources.Get "css/logo.css") (resources.Get "css/404.css") | resources.Concat "assets/css/404.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
+
+  {{ partial "favicons.html" . }}
+</head>
+
+<body>
+
+<div id="content-wrapper">
+  <header>
+    <a href="{{ .Site.Home.Permalink }}" class="site-logo">
+      {{ with .Site.Params.logo }}
+        <div class="site-logo-svg-wrapper">
+          {{ partial "logo-svg.html" . }}
+        </div>
+        <div class="site-logo-text">
+          <div class="site-logo-title">{{ .title }}</div>
+          <div class="site-logo-subtitle">{{ .subtitle }}</div>
+        </div>
+      {{ else }}
+        {{ $.Site.Title }}
+      {{ end }}
+    </a>
+    <nav>
+      <a href="{{ .Site.Home.Permalink }}{{ .Site.Params.home.getStartedPath }}" class="btn">{{ i18n "getStarted" }}</a>
+      <button class="btn theme-toggle"><i>☀️</i><i>⁄</i><i>🌑</i></button>
+    </nav>
+  </header>
+
+  <main class="not-found-main">
+    <section class="not-found-section">
+      <div class="not-found-container">
+        <div class="not-found-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>Sorry, the page you're looking for doesn't exist or has been moved.</p>
+        
+        <div class="not-found-actions">
+          <a href="{{ .Site.Home.Permalink }}" class="btn btn-primary">← Back to Home</a>
+          <a href="{{ .Site.Home.Permalink }}docs/" class="btn btn-secondary">Browse Docs →</a>
+        </div>
+
+       
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><i>🧑‍💻</i>{{ i18n "builtByAndCopyright" }}<a href="{{ .Site.Params.author.url }}" target="_blank">{{ .Site.Params.author.name }}</a><i>📅</i> {{ with .Site.Params.project.startYear }}{{.}}-{{ end }}{{ .Site.Params.project.presentYear }}<i>🚀</i> <a href="https://github.com/{{ .Site.Params.project.github.repo }}" target="_blank">GitHub</a></div>
+  </footer>
+</div>
+
+<div id="body-model-outer"></div>
+
+{{- $js := slice (resources.Get "js/color-preference.js") | resources.Concat "assets/js/home.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
+</body>
+
+</html>
