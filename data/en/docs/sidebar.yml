@@ -1,0 +1,13 @@
+- title: Documentation
+  pages:
+    - title: Overview
+
+- title: Basics
+  pages:
+    - title: Hello World
+    - title: Installation
+    - title: Configuration  
+
+- title: Beyond The Basics
+  pages:
+    - title: Modules
