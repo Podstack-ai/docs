@@ -1,6 +1,6 @@
 ---
 title: API Reference
-slug: api-reference
+slug: core-features/api-reference
 ---
 
 ## API Reference

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-slug: troubleshooting
+slug: support/troubleshooting
 ---
 
 ## Troubleshooting Guide

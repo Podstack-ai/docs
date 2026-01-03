@@ -1,6 +1,6 @@
 ---
-title: Configuration
-slug: configuration
+title: Basic Configuration
+slug: configuration/basic-configuration
 ---
 
 ## Configuration Guide

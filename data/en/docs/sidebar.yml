@@ -1,17 +1,25 @@
-- title: Documentation
+
+
+- title: Installation
   pages:
     - title: Overview
-
-- title: Basics
-  pages:
+      path: installation/overview
     - title: Getting Started
+      path: installation/getting-started
 
-- title: Core Concepts
+- title: Configuration
   pages:
-    - title: Configuration
+    - title: Basic Configuration
+      path: configuration/basic-configuration
+
+- title: Core Features
+  pages:
     - title: Advanced Features
-
-- title: Reference & Support
-  pages:
+      path: core-features/advanced-features
     - title: API Reference
+      path: core-features/api-reference
+
+- title: Support
+  pages:
     - title: Troubleshooting
+      path: support/troubleshooting

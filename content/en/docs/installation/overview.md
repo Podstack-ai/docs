@@ -1,8 +1,6 @@
 ---
 title: Overview
-url: "docs/overview"
-aliases:
-- "/docs"
+slug: installation/overview
 ---
 
 # PodStack Documentation

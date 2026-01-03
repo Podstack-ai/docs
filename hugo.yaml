@@ -2,6 +2,15 @@ enableGitInfo: false
 
 defaultContentLanguage: en
 
+# Clean URL configuration
+permalinks:
+  docs: /docs/:slug/
+
+# Enable clean URLs with trailing slashes
+uglyURLs: false
+canonifyURLs: false
+relativeURLs: false
+
 languages:
   en:
     weight: 1

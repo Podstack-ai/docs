@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-slug: getting-started
+slug: installation/getting-started
 ---
 
 ## Welcome to PodStack

@@ -1,6 +1,6 @@
 ---
 title: Advanced Features
-slug: advanced-features
+slug: core-features/advanced-features
 ---
 
 ## Advanced Features

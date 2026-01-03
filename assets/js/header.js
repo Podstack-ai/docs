@@ -1,71 +1,66 @@
-// Header scroll effect
-const header = document.getElementById('site-header');
-let lastScrollY = window.scrollY;
+(function () {
+    'use strict';
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    // Header scroll effect
+    const header = document.getElementById('site-header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
     }
-});
 
-// Mobile menu functionality
-const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-const mobileMenuClose = document.getElementById('mobile-menu-close');
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
 
-function openMobileMenu() {
-    mobileMenu.classList.add('active');
-    mobileMenuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+    const openMobileMenu = () => {
+        if (!mobileMenu || !mobileMenuOverlay) {
+            return;
+        }
+        mobileMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
 
-function closeMobileMenu() {
-    mobileMenu.classList.remove('active');
-    mobileMenuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-}
+    const closeMobileMenu = () => {
+        if (!mobileMenu || !mobileMenuOverlay) {
+            return;
+        }
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
 
-if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', openMobileMenu);
-}
+    mobileMenuToggle?.addEventListener('click', openMobileMenu);
+    mobileMenuClose?.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
 
-if (mobileMenuClose) {
-    mobileMenuClose.addEventListener('click', closeMobileMenu);
-}
-
-if (mobileMenuOverlay) {
-    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-}
-
-// Close mobile menu on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-        closeMobileMenu();
-    }
-});
-
-// Search functionality placeholder
-const searchInput = document.getElementById('search-input');
-const searchButton = document.querySelector('.search-button');
-
-if (searchButton) {
-    searchButton.addEventListener('click', () => {
-        // Add your search logic here
-        if (searchInput.value.trim()) {
-            console.log('Search for:', searchInput.value);
-            // window.location.href = '/search?q=' + encodeURIComponent(searchInput.value);
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && mobileMenu?.classList.contains('active')) {
+            closeMobileMenu();
         }
     });
-}
 
-if (searchInput) {
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && searchInput.value.trim()) {
+    // Search functionality placeholder
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.querySelector('.search-button');
+
+    searchButton?.addEventListener('click', () => {
+        if (searchInput && searchInput.value.trim()) {
             console.log('Search for:', searchInput.value);
-            // window.location.href = '/search?q=' + encodeURIComponent(searchInput.value);
         }
     });
-}
+
+    searchInput?.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter' && searchInput.value.trim()) {
+            console.log('Search for:', searchInput.value);
+        }
+    });
+})();
