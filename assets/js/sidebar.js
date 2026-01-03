@@ -9,7 +9,7 @@
             return;
         }
 
-        // Handle section toggle buttons
+        // Handle section toggle buttons (supports recursive nesting)
         initSectionToggles();
 
         // Handle mobile menu
@@ -19,16 +19,18 @@
         scrollActiveIntoView();
     }
 
-    // Initialize collapsible sections
+    // Initialize collapsible sections - supports unlimited nesting levels
     function initSectionToggles() {
         const toggleButtons = document.querySelectorAll('.nav-section__toggle');
 
         toggleButtons.forEach((button) => {
             button.addEventListener('click', function (e) {
                 e.preventDefault();
+                e.stopPropagation(); // Prevent event bubbling to parent sections
 
                 const section = this.closest('.nav-section');
-                const items = section.querySelector('.nav-section__items');
+                // Get only the direct child items container, not nested ones
+                const items = section.querySelector(':scope > .nav-section__items');
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
                 // Toggle expanded state
@@ -37,6 +39,25 @@
                 if (isExpanded) {
                     items.classList.remove('expanded');
                 } else {
+                    items.classList.add('expanded');
+                }
+            });
+        });
+
+        // Handle section link clicks - expand section when navigating
+        const sectionLinks = document.querySelectorAll('.nav-section__link');
+        sectionLinks.forEach((link) => {
+            link.addEventListener('click', function (e) {
+                // Don't prevent default - let navigation happen
+                e.stopPropagation();
+
+                const section = this.closest('.nav-section');
+                const toggle = section.querySelector(':scope > .nav-section__header > .nav-section__toggle');
+                const items = section.querySelector(':scope > .nav-section__items');
+
+                // Expand the section when clicking the link
+                if (toggle && items) {
+                    toggle.setAttribute('aria-expanded', 'true');
                     items.classList.add('expanded');
                 }
             });

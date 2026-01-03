@@ -1,6 +1,5 @@
 ---
 title: Core Features
-slug: core-features
 ---
 
 # Core Features

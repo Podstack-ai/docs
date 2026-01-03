@@ -1,25 +1,45 @@
-
+# Recursive sidebar structure
+# Each item can have:
+#   - title: Display name
+#   - slug: URL segment (builds path from parent)
+#   - path: Full path (alternative to slug)
+#   - pages: Nested child items (unlimited depth)
 
 - title: Installation
+  slug: installation
   pages:
     - title: Overview
-      path: installation/overview
+      slug: overview
     - title: Getting Started
-      path: installation/getting-started
+      slug: getting-started
+    - title: Docker Concepts
+      slug: docker-concepts
+      pages:
+        - title: The Basics
+          slug: the-basics
+          pages:
+            - title: Container Images
+              slug: container-images
+              pages:
+                - title: What is a Container
+                  slug: what-is-a-container
 
 - title: Configuration
+  slug: configuration
   pages:
     - title: Basic Configuration
-      path: configuration/basic-configuration
+      slug: basic-configuration
 
 - title: Core Features
+  slug: core-features
   pages:
     - title: Advanced Features
-      path: core-features/advanced-features
+      slug: advanced-features
     - title: API Reference
-      path: core-features/api-reference
+      slug: api-reference
 
 - title: Support
+  slug: support
   pages:
     - title: Troubleshooting
-      path: support/troubleshooting
+      slug: troubleshooting

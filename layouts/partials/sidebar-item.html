@@ -1,0 +1,59 @@
+{{/* Recursive sidebar item partial */}}
+{{- $item := .item -}}
+{{- $currentPath := .currentPath -}}
+{{- $level := .level | default 0 -}}
+{{- $basePath := .basePath | default "" -}}
+
+{{/* Build the full path for this item */}}
+{{- $itemPath := "" -}}
+{{- if $item.path -}}
+  {{- $itemPath = $item.path -}}
+{{- else if $item.slug -}}
+  {{- if $basePath -}}
+    {{- $itemPath = printf "%s/%s" $basePath $item.slug -}}
+  {{- else -}}
+    {{- $itemPath = $item.slug -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Check if this item or any descendant is active */}}
+{{- $isActive := false -}}
+{{- $hasActiveDescendant := false -}}
+
+{{- if $itemPath -}}
+  {{- $isActive = eq $currentPath $itemPath -}}
+  {{- $hasActiveDescendant = and (not $isActive) (hasPrefix $currentPath $itemPath) -}}
+{{- end -}}
+
+{{- $hasChildren := isset $item "pages" -}}
+{{- $isExpanded := or $isActive $hasActiveDescendant -}}
+{{- $href := printf "/docs/%s/" $itemPath -}}
+
+{{- if $hasChildren -}}
+  {{/* Section with children - title is a link, chevron toggles expand */}}
+  <div class="nav-section nav-section--level-{{ $level }}{{ if $isExpanded }} has-active{{ end }}{{ if $isActive }} is-active{{ end }}" data-level="{{ $level }}">
+    <div class="nav-section__header">
+      <a href="{{ $href }}" class="nav-section__link{{ if $isActive }} active{{ end }}">
+        <span class="nav-section__title">{{ $item.title }}</span>
+      </a>
+      <button class="nav-section__toggle" aria-expanded="{{ if $isExpanded }}true{{ else }}false{{ end }}" aria-label="Toggle {{ $item.title }}">
+        <svg class="nav-section__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    
+    <ul class="nav-section__items{{ if $isExpanded }} expanded{{ end }}">
+      {{- range $child := $item.pages -}}
+        <li class="nav-section__item">
+          {{- partial "sidebar-item.html" (dict "item" $child "currentPath" $currentPath "level" (add $level 1) "basePath" $itemPath) -}}
+        </li>
+      {{- end -}}
+    </ul>
+  </div>
+{{- else -}}
+  {{/* Leaf node - just a link */}}
+  <a href="{{ $href }}" class="nav-link nav-link--level-{{ $level }}{{ if $isActive }} active{{ end }}">
+    {{ $item.title }}
+  </a>
+{{- end -}}

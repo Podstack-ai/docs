@@ -63,7 +63,9 @@
   text-decoration: underline
 }
 
-#article-body strong, #article-body b, #article-body table th {
+#article-body strong,
+#article-body b,
+#article-body table th {
   font-weight: 600
 }
 
@@ -102,11 +104,11 @@
   list-style: square
 }
 
-#article-body li > ul {
+#article-body li>ul {
   list-style: circle
 }
 
-#article-body li > ol {
+#article-body li>ol {
   list-style: lower-alpha
 }
 
@@ -159,7 +161,8 @@
   color: var(--border);
 }
 
-#article-body code, #article-body pre {
+#article-body code,
+#article-body pre {
   font-family: var(--font-mono);
 }
 
@@ -197,12 +200,14 @@
   margin-top: 1em;
 }
 
-#article-body blockquote .chroma, #article-body blockquote pre:not(.chroma) {
+#article-body blockquote .chroma,
+#article-body blockquote pre:not(.chroma) {
   background: var(--foreground-hover);
   margin-bottom: 1em;
 }
 
-#article-body blockquote .chroma code, #article-body blockquote pre:not(.chroma) code {
+#article-body blockquote .chroma code,
+#article-body blockquote pre:not(.chroma) code {
   padding: 0;
 }
 
@@ -212,22 +217,24 @@
   box-shadow: 0 0 0 1px var(--border);
 }
 
-#article-body table thead th:first-child{
+#article-body table thead th:first-child {
   border-top-left-radius: var(--radius);
 }
-#article-body table thead th:last-child{
+
+#article-body table thead th:last-child {
   border-top-right-radius: var(--radius);
 }
 
-#article-body table tbody tr:last-child{
+#article-body table tbody tr:last-child {
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
 }
 
-#article-body table tbody tr:last-child td:first-child{
+#article-body table tbody tr:last-child td:first-child {
   border-bottom-left-radius: var(--radius);
 }
-#article-body table tbody tr:last-child td:last-child{
+
+#article-body table tbody tr:last-child td:last-child {
   border-bottom-right-radius: var(--radius);
 }
 
@@ -242,4 +249,67 @@
 
 #article-body table thead tr {
   background: var(--background-grey-embed)
+}
+
+/* ===================================
+   SECTION PAGES LIST (for _index.md)
+   =================================== */
+
+.section-pages {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-grey, rgba(255, 255, 255, 0.1));
+}
+
+.section-pages h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color);
+}
+
+.section-pages__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.section-pages__item {
+  margin: 0;
+}
+
+.section-pages__link {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem;
+  background: var(--background-grey, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border-grey, rgba(255, 255, 255, 0.08));
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+}
+
+.section-pages__link:hover {
+  background: var(--background-grey-hover, rgba(255, 255, 255, 0.06));
+  border-color: var(--accent-color, #60a5fa);
+  transform: translateX(4px);
+}
+
+.section-pages__title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent-color, #60a5fa);
+}
+
+.section-pages__link:hover .section-pages__title {
+  color: var(--accent-color-hover, #93c5fd);
+}
+
+.section-pages__summary {
+  font-size: 0.875rem;
+  color: var(--color-grey, #9ca3af);
+  margin-top: 0.25rem;
+  line-height: 1.5;
 }

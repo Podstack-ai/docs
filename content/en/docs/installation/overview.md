@@ -1,6 +1,5 @@
 ---
 title: Overview
-slug: installation/overview
 ---
 
 # PodStack Documentation

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default `en-US` }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | .RenderString }}">
+  <meta name="author" content="{{ .Site.Params.author.name }}">
+  <meta name="theme-color" content="{{ .Site.Params.project.themeColor.light }}" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="{{ .Site.Params.project.themeColor.dark }}" media="(prefers-color-scheme: dark)">
+  {{ with .Params.robots -}}
+  <meta name="robots" content="{{ . }}">
+  {{ end -}}
+
+  <title>{{ .Title | .RenderString }} · {{ .Site.Title | .RenderString }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/sidebar.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
+
+  {{- $js := slice (resources.Get "js/sidebar.js") (resources.Get "js/color-preference.js") (resources.Get "js/header.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") | resources.Concat "assets/js/main.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}" defer></script>
+
+  {{ partial "favicons.html" . }}
+  {{ partial "analytics.html" . }}
+  {{ partial "og-x-seo.html" . }}
+</head>
+
+<body>
+
+{{ partial "header.html" . }}
+
+<div id="outer-wrapper">
+
+  {{ partial "sidebar.html" . }}
+
+  <div id="content-wrapper">
+    <header>
+      <a href="{{ .Site.Home.Permalink }}" class="site-logo">{{ .Site.Title }}</a>
+    </header>
+
+		{{ partial "menu-main.html" . }}
+
+    <main>
+      <article>
+        <nav>
+          <button class="btn"><i>⬅️</i> {{ i18n "onThisSection" }}</button>
+          <button class="btn">{{ i18n "onThisPage" }} <i>➡️</i></button>
+        </nav>
+        <header>
+          <h1>{{ .Title | .RenderString }}</h1>
+          {{ with .Params.summary }}
+          <p>{{ . | $.RenderString }}</p>
+          {{ end }}
+        </header>
+        <div id="article-body">
+          {{/* Render the _index.md content */}}
+          {{ .Content | safeHTML }}
+
+          {{/* List child pages if they exist */}}
+          {{ $pages := .Pages.ByWeight }}
+          {{ if $pages }}
+          <div class="section-pages">
+            <h2>{{ i18n "inThisSection" | default "In This Section" }}</h2>
+            <ul class="section-pages__list">
+              {{ range $pages }}
+              <li class="section-pages__item">
+                <a href="{{ .Permalink }}" class="section-pages__link">
+                  <span class="section-pages__title">{{ .Title }}</span>
+                  {{ with .Params.summary }}
+                  <span class="section-pages__summary">{{ . }}</span>
+                  {{ end }}
+                </a>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ end }}
+        </div>
+
+        <footer>
+          {{ $lastMod := .Lastmod.Format "2006-01-02" -}}
+          {{ $prevPageTitle := "" -}}
+          {{ $nextPageTitle := "" -}}
+          {{ $prevPageHref := "" -}}
+          {{ $nextPageHref := "" -}}
+
+          {{/* For section pages, link to parent or first child */}}
+          {{ with .Parent }}
+            {{ if ne .Kind "home" }}
+              {{ $prevPageHref = .Permalink }}
+              {{ $prevPageTitle = .Title }}
+            {{ end }}
+          {{ end }}
+
+          {{ with (index .Pages 0) }}
+            {{ $nextPageHref = .Permalink }}
+            {{ $nextPageTitle = .Title }}
+          {{ end }}
+
+          {{ if ne $prevPageHref "" -}}
+          <a href="{{ $prevPageHref }}"><i>&lsaquo;</i> {{ i18n "previous" }}</a>
+          {{ else -}}
+          <a class="hidden"><i>&lsaquo;</i> {{ i18n "previous" }}</a>
+          {{ end -}}
+
+          {{ if ne $nextPageHref "" -}}
+          <a href="{{ $nextPageHref }}">{{ i18n "next" }} <i>&rsaquo;</i></a>
+          {{ else -}}
+          <a class="hidden">{{ i18n "next" }} <i>&rsaquo;</i></a>
+          {{ end -}}
+
+        </footer>
+      </article>
+
+      <aside>
+        <div>
+          <button class="btn"><i>❌</i>{{ i18n "close" }}</button>
+        </div>
+        <strong>{{ i18n "onThisPage" }}</strong>
+        {{ .TableOfContents }}
+      </aside>
+    </main>
+
+  </div>
+
+</div>
+
+{{ partial "footer.html" . }}
+
+<div id="body-model-outer"></div>
+
+{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") (resources.Get "js/header.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
+</body>
+</html>

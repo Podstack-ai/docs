@@ -1,6 +1,5 @@
 ---
 title: Basic Configuration
-slug: configuration/basic-configuration
 ---
 
 ## Configuration Guide

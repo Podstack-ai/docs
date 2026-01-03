@@ -2,9 +2,9 @@ enableGitInfo: false
 
 defaultContentLanguage: en
 
-# Clean URL configuration
+# Clean URL configuration - use file path structure
 permalinks:
-  docs: /docs/:slug/
+  docs: /docs/:sections[1:]/:contentbasename/
 
 # Enable clean URLs with trailing slashes
 uglyURLs: false

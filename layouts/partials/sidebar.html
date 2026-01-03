@@ -9,36 +9,11 @@
       {{- $currentPath := strings.TrimPrefix "/docs/" .RelPermalink -}}
       {{- $currentPath = strings.TrimSuffix "/" $currentPath -}}
 
-      {{ range $sectionIndex, $section := $data -}}
-        {{/* Check if any page in this section is active */}}
-        {{ $sectionHasActive := false -}}
-        {{ range $page := $section.pages -}}
-          {{ if eq $currentPath $page.path -}}
-            {{ $sectionHasActive = true -}}
-          {{ end -}}
-        {{ end -}}
-        
-        <div class="nav-section {{ if $sectionHasActive }}has-active{{ end }}" data-section="section-{{ $sectionIndex }}">
-          <button class="nav-section__toggle" aria-expanded="{{ if $sectionHasActive }}true{{ else }}false{{ end }}">
-            <span class="nav-section__title">{{ $section.title }}</span>
-            <svg class="nav-section__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          
-          <ul class="nav-section__items {{ if $sectionHasActive }}expanded{{ end }}">
-            {{ range $page := $section.pages -}}
-              {{ $isActivePage := eq $currentPath $page.path -}}
-              {{ $href := printf "/docs/%s/" $page.path -}}
-            <li class="nav-section__item">
-              <a href="{{ $href }}" class="nav-link {{ if $isActivePage }}active{{ end }}">
-                {{ $page.title }}
-              </a>
-            </li>
-            {{ end -}}
-          </ul>
+      {{- range $item := $data -}}
+        <div class="nav-root-item">
+          {{- partial "sidebar-item.html" (dict "item" $item "currentPath" $currentPath "level" 0 "basePath" "") -}}
         </div>
-      {{ end }}
+      {{- end -}}
     </nav>
   </aside>
   <div class="sidebar-backdrop"></div>
