@@ -1,3 +1,30 @@
+/**
+ * TABLE OF CONTENTS MODULE (assets/js/table-of-contents.js)
+ * PURPOSE: Auto-highlights TOC links based on scroll position
+ * 
+ * FEATURES:
+ * - Uses IntersectionObserver API for performance
+ * - Highlights active heading as user scrolls
+ * - Smooth scroll to headings (handled by CSS scroll-behavior)
+ * - Accounts for fixed header offset (80px rootMargin)
+ * - Updates active link classes in real-time
+ * 
+ * HOW IT WORKS:
+ * 1. Gets all links from #TableOfContents
+ * 2. Creates a map of heading IDs to their links
+ * 3. Observes heading elements for visibility
+ * 4. When a heading enters viewport, highlights its TOC link
+ * 5. Removes highlight from previous link
+ * 
+ * APPLIES TO:
+ * - Right sidebar on doc pages
+ * - Auto-generated from page headings
+ * 
+ * PERFORMANCE:
+ * - IntersectionObserver is more performant than scroll event
+ * - Falls back gracefully on older browsers
+ */
+
 if ('IntersectionObserver' in window) {
     document.addEventListener('DOMContentLoaded', function () {
         const links = document.querySelectorAll('#TableOfContents a');
@@ -17,7 +44,7 @@ if ('IntersectionObserver' in window) {
                     }
                 }
             });
-        }, {rootMargin: `0% 0% -80% 0%`});
+        }, { rootMargin: `0% 0% -80% 0%` });
 
         links.forEach(link => {
             const id = link.getAttribute('href') ? link.getAttribute('href').slice(1) : null; // Checking if href exists before slicing #

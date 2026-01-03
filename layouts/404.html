@@ -1,3 +1,26 @@
+<!--
+  404 ERROR PAGE TEMPLATE (layouts/404.html)
+  PURPOSE: Renders when a page is not found (404 error)
+  
+  LAYOUT:
+  - Header (fixed top): Site navigation and search
+  - Main content (centered): Large 404 number, error message, and action buttons
+  - Footer: Site links and social media
+  
+  FEATURES:
+  - Prominent 404 display with gradient
+  - Links to go back home or browse docs
+  - Same header/footer styling as other pages for consistency
+  - Dark/light theme support
+  
+  RELATED FILES:
+  - partials/header.html: Top navigation bar with search
+  - partials/footer.html: Footer section
+  - css/home.css: Base styles (shared with homepage)
+  - css/404.css: 404-specific styles
+  - css/header.css: Header navigation styles
+  - css/footer.css: Footer styles
+-->
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default `en-US` }}">
 
@@ -9,7 +32,7 @@
   <title>404 - Page Not Found · {{ .Site.Title }}</title>
   <link rel="canonical" href="{{ .Site.BaseURL }}">
 
-  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/home.css") (resources.Get "css/logo.css") (resources.Get "css/404.css") | resources.Concat "assets/css/404.css" | minify | fingerprint }}
+  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/home.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") (resources.Get "css/404.css") | resources.Concat "assets/css/404-page.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
 
   {{ partial "favicons.html" . }}
@@ -17,27 +40,9 @@
 
 <body>
 
-<div id="content-wrapper">
-  <header>
-    <a href="{{ .Site.Home.Permalink }}" class="site-logo">
-      {{ with .Site.Params.logo }}
-        <div class="site-logo-svg-wrapper">
-          {{ partial "logo-svg.html" . }}
-        </div>
-        <div class="site-logo-text">
-          <div class="site-logo-title">{{ .title }}</div>
-          <div class="site-logo-subtitle">{{ .subtitle }}</div>
-        </div>
-      {{ else }}
-        {{ $.Site.Title }}
-      {{ end }}
-    </a>
-    <nav>
-      <a href="{{ .Site.Home.Permalink }}{{ .Site.Params.home.getStartedPath }}" class="btn">{{ i18n "getStarted" }}</a>
-      <button class="btn theme-toggle"><i>☀️</i><i>⁄</i><i>🌑</i></button>
-    </nav>
-  </header>
+{{ partial "header.html" . }}
 
+<div id="content-wrapper">
   <main class="not-found-main">
     <section class="not-found-section">
       <div class="not-found-container">
@@ -54,15 +59,13 @@
       </div>
     </section>
   </main>
-
-  <footer>
-    <div><i>🧑‍💻</i>{{ i18n "builtByAndCopyright" }}<a href="{{ .Site.Params.author.url }}" target="_blank">{{ .Site.Params.author.name }}</a><i>📅</i> {{ with .Site.Params.project.startYear }}{{.}}-{{ end }}{{ .Site.Params.project.presentYear }}<i>🚀</i> <a href="https://github.com/{{ .Site.Params.project.github.repo }}" target="_blank">GitHub</a></div>
-  </footer>
 </div>
+
+{{ partial "footer.html" . }}
 
 <div id="body-model-outer"></div>
 
-{{- $js := slice (resources.Get "js/color-preference.js") | resources.Concat "assets/js/home.js" | minify | fingerprint }}
+{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/header.js") | resources.Concat "assets/js/404.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
 </body>
 

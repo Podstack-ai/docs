@@ -1,3 +1,30 @@
+<!--
+  SINGLE PAGE TEMPLATE (layouts/_default/single.html)
+  PURPOSE: Renders individual documentation pages
+  
+  LAYOUT:
+  - Header (fixed top): Site navigation and search
+  - Sidebar (left): Recursive navigation tree with section expandable/collapsible
+  - Main content (center): Page title, content, and prev/next navigation
+  - Table of Contents (right): Page heading outline with smooth scroll linking
+  - Footer: Site links and social media
+  
+  FEATURES:
+  - Three-column responsive layout
+  - Automatic prev/next navigation using page weight
+  - Sidebar with unlimited nesting support
+  - Table of Contents auto-generated from headings
+  - Mobile responsive with off-canvas menu
+  - Dark/light theme support
+  
+  RELATED FILES:
+  - partials/sidebar.html: Navigation sidebar
+  - partials/header.html: Top navigation bar with search
+  - partials/footer.html: Footer section
+  - css/docs.css: Main documentation styles
+  - js/sidebar.js: Sidebar toggle and navigation
+  - js/table-of-contents.js: TOC scroll highlighting
+-->
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default `en-US` }}">
 

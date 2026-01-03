@@ -1,3 +1,32 @@
+<!--
+  SIDEBAR PARTIAL (layouts/partials/sidebar.html)
+  PURPOSE: Left navigation sidebar with recursive expandable section tree
+  
+  FEATURES:
+  - Loads sidebar structure from data/en/docs/sidebar.yml
+  - Recursive nesting support (unlimited levels)
+  - Click section to navigate AND expand/collapse
+  - Auto-expands active section path
+  - Smooth expand/collapse animations
+  - Mobile: Hidden by default, toggles with menu button
+  - Desktop: Always visible, fixed left sidebar
+  
+  DATA SOURCE:
+  - Reads from: data/en/docs/sidebar.yml
+  - Passed to: layouts/partials/sidebar-item.html (recursive)
+  
+  ELEMENTS:
+  - #aside-wrapper: Main sidebar container
+  - .nav-root-item: Top-level section wrapper
+  - .sidebar-nav: Navigation list
+  - .sidebar-backdrop: Click overlay to close on mobile
+  
+  RELATED FILES:
+  - partials/sidebar-item.html: Recursive section component
+  - js/sidebar.js: Toggle and navigation logic
+  - css/sidebar.css: Styling and animations
+  - data/en/docs/sidebar.yml: Navigation structure
+-->
 <div id="aside-wrapper" class="sidebar-docker">
   <aside class="sidebar">
     <div class="sidebar-header">

@@ -1,3 +1,39 @@
+# ============================================================
+# SIDEBAR NAVIGATION DATA (data/en/docs/sidebar.yml)
+# PURPOSE: Defines the documentation sidebar structure with sections
+# 
+# STRUCTURE:
+# - Root items: Top-level sections in sidebar
+# - Each item can have nested child items (pages array)
+# - Supports unlimited nesting depth
+# - Recursively rendered by layouts/partials/sidebar-item.html
+# 
+# ITEM PROPERTIES:
+# - title: Display name shown in sidebar (required)
+# - slug: URL path segment (e.g., "installation" → /docs/installation/)
+# - path: Full path override (alternative to slug, less common)
+# - pages: Array of child items (optional, creates nested sections)
+# 
+# USAGE:
+# - Loaded by layouts/partials/sidebar.html
+# - Rendered recursively via layouts/partials/sidebar-item.html
+# - Used by js/sidebar.js for toggle functionality
+# - Referenced in css/sidebar.css for styling
+# 
+# EXAMPLE:
+# - title: Installation         ← Becomes section header
+#   slug: installation          ← URL: /docs/installation/
+#   pages:
+#     - title: Overview         ← Child item
+#       slug: overview          ← URL: /docs/installation/overview/
+# 
+# NOTES:
+# - Sidebar must match actual content folder structure
+# - Items without matching .md files won't generate pages
+# - Order here determines sidebar order
+# 
+# ============================================================
+
 # Recursive sidebar structure
 # Each item can have:
 #   - title: Display name

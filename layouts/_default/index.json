@@ -1,0 +1,15 @@
+{{- $pages := where .Site.Pages "Section" "docs" -}}
+{{- $index := slice -}}
+{{- range $pages -}}
+{{- if and .Title (not .Params.hidden) -}}
+  {{- $entry := dict 
+    "title" .Title 
+    "url" .RelPermalink 
+    "content" (.Plain | truncate 300 "") 
+    "section" (default "" .CurrentSection.Title)
+    "description" (default "" .Params.description)
+  -}}
+  {{- $index = $index | append $entry -}}
+{{- end -}}
+{{- end -}}
+{{- $index | jsonify -}}

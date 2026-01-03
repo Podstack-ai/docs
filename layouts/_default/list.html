@@ -1,3 +1,28 @@
+<!--
+  LIST PAGE TEMPLATE (layouts/_default/list.html)
+  PURPOSE: Renders section index pages (_index.md files)
+  
+  LAYOUT:
+  - Header (fixed top): Site navigation and search
+  - Sidebar (left): Recursive navigation tree highlighting current section
+  - Main content (center): Section title, description, and child pages as cards
+  - Table of Contents (right): Section headings with smooth scroll linking
+  - Footer: Site links and social media
+  
+  FEATURES:
+  - Displays section overview content
+  - Lists child pages as clickable cards
+  - Prev/next navigation (prev = parent, next = first child)
+  - Same three-column responsive layout as single pages
+  - Mobile responsive with off-canvas menu
+  
+  RELATED FILES:
+  - partials/sidebar.html: Navigation sidebar
+  - partials/header.html: Top navigation bar with search
+  - partials/footer.html: Footer section
+  - css/docs.css: Main documentation styles
+  - js/sidebar.js: Sidebar toggle and navigation
+-->
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default `en-US` }}">
 

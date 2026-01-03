@@ -1,3 +1,39 @@
+<!--
+  SIDEBAR ITEM PARTIAL (layouts/partials/sidebar-item.html)
+  PURPOSE: Recursive component for rendering expandable sidebar sections
+  
+  RECURSION:
+  - Supports unlimited nesting depth
+  - Calls itself for child items
+  - Each level indents by default padding
+  - Manages level numbers for styling (level-0, level-1, etc.)
+  
+  FEATURES:
+  - Section title with chevron toggle button
+  - Click title to navigate AND expand/collapse
+  - Shows/hides child items with smooth animation
+  - Highlights active page
+  - Auto-expands ancestors of active page
+  - Keyboard accessible with aria-expanded
+  
+  INPUTS (from sidebar.html):
+  - item: Section data object with title, slug, pages array
+  - currentPath: Current page path for active detection
+  - level: Nesting depth (0 = root)
+  - basePath: Parent path for building child URLs
+  
+  RENDERING:
+  - .nav-section: Container for section
+  - .nav-section__link: Clickable title
+  - .nav-section__toggle: Chevron icon (aria-expanded)
+  - .nav-section__items: Child items container
+  - Recursive call for nested items
+  
+  RELATED FILES:
+  - partials/sidebar.html: Parent template
+  - js/sidebar.js: Toggle/click handling
+  - css/sidebar.css: Styling and animations
+-->
 {{/* Recursive sidebar item partial */}}
 {{- $item := .item -}}
 {{- $currentPath := .currentPath -}}

@@ -1,3 +1,27 @@
+<!--
+  HOME PAGE TEMPLATE (layouts/index.html)
+  PURPOSE: Renders the site homepage
+  
+  LAYOUT:
+  - Header (fixed top): Site navigation and search
+  - Main content (centered): Hero section with heading and CTA buttons
+  - Footer: Site links, social media, and community resources
+  
+  FEATURES:
+  - Full-width hero section
+  - Community resources section (visible only on home)
+  - Social media links in footer
+  - Dark/light theme support
+  - Generates JSON search index from docs pages
+  
+  RELATED FILES:
+  - partials/header.html: Top navigation bar with search
+  - partials/footer.html: Footer section
+  - css/home.css: Homepage-specific styles
+  - css/header.css: Header navigation styles
+  - css/footer.css: Footer styles
+  - layouts/_default/index.json: Search index generation
+-->
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default `en-US` }}">
 

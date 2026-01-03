@@ -1,7 +1,31 @@
+/**
+ * SIDEBAR MODULE (assets/js/sidebar.js)
+ * PURPOSE: Handles sidebar navigation, section toggling, and mobile menu
+ * 
+ * FEATURES:
+ * - Recursive section expansion/collapse with smooth animations
+ * - Auto-expand active section path
+ * - Mobile menu drawer overlay
+ * - Scroll active item into view
+ * - Click section title to navigate AND expand
+ * 
+ * SUPPORTS:
+ * - Unlimited nesting depth (recursive tree)
+ * - Keyboard navigation
+ * - Accessibility (aria-expanded, aria-current)
+ * 
+ * RELATED FILES:
+ * - partials/sidebar.html: Sidebar container and structure
+ * - partials/sidebar-item.html: Recursive section item component
+ * - css/sidebar.css: Sidebar styling and animations
+ */
 (function () {
     'use strict';
 
-    // Initialize sidebar functionality
+    /**
+     * Initialize all sidebar functionality
+     * Called on DOM content loaded
+     */
     function initSidebar() {
         const sidebar = document.querySelector('.sidebar-docker');
 
@@ -19,7 +43,11 @@
         scrollActiveIntoView();
     }
 
-    // Initialize collapsible sections - supports unlimited nesting levels
+    /**
+     * Initialize collapsible sections - supports unlimited nesting levels
+     * Each section can have a toggle button and child items
+     * Toggle updates aria-expanded attribute for accessibility
+     */
     function initSectionToggles() {
         const toggleButtons = document.querySelectorAll('.nav-section__toggle');
 
