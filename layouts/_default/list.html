@@ -71,37 +71,39 @@
         </div>
 
         <footer>
-          {{ $lastMod := .Lastmod.Format "2006-01-02" -}}
-          {{ $prevPageTitle := "" -}}
-          {{ $nextPageTitle := "" -}}
-          {{ $prevPageHref := "" -}}
-          {{ $nextPageHref := "" -}}
+          <nav class="nav-buttons">
+            {{/* For section pages: prev = parent, next = first child */}}
+            {{ $prevPage := "" }}
+            {{ $nextPage := "" }}
 
-          {{/* For section pages, link to parent or first child */}}
-          {{ with .Parent }}
-            {{ if ne .Kind "home" }}
-              {{ $prevPageHref = .Permalink }}
-              {{ $prevPageTitle = .Title }}
+            {{ with .Parent }}
+              {{ if ne .Kind "home" }}
+                {{ $prevPage = . }}
+              {{ end }}
             {{ end }}
-          {{ end }}
 
-          {{ with (index .Pages 0) }}
-            {{ $nextPageHref = .Permalink }}
-            {{ $nextPageTitle = .Title }}
-          {{ end }}
+            {{ with (index .Pages 0) }}
+              {{ $nextPage = . }}
+            {{ end }}
 
-          {{ if ne $prevPageHref "" -}}
-          <a href="{{ $prevPageHref }}"><i>&lsaquo;</i> {{ i18n "previous" }}</a>
-          {{ else -}}
-          <a class="hidden"><i>&lsaquo;</i> {{ i18n "previous" }}</a>
-          {{ end -}}
+            {{ if $prevPage }}
+            <a href="{{ $prevPage.Permalink }}" class="nav-btn nav-btn--prev">
+              <span class="nav-btn__label">{{ i18n "previous" }}</span>
+              <span class="nav-btn__title">{{ $prevPage.Title }}</span>
+            </a>
+            {{ else }}
+            <span class="nav-btn nav-btn--prev nav-btn--disabled"></span>
+            {{ end }}
 
-          {{ if ne $nextPageHref "" -}}
-          <a href="{{ $nextPageHref }}">{{ i18n "next" }} <i>&rsaquo;</i></a>
-          {{ else -}}
-          <a class="hidden">{{ i18n "next" }} <i>&rsaquo;</i></a>
-          {{ end -}}
-
+            {{ if $nextPage }}
+            <a href="{{ $nextPage.Permalink }}" class="nav-btn nav-btn--next">
+              <span class="nav-btn__label">{{ i18n "next" }}</span>
+              <span class="nav-btn__title">{{ $nextPage.Title }}</span>
+            </a>
+            {{ else }}
+            <span class="nav-btn nav-btn--next nav-btn--disabled"></span>
+            {{ end }}
+          </nav>
         </footer>
       </article>
 

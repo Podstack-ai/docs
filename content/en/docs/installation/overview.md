@@ -156,6 +156,3 @@ Check our [Contributing Guide](#) to get started.
 3. **[Join Community](#)** - Connect with other developers
 4. **[Build Something](#)** - Create your first project
 
----
-
-**Happy coding!** Have questions? [Contact us](#) or check the [FAQ](#).

@@ -49,54 +49,38 @@
           {{ .Content | safeHTML }}
         </div>
 
-        <footer>
-          {{ $lastMod := .Lastmod.Format "2006-01-02" -}}
-          {{ $prevPageTitle := "" -}}
-          {{ $nextPageTitle := "" -}}
-          {{ $prevPageHref := "" -}}
-          {{ $nextPageHref := "" -}}
-          {{ $dataLocale := index .Site.Data .Site.Language.Lang -}}
-          {{ if isset $dataLocale .Section -}}
-            {{ $data := index .Site.Data .Site.Language.Lang .Section "sidebar" -}}
-            {{ $url := split .Permalink "/" -}}
-            {{ $urlPageSlug := index $url (sub (len $url) 2) -}}
-            {{ $isSectionIndex := eq $urlPageSlug .Section -}}
-            {{ $isActivePagePassed := false -}}
-            {{ $isNextPagePassed := false -}}
-            {{ range $group := $data -}}
-                {{ if $isNextPagePassed -}}
-                    {{ break -}}
-                {{ end -}}
-                {{ range $page := $group.pages -}}
-                    {{ $pageSlug := $page.title | urlize -}}
-                    {{ $isActivePage := or $isSectionIndex (eq $urlPageSlug $pageSlug) -}}
-                    {{ if $isActivePagePassed -}}
-                        {{ $nextPageTitle = $page.title -}}
-                        {{ $nextPageHref = printf "%s%s/%s/" $.Site.Home.Permalink $.Section $pageSlug -}}
-                        {{ $isNextPagePassed = true -}}
-                        {{ break -}}
-                    {{ else if $isActivePage -}}
-                        {{ $isActivePagePassed = true -}}
-                    {{ else -}}
-                        {{ $prevPageTitle = $page.title -}}
-                        {{ $prevPageHref = printf "%s%s/%s/" $.Site.Home.Permalink $.Section $pageSlug -}}
-                    {{ end -}}
-                {{ end -}}
-            {{ end -}}
-          {{ end -}}
+        <footer class="article-footer">
+          {{/* Use Hugo's built-in page navigation */}}
+          {{ $pages := .CurrentSection.Pages.ByWeight }}
+          {{ $currentIndex := 0 }}
+          {{ range $index, $page := $pages }}
+            {{ if eq $page.Permalink $.Permalink }}
+              {{ $currentIndex = $index }}
+            {{ end }}
+          {{ end }}
+          
+          {{ $prevPage := index $pages (sub $currentIndex 1) }}
+          {{ $nextPage := index $pages (add $currentIndex 1) }}
 
-          {{ if ne $prevPageHref "" -}}
-          <a href="{{ $prevPageHref }}"><i>&lsaquo;</i> {{ i18n "previous" }}</a>
-          {{ else -}}
-          <a class="hidden"><i>&lsaquo;</i> {{ i18n "previous" }}</a>
-          {{ end -}}
+          <nav class="nav-buttons">
+            {{ if and (gt $currentIndex 0) $prevPage }}
+            <a href="{{ $prevPage.Permalink }}" class="nav-btn nav-btn--prev">
+              <span class="nav-btn__label">{{ i18n "previous" }}</span>
+              <span class="nav-btn__title">{{ $prevPage.Title }}</span>
+            </a>
+            {{ else }}
+            <span class="nav-btn nav-btn--prev nav-btn--disabled"></span>
+            {{ end }}
 
-          {{ if ne $nextPageHref "" -}}
-          <a href="{{ $nextPageHref }}">{{ i18n "next" }} <i>&rsaquo;</i></a>
-          {{ else -}}
-          <a class="hidden">{{ i18n "next" }} <i>&rsaquo;</i></a>
-          {{ end -}}
-
+            {{ if $nextPage }}
+            <a href="{{ $nextPage.Permalink }}" class="nav-btn nav-btn--next">
+              <span class="nav-btn__label">{{ i18n "next" }}</span>
+              <span class="nav-btn__title">{{ $nextPage.Title }}</span>
+            </a>
+            {{ else }}
+            <span class="nav-btn nav-btn--next nav-btn--disabled"></span>
+            {{ end }}
+          </nav>
         </footer>
       </article>
 

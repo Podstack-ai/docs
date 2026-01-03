@@ -87,7 +87,4 @@ Different configurations for different environments:
 ├── .env.test
 └── .env.local (ignored by git)
 ```
-
----
-
 **Tip:** Always keep sensitive information in `.env.local` or use a secrets manager in production.
