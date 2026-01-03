@@ -1,3 +1,30 @@
+/**
+ * OFF-CANVAS MODULE (assets/js/off-canvas.js)
+ * PURPOSE: Handles opening/closing of right TOC drawer on mobile
+ * 
+ * FEATURES:
+ * - Opens table of contents as side drawer
+ * - Dark overlay that closes on click
+ * - Prevents body scroll while drawer is open
+ * - Smooth slide-in animation
+ * - Close button inside drawer
+ * - Click outside to close
+ * 
+ * USES:
+ * - Only on mobile/tablet (main TOC hidden on desktop)
+ * - Right side of screen
+ * - Dark overlay #body-model-outer
+ * 
+ * ELEMENTS:
+ * - #aside-wrapper: TOC drawer container
+ * - asideWrapperOpenButton: Button to open drawer
+ * - asideWrapperCloseButton: Close button inside drawer
+ * - #body-model-outer: Click overlay to close
+ * 
+ * ANIMATIONS:
+ * - .open class adds slide-in transform
+ * - body.model-open prevents scrolling
+ */
 (function () {
     'use strict';
 

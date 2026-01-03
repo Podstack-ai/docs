@@ -1,3 +1,18 @@
+/**
+ * HEADER STYLES
+ * PURPOSE: Styles for the fixed navigation header with search, theme toggle, and mobile menu
+ * 
+ * KEY COMPONENTS:
+ * - .site-header: Fixed header bar with blue background
+ * - .search-container / .search-input: Search input and dropdown results
+ * - .theme-toggle-header: Light/dark mode toggle button
+ * - .mobile-menu: Responsive drawer menu for small screens
+ * 
+ * RESPONSIVE DESIGN:
+ * - Desktop (>768px): Full navigation visible
+ * - Mobile (<768px): Menu button toggles overlay drawer
+ */
+
 /* Docker-style Header Styles */
 
 .site-header {
@@ -145,6 +160,75 @@
 
 .search-button:hover {
     opacity: 1;
+}
+
+/* Search Results Dropdown */
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background-color: var(--background, #1a1a2e);
+    border: 1px solid var(--border, #333);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1001;
+    display: none;
+}
+
+.search-results.active {
+    display: block;
+}
+
+/* Individual search result item */
+.search-result-item {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border, #333);
+    transition: background-color 150ms ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item:focus {
+    background-color: rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+/* Search result title with highlighting */
+.search-result-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color, #e0e0e0);
+    margin-bottom: 2px;
+}
+
+/* Highlighted search terms in results */
+.search-result-title mark {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: inherit;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Section label under result title */
+.search-result-section {
+    font-size: 12px;
+    color: var(--color-secondary, #9ca3af);
+}
+
+/* Message when no results found */
+.search-no-results {
+    padding: 16px;
+    text-align: center;
+    color: var(--color-secondary, #9ca3af);
+    font-size: 14px;
 }
 
 /* Theme Toggle */

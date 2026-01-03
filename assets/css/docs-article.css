@@ -1,3 +1,26 @@
+/**
+ * ARTICLE CONTENT STYLES (assets/css/docs-article.css)
+ * PURPOSE: Styles for article text, headings, lists, code blocks, etc.
+ * 
+ * KEY FEATURES:
+ * - Responsive heading sizes (h1-h6)
+ * - Proper spacing and typography
+ * - Code block styling with overflow handling
+ * - Table styling with alternating rows
+ * - Blockquote and note styling
+ * - Link underlines and hover effects
+ * - scroll-margin-top for anchor link positioning (80px for fixed header)
+ * 
+ * APPLIES TO:
+ * - #article-body: Main content area inside articles
+ * - All text elements: paragraphs, lists, code, etc.
+ * 
+ * TYPOGRAPHY:
+ * - Uses CSS custom properties for colors
+ * - Dark/light theme support via data-color attribute
+ * - Readable line-height and font-sizes
+ */
+
 #article-body h1,
 #article-body h2,
 #article-body h3,

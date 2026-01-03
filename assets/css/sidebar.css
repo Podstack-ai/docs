@@ -1,3 +1,29 @@
+/**
+ * SIDEBAR STYLES (assets/css/sidebar.css)
+ * PURPOSE: Styles for left navigation sidebar with recursive nested sections
+ * 
+ * KEY COMPONENTS:
+ * - .sidebar-docker: Main sidebar container with fixed positioning
+ * - .nav-section: Individual section item (supports unlimited nesting)
+ * - .nav-section__toggle: Chevron icon for expanding/collapsing
+ * - .nav-section__items: Container for child items (animated on expand/collapse)
+ * - .nav-item: Individual page link
+ * 
+ * RESPONSIVE:
+ * - Desktop (>768px): Fixed left sidebar, always visible
+ * - Mobile (<768px): Hidden by default, toggled with off-canvas drawer
+ * 
+ * ACCESSIBILITY:
+ * - Uses aria-expanded for expanded/collapsed state
+ * - Uses aria-current="page" for active page highlighting
+ * - Keyboard navigable with Tab and Enter keys
+ * 
+ * SUPPORTS:
+ * - Unlimited nesting depth (level-0 through level-6+)
+ * - Smooth expand/collapse animations
+ * - Active state highlighting
+ */
+
 /* Sidebar Container */
 .sidebar-docker {
     position: fixed;

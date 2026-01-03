@@ -1,3 +1,29 @@
+/**
+ * FOOTER STYLES (assets/css/footer.css)
+ * PURPOSE: Styles for site footer with links, social media, and community section
+ * 
+ * KEY COMPONENTS:
+ * - .site-footer: Main footer container with dark background
+ * - .community-section: Community resources area (homepage only)
+ * - .footer-nav: Links to other pages and resources
+ * - .social-icons: Social media icon links
+ * - .footer-bottom: Copyright and legal links
+ * 
+ * FEATURES:
+ * - Sticky footer (takes up remaining space)
+ * - Responsive grid layout
+ * - Icon styling for social media
+ * - Links with hover effects
+ * - Community buttons with hover animation
+ * 
+ * RESPONSIVE:
+ * - Desktop: Multi-column layout
+ * - Mobile: Single column with centered content
+ * 
+ * APPEARS ON:
+ * - All pages (single.html, list.html, index.html, 404.html)
+ */
+
 /* Docker-style Footer Styles */
 
 .site-footer {

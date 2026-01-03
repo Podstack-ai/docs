@@ -1,3 +1,30 @@
+/**
+ * DOCUMENTATION STYLES (assets/css/docs.css)
+ * PURPOSE: Main styles for documentation pages with three-column layout
+ * 
+ * LAYOUT:
+ * - Left: Sidebar navigation (fixed, 280px)
+ * - Center: Article content (main reading area)
+ * - Right: Table of Contents (fixed, 250px) - hidden on mobile
+ * 
+ * KEY COMPONENTS:
+ * - .article-footer: Prev/next navigation buttons
+ * - .nav-buttons: Grid layout for nav buttons
+ * - .nav-btn: Individual navigation button
+ * - .article-body: Main content area with text styling
+ * 
+ * RESPONSIVE:
+ * - Desktop (>1024px): Three columns visible
+ * - Tablet (768px-1024px): Two columns (sidebar + content)
+ * - Mobile (<768px): Single column with off-canvas menu
+ * 
+ * FEATURES:
+ * - Proper spacing and padding
+ * - Code block styling with syntax highlighting
+ * - Link styling and hover effects
+ * - Mobile menu overlay and drawer
+ */
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;

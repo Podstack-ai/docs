@@ -1,6 +1,42 @@
+# ============================================================
+# HUGO CONFIGURATION (hugo.yaml)
+# PURPOSE: Main configuration file for Hugo static site generator
+# 
+# KEY SETTINGS:
+# - enableGitInfo: False (not needed for this site)
+# - defaultContentLanguage: en (English)
+# - permalinks.docs: Auto-generate URLs from folder structure
+# - outputs.home: HTML, RSS, JSON (for search index)
+# - languages: Site title and content directory setup
+# 
+# FEATURES:
+# - Clean URLs without .html extension (uglyURLs: false)
+# - Smooth scroll behavior (handled in CSS)
+# - Multilingual support structure (ready for additional languages)
+# - Search index generation via JSON output
+# 
+# CONTENT STRUCTURE:
+# - Docs pages auto-generate URLs: /docs/:section/:basename/
+# - Example: content/en/docs/getting-started/overview.md
+#   → URL: /docs/installation/overview/
+# 
+# RELATED FILES:
+# - data/en/docs/sidebar.yml: Navigation structure
+# - layouts/index.json: Search index template
+# - layouts/_default/single.html: Doc pages
+# - layouts/_default/list.html: Section pages (_index.md)
+# ============================================================
+
 enableGitInfo: false
 
 defaultContentLanguage: en
+
+# Output formats for search
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 # Clean URL configuration - use file path structure
 permalinks:
