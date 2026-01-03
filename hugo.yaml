@@ -44,7 +44,7 @@ params:
     url: https://github.com/username
 
   logo:
-    image: /images/logo.png
+    image: /images/favicon.ico
     title: PodStack
     subtitle: GPU Cloud Platform
 

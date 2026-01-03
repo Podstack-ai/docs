@@ -13,7 +13,7 @@ localStorage.setItem(lsKeyColorPreference, colorPreference)
 document.firstElementChild.setAttribute('data-color', colorPreference)
 
 // Select all theme toggle buttons (in header and footer)
-const colorPreferenceButtons = document.querySelectorAll('.theme-toggle, #content-wrapper > footer > div:last-child > button:last-child, #content-wrapper > header > nav > button.theme-toggle, #content-wrapper > header > button.theme-toggle')
+const colorPreferenceButtons = document.querySelectorAll('.theme-toggle, .theme-toggle-header, #content-wrapper > footer > div:last-child > button:last-child, #content-wrapper > header > nav > button.theme-toggle, #content-wrapper > header > button.theme-toggle')
 colorPreferenceButtons.forEach(button => {
     if (button) {
         button.addEventListener('click', function () {

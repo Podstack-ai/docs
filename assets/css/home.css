@@ -17,7 +17,7 @@ body {
   flex: 1;
   flex-direction: column;
   min-height: 100svh;
-  background: #0A0F1C;
+  background: var(--background);
 }
 
 /* Header */
@@ -126,7 +126,7 @@ main>section>div>header>h1 {
   font-weight: 700;
   line-height: 1.2;
   margin: 0;
-  color: #FFFFFF;
+  color: var(--color);
 }
 
 main>section>div>header>h1>span {
@@ -138,7 +138,7 @@ main>section>div>header>h1>span {
 
 main>section>div>header>p {
   font-size: 1.25rem;
-  color: #9CA3AF;
+  color: var(--color-fade);
   margin: 0;
   line-height: 1.6;
 }
@@ -173,8 +173,8 @@ main>section>div>div>a.btn:first-child:hover {
 
 main>section>div>div>a.btn:last-child {
   background: transparent;
-  color: #FFFFFF;
-  border: 1px solid #374151;
+  color: var(--color);
+  border: 1px solid var(--border-nav);
 }
 
 main>section>div>div>a.btn:last-child:hover {

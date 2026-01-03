@@ -183,6 +183,7 @@ main>article {
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding-bottom: 48px;
 }
 
 main>article>nav {
@@ -251,6 +252,7 @@ main>aside {
   right: -85%;
   display: none;
   overflow-x: auto;
+  padding-bottom: 48px;
 }
 
 main>aside.open {
@@ -271,6 +273,7 @@ main>aside.open {
 #aside-wrapper {
   position: sticky;
   top: 0;
+  padding-bottom: 48px;
 }
 
 #aside-wrapper>aside>nav {

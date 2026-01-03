@@ -15,7 +15,7 @@
   <title>{{ .Title | .RenderString }} · {{ .Site.Title | .RenderString }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
 
-  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
+  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
 
   {{ partial "favicons.html" . }}
@@ -25,6 +25,8 @@
 
 <body>
 
+{{ partial "header.html" . }}
+
 <div id="outer-wrapper">
 
   <div id="aside-wrapper">
@@ -32,20 +34,6 @@
       <div>
         <button class="btn"><i>❌</i>{{ i18n "close" }}</button>
       </div>
-
-      <a href="{{ .Site.Home.Permalink }}" class="site-logo">
-        {{ with .Site.Params.logo }}
-          <div class="site-logo-svg-wrapper">
-            {{ partial "logo-svg.html" . }}
-          </div>
-          <div class="site-logo-text">
-            <div class="site-logo-title">{{ .title }}</div>
-            <div class="site-logo-subtitle">{{ .subtitle }}</div>
-          </div>
-        {{ else }}
-          {{ $.Site.Title }}
-        {{ end }}
-      </a>
 
       <nav role="navigation">
         {{ $data := index .Site.Data .Site.Language.Lang .Section "sidebar" }}
@@ -79,7 +67,6 @@
   <div id="content-wrapper">
     <header>
       <a href="{{ .Site.Home.Permalink }}" class="site-logo">{{ .Site.Title }}</a>
-      <button class="btn theme-toggle"><i>☀️</i><i>⁄</i><i>🌑</i></button>
     </header>
 
 		{{ partial "menu-main.html" . }}
@@ -160,16 +147,15 @@
       </aside>
     </main>
 
-    <footer>
-      <div><i>🧑‍💻</i>{{ i18n "builtByAndCopyright" }}<a href="{{ .Site.Params.author.url }}" target="_blank">{{ .Site.Params.author.name }}</a><i>📅</i> {{ with .Site.Params.project.startYear }}{{.}}-{{ end }}{{ .Site.Params.project.presentYear }}<i>🚀</i> <a href="https://github.com/{{ .Site.Params.project.github.repo }}" target="_blank">GitHub</a></div>
-    </footer>
   </div>
 
 </div>
 
+{{ partial "footer.html" . }}
+
 <div id="body-model-outer"></div>
 
-{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
+{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") (resources.Get "js/header.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
 </body>
 </html>
