@@ -43,16 +43,8 @@
 
     <main>
       <article>
-        <nav>
-          <button class="btn"><i>⬅️</i> {{ i18n "onThisSection" }}</button>
-          <button class="btn">{{ i18n "onThisPage" }} <i>➡️</i></button>
-        </nav>
-        <header>
-          <h1>{{ .Title | .RenderString }}</h1>
-          {{ with .Params.summary }}
-          <p>{{ . | $.RenderString }}</p>
-          {{ end }}
-        </header>
+        
+    
         <div id="article-body">
           {{ .Content | safeHTML }}
         </div>
