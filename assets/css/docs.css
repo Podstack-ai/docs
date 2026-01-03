@@ -37,7 +37,7 @@ html[data-color="light"] #content-wrapper {
 
 @media (min-width: 1280px) {
   html[data-color="light"] #aside-wrapper {
-    background: linear-gradient(0deg, #F9F9FA 0%, #F9F9FA 100%), #FFF;
+    background: var(--background-grey);
   }
 }
 
@@ -62,7 +62,7 @@ body {
   flex: 1;
   flex-direction: column;
   min-height: 100svh;
-  background: #0A0F1C;
+  background: var(--background);
 }
 
 main {
@@ -123,7 +123,7 @@ main {
 }
 
 #content-wrapper>header>button.theme-toggle:hover {
-  border-color: #3B82F6;
+  border-color: var(--anchor);
   background: rgba(59, 130, 246, 0.1);
 }
 
@@ -234,7 +234,7 @@ main>article>footer {
   display: flex;
   flex-direction: column;
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--foreground);
   border: 1px solid var(--border);
   border-radius: 8px;
   text-decoration: none;
@@ -242,8 +242,8 @@ main>article>footer {
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: #60a5fa;
+  background: var(--foreground-hover);
+  border-color: var(--anchor);
 }
 
 .nav-btn--disabled {
@@ -262,7 +262,7 @@ main>article>footer {
 .nav-btn__label {
   font-size: 12px;
   font-weight: 500;
-  color: #9ca3af;
+  color: var(--color-fade);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 4px;
@@ -279,11 +279,11 @@ main>article>footer {
 .nav-btn__title {
   font-size: 15px;
   font-weight: 500;
-  color: #60a5fa;
+  color: var(--anchor);
 }
 
 .nav-btn:hover .nav-btn__title {
-  color: #93c5fd;
+  color: var(--hover);
 }
 
 main>aside {
@@ -319,7 +319,7 @@ main>aside>div {
 main>aside>strong {
   display: block;
   padding: var(--padding) var(--padding) calc(var(--padding) / 2);
-  color: #e5e7eb;
+  color: var(--color);
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -341,7 +341,7 @@ main>aside>nav {
 
 #TableOfContents a {
   display: block;
-  color: #9ca3af;
+  color: var(--color-fade);
   font-size: 0.875rem;
   padding: 6px 12px;
   text-decoration: none;
@@ -350,13 +350,13 @@ main>aside>nav {
 }
 
 #TableOfContents a:hover {
-  color: #e5e7eb;
-  background: rgba(255, 255, 255, 0.03);
+  color: var(--color);
+  background: var(--foreground);
 }
 
 #TableOfContents a.active {
-  color: #fff;
-  border-left-color: #60a5fa;
+  color: var(--color);
+  border-left-color: var(--anchor);
   background: transparent;
 }
 
@@ -364,7 +364,7 @@ main>aside>nav {
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.85em;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--foreground);
 }
 
 #TableOfContents ul ul {
@@ -505,7 +505,7 @@ main>aside>div>.btn {
     flex-direction: column;
     height: 100svh;
 
-    background: #101A2C;
+    background: var(--background-grey);
     backdrop-filter: blur(17.5px);
     -webkit-backdrop-filter: blur(17.5px);
     border-right: 1px solid var(--border);
