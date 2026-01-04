@@ -35,7 +35,7 @@ html[data-color="light"] #content-wrapper {
   background: white;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 900px) {
   html[data-color="light"] #aside-wrapper {
     background: var(--background-grey);
   }
@@ -45,6 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-x: hidden;
 
   color: var(--color);
   background: var(--background);
@@ -69,7 +70,9 @@ main {
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 100svw;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #aside-wrapper.open {
@@ -173,7 +176,7 @@ main {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 900px) {
   #content-wrapper>nav>select {
     top: 0;
     right: calc(100vw/5 + var(--padding_x2));
@@ -185,7 +188,7 @@ main {
   }
 
   main>article {
-    padding-top: 0;
+    padding-top: 30px;
   }
 }
 
@@ -196,6 +199,47 @@ main>article {
   flex: 1;
   flex-direction: column;
   padding-bottom: 48px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  padding: var(--padding) var(--padding_x2);
+  background: var(--background);
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb__separator {
+  margin: 0 8px;
+  color: var(--color-fade);
+}
+
+.breadcrumb__item a {
+  color: var(--anchor);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.breadcrumb__item a:hover {
+  color: var(--hover);
+  text-decoration: underline;
+}
+
+.breadcrumb__item--current span:not(.breadcrumb__separator) {
+  color: var(--color-fade);
 }
 
 main>article>nav {
@@ -424,7 +468,7 @@ main>aside>div>.btn {
 }
 
 /* Small Tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 899px) {
   #aside-wrapper {
     width: 50%;
     left: -50%;
@@ -437,7 +481,7 @@ main>aside>div>.btn {
 }
 
 /* From Large Tablet */
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   :root {
     --padding: 16px;
     --padding_d2: 8px;
@@ -465,6 +509,7 @@ main>aside>div>.btn {
     height: calc(100vh - 56px);
     overflow-y: auto;
     overflow-x: hidden;
+    background: var(--background);
   }
 
   main>aside>div {
@@ -490,22 +535,37 @@ main>aside>div>.btn {
 }
 
 /* Large Tablet */
-@media (min-width: 1024px) and (max-width: 1279px) {
+@media (min-width: 768px) and (max-width: 899px) {
   #aside-wrapper {
     width: 33%;
     left: -33%;
   }
 }
 
+/* Tablet to Small Desktop - Adjusted margins */
+@media (min-width: 900px) and (max-width: 1400px) {
+  main>article {
+    margin-right: 24vw;
+    margin-left: 0vw;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+  main>article {
+    margin-right: 2vw;
+    margin-left: 0vw;
+  }
+}
+
 /* From Desktop */
-@media (min-width: 1280px) {
+@media (min-width: 900px) {
   #aside-wrapper {
-    width: 20%;
+    width: 17rem;
     display: flex;
     flex-direction: column;
     height: 100svh;
 
-    background: var(--background-grey);
+    background: var(--background);
     backdrop-filter: blur(17.5px);
     -webkit-backdrop-filter: blur(17.5px);
     border-right: 1px solid var(--border);
@@ -545,12 +605,13 @@ main>aside>div>.btn {
     overflow-x: auto;
   }
 
-  main>article>nav {
+  main>article>nav:not(.breadcrumb) {
     display: none;
   }
 
   main>aside {
     width: 25%;
+    background: var(--background);
   }
 
   main>article>header {

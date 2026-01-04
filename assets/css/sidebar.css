@@ -31,7 +31,7 @@
     left: 0;
     width: 280px;
     height: calc(100vh - 56px);
-    background: var(--background-grey);
+    background: var(--background);
     z-index: 10;
     overflow: hidden;
     pointer-events: none;
@@ -379,7 +379,7 @@
    =================================== */
 
 /* Tablet */
-@media (max-width: 1023px) {
+@media (max-width: 900px) {
     .sidebar-docker {
         width: 240px;
     }
@@ -428,7 +428,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
     #content-wrapper {
         margin-left: 280px;
     }

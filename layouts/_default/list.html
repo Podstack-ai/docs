@@ -60,15 +60,31 @@
   {{ partial "sidebar.html" . }}
 
   <div id="content-wrapper">
-    <header>
-      <a href="{{ .Site.Home.Permalink }}" class="site-logo">{{ .Site.Title }}</a>
-    </header>
-
-		{{ partial "menu-main.html" . }}
+   
 
     <main>
       <article>
         
+        {{/* Breadcrumb Navigation */}}
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb__list">
+            <li class="breadcrumb__item">
+              <a href="{{ .Site.Home.Permalink }}">Home</a>
+            </li>
+            {{ range .Ancestors.Reverse }}
+            {{ if ne .Kind "home" }}
+            <li class="breadcrumb__item">
+              <span class="breadcrumb__separator">/</span>
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+            {{ end }}
+            <li class="breadcrumb__item breadcrumb__item--current">
+              <span class="breadcrumb__separator">/</span>
+              <span>{{ .Title }}</span>
+            </li>
+          </ol>
+        </nav>
  
         <div id="article-body">
           {{/* Render the _index.md content */}}

@@ -1,3 +1,6 @@
+---
+title: Installation
+---
 # Installation
 
 Welcome to the Installation guide. This page provides step-by-step instructions to get started with our software.

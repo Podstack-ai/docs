@@ -32,6 +32,9 @@
     margin-top: auto;
     position: relative;
     z-index: 20;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .footer-container {

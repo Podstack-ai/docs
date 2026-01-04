@@ -103,7 +103,7 @@
             return;
         }
 
-        if (window.innerWidth > 1280) {
+        if (window.innerWidth > 900) {
             asideWrapperAsideNav.style.height = `${window.innerHeight - 1 - asideWrapperSiteLogo.getBoundingClientRect().height}px`
         } else {
             asideWrapperAsideNav.style.height = ''
