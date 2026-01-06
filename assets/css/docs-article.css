@@ -27,26 +27,37 @@
 #article-body h4,
 #article-body h5,
 #article-body h6 {
-  line-height: 1em;
-  font-weight: 400;
-  margin: 2.6em 0 .1em;
-  color: var(--color)
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 1.3em 0 0 0;
+  color: var(--color);
+  letter-spacing: -0.02em;
 }
 
 #article-body h1 {
-  font-size: 1.8em
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 2em;
 }
 
 #article-body h2 {
-  font-size: 1.5em
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 2em;
 }
 
 #article-body h3 {
-  font-size: 1.3em
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 #article-body h4 {
-  font-size: 1.1em
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 #article-body h1:first-child,
@@ -68,8 +79,10 @@
 #article-body table,
 #article-body ul {
   margin-top: 1em;
-  line-height: 1.8rem;
-  letter-spacing: -.1px;
+  line-height: 1.7;
+  letter-spacing: 0;
+  font-size: 1rem;
+  color: var(--color-nav);
 }
 
 #article-body blockquote p {
@@ -95,7 +108,8 @@
 #article-body strong,
 #article-body b,
 #article-body table th {
-  font-weight: 600
+  font-weight: 600;
+  color: var(--color);
 }
 
 #article-body em {
@@ -285,15 +299,15 @@
    =================================== */
 
 .section-pages {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--border-grey, rgba(255, 255, 255, 0.1));
 }
 
 .section-pages h2 {
   font-size: 1.2em;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
   color: var(--color);
 }
 

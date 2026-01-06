@@ -1,15 +1,15 @@
-/* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Import Inter and JetBrains Mono fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-sans: 'Inter', system-ui, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: 'Inter', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-brand: 'Inter', "Arial", sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-brand: 'Inter', sans-serif;
 
-  --color: rgba(0, 0, 0, 1);
-  --color-fade: rgba(0, 0, 0, .54);
-  --color-nav: rgba(0, 0, 0, .7);
+  --color: #FFFFFF;
+  --color-fade: #9CA3AF;
+  --color-nav: #D1D5DB;
 
   --background: #ffffff;
   --background-grey: #f9f9f9;
@@ -18,7 +18,7 @@
   --foreground: rgba(247, 247, 247, .25);
   --foreground-hover: rgba(220, 220, 220, .35);
 
-  --foreground-highlight: #f5d41f;
+  --foreground-highlight: #8DCEFF;
   --color-highlight: #130606;
 
   --model-background: #ffffff;
@@ -36,13 +36,16 @@
 
   --radius: 4px;
 
-  --anchor: #235ce8;
-  --hover: #547ce3;
+  --anchor: #06B6D4;
+  --hover: #8B5CF6;
+
+  /* Brand gradient */
+  --brand-gradient: linear-gradient(122deg, #8B5CF6 0%, #06B6D4 100%);
 
   /* base16 tomorrow */
   --chroma-base00: #f9f9f9;
   --chroma-base01: #e0e0e0;
-  --chroma-base02: rgba(159, 218, 159, .2);
+  --chroma-base02: rgba(139, 92, 246, .1);
   --chroma-base03: #8e908c;
   --chroma-base04: #969896;
   --chroma-base05: #4d4d4c;
@@ -52,45 +55,48 @@
   --chroma-base09: #f5871f;
   --chroma-base0A: #eab700;
   --chroma-base0B: #718c00;
-  --chroma-base0C: #3e999f;
-  --chroma-base0D: #4271ae;
-  --chroma-base0E: #8959a8;
+  --chroma-base0C: #06B6D4;
+  --chroma-base0D: #8B5CF6;
+  --chroma-base0E: #8DCEFF;
   --chroma-base0F: #a3685a;
 
   /* shortcodes */
-  --callout-info-backgound: #954ce3;
+  --callout-info-backgound: #8B5CF6;
   --callout-info-foreground: rgba(0, 0, 0, .08);
   --callout-info-color: #ffffff;
-  --callout-info-anchor: #d2aefc;
+  --callout-info-anchor: #8DCEFF;
   --callout-info-anchor-text-shadow: .4px 0 .8px black;
 }
 
 :root[data-color="dark"] {
-  --color: rgba(255, 255, 255, 1);
-  --color-fade: rgba(255, 255, 255, .5);
-  --color-nav: rgba(255, 255, 255, .8);
+  --color: #FFFFFF;
+  --color-fade: #9CA3AF;
+  --color-nav: #D1D5DB;
 
-  --background: #101010;
-  --background-grey: #1e1e1e;
-  --background-grey-embed: #2f2d2d;
+  --background: #081627;
+  --background-grey: rgba(30, 41, 59, 1);
+  --background-grey-embed: rgba(15, 23, 42, 1);
 
-  --foreground: rgba(19, 19, 19, 1);
-  --foreground-hover: rgba(35, 35, 35, 1);
+  --foreground: rgba(30, 41, 59, 0.5);
+  --foreground-hover: rgba(51, 65, 85, 0.5);
 
-  --model-background: rgba(16, 16, 16, 1);
+  --model-background: rgba(17, 24, 39, 1);
   --model-foreground: rgba(225, 225, 225, .05);
-  --model-box-shadow: 0 8px 32px 0 rgba(241, 235, 235, 0.1);
+  --model-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 
   --border: rgba(225, 225, 225, .1);
   --border-nav: rgba(255, 255, 255, .2);
 
-  --anchor: #2e87f1;
-  --hover: #044b9d;
+  --anchor: #06B6D4;
+  --hover: #8B5CF6;
+
+  /* Dark gradient */
+  --dark-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 50%, rgba(15, 23, 42, 0.8) 100%);
 
   /* base16 tomorrow night */
   --chroma-base00: var(--background-grey);
   --chroma-base01: #393939;
-  --chroma-base02: rgba(159, 218, 159, .1);
+  --chroma-base02: rgba(139, 92, 246, .15);
   --chroma-base03: #999999;
   --chroma-base04: #b4b7b4;
   --chroma-base05: #cccccc;
@@ -100,8 +106,8 @@
   --chroma-base09: #f99157;
   --chroma-base0A: #ffcc66;
   --chroma-base0B: #99cc99;
-  --chroma-base0C: #66cccc;
-  --chroma-base0D: #6699cc;
-  --chroma-base0E: #cc99cc;
+  --chroma-base0C: #06B6D4;
+  --chroma-base0D: #8B5CF6;
+  --chroma-base0E: #8DCEFF;
   --chroma-base0F: #a3685a;
 }

@@ -629,11 +629,41 @@ main>aside>div>.btn {
 
 /* --- article --- */
 main>article>header>h1 {
-  font-size: 3em;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 main>article>header>p {
-  font-size: 1.25em;
+  font-size: 1.125rem;
   color: var(--color-fade);
   padding-top: var(--padding);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Responsive typography */
+@media (min-width: 768px) {
+  main>article>header>h1 {
+    font-size: 3rem;
+  }
+
+  #article-body h1 {
+    font-size: 2.5rem;
+  }
+
+  #article-body h2 {
+    font-size: 2rem;
+  }
+
+  #article-body p {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  main>article>header>h1 {
+    font-size: 3.75rem;
+  }
 }
