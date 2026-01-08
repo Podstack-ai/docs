@@ -88,6 +88,10 @@ jobs:
         run: |
           echo "Deploying to development environment"
           # Add your deployment commands here
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   # Deploy to pre-production
   deploy-preprod:

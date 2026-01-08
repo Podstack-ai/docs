@@ -35,7 +35,11 @@
 
     <nav class="sidebar-nav" role="navigation">
       {{ $data := index .Site.Data .Site.Language.Lang .Section "sidebar" }}
-      {{- $currentPath := strings.TrimPrefix "/docs/" .RelPermalink -}}
+      {{/* Extract current path - handle both /docs/xxx and /docs/docs/xxx patterns */}}
+      {{- $currentPath := .RelPermalink -}}
+      {{- $currentPath = strings.TrimPrefix "/docs/docs/" $currentPath -}}
+      {{- $currentPath = strings.TrimPrefix "/docs/" $currentPath -}}
+      {{- $currentPath = strings.TrimPrefix "/" $currentPath -}}
       {{- $currentPath = strings.TrimSuffix "/" $currentPath -}}
 
       {{- range $item := $data -}}

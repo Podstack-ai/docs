@@ -3,6 +3,7 @@
 # PURPOSE: Main configuration file for Hugo static site generator
 # 
 # KEY SETTINGS:
+# - baseURL: Must match GitHub Pages URL including repo name
 # - enableGitInfo: False (not needed for this site)
 # - defaultContentLanguage: en (English)
 # - permalinks.docs: Auto-generate URLs from folder structure
@@ -26,6 +27,9 @@
 # - layouts/_default/single.html: Doc pages
 # - layouts/_default/list.html: Section pages (_index.md)
 # ============================================================
+
+# CRITICAL for GitHub Pages: Must include repository name in URL
+baseURL: https://podstack-ai.github.io/docs/
 
 enableGitInfo: false
 
