@@ -47,7 +47,7 @@
   {{ partial "og-x-seo.html" . }}
 </head>
 
-<body>
+<body data-baseurl="{{ .Site.BaseURL }}">
 
 {{ partial "header.html" . }}
 

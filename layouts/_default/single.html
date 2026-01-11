@@ -53,7 +53,7 @@
   {{ partial "og-x-seo.html" . }}
 </head>
 
-<body>
+<body data-baseurl="{{ .Site.BaseURL }}">
 
 {{ partial "header.html" . }}
 
@@ -87,6 +87,14 @@
             </li>
           </ol>
         </nav>
+
+        {{/* Mobile TOC (shown on small screens) */}}
+        <section class="mobile-toc" aria-label="On this page">
+          <div class="mobile-toc__header">{{ i18n "onThisPage" }}</div>
+          <div class="mobile-toc__body">
+            {{ .TableOfContents }}
+          </div>
+        </section>
     
         <div id="article-body">
           {{ .Content | safeHTML }}
@@ -144,7 +152,7 @@
 
 <div id="body-model-outer"></div>
 
-{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") (resources.Get "js/header.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
+{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
 </body>
 </html>
