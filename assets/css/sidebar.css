@@ -420,3 +420,50 @@
         display: flex;
     }
 }
+
+/* Light theme sidebar text color overrides */
+html[data-color="light"] .nav-section__link {
+    color: var(--color-fade);
+}
+
+html[data-color="light"] .nav-section__link:hover {
+    color: #0F172A;
+}
+
+html[data-color="light"] .nav-section--level-0>.nav-section__header .nav-section__link {
+    color: #0F172A;
+}
+
+html[data-color="light"] .nav-section--level-1>.nav-section__header .nav-section__link {
+    color: #6B7280;
+}
+
+html[data-color="light"] .nav-section--level-2>.nav-section__header .nav-section__link {
+    color: #374151;
+}
+
+html[data-color="light"] .nav-section--level-3>.nav-section__header .nav-section__link {
+    color: #374151;
+}
+
+html[data-color="light"] .nav-section--level-4>.nav-section__header .nav-section__link,
+html[data-color="light"] .nav-section--level-5>.nav-section__header .nav-section__link,
+html[data-color="light"] .nav-section--level-6>.nav-section__header .nav-section__link {
+    color: #374151;
+}
+
+html[data-color="light"] .nav-link {
+    color: #6B7280;
+}
+
+html[data-color="light"] .nav-link:hover {
+    color: #0F172A;
+}
+
+html[data-color="light"] .sidebar-close {
+    color: #6B7280;
+}
+
+html[data-color="light"] .nav-section__chevron {
+    color: #6B7280;
+}
