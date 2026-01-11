@@ -31,10 +31,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | .RenderString }}">
   <meta name="author" content="{{ .Site.Params.author.name }}">
+  {{ with .Params.keywords | default .Site.Params.keywords }}
+  <meta name="keywords" content="{{ delimit . ", " }}">
+  {{ end }}
   <meta name="theme-color" content="{{ .Site.Params.project.themeColor.light }}" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="{{ .Site.Params.project.themeColor.dark }}" media="(prefers-color-scheme: dark)">
   {{ with .Params.robots -}}
   <meta name="robots" content="{{ . }}">
+  {{ else -}}
+  <meta name="robots" content="index, follow">
   {{ end -}}
 
   <title>{{ .Title | .RenderString }} · {{ .Site.Title | .RenderString }}</title>

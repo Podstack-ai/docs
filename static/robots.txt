@@ -1,0 +1,11 @@
+# robots.txt for PodStack Documentation
+# Generated for https://podstack-ai.github.io/docs/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://podstack-ai.github.io/docs/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1

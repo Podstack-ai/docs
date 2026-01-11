@@ -233,6 +233,44 @@ main>article {
 .breadcrumb__item {
   display: flex;
   align-items: center;
+  min-width: 0;
+  /* Allow flex items to shrink */
+}
+
+.breadcrumb__item a,
+.breadcrumb__item span:not(.breadcrumb__separator) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Responsive truncation for small screens */
+@media (max-width: 768px) {
+
+  .breadcrumb__item a,
+  .breadcrumb__item span:not(.breadcrumb__separator) {
+    max-width: 80px;
+    /* Truncate breadcrumb items to ~80px on mobile */
+  }
+
+  /* First item (Home) can be shorter */
+  .breadcrumb__item:first-child a {
+    max-width: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .breadcrumb__item a,
+  .breadcrumb__item span:not(.breadcrumb__separator) {
+    max-width: 60px;
+    /* More aggressive truncation on very small screens */
+  }
+
+  .breadcrumb__item:first-child a {
+    max-width: 30px;
+  }
 }
 
 .breadcrumb__separator {
