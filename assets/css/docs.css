@@ -28,6 +28,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Light Theme */
@@ -46,6 +48,8 @@ body {
   flex-direction: column;
   height: 100%;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 
   color: var(--color);
   background: var(--background);
@@ -54,6 +58,9 @@ body {
 
 #outer-wrapper {
   display: flex;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Old #aside-wrapper styles removed - now using sidebar.css */
@@ -64,6 +71,9 @@ body {
   flex-direction: column;
   min-height: 100svh;
   background: var(--background);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 main {
@@ -199,6 +209,9 @@ main>article {
   flex: 1;
   flex-direction: column;
   padding-bottom: 48px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Breadcrumb Navigation */
@@ -249,6 +262,40 @@ main>article>nav {
   justify-content: space-between;
 }
 
+/* Mobile TOC */
+.mobile-toc {
+  display: none;
+  margin: 0 var(--padding_x2) var(--padding_x2);
+  padding: var(--padding);
+  background: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.mobile-toc__header {
+  font-weight: 600;
+  color: var(--color);
+  margin-bottom: 8px;
+}
+
+.mobile-toc ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.mobile-toc li {
+  margin: 6px 0;
+}
+
+.mobile-toc a {
+  color: var(--anchor);
+  text-decoration: none;
+}
+
+.mobile-toc a:hover {
+  text-decoration: underline;
+}
+
 main>article>header {
   padding: var(--padding) var(--padding_x2);
 }
@@ -258,13 +305,27 @@ main>article>header {
   flex-direction: column;
   flex: 1;
   padding: 0 var(--padding_x2) var(--padding);
-  overflow-x: auto;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+/* Show mobile TOC on small screens */
+@media (max-width: 1023px) {
+  .mobile-toc {
+    display: block;
+  }
 }
 
 main>article>footer {
   padding: var(--padding_x2);
   margin-top: var(--padding_x2);
   border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Navigation Buttons */

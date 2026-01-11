@@ -378,15 +378,8 @@
    RESPONSIVE BEHAVIOR
    =================================== */
 
-/* Tablet */
-@media (max-width: 900px) {
-    .sidebar-docker {
-        width: 240px;
-    }
-}
-
-/* Mobile */
-@media (max-width: 767px) {
+/* Mobile & Tablet: sidebar off-canvas; content full width */
+@media (max-width: 1023px) {
     .sidebar-docker {
         width: 280px;
         max-width: 85vw;
@@ -411,25 +404,19 @@
         display: block;
     }
 
-    /* Adjust content wrapper */
+    /* Content spans full width when sidebar is off-canvas */
     #content-wrapper {
         margin-left: 0 !important;
     }
 }
 
-/* Desktop - adjust content to make room for sidebar */
-@media (min-width: 768px) {
+/* Desktop: reserve space for sidebar */
+@media (min-width: 1024px) {
     #content-wrapper {
         margin-left: 280px;
     }
 
     #outer-wrapper {
         display: flex;
-    }
-}
-
-@media (min-width: 900px) {
-    #content-wrapper {
-        margin-left: 280px;
     }
 }
