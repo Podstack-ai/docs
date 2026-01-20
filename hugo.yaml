@@ -29,7 +29,7 @@
 # ============================================================
 
 # CRITICAL for GitHub Pages: Must include repository name in URL
-baseURL: https://podstack-ai.github.io/docs/
+baseURL: https://docs.podstack.ai/
 
 enableGitInfo: false
 
