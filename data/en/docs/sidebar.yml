@@ -101,13 +101,13 @@
     - title: AI Studio
       slug: ai-studio
 
-- title: SDK Documentation
+- title: SDK
   slug: sdk
 
-- title: CLI Documentation
+- title: CLI
   slug: cli
 
-- title: Support
+- title: Customer Support
   slug: support
   pages:
     - title: Troubleshooting
