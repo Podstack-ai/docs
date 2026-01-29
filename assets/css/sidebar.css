@@ -378,15 +378,8 @@
    RESPONSIVE BEHAVIOR
    =================================== */
 
-/* Tablet */
-@media (max-width: 900px) {
-    .sidebar-docker {
-        width: 240px;
-    }
-}
-
-/* Mobile */
-@media (max-width: 767px) {
+/* Mobile & Tablet: sidebar off-canvas; content full width */
+@media (max-width: 1023px) {
     .sidebar-docker {
         width: 280px;
         max-width: 85vw;
@@ -411,14 +404,14 @@
         display: block;
     }
 
-    /* Adjust content wrapper */
+    /* Content spans full width when sidebar is off-canvas */
     #content-wrapper {
         margin-left: 0 !important;
     }
 }
 
-/* Desktop - adjust content to make room for sidebar */
-@media (min-width: 768px) {
+/* Desktop: reserve space for sidebar */
+@media (min-width: 1024px) {
     #content-wrapper {
         margin-left: 280px;
     }
@@ -428,8 +421,49 @@
     }
 }
 
-@media (min-width: 900px) {
-    #content-wrapper {
-        margin-left: 280px;
-    }
+/* Light theme sidebar text color overrides */
+html[data-color="light"] .nav-section__link {
+    color: var(--color-fade);
+}
+
+html[data-color="light"] .nav-section__link:hover {
+    color: #0F172A;
+}
+
+html[data-color="light"] .nav-section--level-0>.nav-section__header .nav-section__link {
+    color: #0F172A;
+}
+
+html[data-color="light"] .nav-section--level-1>.nav-section__header .nav-section__link {
+    color: #6B7280;
+}
+
+html[data-color="light"] .nav-section--level-2>.nav-section__header .nav-section__link {
+    color: #374151;
+}
+
+html[data-color="light"] .nav-section--level-3>.nav-section__header .nav-section__link {
+    color: #374151;
+}
+
+html[data-color="light"] .nav-section--level-4>.nav-section__header .nav-section__link,
+html[data-color="light"] .nav-section--level-5>.nav-section__header .nav-section__link,
+html[data-color="light"] .nav-section--level-6>.nav-section__header .nav-section__link {
+    color: #374151;
+}
+
+html[data-color="light"] .nav-link {
+    color: #6B7280;
+}
+
+html[data-color="light"] .nav-link:hover {
+    color: #0F172A;
+}
+
+html[data-color="light"] .sidebar-close {
+    color: #6B7280;
+}
+
+html[data-color="light"] .nav-section__chevron {
+    color: #6B7280;
 }

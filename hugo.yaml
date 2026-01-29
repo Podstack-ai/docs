@@ -3,6 +3,7 @@
 # PURPOSE: Main configuration file for Hugo static site generator
 # 
 # KEY SETTINGS:
+# - baseURL: Must match GitHub Pages URL including repo name
 # - enableGitInfo: False (not needed for this site)
 # - defaultContentLanguage: en (English)
 # - permalinks.docs: Auto-generate URLs from folder structure
@@ -27,6 +28,9 @@
 # - layouts/_default/list.html: Section pages (_index.md)
 # ============================================================
 
+# CRITICAL for GitHub Pages: Must include repository name in URL
+baseURL: https://docs.podstack.ai/
+
 enableGitInfo: false
 
 defaultContentLanguage: en
@@ -45,6 +49,12 @@ sitemap:
   priority: 0.5
   filename: sitemap.xml
 
+# Sitemap configuration
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+  filename: sitemap.xml
+
 # Clean URL configuration - use file path structure
 permalinks:
   docs: /docs/:sections[1:]/:contentbasename/
@@ -60,9 +70,9 @@ languages:
     languageName: English
     languageCode: en-US
     contentDir: content/en
-    title: PodStack
+    title: Podstack Docs
     params:
-      description: Site Description
+      description: Modern GPU cloud platform for AI and machine learning workloads
 
 # To omit the Google Analytics script, put a ~ in place of the G-XXXXXXXXXX below.
 services:
@@ -98,8 +108,17 @@ params:
       dark: '#101010'
 
   author:
-    name: Podstack
-    url: https://podstack.ai
+    name: PodStack Team
+    url: https://github.com/podstack-ai
+    email: support@podstack.ai
+
+  # Default keywords for SEO
+  keywords:
+    - gpu cloud
+    - machine learning
+    - ai platform
+    - kubernetes
+    - documentation
 
   logo:
     image: /images/favicon.ico
@@ -112,7 +131,8 @@ params:
     description: Description
     getStartedPath: docs/
 
-  enableOGXSEO: false # No automated OG image generation
+  enableOGXSEO: true # Enable OG and SEO meta tags
+  og_image: /images/logo.png # Default OG image for social sharing
 
   # Custom CSS for color overrides
   custom_css:

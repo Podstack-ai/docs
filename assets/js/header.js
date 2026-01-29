@@ -85,14 +85,21 @@
     let searchTimeout = null;
 
     /**
-     * Fetches and caches the search index from /index.json
+     * Fetches and caches the search index from index.json
+     * Uses data-baseurl attribute injected by Hugo to get site root
      * @returns {Promise<Array>} Array of searchable pages with title, url, content, section, description
      */
     async function fetchSearchIndex() {
         if (searchIndex) return searchIndex;
         try {
-            const response = await fetch('/index.json');
-            searchIndex = await response.json();
+            // Get base URL from body data attribute (injected by Hugo)
+            let baseUrl = document.body.dataset.baseurl || '/';
+            // Ensure trailing slash
+            if (!baseUrl.endsWith('/')) baseUrl += '/';
+            const response = await fetch(baseUrl + 'index.json');
+            const data = await response.json();
+            // Handle both array and object with value property
+            searchIndex = Array.isArray(data) ? data : (data.value || data);
             return searchIndex;
         } catch (error) {
             console.error('Failed to load search index:', error);
@@ -195,6 +202,9 @@
 
         searchResults.innerHTML = html;
         searchResults.classList.add('active');
+
+        // Position dropdown under the search input
+        positionResultsDropdown();
     }
 
     /**
@@ -206,6 +216,21 @@
             searchResults.innerHTML = '';
             searchResults.classList.remove('active');
         }
+    }
+
+    /**
+     * Positions the results dropdown directly under the search input
+     * Uses viewport coordinates for reliable placement
+     */
+    function positionResultsDropdown() {
+        if (!searchContainer || !searchResults) return;
+        const rect = searchContainer.getBoundingClientRect();
+        const top = Math.round(rect.bottom + 8);
+        const left = Math.round(rect.left);
+        const width = Math.round(rect.width);
+        searchResults.style.top = `${top}px`;
+        searchResults.style.left = `${left}px`;
+        searchResults.style.width = `${width}px`;
     }
 
     /**
@@ -232,16 +257,18 @@
      * - 'focus': Shows previous results when input is focused
      * - 'keydown': Escape closes dropdown, ArrowDown navigates to first result
      */
-    searchInput?.addEventListener('input', () => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(handleSearch, 200);
-    });
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(handleSearch, 200);
+        });
 
-    searchInput?.addEventListener('focus', () => {
-        if (searchInput.value.trim().length >= 2) {
-            handleSearch();
-        }
-    });
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.trim().length >= 2) {
+                handleSearch();
+            }
+        });
+    }
 
     /**
      * Closes search results when user clicks outside the search container
@@ -301,5 +328,13 @@
             clearResults();
             searchInput?.focus();
         }
+    });
+
+    // Keep dropdown positioned on resize/scroll
+    window.addEventListener('resize', () => {
+        if (searchResults?.classList.contains('active')) positionResultsDropdown();
+    });
+    window.addEventListener('scroll', () => {
+        if (searchResults?.classList.contains('active')) positionResultsDropdown();
     });
 })();

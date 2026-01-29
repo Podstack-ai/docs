@@ -35,10 +35,15 @@
 
   <meta name="description" content="{{ .Site.Params.description | .RenderString }}">
   <meta name="author" content="{{ .Site.Params.author.name }}">
+  {{ with .Site.Params.keywords }}
+  <meta name="keywords" content="{{ delimit . ", " }}">
+  {{ end }}
   <meta name="theme-color" content="{{ .Site.Params.project.themeColor.light }}" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="{{ .Site.Params.project.themeColor.dark }}" media="(prefers-color-scheme: dark)">
   {{ with .Params.robots -}}
   <meta name="robots" content="{{ . }}">
+  {{- else -}}
+  <meta name="robots" content="index, follow">
   {{- end }}
 
   <title>{{ .Site.Title | .RenderString }} · {{ .Site.Params.description | .RenderString }}</title>
@@ -52,7 +57,7 @@
   {{ partial "structured-data.html" . }}
 </head>
 
-<body>
+<body data-baseurl="{{ .Site.BaseURL }}">
 
 <!-- JavaScript redirect fallback -->
 <script>
