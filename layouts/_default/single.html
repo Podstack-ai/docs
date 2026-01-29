@@ -32,12 +32,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | .RenderString }}">
+  <meta name="keywords" content="{{ with .Params.keywords }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.seo.keywords }}{{ end }}">
   <meta name="author" content="{{ .Site.Params.author.name }}">
   <meta name="theme-color" content="{{ .Site.Params.project.themeColor.light }}" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="{{ .Site.Params.project.themeColor.dark }}" media="(prefers-color-scheme: dark)">
   {{ with .Params.robots -}}
   <meta name="robots" content="{{ . }}">
   {{ end -}}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ .Title }} · {{ .Site.Title }}">
+  <meta property="og:description" content="{{ .Page.Params.description | default .Site.Params.description }}">
+  <meta property="og:image" content="{{ .Site.Params.seo.ogImage | absURL }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="{{ .Permalink }}">
+  <meta name="twitter:title" content="{{ .Title }} · {{ .Site.Title }}">
+  <meta name="twitter:description" content="{{ .Page.Params.description | default .Site.Params.description }}">
+  <meta name="twitter:image" content="{{ .Site.Params.seo.ogImage | absURL }}">
 
   <title>{{ .Title | .RenderString }} · {{ .Site.Title | .RenderString }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
@@ -51,6 +67,7 @@
   {{ partial "favicons.html" . }}
   {{ partial "analytics.html" . }}
   {{ partial "og-x-seo.html" . }}
+  {{ partial "structured-data.html" . }}
 </head>
 
 <body>

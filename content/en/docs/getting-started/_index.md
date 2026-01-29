@@ -1,5 +1,22 @@
 ---
 title: Getting Started
+description: "Get started with the cheapest GPU cloud. Create account, deploy GPU containers in minutes. Zero lock-in, pay per minute. Perfect for students and beginners."
+keywords:
+  - cheapest GPU cloud getting started
+  - cheap GPU setup tutorial
+  - budget GPU cloud tutorial
+  - GPU cloud for students
+  - student GPU getting started
+  - beginner GPU cloud
+  - free GPU trial
+  - easy GPU deployment
+  - quick GPU setup
+  - instant GPU access
+  - zero lock-in GPU
+  - pay per minute GPU
+  - serverless GPU tutorial
+  - RunPod alternative tutorial
+  - Vast.ai alternative setup
 ---
 
 # Getting Started with Podstack

@@ -1,5 +1,13 @@
 ---
 title: Projects
+description: "Organize GPU cloud resources with projects. Team collaboration, role-based access control, and resource isolation for ML teams and organizations."
+keywords:
+  - GPU cloud team management
+  - ML team collaboration
+  - cloud resource organization
+  - RBAC GPU cloud
+  - multi-tenant GPU
+  - AI team platform
 ---
 
 # Projects

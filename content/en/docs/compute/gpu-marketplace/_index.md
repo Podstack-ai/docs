@@ -1,5 +1,32 @@
 ---
 title: GPU Marketplace
+description: "Cheapest baremetal GPU rental - H100, H200, A100, L40S, V100 with NVLink. Zero lock-in, pay per hour. Best prices for dedicated GPU servers."
+keywords:
+  - cheapest baremetal GPU
+  - cheap dedicated GPU
+  - affordable GPU server rental
+  - budget baremetal GPU
+  - pocket friendly GPU rental
+  - GPU marketplace cheap
+  - baremetal GPU no lock-in
+  - zero lock-in dedicated GPU
+  - hourly GPU rental
+  - pay per hour GPU
+  - H100 GPU cheap
+  - H200 GPU affordable
+  - A100 GPU budget
+  - L40S GPU rental
+  - V100 cheap rental
+  - B200 GPU cloud
+  - GB200 supercomputer
+  - NVLink GPU cluster
+  - dedicated GPU for students
+  - RunPod alternative
+  - Vast.ai alternative
+  - Lambda Labs alternative
+  - CoreWeave alternative
+  - NeoCloud alternative
+  - Paperspace alternative
 ---
 
 # GPU Marketplace

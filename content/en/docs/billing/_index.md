@@ -1,5 +1,28 @@
 ---
 title: Billing
+description: "Cheapest GPU cloud pricing - pay per minute, zero lock-in, no commitment. Transparent pricing for A100, H100, V100, L40S GPUs. Perfect for students and startups."
+keywords:
+  - cheapest GPU pricing
+  - cheap GPU cloud cost
+  - affordable GPU rental
+  - budget GPU pricing
+  - pocket friendly GPU
+  - GPU cloud for students
+  - student GPU pricing
+  - pay per minute GPU
+  - pay for what you use
+  - pay as you go GPU
+  - zero lock-in pricing
+  - no commitment GPU
+  - no contract GPU cloud
+  - transparent GPU pricing
+  - GPU hourly rate
+  - A100 GPU price
+  - H100 GPU cost
+  - V100 cheap
+  - L40S pricing
+  - low cost ML training
+  - affordable AI compute
 ---
 
 # Billing & Payments

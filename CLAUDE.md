@@ -45,6 +45,19 @@ CSS custom properties defined in `assets/css/theme.css`. Light/dark mode control
 ### Search
 JSON index auto-generated from `layouts/_default/index.json` template. Search requires minimum 2 characters.
 
+### SEO
+- **Meta tags**: Open Graph and Twitter Cards configured in templates
+- **Keywords**: Site-wide and per-page keywords in frontmatter
+- **Structured data**: JSON-LD schemas in `layouts/partials/structured-data.html`
+  - Organization schema
+  - WebSite schema with search action
+  - TechArticle schema for documentation pages
+  - BreadcrumbList schema
+  - Product schema for GPU Cloud service
+- **Sitemap**: Auto-generated at `/sitemap.xml`
+- **Robots.txt**: Located in `static/robots.txt`
+- **OG Image**: SVG at `static/images/og-image.svg`
+
 ## Adding Content
 
 1. Create `.md` file in appropriate `content/en/docs/` subdirectory

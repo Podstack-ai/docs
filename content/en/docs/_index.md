@@ -1,5 +1,40 @@
 ---
 title: Documentation
+description: "Podstack - Cheapest GPU Cloud Platform. Deploy GPU containers and VMs with zero lock-in, pay per minute pricing. NVIDIA A100, H100, V100 GPUs for students, startups, and enterprises."
+keywords:
+  - cheapest GPU cloud
+  - cheap GPU rental
+  - affordable GPU cloud
+  - budget GPU cloud
+  - pocket friendly GPU cloud
+  - GPU cloud for students
+  - student GPU cloud
+  - low cost GPU server
+  - GPU cloud no lock-in
+  - zero lock-in GPU
+  - no commitment GPU rental
+  - pay per minute GPU
+  - pay for what you use GPU
+  - pay as you go GPU
+  - serverless GPU
+  - fractional GPU
+  - fractional GPU rental
+  - partial GPU cloud
+  - shared GPU
+  - on-demand GPU
+  - instant GPU access
+  - baremetal GPU rental
+  - dedicated GPU server
+  - RunPod alternative
+  - Vast.ai alternative
+  - Lambda Labs alternative
+  - CoreWeave alternative
+  - NeoCloud alternative
+  - Paperspace alternative
+  - NVIDIA A100 cheap
+  - H100 GPU affordable
+  - L40S GPU
+  - V100 budget
 ---
 
 # Podstack Documentation

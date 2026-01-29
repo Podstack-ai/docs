@@ -1,5 +1,33 @@
 ---
 title: Compute
+description: "Cheapest GPU compute - containers, VMs, and baremetal. Pay per minute, zero lock-in. NVIDIA A100, H100, V100, L40S, T4 GPUs for ML training and inference."
+keywords:
+  - cheapest GPU compute
+  - cheap GPU containers
+  - affordable GPU VM
+  - budget GPU server
+  - pay per minute GPU
+  - pay for what you use
+  - serverless GPU compute
+  - zero lock-in GPU
+  - no commitment GPU
+  - GPU cloud for students
+  - fractional GPU
+  - fractional GPU rental
+  - partial GPU cloud
+  - shared GPU
+  - GPU slicing
+  - baremetal GPU rental
+  - dedicated GPU cheap
+  - NVIDIA A100 affordable
+  - H100 GPU cheap
+  - V100 budget GPU
+  - L40S GPU rental
+  - T4 inference cheap
+  - RunPod alternative
+  - Vast.ai alternative
+  - instant GPU access
+  - on-demand GPU compute
 ---
 
 # Compute Resources
