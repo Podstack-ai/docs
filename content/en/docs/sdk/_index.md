@@ -1,5 +1,5 @@
 ---
-title: SDK Documentation
+title: SDK
 description: "Podstack Python SDK for programmatic GPU cloud management. Create pods, VMs, manage storage, and automate ML infrastructure deployments via API."
 keywords:
   - GPU cloud SDK
@@ -12,32 +12,48 @@ keywords:
   - AI infrastructure SDK
 ---
 
-# SDK Documentation
+# SDK
 
-Integrate Podstack into your applications using our official SDKs.
+Integrate Podstack into your applications using our official Python SDK.
 
-## Available SDKs
+## Overview
 
-### Python SDK
+The Podstack SDK provides a simple, Pythonic interface for managing GPU cloud resources programmatically. Use it to automate deployments, build custom tooling, or integrate Podstack into your ML pipelines.
 
-The Python SDK provides a simple interface for managing Podstack resources programmatically.
+## Quick Example
 
 ```python
 from podstack import Client
 
-client = Client(api_token="your_api_token")
+# Initialize client
+client = Client()  # Uses PODSTACK_API_TOKEN env var
 
-# Create a pod
+# Create a GPU pod
 pod = client.pods.create(
-    name="my-training-pod",
-    image="pytorch/pytorch:latest",
+    name="training-job",
+    image="pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime",
     gpu_type="A100",
     gpu_count=1
 )
 
-# List all pods
-pods = client.pods.list()
+# Wait for pod to be ready
+pod = client.pods.wait_until_running(pod.id)
+
+# Run training
+result = client.pods.exec(pod.id, "python train.py")
+
+# Cleanup
+client.pods.delete(pod.id)
 ```
+
+## Features
+
+- **Simple API** - Intuitive Python interface
+- **Full Coverage** - Manage pods, VMs, storage, and more
+- **Type Hints** - Full typing support for IDE autocomplete
+- **Async Support** - Optional async/await patterns
+- **Error Handling** - Detailed exceptions for debugging
+- **Retry Logic** - Built-in retry for transient errors
 
 ## Installation
 
@@ -45,82 +61,17 @@ pods = client.pods.list()
 pip install podstack
 ```
 
-## Authentication
+## In This Section
 
-All SDK operations require an API token. Generate one from [Account > API Tokens](/docs/account/api-tokens/).
-
-```python
-from podstack import Client
-
-# Using environment variable (recommended)
-client = Client()  # Reads PODSTACK_API_TOKEN
-
-# Or pass directly
-client = Client(api_token="your_token")
-```
-
-## Core Resources
-
-### Pods
-
-```python
-# Create
-pod = client.pods.create(name="pod-name", image="image:tag", gpu_type="A100")
-
-# List
-pods = client.pods.list(project_id="project-id")
-
-# Get
-pod = client.pods.get(pod_id="pod-id")
-
-# Start/Stop
-client.pods.start(pod_id="pod-id")
-client.pods.stop(pod_id="pod-id")
-
-# Delete
-client.pods.delete(pod_id="pod-id")
-```
-
-### Virtual Machines
-
-```python
-# Create
-vm = client.vms.create(
-    name="my-vm",
-    os="ubuntu-22.04",
-    cpu=4,
-    memory=16,
-    storage=100
-)
-
-# Manage
-client.vms.start(vm_id="vm-id")
-client.vms.stop(vm_id="vm-id")
-```
-
-### Storage
-
-```python
-# Buckets
-bucket = client.buckets.create(name="my-bucket", visibility="private")
-client.buckets.upload(bucket_id="id", file_path="./data.csv", key="data.csv")
-
-# NFS Volumes
-volume = client.volumes.create(name="my-volume", quota_gb=100)
-```
-
-## Error Handling
-
-```python
-from podstack.exceptions import PodstackError, InsufficientBalanceError
-
-try:
-    pod = client.pods.create(...)
-except InsufficientBalanceError:
-    print("Please top up your wallet")
-except PodstackError as e:
-    print(f"API error: {e.message}")
-```
+| Guide | Description |
+|-------|-------------|
+| [Installation](/docs/sdk/installation/) | Install and set up the SDK |
+| [Authentication](/docs/sdk/authentication/) | Configure API access |
+| [Quick Start](/docs/sdk/quickstart/) | Get started in minutes |
+| [Pods](/docs/sdk/pods/) | Manage GPU containers |
+| [Virtual Machines](/docs/sdk/virtual-machines/) | VM operations |
+| [Storage](/docs/sdk/storage/) | Buckets and NFS volumes |
+| [Error Handling](/docs/sdk/error-handling/) | Handle exceptions |
 
 ## Coming Soon
 
@@ -130,4 +81,4 @@ except PodstackError as e:
 
 ## Support
 
-For SDK issues, visit [Support](/docs/support/) or check the [Troubleshooting](/docs/support/troubleshooting/) guide.
+For SDK issues, visit [Customer Support](/docs/support/) or check the [Troubleshooting](/docs/support/troubleshooting/) guide.
