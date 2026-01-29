@@ -1,19 +1,19 @@
 /**
  * SIDEBAR MODULE (assets/js/sidebar.js)
  * PURPOSE: Handles sidebar navigation, section toggling, and mobile menu
- * 
+ *
  * FEATURES:
  * - Recursive section expansion/collapse with smooth animations
  * - Auto-expand active section path
  * - Mobile menu drawer overlay
  * - Scroll active item into view
  * - Click section title to navigate AND expand
- * 
+ *
  * SUPPORTS:
  * - Unlimited nesting depth (recursive tree)
  * - Keyboard navigation
  * - Accessibility (aria-expanded, aria-current)
- * 
+ *
  * RELATED FILES:
  * - partials/sidebar.html: Sidebar container and structure
  * - partials/sidebar-item.html: Recursive section item component
@@ -36,7 +36,10 @@
         // Handle section toggle buttons (supports recursive nesting)
         initSectionToggles();
 
-        // Handle mobile menu
+        // Handle mobile sidebar
+        initMobileSidebar();
+
+        // Handle mobile menu (for non-docs pages)
         initMobileMenu();
 
         // Scroll active item into view
@@ -92,27 +95,31 @@
         });
     }
 
-    // Initialize mobile menu functionality
-    function initMobileMenu() {
+    // Initialize mobile sidebar functionality
+    function initMobileSidebar() {
         const sidebar = document.querySelector('.sidebar-docker');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
         const closeBtn = document.querySelector('.sidebar-close');
         const backdrop = document.querySelector('.sidebar-backdrop');
-        const menuToggle = document.querySelector('.header-menu-toggle');
-
-        // Close sidebar
-        function closeSidebar() {
-            sidebar?.classList.remove('open');
-        }
 
         // Open sidebar
         function openSidebar() {
             sidebar?.classList.add('open');
+            backdrop?.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close sidebar
+        function closeSidebar() {
+            sidebar?.classList.remove('open');
+            backdrop?.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Event listeners
+        sidebarToggle?.addEventListener('click', openSidebar);
         closeBtn?.addEventListener('click', closeSidebar);
         backdrop?.addEventListener('click', closeSidebar);
-        menuToggle?.addEventListener('click', openSidebar);
 
         // Close on escape key
         document.addEventListener('keydown', (e) => {
@@ -120,11 +127,79 @@
                 closeSidebar();
             }
         });
+
+        // Close sidebar when clicking a nav link (mobile only)
+        const navLinks = sidebar?.querySelectorAll('.nav-link, .nav-section__link');
+        navLinks?.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    // Small delay to allow navigation
+                    setTimeout(closeSidebar, 100);
+                }
+            });
+        });
+    }
+
+    // Initialize mobile menu functionality (for non-docs pages)
+    function initMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-menu-overlay');
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const closeBtn = document.getElementById('mobile-menu-close');
+
+        if (!mobileMenu) return;
+
+        // Open menu
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            mobileOverlay?.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close menu
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay?.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        menuToggle?.addEventListener('click', openMenu);
+        closeBtn?.addEventListener('click', closeMenu);
+        mobileOverlay?.addEventListener('click', closeMenu);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Handle toggles inside mobile menu
+        const mobileToggles = mobileMenu.querySelectorAll('.nav-section__toggle');
+        mobileToggles.forEach((button) => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const section = this.closest('.nav-section');
+                const items = section.querySelector(':scope > .nav-section__items');
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                this.setAttribute('aria-expanded', String(!isExpanded));
+
+                if (isExpanded) {
+                    items.classList.remove('expanded');
+                } else {
+                    items.classList.add('expanded');
+                }
+            });
+        });
     }
 
     // Scroll active item into view
     function scrollActiveIntoView() {
-        const activeLink = document.querySelector('.nav-link.active');
+        const activeLink = document.querySelector('.sidebar-nav .nav-link.active, .sidebar-nav .nav-section__link.active');
         if (activeLink) {
             setTimeout(() => {
                 activeLink.scrollIntoView({
