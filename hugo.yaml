@@ -49,12 +49,6 @@ sitemap:
   priority: 0.5
   filename: sitemap.xml
 
-# Sitemap configuration
-sitemap:
-  changefreq: weekly
-  priority: 0.5
-  filename: sitemap.xml
-
 # Clean URL configuration - use file path structure
 permalinks:
   docs: /docs/:sections[1:]/:contentbasename/
