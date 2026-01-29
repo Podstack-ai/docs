@@ -65,6 +65,25 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Sidebar Toggle Button (for docs pages) */
+.sidebar-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 8px;
+    border-radius: 6px;
+    transition: background-color 150ms ease-in-out;
+}
+
+.sidebar-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* Logo */
 .logo {
     display: flex;
@@ -532,6 +551,10 @@ html[data-color="light"] .search-no-results {
 
     .mobile-menu-toggle {
         display: block;
+    }
+
+    .sidebar-toggle {
+        display: flex;
     }
 }
 
