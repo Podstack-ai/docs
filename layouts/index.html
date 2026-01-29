@@ -28,6 +28,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Redirect to Getting Started page -->
+  <meta http-equiv="refresh" content="0; url=/docs/getting-started/">
+  <link rel="canonical" href="/docs/getting-started/">
+
   <meta name="description" content="{{ .Site.Params.description | .RenderString }}">
   <meta name="author" content="{{ .Site.Params.author.name }}">
   {{ with .Site.Params.keywords }}
@@ -42,7 +47,6 @@
   {{- end }}
 
   <title>{{ .Site.Title | .RenderString }} · {{ .Site.Params.description | .RenderString }}</title>
-  <link rel="canonical" href="{{ .Permalink }}">
 
   {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/home.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") | resources.Concat "assets/css/home.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
@@ -50,35 +54,22 @@
   {{ partial "favicons.html" . }}
   {{ partial "analytics.html" . }}
   {{ partial "og-x-seo.html" . }}
+  {{ partial "structured-data.html" . }}
 </head>
 
 <body data-baseurl="{{ .Site.BaseURL }}">
 
-{{ partial "header.html" . }}
+<!-- JavaScript redirect fallback -->
+<script>
+  window.location.replace("/docs/getting-started/");
+</script>
 
-<div id="content-wrapper">
+<div id="content-wrapper" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center;">
   <main>
-    <section>
-      <div>
-        <header>
-          <h1>{{ .Site.Params.home.heading }}{{ with .Site.Params.home.headingSegment2 }}<span>{{.}}</span>{{ end }}</h1>
-          <p>{{ .Site.Params.home.description }}</p>
-        </header>
-        <div>
-          <a href="{{ .Site.Home.Permalink }}{{ .Site.Params.home.getStartedPath }}" class="btn">{{ i18n "getStarted" }}</a>
-          <a href="https://github.com/{{ .Site.Params.project.github.repo }}" target="_blank" class="btn">GitHub</a>
-        </div>
-      </div>
-    </section>
+    <p>Redirecting to documentation...</p>
+    <p><a href="/docs/getting-started/">Click here if you are not redirected automatically</a></p>
   </main>
-
 </div>
 
-{{ partial "footer.html" . }}
-
-<div id="body-model-outer"></div>
-
-{{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/header.js") | resources.Concat "assets/js/home.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
 </body>
 </html>
