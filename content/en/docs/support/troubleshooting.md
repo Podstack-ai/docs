@@ -285,3 +285,5 @@ If these solutions don't resolve your issue:
 3. **Contact support** with detailed information
 
 4. **Include timestamps** when the issue occurred
+
+**Email us at:** [support@podstack.ai](mailto:support@podstack.ai)

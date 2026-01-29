@@ -1,5 +1,31 @@
 ---
 title: Pods
+description: "Cheapest GPU containers - deploy PyTorch, TensorFlow with A100, H100, L40S, V100. Pay per minute, zero lock-in. Jupyter notebooks, SSH access included."
+keywords:
+  - cheapest GPU containers
+  - cheap GPU pods
+  - affordable GPU container
+  - budget Docker GPU
+  - pay per minute containers
+  - serverless GPU containers
+  - zero lock-in pods
+  - GPU containers for students
+  - fractional GPU
+  - fractional GPU container
+  - partial GPU rental
+  - shared GPU container
+  - GPU slicing
+  - PyTorch GPU cheap
+  - TensorFlow GPU affordable
+  - Jupyter GPU notebook cheap
+  - A100 container cheap
+  - H100 pod affordable
+  - L40S GPU container
+  - V100 budget container
+  - Kubernetes GPU cheap
+  - Docker GPU deployment
+  - RunPod alternative
+  - instant GPU container
 ---
 
 # Pods (Containers)

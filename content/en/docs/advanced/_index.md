@@ -1,5 +1,21 @@
 ---
 title: Advanced Features
+description: "Serverless GPU, AI Studio, launch templates. Pay for what you use, zero lock-in. Fine-tune LLMs, deploy models, run Jupyter notebooks with GPU."
+keywords:
+  - serverless GPU cheap
+  - pay per minute serverless
+  - GPU Jupyter notebook free
+  - cheap ML fine-tuning
+  - affordable LLM training
+  - budget AI Studio
+  - model fine-tuning cheap
+  - inference deployment affordable
+  - GPU templates
+  - zero lock-in serverless
+  - pay for what you use GPU
+  - student ML platform
+  - cheap model training
+  - affordable deep learning
 ---
 
 # Advanced Features

@@ -1,5 +1,17 @@
 ---
 title: Virtual Machines
+description: "GPU virtual machines on Podstack. Deploy Ubuntu, CentOS, Debian, Rocky Linux VMs with NVIDIA GPU passthrough, up to 128 vCPUs and 1TB RAM."
+keywords:
+  - GPU virtual machine
+  - cloud GPU VM
+  - NVIDIA GPU VM
+  - Ubuntu GPU server
+  - Linux GPU cloud
+  - VM with GPU
+  - GPU server rental
+  - dedicated GPU VM
+  - GPU passthrough
+  - cloud computing GPU
 ---
 
 # Virtual Machines

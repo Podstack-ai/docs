@@ -1,5 +1,15 @@
 ---
 title: Storage
+description: "Cloud storage for ML workloads - S3-compatible object storage and NFS volumes. Store training data, model checkpoints, and datasets with high-performance access."
+keywords:
+  - cloud GPU storage
+  - ML dataset storage
+  - S3 compatible storage
+  - NFS cloud storage
+  - model checkpoint storage
+  - training data storage
+  - AI cloud storage
+  - persistent GPU storage
 ---
 
 # Storage

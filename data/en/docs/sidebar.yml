@@ -101,6 +101,12 @@
     - title: AI Studio
       slug: ai-studio
 
+- title: SDK Documentation
+  slug: sdk
+
+- title: CLI Documentation
+  slug: cli
+
 - title: Support
   slug: support
   pages:
