@@ -1,28 +1,11 @@
-# Robots.txt for Podstack Documentation
-# https://podstack.ai
+# robots.txt for PodStack Documentation
+# Generated for https://podstack-ai.github.io/docs/
 
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://docs.podstack.ai/sitemap.xml
+# Sitemaps
+Sitemap: https://podstack-ai.github.io/docs/sitemap.xml
 
-# Disallow admin and internal paths
-Disallow: /admin/
-Disallow: /_internal/
-
-# Allow all search engine crawlers
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
+# Crawl-delay for polite bots
+Crawl-delay: 1

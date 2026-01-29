@@ -63,7 +63,7 @@
 
 {{- $hasChildren := isset $item "pages" -}}
 {{- $isExpanded := or $isActive $hasActiveDescendant -}}
-{{- $href := printf "/docs/%s/" $itemPath -}}
+{{- $href := printf "docs/%s/" $itemPath | absURL -}}
 
 {{- if $hasChildren -}}
   {{/* Section with children - title is a link, chevron toggles expand */}}

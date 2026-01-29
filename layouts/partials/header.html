@@ -19,9 +19,9 @@
     <!-- Main Navigation -->
     <nav class="main-nav" id="main-nav">
       <a href="/docs/getting-started/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "getting-started" }}active{{ end }}{{ end }}">Get Started</a>
-      <a href="/docs/sdk/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "sdk" }}active{{ end }}{{ end }}">SDK Documentation</a>
-      <a href="/docs/cli/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "cli" }}active{{ end }}{{ end }}">CLI Documentation</a>
-      <a href="/docs/support/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "support" }}active{{ end }}{{ end }}">Support Documentation</a>
+      <a href="/docs/sdk/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "sdk" }}active{{ end }}{{ end }}">SDK</a>
+      <a href="/docs/cli/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "cli" }}active{{ end }}{{ end }}">CLI</a>
+      <a href="/docs/support/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "support" }}active{{ end }}{{ end }}">Customer Support</a>
     </nav>
 
     <!-- Right Utilities -->
@@ -92,11 +92,29 @@
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
-    <nav>
-      <a href="/docs/getting-started/">Get Started</a>
-      <a href="/docs/sdk/">SDK Documentation</a>
-      <a href="/docs/cli/">CLI Documentation</a>
-      <a href="/docs/support/">Support Documentation</a>
-    </nav>
+    {{ if eq .Section "docs" }}
+      {{/* Render docs sidebar structure inside mobile menu for docs pages */}}
+      {{ $data := index .Site.Data .Site.Language.Lang .Section "sidebar" }}
+      {{- $currentPath := .RelPermalink -}}
+      {{- $currentPath = strings.TrimPrefix "/docs/docs/" $currentPath -}}
+      {{- $currentPath = strings.TrimPrefix "/docs/" $currentPath -}}
+      {{- $currentPath = strings.TrimPrefix "/" $currentPath -}}
+      {{- $currentPath = strings.TrimSuffix "/" $currentPath -}}
+
+      <nav class="mobile-docs-nav">
+        {{- range $item := $data -}}
+          <div class="nav-root-item">
+            {{- partial "sidebar-item.html" (dict "item" $item "currentPath" $currentPath "level" 0 "basePath" "") -}}
+          </div>
+        {{- end -}}
+      </nav>
+    {{ else }}
+      <nav>
+        <a href="/docs/getting-started/">Get started</a>
+        <a href="/docs/configuration/">Configuration</a>
+        <a href="/docs/api-reference/">API Reference</a>
+        <a href="/docs/advanced-features/">Advanced</a>
+      </nav>
+    {{ end }}
   </div>
 </header>
