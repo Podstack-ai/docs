@@ -1,78 +1,105 @@
 # ============================================================
 # SIDEBAR NAVIGATION DATA (data/en/docs/sidebar.yml)
 # PURPOSE: Defines the documentation sidebar structure with sections
-# 
+#
 # STRUCTURE:
 # - Root items: Top-level sections in sidebar
 # - Each item can have nested child items (pages array)
 # - Supports unlimited nesting depth
 # - Recursively rendered by layouts/partials/sidebar-item.html
-# 
+#
 # ITEM PROPERTIES:
 # - title: Display name shown in sidebar (required)
 # - slug: URL path segment (e.g., "installation" → /docs/installation/)
 # - path: Full path override (alternative to slug, less common)
 # - pages: Array of child items (optional, creates nested sections)
-# 
+#
 # USAGE:
 # - Loaded by layouts/partials/sidebar.html
 # - Rendered recursively via layouts/partials/sidebar-item.html
 # - Used by js/sidebar.js for toggle functionality
 # - Referenced in css/sidebar.css for styling
-# 
-# EXAMPLE:
-# - title: Installation         ← Becomes section header
-#   slug: installation          ← URL: /docs/installation/
-#   pages:
-#     - title: Overview         ← Child item
-#       slug: overview          ← URL: /docs/installation/overview/
-# 
-# NOTES:
-# - Sidebar must match actual content folder structure
-# - Items without matching .md files won't generate pages
-# - Order here determines sidebar order
-# 
 # ============================================================
 
-# Recursive sidebar structure
-# Each item can have:
-#   - title: Display name
-#   - slug: URL segment (builds path from parent)
-#   - path: Full path (alternative to slug)
-#   - pages: Nested child items (unlimited depth)
-
-- title: Installation
-  slug: installation
+- title: Getting Started
+  slug: getting-started
   pages:
-    - title: Overview
-      slug: overview
-    - title: Getting Started
-      slug: getting-started
-    - title: Docker Concepts
-      slug: docker-concepts
+    - title: Creating Your Account
+      slug: creating-account
+    - title: Dashboard Overview
+      slug: dashboard-overview
+    - title: Quick Start Guide
+      slug: quick-start
+
+- title: Projects
+  slug: projects
+  pages:
+    - title: Creating Projects
+      slug: creating-projects
+    - title: Team Management
+      slug: team-management
+
+- title: Compute
+  slug: compute
+  pages:
+    - title: Pods
+      slug: pods
       pages:
-        - title: The Basics
-          slug: the-basics
-          pages:
-            - title: Container Images
-              slug: container-images
-              pages:
-                - title: What is a Container
-                  slug: what-is-a-container
+        - title: Creating Pods
+          slug: creating-pods
+        - title: Managing Pods
+          slug: managing-pods
+        - title: Connecting to Pods
+          slug: connecting-to-pods
+    - title: Virtual Machines
+      slug: virtual-machines
+      pages:
+        - title: Creating VMs
+          slug: creating-vms
+        - title: Managing VMs
+          slug: managing-vms
+    - title: GPU Marketplace
+      slug: gpu-marketplace
 
-- title: Configuration
-  slug: configuration
+- title: Storage
+  slug: storage
   pages:
-    - title: Basic Configuration
-      slug: basic-configuration
+    - title: Object Storage
+      slug: object-storage
+    - title: NFS Volumes
+      slug: nfs-volumes
 
-- title: Core Features
-  slug: core-features
+- title: Billing
+  slug: billing
   pages:
-    - title: Advanced Features
-      slug: advanced-features
-    - title: API Reference
-      slug: api-reference
+    - title: Wallet
+      slug: wallet
+    - title: Invoices
+      slug: invoices
+    - title: KYC Verification
+      slug: kyc
+
+- title: Account
+  slug: account
+  pages:
+    - title: Settings
+      slug: settings
+    - title: SSH Keys
+      slug: ssh-keys
+    - title: API Tokens
+      slug: api-tokens
+    - title: Audit Logs
+      slug: audit-logs
+
+- title: Advanced Features
+  slug: advanced
+  pages:
+    - title: Templates
+      slug: templates
+    - title: Serverless GPU
+      slug: serverless-gpu
+    - title: AI Studio
+      slug: ai-studio
 
 - title: Support
   slug: support
