@@ -1,0 +1,146 @@
+{{/* JSON-LD Structured Data for SEO */}}
+
+{{/* Organization Schema */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Podstack",
+  "url": "https://podstack.ai",
+  "logo": "{{ .Site.BaseURL }}images/logo.png",
+  "description": "{{ .Site.Params.description }}",
+  "sameAs": [
+    "https://twitter.com/podstack",
+    "https://github.com/podstack"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "support@podstack.ai",
+    "contactType": "customer support"
+  }
+}
+</script>
+
+{{/* WebSite Schema */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Podstack Documentation",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Podstack"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ .Site.BaseURL }}search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+{{/* TechArticle Schema for documentation pages */}}
+{{ if and .IsPage (ne .Kind "home") }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ .Title }}",
+  "description": "{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Podstack"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Podstack",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}images/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "keywords": "{{ with .Params.keywords }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.seo.keywords }}{{ end }}",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Podstack",
+    "applicationCategory": "Cloud Computing Platform",
+    "operatingSystem": "Cloud"
+  }
+}
+</script>
+{{ end }}
+
+{{/* BreadcrumbList Schema */}}
+{{ if .Parent }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Documentation",
+      "item": "{{ .Site.BaseURL }}docs/"
+    }
+    {{ $position := 2 }}
+    {{ range .Ancestors.Reverse }}
+    {{ if ne .Title "Documentation" }}
+    ,{
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+    {{ $position = add $position 1 }}
+    {{ end }}
+    {{ end }}
+    ,{
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}
+
+{{/* Product Schema for GPU Cloud Service */}}
+{{ if eq .Section "docs" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Podstack GPU Cloud",
+  "description": "Cheapest GPU Cloud Platform - Deploy GPU containers and VMs with NVIDIA A100, H100, L40S, V100 GPUs. Pay per minute pricing with zero lock-in.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Podstack"
+  },
+  "category": "Cloud Computing",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "offerCount": "6",
+    "lowPrice": "0.10",
+    "description": "Pay per minute GPU cloud pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "100"
+  }
+}
+</script>
+{{ end }}

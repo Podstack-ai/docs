@@ -3,6 +3,7 @@
 # PURPOSE: Main configuration file for Hugo static site generator
 # 
 # KEY SETTINGS:
+# - baseURL: Must match GitHub Pages URL including repo name
 # - enableGitInfo: False (not needed for this site)
 # - defaultContentLanguage: en (English)
 # - permalinks.docs: Auto-generate URLs from folder structure
@@ -27,16 +28,32 @@
 # - layouts/_default/list.html: Section pages (_index.md)
 # ============================================================
 
+# CRITICAL for GitHub Pages: Must include repository name in URL
+baseURL: https://docs.podstack.ai/
+
 enableGitInfo: false
 
 defaultContentLanguage: en
 
-# Output formats for search
+# Output formats for search and sitemap
 outputs:
   home:
     - HTML
     - RSS
     - JSON
+    - sitemap
+
+# Sitemap configuration
+sitemap:
+  changeFreq: weekly
+  priority: 0.5
+  filename: sitemap.xml
+
+# Sitemap configuration
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+  filename: sitemap.xml
 
 # Clean URL configuration - use file path structure
 permalinks:
@@ -53,9 +70,9 @@ languages:
     languageName: English
     languageCode: en-US
     contentDir: content/en
-    title: PodStack
+    title: Podstack Docs
     params:
-      description: Site Description
+      description: Modern GPU cloud platform for AI and machine learning workloads
 
 # To omit the Google Analytics script, put a ~ in place of the G-XXXXXXXXXX below.
 services:
@@ -74,6 +91,12 @@ markup:
         title: true
 
 params:
+  description: "Podstack - Cheapest GPU Cloud Platform for AI/ML workloads. Deploy GPU containers, virtual machines, and access NVIDIA A100, H100, L40S, V100 GPUs on-demand. Zero lock-in, pay per minute pricing. Perfect for students and startups."
+
+  seo:
+    keywords: "cheapest GPU cloud, cheap GPU rental, affordable GPU cloud, budget GPU cloud, pocket friendly GPU cloud, pocket friendly cloud, GPU cloud for students, student GPU discount, student GPU cloud, academic GPU cloud, research GPU cloud, low cost GPU server, cheap cloud GPU, best GPU cloud pricing, GPU cloud no lock-in, zero lock-in GPU, zero lockin period, no commitment GPU rental, no contract GPU, flexible GPU rental, hourly GPU rental, pay per minute GPU, pay per use GPU, pay for what you use, pay as you go GPU, serverless GPU, GPU as a service, fractional GPU, fractional GPU rental, partial GPU, shared GPU, GPU slicing, MIG GPU, multi-instance GPU, baremetal GPU rental, baremetal rental, dedicated GPU rental, bare metal GPU server, GPU server rental, on-demand GPU, instant GPU access, GPU cloud India, cheap GPU India, NVIDIA GPU cloud, A100 GPU cheap, H100 GPU rental, H100 affordable, L40S GPU cheap, L40S rental, V100 affordable, V100 budget, T4 GPU cheap, RunPod alternative, Vast.ai alternative, Lambda Labs alternative, CoreWeave alternative, NeoCloud alternative, Paperspace alternative, cheap ML training, affordable deep learning, budget AI infrastructure, startup GPU cloud, cheap LLM training, affordable fine-tuning, GPU for machine learning, GPU for deep learning, PyTorch GPU cloud, TensorFlow GPU cloud, Jupyter GPU notebook, containerized GPU, Kubernetes GPU, cheap inference GPU"
+    ogImage: /images/og-image.svg
+
   project:
     # To omit the startYear, put a ~ in its place.
     startYear: 2022
@@ -85,8 +108,17 @@ params:
       dark: '#101010'
 
   author:
-    name: Name
-    url: https://github.com/username
+    name: PodStack Team
+    url: https://github.com/podstack-ai
+    email: support@podstack.ai
+
+  # Default keywords for SEO
+  keywords:
+    - gpu cloud
+    - machine learning
+    - ai platform
+    - kubernetes
+    - documentation
 
   logo:
     image: /images/favicon.ico
@@ -99,7 +131,8 @@ params:
     description: Description
     getStartedPath: docs/
 
-  enableOGXSEO: false # No automated OG image generation
+  enableOGXSEO: true # Enable OG and SEO meta tags
+  og_image: /images/logo.png # Default OG image for social sharing
 
   # Custom CSS for color overrides
   custom_css:

@@ -7,9 +7,13 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-brand: 'Inter', sans-serif;
 
-  --color: #FFFFFF;
-  --color-fade: #9CA3AF;
-  --color-nav: #D1D5DB;
+  /* Light theme text colors */
+  --color: #0F172A;
+  /* primary text (near-black) */
+  --color-fade: #6B7280;
+  /* secondary text */
+  --color-nav: #374151;
+  /* nav text */
 
   --background: #ffffff;
   --background-grey: #f9f9f9;
@@ -31,8 +35,8 @@
 
   --model-blur: 10px;
 
-  --border: #efefef;
-  --border-nav: #dddddd;
+  --border: #e5e7eb;
+  --border-nav: #d1d5db;
 
   --radius: 4px;
 

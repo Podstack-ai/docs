@@ -2,154 +2,288 @@
 title: Troubleshooting
 ---
 
-## Troubleshooting Guide
+# Troubleshooting
 
-Common issues and solutions for PodStack.
+Solutions to common issues on Podstack.
 
-### Installation Issues
+## Login Issues
 
-#### npm install fails
+### Not Receiving OTP
 
-**Problem:** `npm install` command fails with permission errors
+**Problem**: OTP email not arriving
 
-**Solution:**
+**Solutions**:
+1. Check spam/junk folder
+2. Wait 2-3 minutes (email delivery can be delayed)
+3. Verify email address is correct
+4. Click "Resend OTP" to request a new code
+5. Try a different email provider if persistent
+
+### OTP Expired
+
+**Problem**: Code no longer valid
+
+**Solution**: Request a new OTP. Codes expire after 10 minutes.
+
+### Session Expired
+
+**Problem**: Logged out unexpectedly
+
+**Solution**: Log in again. Sessions expire after extended inactivity.
+
+## Pod Issues
+
+### Pod Stuck in Pending
+
+**Problem**: Pod won't start, remains in Pending state
+
+**Possible Causes**:
+- Insufficient wallet balance
+- Requested GPU not available
+- Resource quota exceeded
+
+**Solutions**:
+1. Check wallet balance and top up if needed
+2. Try a different GPU type
+3. Reduce resource requirements
+4. Wait and retry (GPUs may become available)
+
+### Pod Stuck in Creating
+
+**Problem**: Pod creation takes too long
+
+**Possible Causes**:
+- Large image being pulled
+- Network issues
+- Resource allocation delay
+
+**Solutions**:
+1. Wait longer for large images (can take 10+ minutes)
+2. Try with a smaller base image
+3. Contact support if exceeds 30 minutes
+
+### Cannot Connect via SSH
+
+**Problem**: SSH connection refused or times out
+
+**Checklist**:
+1. Verify pod is in **Running** status
+2. Confirm SSH port (22) is exposed
+3. Check you're using the correct SSH key
+4. Verify the connection address is correct
+
+**Commands to try**:
 ```bash
-# Clear npm cache
-npm cache clean --force
+# Test with verbose output
+ssh -v root@<pod-address>
 
-# Try installing again
-npm install
-
-# If still failing, use sudo (not recommended)
-sudo npm install -g
+# Specify key explicitly
+ssh -i ~/.ssh/your_key root@<pod-address>
 ```
 
-#### Node version mismatch
+### Container Keeps Restarting
 
-**Problem:** "Node version x.x.x not supported"
+**Problem**: Pod restarts repeatedly
 
-**Solution:**
-Use nvm (Node Version Manager) to switch versions:
+**Possible Causes**:
+- Application crash
+- Out of memory (OOM)
+- Init command failing
 
+**Solutions**:
+1. Check logs for error messages
+2. Increase memory allocation
+3. Fix application errors
+4. Verify init command is correct
+
+### GPU Not Detected in Pod
+
+**Problem**: `nvidia-smi` fails or shows no GPU
+
+**Solutions**:
+1. Verify pod was created with GPU allocation
+2. Check image has CUDA support
+3. Restart the pod
+4. Contact support if GPU was allocated but not visible
+
+## VM Issues
+
+### VM Won't Start
+
+**Problem**: VM stays in Stopped or fails to start
+
+**Solutions**:
+1. Check wallet balance
+2. Verify no resource conflicts
+3. Try stopping then starting again
+4. Contact support with VM ID
+
+### Cannot SSH to VM
+
+**Problem**: SSH connection fails
+
+**Checklist**:
+1. VM must be in **Running** state
+2. Note the correct public IP
+3. Use correct SSH key
+4. Port 22 must be accessible
+
+**Debug**:
 ```bash
-nvm list                    # List installed versions
-nvm install 16              # Install specific version
-nvm use 16                  # Switch to version 16
+# Test connectivity
+ping <vm-ip>
+
+# Verbose SSH
+ssh -v root@<vm-ip>
 ```
 
-### Runtime Issues
+### VM Slow Performance
 
-#### Port already in use
+**Problem**: VM is unresponsive or slow
 
-**Problem:** Error: "listen EADDRINUSE: address already in use :::3000"
+**Check**:
+1. Resource utilization (CPU, memory)
+2. Disk space availability
+3. Network bandwidth usage
+4. GPU memory (if applicable)
 
-**Solution:**
+**Solutions**:
+1. Stop unnecessary processes
+2. Increase resource allocation
+3. Check for runaway processes
+
+## Storage Issues
+
+### Bucket Creation Failed
+
+**Problem**: Cannot create new bucket
+
+**Solutions**:
+1. Check wallet balance
+2. Verify bucket name is unique and valid
+3. Try a different name (no special characters)
+4. Check storage quota
+
+### Upload Failed
+
+**Problem**: File upload doesn't complete
+
+**Solutions**:
+1. Check file size limits
+2. Verify stable network connection
+3. Try smaller files first
+4. Use multipart upload for large files
+5. Check bucket permissions
+
+### NFS Mount Failed
+
+**Problem**: Cannot mount NFS volume
+
+**Check**:
+1. Volume is in Available status
+2. Mount path doesn't already exist
+3. Network connectivity to NFS server
+
+**Debug**:
 ```bash
-# Find process using port 3000
-lsof -i :3000              # macOS/Linux
-netstat -ano | findstr :3000  # Windows
+# Test NFS server access
+showmount -e <nfs-server>
 
-# Kill the process
-kill -9 <PID>              # macOS/Linux
-taskkill /PID <PID> /F     # Windows
-
-# Or use a different port
-PORT=3001 npm run dev
+# Manual mount with verbose
+mount -v -t nfs <server>:<path> /mnt/data
 ```
 
-#### Database connection fails
+### Permission Denied on NFS
 
-**Problem:** "Cannot connect to database"
+**Problem**: Cannot read/write files on mounted NFS
 
-**Solution:**
-1. Check if database is running:
+**Solutions**:
 ```bash
-# PostgreSQL
-psql -U postgres -d podstack_db
+# Check permissions
+ls -la /mnt/data
 
-# MySQL
-mysql -u root -p podstack_db
+# Fix ownership
+sudo chown -R $(whoami):$(whoami) /mnt/data
 ```
 
-2. Verify credentials in `.env`:
-```env
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_USER=postgres
-```
+## Payment Issues
 
-3. Check firewall settings
-4. Verify database exists
+### Payment Failed
 
-#### Memory issues
+**Problem**: Wallet top-up didn't complete
 
-**Problem:** "JavaScript heap out of memory"
+**Solutions**:
+1. Check bank/card for declined transaction
+2. Verify payment method has sufficient funds
+3. Try a different payment method
+4. Check for OTP verification requirements
+5. Contact support with transaction reference
 
-**Solution:**
+### Balance Not Updated
+
+**Problem**: Payment succeeded but wallet shows old balance
+
+**Solutions**:
+1. Refresh the page
+2. Wait 5 minutes and check again
+3. Check transaction history for the credit
+4. Contact support with payment receipt
+
+### Resources Suspended
+
+**Problem**: Resources stopped due to insufficient balance
+
+**Solutions**:
+1. Top up wallet immediately
+2. Resources should resume automatically
+3. Manually start resources if needed
+4. Set up auto-debit to prevent future issues
+
+## Network Issues
+
+### Cannot Access Exposed Ports
+
+**Problem**: Web service on pod not accessible
+
+**Checklist**:
+1. Service is running inside the container
+2. Port is exposed in pod configuration
+3. Correct port number being used
+4. Service bound to 0.0.0.0 not just localhost
+
+**Debug inside pod**:
 ```bash
-# Increase Node memory limit
-NODE_OPTIONS=--max-old-space-size=4096 npm start
+# Check service is listening
+netstat -tlnp
 
-# Or add to .env
-NODE_OPTIONS="--max-old-space-size=4096"
+# Test locally
+curl localhost:<port>
 ```
 
-### Performance Issues
+### Slow Network Performance
 
-#### Slow API responses
+**Problem**: Downloads/uploads are slow
 
-**Checklist:**
-- ✅ Check database query performance
-- ✅ Enable query caching
-- ✅ Add database indexes
-- ✅ Check Redis/cache configuration
-- ✅ Review server logs
+**Solutions**:
+1. Check your local internet connection
+2. Try during off-peak hours
+3. Use compression for transfers
+4. Use object storage for large files
 
-#### High CPU usage
+## Getting More Help
 
-**Checklist:**
-- ✅ Check for infinite loops
-- ✅ Monitor active connections
-- ✅ Review heavy computations
-- ✅ Check memory leaks
+If these solutions don't resolve your issue:
 
-### Debugging
-
-#### Enable debug logging
-
-```bash
-DEBUG=* npm run dev
-# Or specific module
-DEBUG=podstack:* npm run dev
-```
-
-#### Check logs
-
-```bash
-# View application logs
-tail -f logs/app.log
-
-# Check error logs
-tail -f logs/error.log
-
-# Search for errors
-grep "ERROR" logs/app.log
-```
-
-### Getting Help
-
-If you can't find a solution:
-
-1. **Check documentation** - Review relevant sections
-2. **Search issues** - Browse GitHub issues
-3. **Community forum** - Ask on our forum
-4. **Contact support** - Email support@podstack.com
-5. **File a bug report** - Include:
-   - Error message
+1. **Gather information**:
+   - Resource IDs
+   - Error messages
+   - Screenshots
    - Steps to reproduce
-   - System information
-   - Relevant logs
 
----
+2. **Check audit logs** for related events
 
-**Still stuck?** Join our [Discord community](#) for real-time help! 💬
+3. **Contact support** with detailed information
+
+4. **Include timestamps** when the issue occurred
+
+**Email us at:** [support@podstack.ai](mailto:support@podstack.ai)
