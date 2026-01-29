@@ -103,9 +103,39 @@
 
 - title: SDK
   slug: sdk
+  pages:
+    - title: Installation
+      slug: installation
+    - title: Authentication
+      slug: authentication
+    - title: Quick Start
+      slug: quickstart
+    - title: Pods
+      slug: pods
+    - title: Virtual Machines
+      slug: virtual-machines
+    - title: Storage
+      slug: storage
+    - title: Error Handling
+      slug: error-handling
 
 - title: CLI
   slug: cli
+  pages:
+    - title: Installation
+      slug: installation
+    - title: Authentication
+      slug: authentication
+    - title: Quick Start
+      slug: quickstart
+    - title: Pods
+      slug: pods
+    - title: Virtual Machines
+      slug: virtual-machines
+    - title: Storage
+      slug: storage
+    - title: Configuration
+      slug: configuration
 
 - title: Customer Support
   slug: support
