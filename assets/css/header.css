@@ -27,7 +27,7 @@
     width: 100%;
     max-width: 100vw;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow: hidden;
     /* Ensure header maintains white text regardless of global theme variables */
     --color: #ffffff;
 }
