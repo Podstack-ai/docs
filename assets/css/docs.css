@@ -587,13 +587,14 @@ main>aside>div>.btn {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 56px;
+    top: 70px;
     bottom: 0;
     right: 0;
     overflow-y: auto;
     overflow-x: hidden;
     background: var(--background);
     transition: bottom 0.15s ease-out;
+    z-index: 5;
   }
 
   main>aside>div {

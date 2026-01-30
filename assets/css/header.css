@@ -21,7 +21,7 @@
     left: 0;
     right: 0;
     background: #001424;
-    height: 56px;
+    height: 70px;
     z-index: 1000;
     transition: box-shadow 200ms ease-in-out;
     width: 100%;
@@ -591,5 +591,5 @@ html[data-color="light"] .search-no-results {
 
 /* Body padding to account for fixed header */
 body {
-    padding-top: 56px;
+    padding-top: 70px;
 }
