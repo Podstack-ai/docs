@@ -125,7 +125,7 @@
 
 .nav-section__link.active {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
 }
 
 /* Toggle button - just the chevron */
@@ -210,7 +210,7 @@
 
 .nav-section--level-0.is-active>.nav-section__header .nav-section__link {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
 }
 
 /* Level 1 */
@@ -227,7 +227,7 @@
 
 .nav-section--level-1.is-active>.nav-section__header .nav-section__link {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
 }
 
 /* Level 2 */
@@ -244,7 +244,7 @@
 
 .nav-section--level-2.is-active>.nav-section__header .nav-section__link {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
 }
 
 /* Level 3 */
@@ -261,7 +261,7 @@
 
 .nav-section--level-3.is-active>.nav-section__header .nav-section__link {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
 }
 
 /* Level 4+ (for very deep nesting) */
@@ -296,7 +296,7 @@
 
 .nav-link.active {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
     border-left-color: var(--anchor);
     font-weight: 500;
 }
@@ -356,7 +356,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgba(46, 135, 241, 0.3);
+    background: rgba(249, 115, 22, 0.3);
 }
 
 /* Backdrop for mobile */
