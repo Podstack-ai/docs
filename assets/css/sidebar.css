@@ -27,15 +27,14 @@
 /* Sidebar Container */
 .sidebar-docker {
     position: fixed;
-    top: 70px;
-    bottom: 0;
+    top: 56px;
     left: 0;
     width: 280px;
+    height: calc(100vh - 56px);
     background: var(--background);
     z-index: 10;
     overflow: hidden;
     pointer-events: none;
-    transition: bottom 0.15s ease-out;
 }
 
 .sidebar {
@@ -360,7 +359,7 @@
     background: rgba(249, 115, 22, 0.3);
 }
 
-/* Backdrop for mobile - sits behind sidebar but above page content */
+/* Backdrop for mobile */
 .sidebar-backdrop {
     display: none;
     position: fixed;
@@ -369,7 +368,7 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 100;
     opacity: 0;
     pointer-events: none;
     transition: opacity 300ms ease-in-out;
