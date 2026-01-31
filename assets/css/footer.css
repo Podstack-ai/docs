@@ -27,7 +27,7 @@
 /* Docker-style Footer Styles */
 
 .site-footer {
-    background-color: #001424;
+    background-color: #0a0a0f;
     padding: 48px 0;
     margin-top: auto;
     position: relative;
@@ -75,7 +75,7 @@
 }
 
 .btn-community {
-    background-color: #8B5CF6;
+    background-color: #F97316;
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 15px;
@@ -89,7 +89,7 @@
 }
 
 .btn-community:hover {
-    background-color: #06B6D4;
+    background-color: #EA580C;
     transform: translateY(-1px);
 }
 

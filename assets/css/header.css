@@ -233,7 +233,7 @@
 
 .search-result-item:hover,
 .search-result-item:focus {
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(249, 115, 22, 0.1);
     outline: none;
 }
 
@@ -252,7 +252,7 @@ html[data-color="light"] .search-result-title {
 
 /* Highlighted search terms in results */
 .search-result-title mark {
-    background-color: rgba(59, 130, 246, 0.3);
+    background-color: rgba(249, 115, 22, 0.3);
     color: inherit;
     padding: 0 2px;
     border-radius: 2px;
@@ -436,7 +436,7 @@ html[data-color="light"] .search-no-results {
 
 .mobile-menu .nav-section__link.active {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
 }
 
 .mobile-menu .nav-section__toggle {
@@ -526,7 +526,7 @@ html[data-color="light"] .search-no-results {
 
 .mobile-menu .nav-link.active {
     color: var(--anchor);
-    background: rgba(46, 135, 241, 0.1);
+    background: rgba(249, 115, 22, 0.1);
     border-left-color: var(--anchor);
     font-weight: 500;
 }

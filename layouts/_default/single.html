@@ -176,6 +176,8 @@
 
 {{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
+
+{{ partial "chatwoot.html" . }}
 </body>
 </html>
 
