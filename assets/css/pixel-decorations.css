@@ -1,6 +1,6 @@
 /**
- * PIXEL DECORATIONS
- * Floating pixel/lego blocks for visual interest
+ * PIXEL DECORATIONS - GPU/HPC/ML Theme
+ * Floating pixel blocks representing GPU, servers, and neural networks
  */
 
 /* Container for floating pixels */
@@ -11,380 +11,515 @@
     right: 0;
     bottom: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 50;
     overflow: hidden;
 }
 
-/* Base pixel block style */
-.pixel-block {
+/* ========================================
+   GPU CARD - Graphics Processing Unit
+   ======================================== */
+
+.pixel-gpu {
     position: absolute;
-    opacity: 0.4;
-    border-radius: 4px;
+    width: 48px;
+    height: 28px;
+    opacity: 0.5;
 }
 
-/* Different sizes */
-.pixel-block--sm {
-    width: 8px;
-    height: 8px;
+/* GPU body */
+.pixel-gpu::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 48px;
+    height: 20px;
+    background: inherit;
+    border-radius: 3px;
+    box-shadow:
+        inset -2px -2px 0 rgba(0,0,0,0.3),
+        inset 2px 2px 0 rgba(255,255,255,0.1);
 }
 
-.pixel-block--md {
+/* GPU fan/heatsink detail */
+.pixel-gpu::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+/* GPU connector pins */
+.pixel-gpu .gpu-pins {
+    position: absolute;
+    bottom: 0;
+    left: 6px;
+    display: flex;
+    gap: 2px;
+}
+
+.pixel-gpu .gpu-pins span {
+    width: 3px;
+    height: 4px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 1px;
+}
+
+/* Large GPU variant */
+.pixel-gpu--lg {
+    width: 64px;
+    height: 36px;
+}
+
+.pixel-gpu--lg::before {
+    width: 64px;
+    height: 28px;
+}
+
+.pixel-gpu--lg::after {
     width: 16px;
     height: 16px;
+    top: 10px;
+    left: 10px;
 }
 
-.pixel-block--lg {
+/* ========================================
+   SERVER RACK - HPC Cluster
+   ======================================== */
+
+.pixel-server {
+    position: absolute;
+    width: 32px;
+    height: 48px;
+    opacity: 0.5;
+    background: inherit;
+    border-radius: 3px;
+    box-shadow:
+        inset -2px -2px 0 rgba(0,0,0,0.3),
+        inset 2px 2px 0 rgba(255,255,255,0.1);
+}
+
+/* Server slots/drives */
+.pixel-server::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 4px;
+    width: 24px;
+    height: 4px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 1px;
+    box-shadow:
+        0 8px 0 rgba(0,0,0,0.3),
+        0 16px 0 rgba(0,0,0,0.3),
+        0 24px 0 rgba(0,0,0,0.3),
+        0 32px 0 rgba(0,0,0,0.3);
+}
+
+/* Server LED indicators */
+.pixel-server::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 6px;
+    width: 4px;
+    height: 4px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow:
+        0 8px 0 #22c55e,
+        0 16px 0 #f97316,
+        0 24px 0 #22c55e,
+        0 32px 0 #22c55e;
+    animation: blink-leds 2s infinite;
+}
+
+@keyframes blink-leds {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Server rack (multiple servers) */
+.pixel-rack {
+    position: absolute;
+    width: 40px;
+    height: 64px;
+    opacity: 0.45;
+    background: inherit;
+    border-radius: 4px;
+    box-shadow:
+        inset -2px -2px 0 rgba(0,0,0,0.3),
+        inset 2px 2px 0 rgba(255,255,255,0.1);
+}
+
+.pixel-rack::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 32px;
+    height: 10px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 2px;
+    box-shadow:
+        0 14px 0 rgba(0,0,0,0.4),
+        0 28px 0 rgba(0,0,0,0.4),
+        0 42px 0 rgba(0,0,0,0.4);
+}
+
+/* ========================================
+   NEURAL NETWORK - ML/AI Nodes
+   ======================================== */
+
+.pixel-neural {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+}
+
+/* Neural network nodes */
+.pixel-neural .node {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    border-radius: 50%;
+    box-shadow: 0 0 6px currentColor;
+}
+
+/* Input layer */
+.pixel-neural .node-i1 { top: 4px; left: 0; }
+.pixel-neural .node-i2 { top: 20px; left: 0; }
+.pixel-neural .node-i3 { top: 36px; left: 0; }
+
+/* Hidden layer */
+.pixel-neural .node-h1 { top: 8px; left: 20px; }
+.pixel-neural .node-h2 { top: 28px; left: 20px; }
+
+/* Output layer */
+.pixel-neural .node-o1 { top: 20px; left: 40px; }
+
+/* Connection lines (using pseudo-elements on container) */
+.pixel-neural::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 0;
+    background: transparent;
+    clip-path: polygon(0 0, 50% 25%, 100% 50%, 50% 75%, 0 100%, 0 50%);
+}
+
+/* ========================================
+   CHIP / PROCESSOR
+   ======================================== */
+
+.pixel-chip {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+    background: inherit;
+    border-radius: 4px;
+    box-shadow:
+        inset -2px -2px 0 rgba(0,0,0,0.3),
+        inset 2px 2px 0 rgba(255,255,255,0.15);
+}
+
+/* Chip die/core */
+.pixel-chip::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 16px;
+    height: 16px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 2px;
+}
+
+/* Chip pins */
+.pixel-chip::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 6px;
+    width: 4px;
+    height: 3px;
+    background: rgba(255,255,255,0.4);
+    box-shadow:
+        6px 0 0 rgba(255,255,255,0.4),
+        12px 0 0 rgba(255,255,255,0.4),
+        0 35px 0 rgba(255,255,255,0.4),
+        6px 35px 0 rgba(255,255,255,0.4),
+        12px 35px 0 rgba(255,255,255,0.4),
+        -9px 6px 0 rgba(255,255,255,0.4),
+        -9px 12px 0 rgba(255,255,255,0.4),
+        -9px 18px 0 rgba(255,255,255,0.4),
+        32px 6px 0 rgba(255,255,255,0.4),
+        32px 12px 0 rgba(255,255,255,0.4),
+        32px 18px 0 rgba(255,255,255,0.4);
+}
+
+/* Small chip variant */
+.pixel-chip--sm {
+    width: 20px;
+    height: 20px;
+}
+
+.pixel-chip--sm::before {
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+.pixel-chip--sm::after {
+    display: none;
+}
+
+/* ========================================
+   DATA CUBE / TENSOR
+   ======================================== */
+
+.pixel-cube {
+    position: absolute;
     width: 24px;
     height: 24px;
+    opacity: 0.5;
+    transform: rotate(45deg);
 }
 
-.pixel-block--xl {
-    width: 32px;
-    height: 32px;
-}
-
-/* Lego-style blocks with studs */
-.lego-block {
-    position: absolute;
-    opacity: 0.35;
-    border-radius: 4px;
-}
-
-.lego-block::before {
+.pixel-cube::before {
     content: '';
     position: absolute;
-    top: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40%;
-    height: 4px;
+    width: 100%;
+    height: 100%;
     background: inherit;
-    border-radius: 2px 2px 0 0;
-    filter: brightness(1.1);
+    border-radius: 3px;
+    box-shadow:
+        3px 3px 0 rgba(0,0,0,0.3),
+        -1px -1px 0 rgba(255,255,255,0.2);
 }
 
-/* 2x1 Lego block */
-.lego-block--2x1 {
-    width: 32px;
+/* Stacked cubes (tensor) */
+.pixel-tensor {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    opacity: 0.45;
+}
+
+.pixel-tensor::before,
+.pixel-tensor::after {
+    content: '';
+    position: absolute;
+    width: 16px;
     height: 16px;
-}
-
-.lego-block--2x1::before {
-    width: 8px;
-    left: 25%;
-}
-
-.lego-block--2x1::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 65%;
-    width: 8px;
-    height: 4px;
     background: inherit;
-    border-radius: 2px 2px 0 0;
-    filter: brightness(1.1);
+    border-radius: 2px;
+    transform: rotate(45deg);
 }
 
-/* 2x2 Lego block */
-.lego-block--2x2 {
-    width: 32px;
-    height: 32px;
+.pixel-tensor::before {
+    top: 0;
+    left: 6px;
+    opacity: 0.6;
 }
 
-/* L-shaped tetris block */
-.tetris-L {
+.pixel-tensor::after {
+    top: 8px;
+    left: 6px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   BINARY / DATA STREAM
+   ======================================== */
+
+.pixel-binary {
     position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    opacity: 0.15;
+    color: inherit;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   CIRCUIT TRACES
+   ======================================== */
+
+.pixel-circuit {
+    position: absolute;
+    width: 40px;
+    height: 24px;
     opacity: 0.3;
 }
 
-.tetris-L::before,
-.tetris-L::after {
+.pixel-circuit::before {
     content: '';
     position: absolute;
-    background: inherit;
-    border-radius: 2px;
-}
-
-.tetris-L .block-main {
-    width: 12px;
-    height: 36px;
-    background: inherit;
-    border-radius: 2px;
-}
-
-.tetris-L::after {
-    width: 24px;
-    height: 12px;
-    bottom: 0;
+    top: 10px;
     left: 0;
-}
-
-/* T-shaped tetris block */
-.tetris-T {
-    position: absolute;
-    opacity: 0.3;
-}
-
-.tetris-T .block-main {
-    width: 36px;
-    height: 12px;
+    width: 100%;
+    height: 2px;
     background: inherit;
-    border-radius: 2px;
 }
 
-.tetris-T::after {
+.pixel-circuit::after {
     content: '';
     position: absolute;
-    width: 12px;
-    height: 12px;
-    top: 12px;
+    top: 2px;
     left: 12px;
+    width: 2px;
+    height: 20px;
     background: inherit;
-    border-radius: 2px;
+    box-shadow:
+        14px 0 0 currentColor,
+        14px -4px 0 currentColor,
+        28px 8px 0 currentColor;
 }
 
-/* Color variations - Orange theme */
-.pixel-orange-500 { background: #F97316; }
-.pixel-orange-400 { background: #FB923C; }
-.pixel-orange-600 { background: #EA580C; }
-.pixel-orange-700 { background: #C2410C; }
-.pixel-orange-300 { background: #FDBA74; }
+/* ========================================
+   COLOR PALETTE - Orange Theme
+   ======================================== */
 
-/* Floating animations */
+.pixel-orange-50 { background: #FFF7ED; color: #FFF7ED; }
+.pixel-orange-100 { background: #FFEDD5; color: #FFEDD5; }
+.pixel-orange-200 { background: #FED7AA; color: #FED7AA; }
+.pixel-orange-300 { background: #FDBA74; color: #FDBA74; }
+.pixel-orange-400 { background: #FB923C; color: #FB923C; }
+.pixel-orange-500 { background: #F97316; color: #F97316; }
+.pixel-orange-600 { background: #EA580C; color: #EA580C; }
+.pixel-orange-700 { background: #C2410C; color: #C2410C; }
+.pixel-orange-800 { background: #9A3412; color: #9A3412; }
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes float-gentle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(1deg); }
+    50% { transform: translateY(-12px) rotate(0deg); }
+    75% { transform: translateY(-8px) rotate(-1deg); }
+}
+
 @keyframes float-slow {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(5deg);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
 @keyframes float-medium {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-15px) rotate(-3deg);
-    }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-2deg); }
 }
 
-@keyframes float-fast {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-10px) rotate(8deg);
-    }
-}
-
-@keyframes drift-right {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-    }
-    50% {
-        transform: translateX(10px) translateY(-10px);
-    }
-}
-
-@keyframes drift-left {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-    }
-    50% {
-        transform: translateX(-10px) translateY(-15px);
-    }
+@keyframes drift-up {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(-20px); opacity: 0.3; }
 }
 
 @keyframes pulse-glow {
-    0%, 100% {
-        opacity: 0.3;
-        filter: blur(0px);
-    }
-    50% {
-        opacity: 0.5;
-        filter: blur(1px);
-    }
+    0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 2px currentColor); }
+    50% { opacity: 0.6; filter: drop-shadow(0 0 8px currentColor); }
+}
+
+@keyframes data-flow {
+    0% { transform: translateY(0); opacity: 0.3; }
+    50% { opacity: 0.15; }
+    100% { transform: translateY(-30px); opacity: 0.3; }
 }
 
 @keyframes spin-slow {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes processing {
+    0%, 100% { opacity: 0.5; }
+    25% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+    75% { opacity: 0.6; }
 }
 
 /* Animation classes */
-.anim-float-slow {
-    animation: float-slow 8s ease-in-out infinite;
-}
-
-.anim-float-medium {
-    animation: float-medium 6s ease-in-out infinite;
-}
-
-.anim-float-fast {
-    animation: float-fast 4s ease-in-out infinite;
-}
-
-.anim-drift-right {
-    animation: drift-right 10s ease-in-out infinite;
-}
-
-.anim-drift-left {
-    animation: drift-left 12s ease-in-out infinite;
-}
-
-.anim-pulse {
-    animation: pulse-glow 5s ease-in-out infinite;
-}
-
-.anim-spin {
-    animation: spin-slow 30s linear infinite;
-}
+.anim-float-gentle { animation: float-gentle 8s ease-in-out infinite; }
+.anim-float-slow { animation: float-slow 10s ease-in-out infinite; }
+.anim-float-medium { animation: float-medium 6s ease-in-out infinite; }
+.anim-drift-up { animation: drift-up 12s ease-in-out infinite; }
+.anim-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+.anim-data-flow { animation: data-flow 8s linear infinite; }
+.anim-spin { animation: spin-slow 20s linear infinite; }
+.anim-processing { animation: processing 3s ease-in-out infinite; }
 
 /* Animation delays */
-.delay-1 { animation-delay: 0s; }
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 0.5s; }
 .delay-2 { animation-delay: 1s; }
-.delay-3 { animation-delay: 2s; }
-.delay-4 { animation-delay: 3s; }
-.delay-5 { animation-delay: 4s; }
-.delay-6 { animation-delay: 5s; }
+.delay-3 { animation-delay: 1.5s; }
+.delay-4 { animation-delay: 2s; }
+.delay-5 { animation-delay: 2.5s; }
+.delay-6 { animation-delay: 3s; }
+.delay-7 { animation-delay: 3.5s; }
+.delay-8 { animation-delay: 4s; }
 
-/* Positioned blocks - scattered around the page */
+/* ========================================
+   POSITIONED ELEMENTS
+   ======================================== */
 
-/* Top right cluster */
-.pixel-block-1 {
-    top: 15%;
-    right: 8%;
-}
+/* Right side */
+.decor-r1 { top: 12%; right: 4%; }
+.decor-r2 { top: 22%; right: 8%; }
+.decor-r3 { top: 32%; right: 3%; }
+.decor-r4 { top: 42%; right: 10%; }
+.decor-r5 { top: 52%; right: 5%; }
+.decor-r6 { top: 62%; right: 12%; }
+.decor-r7 { top: 72%; right: 4%; }
+.decor-r8 { bottom: 20%; right: 8%; }
+.decor-r9 { bottom: 10%; right: 3%; }
 
-.pixel-block-2 {
-    top: 20%;
-    right: 12%;
-}
+/* Left side (wide screens) */
+.decor-l1 { top: 18%; left: 3%; }
+.decor-l2 { top: 38%; left: 5%; }
+.decor-l3 { top: 58%; left: 2%; }
+.decor-l4 { bottom: 25%; left: 4%; }
 
-.pixel-block-3 {
-    top: 25%;
-    right: 5%;
-}
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
-/* Middle right */
-.pixel-block-4 {
-    top: 45%;
-    right: 3%;
-}
-
-.pixel-block-5 {
-    top: 50%;
-    right: 10%;
-}
-
-/* Bottom right cluster */
-.pixel-block-6 {
-    bottom: 30%;
-    right: 6%;
-}
-
-.pixel-block-7 {
-    bottom: 25%;
-    right: 15%;
-}
-
-.pixel-block-8 {
-    bottom: 20%;
-    right: 4%;
-}
-
-/* Left side (only visible on wide screens) */
-.pixel-block-9 {
-    top: 30%;
-    left: 2%;
-}
-
-.pixel-block-10 {
-    top: 60%;
-    left: 5%;
-}
-
-.pixel-block-11 {
-    bottom: 35%;
-    left: 3%;
-}
-
-/* Lego blocks positioning */
-.lego-1 {
-    top: 18%;
-    right: 20%;
-}
-
-.lego-2 {
-    top: 55%;
-    right: 8%;
-}
-
-.lego-3 {
-    bottom: 40%;
-    right: 18%;
-}
-
-/* Tetris blocks positioning */
-.tetris-1 {
-    top: 35%;
-    right: 4%;
-}
-
-.tetris-2 {
-    bottom: 15%;
-    right: 12%;
-}
-
-/* Pixel grid cluster - decorative grid pattern */
-.pixel-grid {
-    position: absolute;
-    display: grid;
-    grid-template-columns: repeat(3, 8px);
-    grid-template-rows: repeat(3, 8px);
-    gap: 4px;
-    opacity: 0.3;
-}
-
-.pixel-grid > div {
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
-}
-
-.pixel-grid-1 {
-    top: 12%;
-    right: 25%;
-}
-
-.pixel-grid-2 {
-    bottom: 45%;
-    right: 2%;
-}
-
-/* Hide decorations on smaller screens where they'd overlap content */
 @media (max-width: 1400px) {
-    .pixel-block-9,
-    .pixel-block-10,
-    .pixel-block-11 {
+    .decor-l1, .decor-l2, .decor-l3, .decor-l4 {
         display: none;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
     .pixel-decorations {
         opacity: 0.7;
     }
+    .decor-r4, .decor-r6 {
+        display: none;
+    }
+}
 
-    .lego-1,
-    .lego-3,
-    .pixel-grid-1 {
+@media (max-width: 900px) {
+    .pixel-decorations {
+        opacity: 0.5;
+    }
+    .pixel-gpu--lg, .pixel-rack {
         display: none;
     }
 }
@@ -395,28 +530,31 @@
     }
 }
 
-/* Reduce motion for accessibility */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-    .pixel-block,
-    .lego-block,
-    .tetris-L,
-    .tetris-T,
-    .pixel-grid {
-        animation: none;
+    .pixel-decorations * {
+        animation: none !important;
     }
 }
 
-/* Light theme - slightly more visible */
-html[data-color="light"] .pixel-block,
-html[data-color="light"] .lego-block {
+/* ========================================
+   THEME ADJUSTMENTS
+   ======================================== */
+
+html[data-color="light"] .pixel-gpu,
+html[data-color="light"] .pixel-server,
+html[data-color="light"] .pixel-rack,
+html[data-color="light"] .pixel-chip,
+html[data-color="light"] .pixel-cube,
+html[data-color="light"] .pixel-tensor {
     opacity: 0.25;
 }
 
-html[data-color="light"] .tetris-L,
-html[data-color="light"] .tetris-T {
+html[data-color="light"] .pixel-neural,
+html[data-color="light"] .pixel-circuit {
     opacity: 0.2;
 }
 
-html[data-color="light"] .pixel-grid {
-    opacity: 0.2;
+html[data-color="light"] .pixel-binary {
+    opacity: 0.08;
 }
