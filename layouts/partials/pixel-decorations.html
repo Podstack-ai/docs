@@ -1,61 +1,77 @@
-<!-- Floating Pixel Decorations -->
+<!-- Floating GPU/HPC/ML Decorations -->
 <div class="pixel-decorations" aria-hidden="true">
 
-    <!-- Simple pixel blocks - right side -->
-    <div class="pixel-block pixel-block--lg pixel-orange-500 pixel-block-1 anim-float-slow delay-1"></div>
-    <div class="pixel-block pixel-block--md pixel-orange-400 pixel-block-2 anim-float-medium delay-2"></div>
-    <div class="pixel-block pixel-block--sm pixel-orange-600 pixel-block-3 anim-drift-right delay-3"></div>
+    <!-- ========== RIGHT SIDE ========== -->
 
-    <div class="pixel-block pixel-block--xl pixel-orange-300 pixel-block-4 anim-float-slow delay-4"></div>
-    <div class="pixel-block pixel-block--md pixel-orange-500 pixel-block-5 anim-pulse delay-5"></div>
-
-    <div class="pixel-block pixel-block--lg pixel-orange-400 pixel-block-6 anim-float-medium delay-1"></div>
-    <div class="pixel-block pixel-block--sm pixel-orange-700 pixel-block-7 anim-drift-left delay-2"></div>
-    <div class="pixel-block pixel-block--md pixel-orange-500 pixel-block-8 anim-float-fast delay-6"></div>
-
-    <!-- Left side blocks (hidden on smaller screens) -->
-    <div class="pixel-block pixel-block--md pixel-orange-400 pixel-block-9 anim-float-slow delay-3"></div>
-    <div class="pixel-block pixel-block--sm pixel-orange-600 pixel-block-10 anim-drift-right delay-4"></div>
-    <div class="pixel-block pixel-block--lg pixel-orange-500 pixel-block-11 anim-float-medium delay-5"></div>
-
-    <!-- Lego-style blocks -->
-    <div class="lego-block lego-block--2x1 pixel-orange-500 lego-1 anim-float-slow delay-2"></div>
-    <div class="lego-block lego-block--2x2 pixel-orange-400 lego-2 anim-float-medium delay-4"></div>
-    <div class="lego-block lego-block--2x1 pixel-orange-600 lego-3 anim-drift-left delay-6"></div>
-
-    <!-- Tetris L-block -->
-    <div class="tetris-L pixel-orange-500 tetris-1 anim-float-slow delay-1">
-        <div class="block-main"></div>
+    <!-- GPU Cards -->
+    <div class="pixel-gpu pixel-orange-500 decor-r1 anim-float-gentle delay-0">
+        <div class="gpu-pins">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
     </div>
 
-    <!-- Tetris T-block -->
-    <div class="tetris-T pixel-orange-400 tetris-2 anim-float-medium delay-3">
-        <div class="block-main"></div>
+    <div class="pixel-gpu pixel-gpu--lg pixel-orange-400 decor-r4 anim-float-slow delay-3">
+        <div class="gpu-pins">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
     </div>
 
-    <!-- Pixel grid clusters -->
-    <div class="pixel-grid pixel-grid-1 anim-pulse delay-2">
-        <div class="pixel-orange-500"></div>
-        <div class="pixel-orange-400"></div>
-        <div class="pixel-orange-600"></div>
-        <div class="pixel-orange-400"></div>
-        <div class="pixel-orange-300"></div>
-        <div class="pixel-orange-500"></div>
-        <div class="pixel-orange-700"></div>
-        <div class="pixel-orange-400"></div>
-        <div class="pixel-orange-500"></div>
+    <!-- Server/HPC Racks -->
+    <div class="pixel-server pixel-orange-600 decor-r2 anim-float-medium delay-1"></div>
+    <div class="pixel-rack pixel-orange-500 decor-r6 anim-float-gentle delay-4"></div>
+
+    <!-- Neural Network -->
+    <div class="pixel-neural pixel-orange-400 decor-r3 anim-pulse-glow delay-2">
+        <div class="node node-i1"></div>
+        <div class="node node-i2"></div>
+        <div class="node node-i3"></div>
+        <div class="node node-h1"></div>
+        <div class="node node-h2"></div>
+        <div class="node node-o1"></div>
     </div>
 
-    <div class="pixel-grid pixel-grid-2 anim-float-slow delay-5">
-        <div class="pixel-orange-400"></div>
-        <div class="pixel-orange-500"></div>
-        <div class="pixel-orange-300"></div>
-        <div class="pixel-orange-600"></div>
-        <div class="pixel-orange-400"></div>
-        <div class="pixel-orange-700"></div>
-        <div class="pixel-orange-500"></div>
-        <div class="pixel-orange-400"></div>
-        <div class="pixel-orange-600"></div>
+    <!-- Chips/Processors -->
+    <div class="pixel-chip pixel-orange-500 decor-r5 anim-processing delay-0"></div>
+    <div class="pixel-chip pixel-chip--sm pixel-orange-300 decor-r7 anim-float-medium delay-5"></div>
+
+    <!-- Data Cubes/Tensors -->
+    <div class="pixel-cube pixel-orange-400 decor-r8 anim-spin delay-2"></div>
+    <div class="pixel-tensor pixel-orange-600 decor-r9 anim-float-slow delay-6"></div>
+
+    <!-- Circuit Traces -->
+    <div class="pixel-circuit pixel-orange-500" style="top: 28%; right: 15%;"></div>
+    <div class="pixel-circuit pixel-orange-400" style="bottom: 35%; right: 6%;"></div>
+
+    <!-- Binary Data Streams -->
+    <div class="pixel-binary pixel-orange-500 anim-data-flow delay-1" style="top: 15%; right: 20%;">10110101</div>
+    <div class="pixel-binary pixel-orange-400 anim-data-flow delay-4" style="top: 55%; right: 2%;">01101001</div>
+
+    <!-- ========== LEFT SIDE (wide screens) ========== -->
+
+    <!-- GPU -->
+    <div class="pixel-gpu pixel-orange-400 decor-l1 anim-float-slow delay-2">
+        <div class="gpu-pins">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
     </div>
+
+    <!-- Server -->
+    <div class="pixel-server pixel-orange-500 decor-l2 anim-float-gentle delay-5"></div>
+
+    <!-- Neural Network -->
+    <div class="pixel-neural pixel-orange-600 decor-l3 anim-pulse-glow delay-3">
+        <div class="node node-i1"></div>
+        <div class="node node-i2"></div>
+        <div class="node node-i3"></div>
+        <div class="node node-h1"></div>
+        <div class="node node-h2"></div>
+        <div class="node node-o1"></div>
+    </div>
+
+    <!-- Chip -->
+    <div class="pixel-chip pixel-chip--sm pixel-orange-400 decor-l4 anim-processing delay-7"></div>
+
+    <!-- Binary -->
+    <div class="pixel-binary pixel-orange-300 anim-data-flow delay-6" style="top: 45%; left: 6%;">11010010</div>
 
 </div>
