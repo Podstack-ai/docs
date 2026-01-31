@@ -75,50 +75,15 @@ jobs:
         with:
           path: ./public
 
-  # Deploy to development environment
-  deploy-dev:
-    if: (github.ref == 'refs/heads/development' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'development')
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: development
-      url: https://dev.yourdomain.com
-    steps:
-      - name: Deploy to development
-        run: |
-          echo "Deploying to development environment"
-          # Add your deployment commands here
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  # Deploy to pre-production
-  deploy-preprod:
-    if: (github.ref == 'refs/heads/pre-production' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'pre-production')
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: pre-production
-      url: https://preprod.yourdomain.com
-    steps:
-      - name: Deploy to pre-production
-        run: |
-          echo "Deploying to pre-production environment"
-          # Add your deployment commands here
-
-  # Deploy to production
-  deploy-prod:
-    if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'production')
+  # Deploy to GitHub Pages (only on push/merge to main)
+  deploy:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://yourdomain.com
+      url: https://docs.podstack.ai
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
