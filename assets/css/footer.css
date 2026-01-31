@@ -192,6 +192,8 @@
     margin-top: 16px;
     font-size: 13px;
     color: var(--color-fade);
+    text-align: center;
+    width: 100%;
 }
 
 /* Responsive Styles */

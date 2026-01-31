@@ -1,11 +1,71 @@
 # robots.txt for PodStack Documentation
-# Generated for https://podstack-ai.github.io/docs/
+# https://docs.podstack.ai/
+# Optimized for maximum SEO visibility
 
+# Allow all search engine crawlers
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://podstack-ai.github.io/docs/sitemap.xml
+# Googlebot specific settings
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-# Crawl-delay for polite bots
+# Googlebot Image
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /favicon/
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1
+
+# Google AdsBot
+User-agent: AdsBot-Google
+Allow: /
+
+# Google Mobile
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Yahoo Slurp
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu Spider
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Pinterest
+User-agent: Pinterest
+Allow: /
+
+# Sitemaps - Primary
+Sitemap: https://docs.podstack.ai/sitemap.xml
+
+# Host directive for Yandex
+Host: https://docs.podstack.ai
