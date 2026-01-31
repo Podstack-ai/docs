@@ -61,7 +61,7 @@
   <title>{{ .Title | .RenderString }} · {{ .Site.Title | .RenderString }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
 
-  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/sidebar.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
+  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/sidebar.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") (resources.Get "css/pixel-decorations.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
 
   {{- $js := slice (resources.Get "js/sidebar.js") (resources.Get "js/color-preference.js") (resources.Get "js/header.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") (resources.Get "js/code-copy.js") | resources.Concat "assets/js/main.js" | minify | fingerprint }}
@@ -75,6 +75,7 @@
 
 <body data-baseurl="{{ .Site.BaseURL }}">
 
+{{ partial "pixel-decorations.html" . }}
 {{ partial "header.html" . }}
 
 <div id="outer-wrapper">
@@ -189,5 +190,7 @@
 
 {{- $js := slice (resources.Get "js/color-preference.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") (resources.Get "js/header.js") | resources.Concat "assets/js/docs.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.integrity }}"></script>
+
+{{ partial "chatwoot.html" . }}
 </body>
 </html>

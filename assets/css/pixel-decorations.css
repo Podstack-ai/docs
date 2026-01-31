@@ -1,0 +1,422 @@
+/**
+ * PIXEL DECORATIONS
+ * Floating pixel/lego blocks for visual interest
+ */
+
+/* Container for floating pixels */
+.pixel-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Base pixel block style */
+.pixel-block {
+    position: absolute;
+    opacity: 0.4;
+    border-radius: 4px;
+}
+
+/* Different sizes */
+.pixel-block--sm {
+    width: 8px;
+    height: 8px;
+}
+
+.pixel-block--md {
+    width: 16px;
+    height: 16px;
+}
+
+.pixel-block--lg {
+    width: 24px;
+    height: 24px;
+}
+
+.pixel-block--xl {
+    width: 32px;
+    height: 32px;
+}
+
+/* Lego-style blocks with studs */
+.lego-block {
+    position: absolute;
+    opacity: 0.35;
+    border-radius: 4px;
+}
+
+.lego-block::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 4px;
+    background: inherit;
+    border-radius: 2px 2px 0 0;
+    filter: brightness(1.1);
+}
+
+/* 2x1 Lego block */
+.lego-block--2x1 {
+    width: 32px;
+    height: 16px;
+}
+
+.lego-block--2x1::before {
+    width: 8px;
+    left: 25%;
+}
+
+.lego-block--2x1::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 65%;
+    width: 8px;
+    height: 4px;
+    background: inherit;
+    border-radius: 2px 2px 0 0;
+    filter: brightness(1.1);
+}
+
+/* 2x2 Lego block */
+.lego-block--2x2 {
+    width: 32px;
+    height: 32px;
+}
+
+/* L-shaped tetris block */
+.tetris-L {
+    position: absolute;
+    opacity: 0.3;
+}
+
+.tetris-L::before,
+.tetris-L::after {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: 2px;
+}
+
+.tetris-L .block-main {
+    width: 12px;
+    height: 36px;
+    background: inherit;
+    border-radius: 2px;
+}
+
+.tetris-L::after {
+    width: 24px;
+    height: 12px;
+    bottom: 0;
+    left: 0;
+}
+
+/* T-shaped tetris block */
+.tetris-T {
+    position: absolute;
+    opacity: 0.3;
+}
+
+.tetris-T .block-main {
+    width: 36px;
+    height: 12px;
+    background: inherit;
+    border-radius: 2px;
+}
+
+.tetris-T::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 12px;
+    left: 12px;
+    background: inherit;
+    border-radius: 2px;
+}
+
+/* Color variations - Orange theme */
+.pixel-orange-500 { background: #F97316; }
+.pixel-orange-400 { background: #FB923C; }
+.pixel-orange-600 { background: #EA580C; }
+.pixel-orange-700 { background: #C2410C; }
+.pixel-orange-300 { background: #FDBA74; }
+
+/* Floating animations */
+@keyframes float-slow {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+@keyframes float-medium {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-3deg);
+    }
+}
+
+@keyframes float-fast {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(8deg);
+    }
+}
+
+@keyframes drift-right {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(10px) translateY(-10px);
+    }
+}
+
+@keyframes drift-left {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(-10px) translateY(-15px);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.3;
+        filter: blur(0px);
+    }
+    50% {
+        opacity: 0.5;
+        filter: blur(1px);
+    }
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation classes */
+.anim-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+}
+
+.anim-float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+}
+
+.anim-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+}
+
+.anim-drift-right {
+    animation: drift-right 10s ease-in-out infinite;
+}
+
+.anim-drift-left {
+    animation: drift-left 12s ease-in-out infinite;
+}
+
+.anim-pulse {
+    animation: pulse-glow 5s ease-in-out infinite;
+}
+
+.anim-spin {
+    animation: spin-slow 30s linear infinite;
+}
+
+/* Animation delays */
+.delay-1 { animation-delay: 0s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 2s; }
+.delay-4 { animation-delay: 3s; }
+.delay-5 { animation-delay: 4s; }
+.delay-6 { animation-delay: 5s; }
+
+/* Positioned blocks - scattered around the page */
+
+/* Top right cluster */
+.pixel-block-1 {
+    top: 15%;
+    right: 8%;
+}
+
+.pixel-block-2 {
+    top: 20%;
+    right: 12%;
+}
+
+.pixel-block-3 {
+    top: 25%;
+    right: 5%;
+}
+
+/* Middle right */
+.pixel-block-4 {
+    top: 45%;
+    right: 3%;
+}
+
+.pixel-block-5 {
+    top: 50%;
+    right: 10%;
+}
+
+/* Bottom right cluster */
+.pixel-block-6 {
+    bottom: 30%;
+    right: 6%;
+}
+
+.pixel-block-7 {
+    bottom: 25%;
+    right: 15%;
+}
+
+.pixel-block-8 {
+    bottom: 20%;
+    right: 4%;
+}
+
+/* Left side (only visible on wide screens) */
+.pixel-block-9 {
+    top: 30%;
+    left: 2%;
+}
+
+.pixel-block-10 {
+    top: 60%;
+    left: 5%;
+}
+
+.pixel-block-11 {
+    bottom: 35%;
+    left: 3%;
+}
+
+/* Lego blocks positioning */
+.lego-1 {
+    top: 18%;
+    right: 20%;
+}
+
+.lego-2 {
+    top: 55%;
+    right: 8%;
+}
+
+.lego-3 {
+    bottom: 40%;
+    right: 18%;
+}
+
+/* Tetris blocks positioning */
+.tetris-1 {
+    top: 35%;
+    right: 4%;
+}
+
+.tetris-2 {
+    bottom: 15%;
+    right: 12%;
+}
+
+/* Pixel grid cluster - decorative grid pattern */
+.pixel-grid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 8px);
+    grid-template-rows: repeat(3, 8px);
+    gap: 4px;
+    opacity: 0.3;
+}
+
+.pixel-grid > div {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+.pixel-grid-1 {
+    top: 12%;
+    right: 25%;
+}
+
+.pixel-grid-2 {
+    bottom: 45%;
+    right: 2%;
+}
+
+/* Hide decorations on smaller screens where they'd overlap content */
+@media (max-width: 1400px) {
+    .pixel-block-9,
+    .pixel-block-10,
+    .pixel-block-11 {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .pixel-decorations {
+        opacity: 0.7;
+    }
+
+    .lego-1,
+    .lego-3,
+    .pixel-grid-1 {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .pixel-decorations {
+        display: none;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .pixel-block,
+    .lego-block,
+    .tetris-L,
+    .tetris-T,
+    .pixel-grid {
+        animation: none;
+    }
+}
+
+/* Light theme - slightly more visible */
+html[data-color="light"] .pixel-block,
+html[data-color="light"] .lego-block {
+    opacity: 0.25;
+}
+
+html[data-color="light"] .tetris-L,
+html[data-color="light"] .tetris-T {
+    opacity: 0.2;
+}
+
+html[data-color="light"] .pixel-grid {
+    opacity: 0.2;
+}

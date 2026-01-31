@@ -98,8 +98,8 @@ params:
     github:
       repo: username/repo
     themeColor:
-      light: '#ffffff'
-      dark: '#101010'
+      light: '#F97316'
+      dark: '#0a0a0f'
 
   author:
     name: PodStack Team

@@ -115,7 +115,7 @@ main {
 
 #content-wrapper>header>button.theme-toggle:hover {
   border-color: var(--anchor);
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(249, 115, 22, 0.1);
 }
 
 #content-wrapper>footer {

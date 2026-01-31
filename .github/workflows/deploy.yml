@@ -1,40 +1,23 @@
 name: Hugo Build and Deploy
 
 on:
-  # Trigger on push to development, pre-production, and main branches
   push:
     branches:
-      - development
-      - pre-production
       - main
-  
-  # Trigger on PR to pre-production and main (for build/test)
-  pull_request:
-    branches:
-      - pre-production
-      - main
-    types: [opened, synchronize, reopened]
-  
+
   # Manual trigger
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy'
-        required: true
-        type: choice
-        options:
-          - development
-          - pre-production
-          - production
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
-  pull-requests: read
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  # Build and test job (runs on all branches)
   build:
     runs-on: ubuntu-latest
     steps:
@@ -50,25 +33,8 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Determine environment
-        id: env
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "name=${{ inputs.environment }}" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "name=development" >> $GITHUB_OUTPUT
-          elif [ "${{ github.ref }}" = "refs/heads/development" ]; then
-            echo "name=development" >> $GITHUB_OUTPUT
-          elif [ "${{ github.ref }}" = "refs/heads/pre-production" ]; then
-            echo "name=pre-production" >> $GITHUB_OUTPUT
-          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "name=production" >> $GITHUB_OUTPUT
-          else
-            echo "name=development" >> $GITHUB_OUTPUT
-          fi
-
       - name: Build Hugo site
-        run: hugo --minify --environment ${{ steps.env.outputs.name }}
+        run: hugo --minify --environment production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

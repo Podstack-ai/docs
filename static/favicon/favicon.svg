@@ -1,0 +1,45 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pixel art Pod favicon for Podstack -->
+  <rect width="32" height="32" rx="6" fill="#1F2937"/>
+
+  <!-- 3D Stacked Pod Design - scaled for favicon -->
+  <!-- Row 0 -->
+  <rect x="9" y="4" width="3" height="3" fill="#FB923C"/>
+  <rect x="12" y="4" width="3" height="3" fill="#FB923C"/>
+  <rect x="15" y="4" width="3" height="3" fill="#F97316"/>
+  <rect x="18" y="4" width="3" height="3" fill="#EA580C"/>
+
+  <!-- Row 1 -->
+  <rect x="6" y="7" width="3" height="3" fill="#FB923C"/>
+  <rect x="21" y="7" width="3" height="3" fill="#EA580C"/>
+
+  <!-- Row 2 -->
+  <rect x="6" y="10" width="3" height="3" fill="#F97316"/>
+  <rect x="9" y="10" width="3" height="3" fill="#F97316"/>
+  <rect x="12" y="10" width="3" height="3" fill="#FB923C"/>
+  <rect x="15" y="10" width="3" height="3" fill="#F97316"/>
+  <rect x="18" y="10" width="3" height="3" fill="#EA580C"/>
+  <rect x="21" y="10" width="3" height="3" fill="#C2410C"/>
+
+  <!-- Row 3 -->
+  <rect x="3" y="13" width="3" height="3" fill="#F97316"/>
+  <rect x="24" y="13" width="3" height="3" fill="#C2410C"/>
+
+  <!-- Row 4 -->
+  <rect x="6" y="16" width="3" height="3" fill="#F97316"/>
+  <rect x="9" y="16" width="3" height="3" fill="#FB923C"/>
+  <rect x="12" y="16" width="3" height="3" fill="#F97316"/>
+  <rect x="15" y="16" width="3" height="3" fill="#F97316"/>
+  <rect x="18" y="16" width="3" height="3" fill="#EA580C"/>
+  <rect x="21" y="16" width="3" height="3" fill="#C2410C"/>
+
+  <!-- Row 5 -->
+  <rect x="3" y="19" width="3" height="3" fill="#FB923C"/>
+  <rect x="24" y="19" width="3" height="3" fill="#EA580C"/>
+
+  <!-- Row 6 -->
+  <rect x="9" y="22" width="3" height="3" fill="#EA580C"/>
+  <rect x="12" y="22" width="3" height="3" fill="#F97316"/>
+  <rect x="15" y="22" width="3" height="3" fill="#F97316"/>
+  <rect x="18" y="22" width="3" height="3" fill="#C2410C"/>
+</svg>

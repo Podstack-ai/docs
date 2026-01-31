@@ -1,0 +1,241 @@
+<!--
+  CHATWOOT PARTIAL (layouts/partials/chatwoot.html)
+  PURPOSE: Live chat widget with pixel design matching PodStack theme
+
+  FEATURES:
+  - Chatwoot integration with pixel-style button
+  - Hide/show toggle functionality
+  - Orange theme colors matching site design
+  - Persisted visibility preference in localStorage
+-->
+
+<!-- Chatwoot Live Chat Widget with Pixel Design -->
+<script>
+  window.chatwootSettings = {
+    position: 'right',
+    type: 'standard',
+    launcherTitle: 'Chat with us',
+    darkMode: 'auto',
+    locale: 'en',
+    hideMessageBubble: true
+  };
+
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'HNHm5nr4jqcmiQA81vsMGw2F',
+        baseUrl: BASE_URL
+      });
+
+      // Create pixel chat button after Chatwoot loads
+      setTimeout(function() {
+        createPixelChatButton();
+        createChatToggle();
+      }, 1000);
+    }
+  })(document,"script");
+
+  // Chat visibility state
+  var chatHidden = localStorage.getItem('chatwoot_hidden') === 'true';
+
+  // Pixel pattern for chat icon (4x4 grid)
+  // 1 = orange pixel, 0 = dark pixel
+  var chatIconPattern = [
+    1, 1, 1, 1,
+    1, 0, 0, 1,
+    1, 0, 0, 0,
+    1, 1, 1, 1
+  ];
+
+  function createPixelChatButton() {
+    var btn = document.createElement('button');
+    btn.id = 'pixel-chat-btn';
+    btn.title = 'Chat with us';
+    btn.onclick = openChat;
+
+    // Create pixel grid
+    for (var i = 0; i < 16; i++) {
+      var pixel = document.createElement('div');
+      pixel.className = 'pixel ' + (chatIconPattern[i] ? 'on' : 'off');
+      btn.appendChild(pixel);
+    }
+
+    document.body.appendChild(btn);
+
+    // Hide if user preference
+    if (chatHidden) {
+      btn.style.display = 'none';
+    }
+  }
+
+  function createChatToggle() {
+    var toggle = document.createElement('button');
+    toggle.id = 'chat-toggle-btn';
+    toggle.innerHTML = chatHidden ?
+      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>' :
+      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+    toggle.title = chatHidden ? 'Show chat' : 'Hide chat';
+    toggle.onclick = toggleChatVisibility;
+    document.body.appendChild(toggle);
+  }
+
+  function openChat() {
+    if (window.$chatwoot) {
+      window.$chatwoot.toggle('open');
+    }
+  }
+
+  function toggleChatVisibility() {
+    var toggle = document.getElementById('chat-toggle-btn');
+    var pixelBtn = document.getElementById('pixel-chat-btn');
+    chatHidden = !chatHidden;
+    localStorage.setItem('chatwoot_hidden', chatHidden);
+
+    if (chatHidden) {
+      // Hide chat
+      pixelBtn.style.display = 'none';
+      if (window.$chatwoot) {
+        window.$chatwoot.toggle('close');
+      }
+      toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
+      toggle.title = 'Show chat';
+    } else {
+      // Show chat
+      pixelBtn.style.display = 'grid';
+      toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+      toggle.title = 'Hide chat';
+    }
+  }
+</script>
+
+<style>
+/* Chatwoot Widget Customization - Podstack Pixel Theme (Orange) */
+
+/* Hide default Chatwoot bubble - we'll create custom pixel one */
+.woot-widget-bubble {
+  display: none !important;
+}
+
+.woot-widget-holder {
+  z-index: 9999 !important;
+}
+
+/* Chat window styling */
+.woot-widget-holder iframe {
+  border-radius: 12px !important;
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.2), 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.woot-widget-holder .chat-bubble--expanded .header-branding {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+}
+
+.woot-widget-holder button[type="submit"],
+.woot-widget-holder .send-button {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+  border-radius: 8px !important;
+}
+
+.woot-widget-holder a {
+  color: #F97316 !important;
+}
+
+.woot-widget-holder .typing-indicator {
+  color: #F97316 !important;
+}
+
+.woot-widget-holder .agent-message .chat-bubble {
+  background: rgba(249, 115, 22, 0.1) !important;
+  border-left: 3px solid #F97316 !important;
+  border-radius: 8px !important;
+}
+
+/* Custom Pixel Chat Button */
+#pixel-chat-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  z-index: 9998;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  padding: 6px;
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2), 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+#pixel-chat-btn:hover {
+  transform: scale(1.08);
+  border-color: rgba(249, 115, 22, 0.6);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.4), 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+#pixel-chat-btn:active {
+  transform: scale(0.95);
+}
+
+/* Pixel blocks inside the button */
+#pixel-chat-btn .pixel {
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+/* Chat icon pattern using pixel blocks */
+#pixel-chat-btn .pixel.on {
+  background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+  box-shadow: 0 0 4px rgba(249, 115, 22, 0.6);
+}
+
+#pixel-chat-btn .pixel.off {
+  background: rgba(39, 39, 42, 0.5);
+}
+
+#pixel-chat-btn:hover .pixel.on {
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+}
+
+/* Chat Toggle Button (hide/show) */
+#chat-toggle-btn {
+  position: fixed;
+  bottom: 88px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  z-index: 9997;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 15, 0.6);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  border-radius: 8px;
+  color: rgba(249, 115, 22, 0.7);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+#chat-toggle-btn:hover {
+  background: rgba(10, 10, 15, 0.8);
+  border-color: rgba(249, 115, 22, 0.4);
+  color: #F97316;
+}
+
+#chat-toggle-btn svg {
+  width: 16px;
+  height: 16px;
+}
+</style>
