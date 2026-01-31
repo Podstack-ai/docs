@@ -22,7 +22,7 @@
   --foreground: rgba(247, 247, 247, .25);
   --foreground-hover: rgba(220, 220, 220, .35);
 
-  --foreground-highlight: #8DCEFF;
+  --foreground-highlight: #FDBA74;
   --color-highlight: #130606;
 
   --model-background: #ffffff;
@@ -40,35 +40,48 @@
 
   --radius: 4px;
 
-  --anchor: #06B6D4;
-  --hover: #8B5CF6;
+  /* Orange theme colors */
+  --anchor: #F97316;
+  --hover: #EA580C;
 
-  /* Brand gradient */
-  --brand-gradient: linear-gradient(122deg, #8B5CF6 0%, #06B6D4 100%);
+  /* Orange palette */
+  --orange-50: #FFF7ED;
+  --orange-100: #FFEDD5;
+  --orange-200: #FED7AA;
+  --orange-300: #FDBA74;
+  --orange-400: #FB923C;
+  --orange-500: #F97316;
+  --orange-600: #EA580C;
+  --orange-700: #C2410C;
+  --orange-800: #9A3412;
+  --orange-900: #7C2D12;
 
-  /* base16 tomorrow */
+  /* Brand gradient - Orange */
+  --brand-gradient: linear-gradient(135deg, #FB923C 0%, #F97316 50%, #EA580C 100%);
+
+  /* base16 tomorrow - with orange accents */
   --chroma-base00: #f9f9f9;
   --chroma-base01: #e0e0e0;
-  --chroma-base02: rgba(139, 92, 246, .1);
+  --chroma-base02: rgba(249, 115, 22, .1);
   --chroma-base03: #8e908c;
   --chroma-base04: #969896;
   --chroma-base05: #4d4d4c;
   --chroma-base06: #282a2e;
   --chroma-base07: #1d1f21;
   --chroma-base08: #c82829;
-  --chroma-base09: #f5871f;
+  --chroma-base09: #F97316;
   --chroma-base0A: #eab700;
   --chroma-base0B: #718c00;
-  --chroma-base0C: #06B6D4;
-  --chroma-base0D: #8B5CF6;
-  --chroma-base0E: #8DCEFF;
+  --chroma-base0C: #FB923C;
+  --chroma-base0D: #F97316;
+  --chroma-base0E: #FDBA74;
   --chroma-base0F: #a3685a;
 
-  /* shortcodes */
-  --callout-info-backgound: #8B5CF6;
+  /* shortcodes - Orange */
+  --callout-info-backgound: #F97316;
   --callout-info-foreground: rgba(0, 0, 0, .08);
   --callout-info-color: #ffffff;
-  --callout-info-anchor: #8DCEFF;
+  --callout-info-anchor: #FDBA74;
   --callout-info-anchor-text-shadow: .4px 0 .8px black;
 }
 
@@ -77,7 +90,7 @@
   --color-fade: #9CA3AF;
   --color-nav: #D1D5DB;
 
-  --background: #081627;
+  --background: #0a0a0f;
   --background-grey: rgba(30, 41, 59, 1);
   --background-grey-embed: rgba(15, 23, 42, 1);
 
@@ -91,27 +104,28 @@
   --border: rgba(225, 225, 225, .1);
   --border-nav: rgba(255, 255, 255, .2);
 
-  --anchor: #06B6D4;
-  --hover: #8B5CF6;
+  /* Orange theme colors - Dark mode */
+  --anchor: #FB923C;
+  --hover: #F97316;
 
-  /* Dark gradient */
-  --dark-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 50%, rgba(15, 23, 42, 0.8) 100%);
+  /* Dark gradient with orange glow */
+  --dark-gradient: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(31, 41, 59, 0.8) 50%, rgba(10, 10, 15, 0.95) 100%);
 
-  /* base16 tomorrow night */
+  /* base16 tomorrow night - with orange accents */
   --chroma-base00: var(--background-grey);
   --chroma-base01: #393939;
-  --chroma-base02: rgba(139, 92, 246, .15);
+  --chroma-base02: rgba(249, 115, 22, .15);
   --chroma-base03: #999999;
   --chroma-base04: #b4b7b4;
   --chroma-base05: #cccccc;
   --chroma-base06: #e0e0e0;
   --chroma-base07: #ffffff;
   --chroma-base08: #f2777a;
-  --chroma-base09: #f99157;
+  --chroma-base09: #FB923C;
   --chroma-base0A: #ffcc66;
   --chroma-base0B: #99cc99;
-  --chroma-base0C: #06B6D4;
-  --chroma-base0D: #8B5CF6;
-  --chroma-base0E: #8DCEFF;
+  --chroma-base0C: #FB923C;
+  --chroma-base0D: #F97316;
+  --chroma-base0E: #FDBA74;
   --chroma-base0F: #a3685a;
 }

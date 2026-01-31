@@ -1,10 +1,16 @@
 {
-  "name": "todo",
-  "short_name": "todo",
-  "description": "todo",
+  "name": "PodStack Docs - GPU Cloud Platform",
+  "short_name": "PodStack Docs",
+  "description": "Documentation for PodStack - Affordable GPU cloud computing with fractional GPU allocation",
   "start_url": "/?source=pwa",
   "display": "standalone",
   "icons": [
+    {
+      "src": "/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -16,6 +22,6 @@
       "type": "image/png"
     }
   ],
-  "background_color": "#866ee7",
-  "theme_color": "#866ee7"
+  "background_color": "#0a0a0f",
+  "theme_color": "#F97316"
 }
