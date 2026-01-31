@@ -41,12 +41,14 @@ jobs:
         with:
           path: ./public
 
+  # Deploy to GitHub Pages (only on push/merge to main)
   deploy:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: production
+      url: https://docs.podstack.ai
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

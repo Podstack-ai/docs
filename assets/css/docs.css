@@ -85,29 +85,7 @@ main {
   overflow-x: hidden;
 }
 
-#aside-wrapper.open {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  height: 100%;
-  z-index: 10;
-  transition: .3s;
-  animation: slide-in-left .3s forwards;
-
-  background: var(--model-background);
-  box-shadow: var(--model-box-shadow);
-}
-
-@keyframes slide-in-left {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(100%);
-  }
-}
+/* Left sidebar .open state handled by sidebar.css */
 
 #content-wrapper>header {
   border-bottom: 1px solid var(--border);
@@ -435,6 +413,15 @@ main>aside {
   display: none;
   overflow-x: auto;
   padding-bottom: 48px;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+main>aside::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 main>aside.open {
@@ -603,12 +590,14 @@ main>aside>div>.btn {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 56px;
+    top: 70px;
+    bottom: 0;
     right: 0;
-    height: calc(100vh - 56px);
     overflow-y: auto;
     overflow-x: hidden;
     background: var(--background);
+    transition: bottom 0.15s ease-out;
+    z-index: 5;
   }
 
   main>aside>div {

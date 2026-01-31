@@ -31,29 +31,7 @@
     const body = document.body;
     const bodyModelOuter = document.querySelector('#body-model-outer')
 
-    const asideWrapper = document.querySelector('#aside-wrapper')
-    const asideWrapperOpenButton = document.querySelector('main > article > nav > button:first-child')
-    const asideWrapperCloseButton = document.querySelector('#aside-wrapper > aside > div .btn')
-
-    if (asideWrapper && asideWrapperOpenButton) {
-        asideWrapperOpenButton.addEventListener('click', function () {
-            body.classList.add('model-open')
-            bodyModelOuter.style.display = 'block'
-            asideWrapper.classList.add('open')
-
-            asideWrapperCloseButton.addEventListener('click', function () {
-                body.classList.remove('model-open')
-                bodyModelOuter.style.display = 'none'
-                asideWrapper.classList.remove('open')
-            });
-
-            bodyModelOuter.addEventListener('click', function () {
-                body.classList.remove('model-open')
-                bodyModelOuter.style.display = 'none'
-                asideWrapper.classList.remove('open')
-            });
-        });
-    }
+    /* Left sidebar (#aside-wrapper) open/close is handled by sidebar.js */
 
     const mainAside = document.querySelector('main > aside')
     const mainAsideOpenButton = document.querySelector('main > article > nav > button:last-child')
@@ -115,5 +93,44 @@
         window.addEventListener('resize', function (event) {
             adjustAsideWrapperAsideNavHeight();
         })
+    }
+
+    // Pull both sidebars up when footer comes into view
+    const sidebarDocker = document.querySelector('.sidebar-docker');
+    const rightToc = document.querySelector('main > aside');
+    const siteFooter = document.querySelector('.site-footer');
+
+    if (siteFooter && (sidebarDocker || rightToc)) {
+        function adjustSidebarsForFooter() {
+            const footerTop = siteFooter.getBoundingClientRect().top;
+            const viewportHeight = window.innerHeight;
+
+            if (footerTop < viewportHeight) {
+                // Footer visible — push sidebars up by setting bottom offset
+                const bottomOffset = (viewportHeight - footerTop) + 'px';
+                if (sidebarDocker) {
+                    sidebarDocker.style.bottom = bottomOffset;
+                    sidebarDocker.style.height = 'auto';
+                }
+                if (rightToc) {
+                    rightToc.style.bottom = bottomOffset;
+                    rightToc.style.height = 'auto';
+                }
+            } else {
+                // Footer not visible — reset to normal
+                if (sidebarDocker) {
+                    sidebarDocker.style.bottom = '0';
+                    sidebarDocker.style.height = '';
+                }
+                if (rightToc) {
+                    rightToc.style.bottom = '0';
+                    rightToc.style.height = '';
+                }
+            }
+        }
+
+        window.addEventListener('scroll', adjustSidebarsForFooter, { passive: true });
+        window.addEventListener('resize', adjustSidebarsForFooter, { passive: true });
+        adjustSidebarsForFooter();
     }
 })();
