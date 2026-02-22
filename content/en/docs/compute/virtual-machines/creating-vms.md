@@ -83,6 +83,84 @@ VMs receive:
 - **Public IP**: For external SSH access
 - **Private IP**: For communication with other resources
 
+### Billing Period
+
+Select your preferred billing frequency:
+- **Hourly**: Pay as you go, most flexible
+- **Monthly**: Better rates for long-running workloads
+
+## Data Volumes
+
+Attach additional storage volumes to your VM:
+
+### Creating a Data Volume
+
+1. Go to **Virtual Machines > Data Volumes**
+2. Click **Create Volume**
+3. Configure:
+   - **Name**: Volume identifier
+   - **Size**: Storage capacity in GB
+   - **Type**: Storage class (SSD, HDD)
+4. Click **Create**
+
+### Attaching to VM
+
+When creating a VM:
+1. Go to the **Volumes** section
+2. Select existing data volumes to attach
+3. Specify mount point for each volume
+
+Data volumes persist independently and can be moved between VMs.
+
+## VM Pools
+
+Create multiple VMs with identical configurations:
+
+### Creating a VM Pool
+
+1. Go to **Virtual Machines > Pools**
+2. Click **Create Pool**
+3. Configure:
+   - **Pool Name**: Identifier for the pool
+   - **VM Configuration**: Resources, OS, SSH key
+   - **Pool Size**: Number of VMs to create
+4. Click **Create Pool**
+
+### Pool Management
+
+- View all VMs in the pool
+- Scale the pool up or down
+- Apply changes to all pool members
+- Delete the entire pool
+
+VM pools are useful for distributed computing, load balancing, or batch processing.
+
+## Cloud-Init Templates
+
+Use cloud-init scripts to customize VM initialization:
+
+### Pre-configured Templates
+
+Browse available cloud-init templates:
+- Package installation scripts
+- User setup configurations
+- Service initialization
+- Custom networking
+
+### Custom Cloud-Init
+
+Provide your own cloud-init script:
+```yaml
+#cloud-config
+packages:
+  - docker.io
+  - nvidia-container-toolkit
+runcmd:
+  - systemctl start docker
+```
+
+Cloud-init runs on first boot to configure your VM automatically.
+
 ## Cost Estimation
 
 Before creating, review the estimated hourly cost:

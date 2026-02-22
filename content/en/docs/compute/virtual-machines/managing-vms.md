@@ -155,21 +155,45 @@ Snapshots capture the VM state for backup or cloning.
 
 1. Go to VM details
 2. Click **Create Snapshot**
-3. Enter a name for the snapshot
-4. Wait for completion
+3. Enter a descriptive name for the snapshot
+4. Optionally add a description
+5. Click **Create**
+6. Wait for snapshot to complete (time depends on VM size)
+
+### Viewing Snapshots
+
+Navigate to **Virtual Machines > Snapshots** to see:
+- All snapshots across your VMs
+- Snapshot name and description
+- Source VM information
+- Creation date and size
+- Status (creating, available, failed)
 
 ### Managing Snapshots
 
-View snapshots in **VM Snapshots** section:
-- List all snapshots
-- Restore from a snapshot
-- Delete old snapshots
+For each snapshot you can:
+- **View Details**: See full snapshot information
+- **Create VM**: Launch a new VM from this snapshot
+- **Delete**: Remove the snapshot to free storage
 
-### Restoring from Snapshot
+### Creating VM from Snapshot
 
-1. Find the snapshot
-2. Click **Restore**
-3. A new VM is created from the snapshot
+1. Find the snapshot in the list
+2. Click **Create VM** or **Restore**
+3. Configure the new VM:
+   - Name (required)
+   - Resources (can differ from original)
+   - SSH key
+   - Project
+4. Click **Create**
+5. New VM is created with snapshot data
+
+### Snapshot Best Practices
+
+- **Name descriptively**: Include date or purpose
+- **Snapshot before changes**: Create before major updates
+- **Clean up regularly**: Delete old snapshots to save costs
+- **Document snapshots**: Note what state they capture
 
 ## Best Practices
 

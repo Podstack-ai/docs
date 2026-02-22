@@ -50,6 +50,21 @@ To delete a project:
 
 New accounts have a default project created automatically. You can rename it or create additional projects as needed.
 
+## Billing Ownership
+
+Each project has a billing owner who is charged for all resource usage within the project. By default, the project creator is the billing owner.
+
+### Transferring Billing
+
+To transfer billing responsibility to another project member:
+1. Go to **Project Settings**
+2. Navigate to the **Billing** section
+3. Click **Transfer Billing**
+4. Select the new billing owner from the member list
+5. Confirm the transfer
+
+The new billing owner must be an active member of the project.
+
 ## Project-Scoped Resources
 
 When you create resources, they belong to the currently selected project:

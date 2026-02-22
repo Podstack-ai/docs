@@ -11,7 +11,7 @@ Your wallet is the central billing account for all Podstack resources. Manage yo
 Navigate to **Billing > Wallet** to see:
 
 ### Balance
-Your current available funds in INR.
+Your current available funds displayed in your preferred currency (INR or USD). Toggle between currencies using the currency switch.
 
 ### Run Rate
 Current spending projections:
@@ -26,31 +26,66 @@ Spending by resource type:
 - NFS Storage
 - Object Storage
 
+## Account Types
+
+Podstack supports two billing models:
+
+### Prepaid (Default)
+- Add funds to your wallet before using resources
+- Resources deduct from wallet balance in real-time
+- No invoices required - pay as you go
+
+### Postpaid (Enterprise)
+- Use resources and pay via monthly invoices
+- Requires KYC verification and approval
+- Auto-debit can be configured for automatic payments
+
 ## Adding Funds
 
 ### Top Up Process
 
 1. Go to **Billing > Wallet**
 2. Click **Top Up**
-3. Enter the amount (minimum varies)
-4. Click **Proceed to Payment**
-5. Complete payment via Razorpay
+3. Enter the amount (minimum ₹100)
+4. Select your payment method
+5. Complete the payment
 6. Funds appear immediately after successful payment
 
 ### Payment Methods
 
-Razorpay supports:
-- **UPI**: Instant payment via UPI apps
-- **Cards**: Credit and debit cards
-- **Net Banking**: Most Indian banks
-- **Wallets**: Paytm, PhonePe, etc.
+**Razorpay (India)**
+- **UPI**: Instant payment via UPI apps (GPay, PhonePe, Paytm)
+- **Cards**: Credit and debit cards (Visa, Mastercard, RuPay)
+- **Net Banking**: Most Indian banks supported
+- **Wallets**: Paytm, PhonePe, Mobikwik, etc.
+
+**PayPal (International)**
+- Available for international users
+- Supports credit/debit cards via PayPal
+- PayPal balance payments
+- Automatic currency conversion (USD to INR)
+
+**Cryptocurrency (via Binance Pay)**
+- **USDT (TRC-20)**: Tether on TRON network
+- **USDC (ERC-20/Polygon)**: USD Coin
+- **Other supported tokens**: Check wallet page for current options
+- Powered by Binance Pay for secure crypto transactions
+- Crypto payments converted to INR/USD at current market rates
+- Order status can be queried in real-time
 
 ### Saved Payment Methods
 
-Save cards for faster future payments:
-1. Complete a payment
-2. Choose to save the card
-3. Use saved cards for subsequent top-ups
+Manage your payment methods:
+1. Go to **Wallet > Payment Methods**
+2. View all saved cards and methods
+3. Set a default payment method
+4. Delete unused payment methods
+
+**Adding a Payment Method:**
+1. Complete any payment and choose to save
+2. Or go to Payment Methods and click **Add**
+3. Enter card details securely
+4. Card is saved for future use
 
 ## Applying Coupons
 
@@ -170,12 +205,49 @@ Configure notifications when spending reaches thresholds:
 
 ## Refunds
 
-Refunds may be processed for:
-- Failed provisioning
-- Service issues
-- Cancelled reservations (before provisioning)
+### Eligibility
 
-Refunds appear as credits in your wallet.
+Refunds may be available for:
+- Failed resource provisioning
+- Service issues or outages
+- Cancelled reservations (before provisioning starts)
+- Billing errors
+
+### Requesting a Refund
+
+1. Go to **Billing > Wallet**
+2. Click **Request Refund**
+3. Check your refund eligibility
+4. Select the transactions for refund
+5. Choose refund reason from the list
+6. Submit the request
+
+### Refund Methods
+
+Choose how to receive your refund:
+- **Wallet Credit**: Instant credit to your Podstack wallet
+- **Original Payment Method**: Refund to the card/UPI used
+- **Bank Transfer**: Direct bank deposit (requires bank details)
+- **PayPal**: For payments made via PayPal
+- **Cryptocurrency**: For crypto payments (same token/network)
+
+### Refund Timeline
+
+| Method | Processing Time |
+|--------|-----------------|
+| Wallet Credit | Instant |
+| UPI | 1-3 business days |
+| Credit/Debit Card | 5-7 business days |
+| Bank Transfer | 3-5 business days |
+| PayPal | 3-5 business days |
+| Cryptocurrency | 1-2 business days |
+
+### Viewing Refund History
+
+Track all your refunds:
+1. Go to Wallet
+2. Click **Refund History**
+3. View status, amount, and method for each refund
 
 ## Best Practices
 

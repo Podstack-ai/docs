@@ -15,33 +15,143 @@ Click your profile icon in the header and select **Settings**, or navigate to th
 ### Viewing Profile
 
 Your profile displays:
+- Display name
 - Email address (used for login)
+- Phone number (optional)
+- Timezone setting
 - Account creation date
 - Current plan/status
+- Profile photo
+
+### Updating Profile
+
+1. Go to **Settings > Profile**
+2. Edit the following fields:
+   - **Display Name**: Your name shown across the platform
+   - **Phone Number**: For account recovery and notifications
+   - **Timezone**: For accurate time display
+3. Click **Save Changes**
+
+### Profile Photo
+
+- Click your avatar to upload a new photo
+- Supported formats: JPG, PNG, GIF
+- Maximum size: 5MB
+- Click **Remove** to delete your photo
 
 ### Email Address
 
 Your email address is:
 - Used for OTP authentication
 - Used for notifications and alerts
-- Cannot be changed directly (contact support)
+- Cannot be changed directly (contact support for changes)
 
-## Preferences
+## Appearance Settings
+
+Customize how the portal looks:
 
 ### Theme
 
 Switch between light and dark modes:
-1. Use the theme toggle in the header
-2. Or set preference in Settings
-3. Choice is saved to your browser
+- **Light Mode**: Clean, bright interface
+- **Dark Mode**: Easier on eyes for extended use
+- Toggle via the header icon or in Settings > Appearance
 
-### Notifications
+### Preferred Currency
 
-Configure email notifications for:
-- Low balance warnings
-- Resource status changes
-- Team invitations
-- Security alerts
+Choose your display currency:
+- **INR (₹)**: Indian Rupees
+- **USD ($)**: US Dollars
+
+All costs, balances, run rates, and pricing across the platform update to your selected currency. Exchange rates are tracked in real-time. Your original payment currency is always preserved in transaction history.
+
+### Product Tour
+
+Toggle the product tour on/off:
+- Enable **Show Product Tour** to see guided walkthroughs when visiting features for the first time
+- Disable to skip onboarding tooltips
+
+### Compact Mode
+
+Enable for more information density:
+- Reduced spacing between elements
+- More content visible on screen
+- Ideal for power users
+
+### Sidebar Behavior
+
+- **Expanded**: Full sidebar with labels
+- **Collapsed**: Icon-only sidebar for more workspace
+- Your preference persists across sessions
+
+## Notification Preferences
+
+Configure exactly which notifications you receive:
+
+### Resource Notifications
+
+| Notification | Description |
+|--------------|-------------|
+| Pod/Container Status | When pods start, stop, or fail |
+| VM Status | When VMs change state |
+| Resource Limit Warnings | Approaching quota limits |
+
+### Billing Notifications
+
+| Notification | Description |
+|--------------|-------------|
+| Low Balance Alerts | When wallet balance is low |
+| Payment Success | Confirmation of successful payments |
+| Payment Failed | Alert when payments fail |
+| Invoice Generated | New invoices available |
+
+### Security Notifications
+
+| Notification | Description |
+|--------------|-------------|
+| Login Notifications | New login from device/location |
+| Password Changes | Account password was changed |
+| API Token Alerts | New tokens created or revoked |
+
+### Other Notifications
+
+| Notification | Description |
+|--------------|-------------|
+| Team Invitations | Invited to join a project |
+| Feature Announcements | New platform features |
+| Maintenance Notifications | Scheduled maintenance alerts |
+
+### Managing Preferences
+
+1. Go to **Settings > Notifications**
+2. Toggle each notification type on/off
+3. Changes save automatically
+
+## Security Settings
+
+Manage your account security:
+
+### Active Sessions
+
+View all devices/browsers currently logged in:
+- Device type and browser
+- IP address
+- Location (approximate)
+- Last activity time
+
+### Session Management
+
+- **Revoke Session**: Log out a specific session
+- **Revoke All Others**: Log out all sessions except current
+- Useful if you suspect unauthorized access
+
+### Session History
+
+View recent login history:
+- Login timestamps
+- Device information
+- IP addresses
+- Login success/failure status
 
 ## API Tokens
 

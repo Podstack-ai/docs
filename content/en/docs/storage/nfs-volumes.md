@@ -89,21 +89,39 @@ Navigate to **Storage > Volumes** to see:
 ### Volume Details
 
 Click on a volume to see:
-- Mount instructions
-- Usage statistics
-- Connected resources
-- Billing information
+- Mount instructions (NFS server and path)
+- Usage statistics (current usage vs quota)
+- Connected resources (pods/VMs using this volume)
+- Billing information (hourly rate, total cost)
 
-### Increasing Quota
+### Usage Tracking
+
+Monitor your volume usage over time:
+- **Current Usage**: Real-time storage consumption
+- **Usage History**: Track usage trends
+- **Quota Percentage**: Visual indicator of quota utilization
+- **Alerts**: Notifications when approaching quota limits
+
+### Updating Quota
 
 To expand a volume:
 
 1. Open volume details
 2. Click **Update Quota**
-3. Enter new size (must be larger)
+3. Enter new size (must be larger than current)
 4. Confirm the change
+5. Additional space is immediately available
 
-The additional space is immediately available.
+To reduce quota:
+- Contact support (requires data migration if usage exceeds new quota)
+
+### NFS Configuration
+
+The volume detail page provides:
+- **NFS Server**: Server hostname/IP
+- **Share Path**: Mount path on the server
+- **Access Mode**: ReadWriteMany (RWX), ReadWriteOnce (RWO), or ReadOnlyMany (ROX)
+- **Mount Command**: Ready-to-use mount command for VMs
 
 ### Deleting a Volume
 

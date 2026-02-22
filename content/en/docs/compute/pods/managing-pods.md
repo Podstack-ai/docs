@@ -79,20 +79,42 @@ Click on a pod to view detailed information:
 - Creation time
 - SSH connection string
 - Jupyter URL (if enabled)
+- Port mappings and access URLs
 
-**Stats**
-Real-time metrics:
+**Stats (Real-Time)**
+Live metrics streamed via WebSocket:
 - CPU usage percentage
-- Memory usage
-- GPU utilization
+- Memory usage and limits
+- GPU utilization per GPU
 - GPU memory usage
-- Network I/O
+- Network I/O (bytes in/out)
+- Disk usage
 
-**Logs**
-View container output:
-- Real-time log streaming
-- Search within logs
-- Download logs
+Stats update automatically without refreshing the page.
+
+**Logs (Real-Time Streaming)**
+View container output with live streaming:
+- Real-time log streaming via WebSocket
+- Logs appear as they're generated
+- Search and filter within logs
+- Download logs for offline analysis
+- Automatic reconnection on connection drop
+
+**Terminal**
+Access an interactive terminal directly in your browser:
+- Click **Terminal** button on pod details
+- Opens in a new window for focused work
+- Full terminal emulation with copy/paste support
+- No SSH client or keys required
+- Works through firewalls
+
+**Exposed Ports**
+Manage exposed ports on running pods:
+- View all currently exposed ports with their HTTPS URLs
+- **Add Port**: Expose a new container port dynamically
+- **Remove Port**: Stop exposing a port
+- Each port gets an auto-generated HTTPS endpoint: `https://<subdomain>-<port>.cloud.podstack.ai`
+- Port 22 (SSH) uses the format: `ssh-<subdomain>.cloud.podstack.ai`
 
 ### Billing Information
 
@@ -107,10 +129,34 @@ For pods configured with replicas:
 
 1. Go to pod details
 2. Click **Scale**
-3. Enter new replica count
-4. Confirm
+3. Enter new replica count (increase or decrease)
+4. Confirm the scaling operation
 
-Each replica runs independently and is billed separately.
+**Scaling Behavior:**
+- Scaling up creates additional identical replicas
+- Scaling down terminates excess replicas gracefully
+- Each replica runs independently and is billed separately
+- Billing adjusts immediately based on replica count
+
+**Use Cases:**
+- Scale up for parallel processing workloads
+- Scale down during off-peak hours to save costs
+- Dynamically adjust based on workload demands
+
+## Auto-Stop on Insufficient Balance
+
+When your wallet balance becomes insufficient:
+
+1. Warning notification is sent
+2. Pods may be automatically stopped after a grace period
+3. Data on ephemeral storage may be lost
+4. NFS-mounted volumes preserve data
+
+**To Prevent Auto-Stop:**
+- Maintain adequate wallet balance
+- Set up auto-debit for automatic top-ups
+- Monitor low balance warnings
+- Stop unused pods manually to conserve balance
 
 ## Bulk Operations
 

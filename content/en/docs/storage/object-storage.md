@@ -11,9 +11,9 @@ Podstack provides S3-compatible object storage for storing files, datasets, mode
 1. Navigate to **Storage > Object Storage**
 2. Click **Create Bucket**
 3. Configure:
-   - **Name**: Unique bucket identifier
-   - **Description**: Optional notes
-   - **Region**: Storage location
+   - **Name**: Unique bucket identifier (lowercase, no spaces)
+   - **Description**: Optional notes about the bucket's purpose
+   - **Max Size**: Maximum storage capacity (1GB - 10TB)
    - **Visibility**: Public or Private
    - **Versioning**: Enable to keep file history
 4. Click **Create**
@@ -21,11 +21,21 @@ Podstack provides S3-compatible object storage for storing files, datasets, mode
 ### Bucket Settings
 
 **Visibility Options**
-- **Private**: Only accessible with authentication
-- **Public**: Anyone with the URL can download files
+- **Private**: Only accessible with authentication (API keys or presigned URLs)
+- **Public**: Anyone with the URL can download files (use with caution)
+
+**Max Size (Quota)**
+Set a maximum size limit for the bucket:
+- Prevents unexpected storage costs
+- Uploads fail when quota is reached
+- Can be increased later if needed
 
 **Versioning**
-When enabled, uploading a file with the same name creates a new version rather than overwriting. Useful for backups and audit trails.
+When enabled, uploading a file with the same name creates a new version rather than overwriting:
+- View version history for any file
+- Restore previous versions
+- Useful for backups and audit trails
+- Increases storage usage (all versions count)
 
 ## Managing Files
 
@@ -107,9 +117,19 @@ Navigate folders using the breadcrumb trail.
 
 ### Deleting a Bucket
 
-1. Ensure the bucket is empty (delete all files first)
+**Standard Deletion:**
+1. Delete all files in the bucket first
 2. Click **Delete Bucket**
 3. Confirm deletion
+
+**Force Delete:**
+To delete a bucket with all its contents:
+1. Click **Delete Bucket**
+2. Enable the **Force Delete** option
+3. Confirm by typing the bucket name
+4. All objects are permanently deleted with the bucket
+
+**Warning**: Force delete is irreversible. All data will be permanently lost.
 
 ## Public Bucket Access
 

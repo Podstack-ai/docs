@@ -39,15 +39,26 @@ For private images, provide:
 ### Resource Allocation
 
 **GPU Configuration**
-- **GPU Type**: Select from available types (A100, H100, V100, etc.)
+- **GPU Type**: Select from available types (A100, H100, H200, V100, L40S, T4, etc.)
 - **GPU Count**: Number of GPUs (0 for CPU-only)
+- **GPU Cores**: Fractional GPU allocation (0.1 - 4.0 cores per GPU)
+- **GPU Memory**: Memory allocation per GPU
 
 **CPU and Memory**
-- **CPU Cores**: 1-128 cores (fractional values supported, e.g., 0.5)
+- **CPU Cores**: 0.1-16 cores (fractional values supported, e.g., 0.5)
 - **Memory**: RAM in GB
 
 **Storage**
 - **Disk Size**: Ephemeral storage for the container
+
+**Replicas**
+- **Replica Count**: Number of identical pod instances to run
+- Each replica runs independently and is billed separately
+- Useful for load balancing or parallel processing
+
+**Billing Period**
+- Select billing frequency (hourly, daily, monthly)
+- Monthly billing may offer better rates for long-running workloads
 
 ### Networking
 
@@ -124,17 +135,54 @@ Once created, the pod will:
 
 This typically takes 30 seconds to a few minutes depending on image size.
 
+## GPU Availability and Waitlist
+
+If your requested GPU type is not immediately available:
+
+### Check Availability
+The pod creation form shows real-time GPU availability. Unavailable GPU types are marked accordingly.
+
+### Join Waitlist
+When GPUs are unavailable:
+1. Select the desired GPU configuration
+2. Click **Join Waitlist**
+3. Enter your requirements (quantity, duration)
+4. Submit your request
+
+### Waitlist Notifications
+When GPUs become available:
+- You'll receive an email notification
+- Act quickly as inventory is first-come-first-served
+- Your waitlist position is preserved for a limited time
+
+### Managing Waitlist
+View and manage your waitlist entries:
+- See your position in the queue
+- Cancel entries you no longer need
+- Update requirements if needed
+
 ## Troubleshooting
 
 **Pod stuck in Pending**
 - Check if requested GPU type is available
 - Verify wallet has sufficient balance
 - Review resource limits
+- Check for any account restrictions
+
+**Insufficient Balance**
+- Top up your wallet before creating
+- The estimated cost is shown before creation
+- Consider reducing resources if budget is limited
 
 **Image pull failed**
 - Verify image name and tag
 - Check private registry credentials
 - Ensure image exists and is accessible
+
+**GPU Unavailable**
+- Join the waitlist for notification
+- Consider alternative GPU types
+- Check GPU Marketplace for baremetal options
 
 ## Next Steps
 

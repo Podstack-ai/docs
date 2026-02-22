@@ -51,13 +51,17 @@ The marketplace offers various NVIDIA GPUs:
 | B300 | 192GB | NVLink | Latest generation AI |
 | B200 | 192GB | NVLink | Large-scale training |
 | GB200 | 192GB | NVLink | Supercomputing |
+| GB300 | 192GB | NVLink | Next-gen supercomputing |
 | H200 | 141GB | NVLink | Memory-intensive models |
 | H100 | 80GB | NVLink | Production training |
 | A100 | 40/80GB | NVLink | General ML training |
 | L40S | 48GB | PCIe | Training & inference |
 | V100 | 16/32GB | NVLink | Cost-effective training |
+| RTX 5090 | 32GB | PCIe | Consumer-grade high perf |
+| RTX 4090 | 24GB | PCIe | Budget-friendly power |
+| RTX 3090 | 24GB | PCIe | Entry-level deep learning |
 
-Availability varies based on inventory and demand.
+Availability varies based on inventory and demand. Use filters to find currently available GPU types.
 
 ## Browsing the Marketplace
 
@@ -78,26 +82,52 @@ Each listing shows:
 
 ## Reservation Process
 
-### Step 1: Select an Instance
+### Step 1: Browse and Filter
 
-1. Find an available instance
-2. Review specifications and pricing
+1. Navigate to **GPU Marketplace**
+2. Filter available inventory:
+   - **GPU Type**: Select specific GPU models
+   - **GPU Count**: Number of GPUs needed
+   - **Search**: Find by name or configuration
+3. Sort by price, GPU count, or availability
+
+### Step 2: Select an Instance
+
+1. Review instance specifications:
+   - GPU configuration
+   - CPU cores and memory
+   - Storage capacity
+   - Network bandwidth
+2. Check pricing (hourly rate including GST)
 3. Click **Reserve**
 
-### Step 2: Confirm Reservation
+### Step 3: Configure Reservation
 
-1. Select your project
-2. Choose billing period
-3. Confirm the reservation
-4. Complete payment if required
+1. **Select Project**: Choose which project to bill
+2. **Operating System**: Select your preferred OS:
+   - Ubuntu 22.04 LTS (recommended)
+   - Ubuntu 20.04 LTS
+   - CentOS 8
+   - Debian 11
+   - Rocky Linux 8
+3. **SSH Key**: Select key for access
+4. **Billing Period**: Hourly or monthly commitment
+5. Review total cost
 
-### Step 3: Provisioning
+### Step 4: Complete Reservation
 
-After reservation:
-1. Status changes to **Provisioning**
-2. Instance is prepared (may take hours for baremetal)
+1. Confirm reservation details
+2. Payment is processed (deducted from wallet or charged)
+3. Status changes to **Provisioning**
+
+### Step 5: Provisioning
+
+After payment:
+1. Instance is prepared (may take 30 minutes to a few hours for baremetal)
+2. OS is installed and configured
 3. SSH credentials are provided when ready
 4. Status changes to **Active**
+5. Email notification sent when ready
 
 ## Managing Reservations
 

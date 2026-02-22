@@ -132,6 +132,17 @@ Benefits:
 - Well-tested
 - Works with older systems
 
+## Account Limits
+
+The number of SSH keys you can store depends on your account type:
+
+| Account Type | Max SSH Keys |
+|-------------|-------------|
+| Prepaid (unverified) | 1 |
+| Postpaid (KYC verified) | 20 |
+
+If you've reached your limit, an upgrade modal will prompt you to complete [KYC verification](/docs/billing/kyc/) to increase your limit.
+
 ## Managing Keys
 
 ### Viewing Key Details
@@ -139,14 +150,21 @@ Benefits:
 Click on a key to see:
 - Full public key
 - Fingerprint
-- Resources using this key
+- Resources using this key (which pods are using each key)
 - Creation and usage dates
+
+### Key Usage Tracking
+
+Podstack tracks which resources use each SSH key. Before deleting a key, check its usage:
+- View the list of pods and VMs using the key
+- Keys actively in use show a warning before deletion
 
 ### Deleting a Key
 
 1. Find the key in the list
 2. Click **Delete**
-3. Confirm deletion
+3. Review the usage warning (if key is in use)
+4. Confirm deletion
 
 **Warning**: Resources using this key will lose SSH access. Add a new key to those resources first.
 

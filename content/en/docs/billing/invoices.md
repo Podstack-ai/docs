@@ -82,21 +82,32 @@ Detailed breakdown of charges:
 
 ## Paying Invoices
 
-For pending invoices:
+For pending or overdue invoices:
 
-1. Find the invoice
+### Pay Single Invoice
+
+1. Find the invoice in the list
 2. Click **Pay Now**
-3. Review the amount
-4. Complete payment via Razorpay
-5. Status updates to Paid
+3. Review the invoice amount and details
+4. Select payment method
+5. Complete payment
+6. Status updates to Paid immediately
+
+### Pay Multiple Invoices
+
+1. Select multiple invoices using checkboxes
+2. Click **Pay Selected**
+3. Review total amount
+4. Complete single payment for all selected invoices
 
 ### Payment Options
 
-Same options as wallet top-up:
-- UPI
-- Credit/Debit Cards
-- Net Banking
-- Wallets
+All payment methods available for wallet top-up work for invoices:
+- **UPI**: Instant payment via UPI apps
+- **Credit/Debit Cards**: Visa, Mastercard, RuPay
+- **Net Banking**: Major Indian banks
+- **Digital Wallets**: Paytm, PhonePe, etc.
+- **PayPal**: For international payments
 
 ## Invoice Summary
 
@@ -106,17 +117,41 @@ The invoices page shows aggregate statistics:
 - **Total Pending**: Amount awaiting payment
 - **Total Overdue**: Past-due amounts
 
+## Generating Custom Invoices
+
+Create invoices for specific date ranges:
+
+### Generate Invoice
+
+1. Go to **Billing > Invoices**
+2. Click **Generate Invoice**
+3. Select the date range:
+   - Start date
+   - End date
+4. Review the included resources and costs
+5. Click **Generate**
+6. Invoice is created and available for download
+
+### Use Cases
+
+- Monthly accounting reports
+- Project-specific billing
+- Expense reimbursement documentation
+- Tax filing records
+
 ## Automatic Invoices
 
 Invoices are generated automatically:
 
 ### Prepaid Model
 - Transaction receipts for wallet top-ups
-- Usage summaries for accounting
+- Usage summaries for accounting periods
+- Can generate custom invoices for any date range
 
 ### Postpaid Model (if enabled)
 - Monthly invoices for resource usage
-- Due within specified payment terms
+- Due within specified payment terms (typically 15-30 days)
+- Late payment may result in service suspension
 
 ## GST and Taxes
 

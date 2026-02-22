@@ -69,6 +69,28 @@
     - title: NFS Volumes
       slug: nfs-volumes
 
+- title: MLOps
+  slug: mlops
+  pages:
+    - title: Experiment Tracking
+      slug: experiment-tracking
+    - title: Model Registry
+      slug: model-registry
+    - title: Schedules
+      slug: schedules
+    - title: Approvals
+      slug: approvals
+
+- title: Inference
+  slug: inference
+  pages:
+    - title: Model Catalog
+      slug: catalog
+    - title: API Keys
+      slug: api-keys
+    - title: Playground
+      slug: playground
+
 - title: Billing
   slug: billing
   pages:

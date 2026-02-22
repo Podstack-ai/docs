@@ -4,7 +4,7 @@ title: Templates
 
 # Launch Templates
 
-Templates allow you to save pod configurations for quick, repeatable deployments. Create a template once and deploy identical pods with a single click.
+Templates allow you to save pod and VM configurations for quick, repeatable deployments. Create a template once and deploy identical resources with a single click.
 
 ## Why Use Templates?
 
@@ -13,13 +13,47 @@ Templates allow you to save pod configurations for quick, repeatable deployments
 - **Sharing**: Team members can use the same configurations
 - **Best Practices**: Codify optimal settings
 
+## Template Types
+
+Podstack supports two types of templates:
+
+### Pod Templates
+Save container configurations including:
+- Docker image and registry settings
+- CPU, memory, and GPU allocation
+- Environment variables and ports
+- Volume mounts
+
+### VM Templates
+Save virtual machine configurations including:
+- Operating system and version
+- CPU, memory, and storage
+- GPU allocation
+- SSH key selection
+- Cloud-init scripts
+
+## Global Templates
+
+Browse pre-configured templates provided by Podstack:
+
+1. Go to **Templates**
+2. Click **Browse Global Templates**
+3. Filter by:
+   - Template type (Pod or VM)
+   - GPU type
+   - Use case (training, inference, development)
+4. Click **Use Template** to create from a global template
+
+Global templates are maintained and updated by Podstack.
+
 ## Creating a Template
 
 ### From Scratch
 
 1. Navigate to **Templates**
 2. Click **Create Template**
-3. Configure the template:
+3. Select template type (Pod or VM)
+4. Configure the template:
 
 **Basic Information**
 - **Name**: Descriptive template name
@@ -49,6 +83,41 @@ Create a template based on a running pod:
 4. Edit the configuration if needed
 5. Save the template
 
+### From Existing VM
+
+Create a template based on a VM configuration:
+
+1. Go to **Virtual Machines**
+2. Find the VM to template
+3. Click **Save as Template**
+4. Modify settings if needed
+5. Save the template
+
+## Creating VM Templates
+
+### VM Template Settings
+
+When creating a VM template:
+
+**Basic Configuration**
+- **Name**: Template identifier
+- **Description**: Purpose and use case
+- **Tags**: Labels for filtering
+
+**System Configuration**
+- **OS Image**: Operating system and version
+- **CPU**: Number of virtual CPUs
+- **Memory**: RAM allocation
+- **Storage**: Boot disk size
+
+**GPU Configuration**
+- **GPU Type**: GPU model (A100, H100, etc.)
+- **GPU Count**: Number of GPUs
+
+**Access Configuration**
+- **Default SSH Key**: Pre-selected SSH key
+- **Cloud-Init Script**: Initialization script
+
 ## Using Templates
 
 ### Deploy from Template
@@ -75,18 +144,38 @@ For templates with complete configurations:
 
 The template list shows:
 - Template name and description
+- Template type (Pod or VM)
 - Resource configuration (GPU, CPU, memory)
 - Tags
 - Creation date
+- Creator (you or Podstack for global templates)
+
+### Searching and Filtering
+
+Find templates quickly:
+- **Search**: Search by name or description
+- **Filter by Type**: Pod templates or VM templates
+- **Filter by GPU**: Specific GPU type requirements
+- **Filter by Tags**: Custom tags you've applied
 
 ### Editing Templates
 
-1. Find the template
-2. Click **Edit**
-3. Modify settings
-4. Save changes
+1. Find the template in your list
+2. Click **Edit** (only available for your own templates)
+3. Modify settings as needed
+4. Click **Save Changes**
 
-Changes don't affect pods already deployed from the template.
+**Note**:
+- Changes don't affect resources already deployed from the template
+- Global templates cannot be edited (use "Duplicate" to create your own version)
+
+### Duplicating Templates
+
+Create a copy of any template to customize:
+1. Find the template (yours or global)
+2. Click **Duplicate**
+3. Modify settings
+4. Save as a new template
 
 ### Deleting Templates
 
@@ -94,7 +183,7 @@ Changes don't affect pods already deployed from the template.
 2. Click **Delete**
 3. Confirm deletion
 
-Deleting a template doesn't affect pods created from it.
+**Note**: Deleting a template doesn't affect pods or VMs created from it.
 
 ## Template Settings
 
