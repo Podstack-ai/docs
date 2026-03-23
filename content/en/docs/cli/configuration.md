@@ -1,5 +1,6 @@
 ---
 title: Configuration
+weight: 30
 description: "Configure Podstack CLI settings. Customize defaults, output formats, and environment variables."
 keywords:
   - CLI configuration

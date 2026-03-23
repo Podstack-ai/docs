@@ -1,7 +1,8 @@
 ---
 title: Creating Pods
----
 
+weight: 10
+---
 # Creating Pods
 
 This guide walks through creating a new pod on Podstack with all available configuration options.

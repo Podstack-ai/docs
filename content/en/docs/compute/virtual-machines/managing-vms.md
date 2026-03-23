@@ -1,7 +1,8 @@
 ---
 title: Managing VMs
----
 
+weight: 20
+---
 # Managing Virtual Machines
 
 Learn how to monitor, control, and maintain your virtual machines.

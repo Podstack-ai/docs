@@ -1,5 +1,6 @@
 ---
 title: Storage
+weight: 90
 description: "Podstack CLI storage commands. Manage buckets and NFS volumes from the terminal."
 keywords:
   - CLI storage commands
@@ -15,6 +16,14 @@ Manage object storage and NFS volumes using CLI commands.
 ## Buckets
 
 ### Create Bucket
+
+Interactive mode:
+
+```bash
+podstack bucket create
+```
+
+The prompt flow lets you pick project, bucket name, visibility, quota, and versioning.
 
 ```bash
 # Private bucket
@@ -41,6 +50,14 @@ podstack bucket get my-bucket
 ```
 
 ### Upload Files
+
+Interactive mode:
+
+```bash
+podstack bucket upload
+```
+
+The CLI can prompt for project, bucket, local path, destination path, visibility, and upload options.
 
 ```bash
 # Single file
@@ -143,6 +160,14 @@ podstack bucket delete my-bucket --force
 
 ### Create Volume
 
+Interactive mode:
+
+```bash
+podstack volume create
+```
+
+The CLI prompts for project, volume name, quota, and billing period.
+
 ```bash
 podstack volume create \
   --name shared-data \
@@ -181,6 +206,14 @@ Mount: mount -t nfs nfs.podstack.ai:/exports/vol-123456 /mnt/data
 ```
 
 ### Resize Volume
+
+Interactive mode:
+
+```bash
+podstack volume resize
+```
+
+The CLI can prompt for project, target volume, new quota, and resize confirmation.
 
 ```bash
 podstack volume resize my-volume --quota 200
@@ -240,15 +273,12 @@ podstack pod create --name worker-2 --volume team-data:/shared
 ### Backup and Restore
 
 ```bash
-# Backup pod data to bucket
+# Backup pod data directly to bucket using pod credentials/tools
 podstack bucket create backups
-podstack pod exec my-pod -- tar czf /tmp/backup.tar.gz /workspace
-podstack pod cp my-pod:/tmp/backup.tar.gz ./backup.tar.gz
-podstack bucket upload backups ./backup.tar.gz backups/$(date +%Y%m%d).tar.gz
+podstack pod exec my-pod -- bash -c "tar czf /tmp/backup.tar.gz /workspace && aws s3 cp /tmp/backup.tar.gz s3://backups/temp.tar.gz"
 
-# Restore
-podstack bucket download backups backups/20240115.tar.gz ./restore.tar.gz
-podstack pod cp ./restore.tar.gz new-pod:/tmp/
+# Restore in a new pod (assuming aws-cli is installed)
+podstack pod exec new-pod -- aws s3 cp s3://backups/temp.tar.gz /tmp/restore.tar.gz
 podstack pod exec new-pod -- tar xzf /tmp/restore.tar.gz -C /
 ```
 

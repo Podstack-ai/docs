@@ -1,7 +1,8 @@
 ---
 title: Creating Your Account
----
 
+weight: 10
+---
 # Creating Your Account
 
 Podstack uses passwordless authentication with email-based OTP (One-Time Password) verification. This guide walks you through the signup and login process.

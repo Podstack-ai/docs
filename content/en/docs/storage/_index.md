@@ -1,5 +1,7 @@
 ---
 title: Storage
+
+weight: 40
 description: "Cloud storage for ML workloads - S3-compatible object storage and NFS volumes. Store training data, model checkpoints, and datasets with high-performance access."
 keywords:
   - cloud GPU storage
@@ -11,7 +13,6 @@ keywords:
   - AI cloud storage
   - persistent GPU storage
 ---
-
 # Storage
 
 Podstack provides two types of storage for your workloads: S3-compatible object storage for files and NFS volumes for persistent shared storage.

@@ -1,5 +1,7 @@
 ---
 title: Advanced Features
+
+weight: 70
 description: "Serverless GPU, AI Studio, launch templates. Pay for what you use, zero lock-in. Fine-tune LLMs, deploy models, run Jupyter notebooks with GPU."
 keywords:
   - serverless GPU cheap
@@ -17,7 +19,6 @@ keywords:
   - cheap model training
   - affordable deep learning
 ---
-
 # Advanced Features
 
 Podstack offers advanced capabilities for power users, including launch templates, serverless GPU notebooks, and AI Studio for model management.

@@ -1,5 +1,6 @@
 ---
 title: Authentication
+weight: 20
 description: "Authenticate Podstack CLI with your account. Login via browser, API token, or environment variables."
 keywords:
   - CLI authentication
@@ -16,16 +17,16 @@ Configure the Podstack CLI to access your account.
 
 ### Interactive Login (Recommended)
 
-Opens your browser for secure authentication:
+Prompts for your API token directly in the terminal:
 
 ```bash
 podstack auth login
 ```
 
 This will:
-1. Open your default browser
-2. Prompt you to log in to Podstack
-3. Automatically configure the CLI
+1. Show where to generate a token in the Podstack portal
+2. Prompt you to paste the token securely in your terminal
+3. Save credentials to your config (or keyring if enabled)
 
 ### API Token Login
 

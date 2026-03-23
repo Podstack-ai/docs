@@ -1,5 +1,6 @@
 ---
 title: Pods
+weight: 70
 description: "Podstack CLI pod commands. Create, manage, and connect to GPU containers from the terminal."
 keywords:
   - CLI pod commands
@@ -13,6 +14,14 @@ keywords:
 Manage GPU containers using CLI commands.
 
 ## Create Pod
+
+Interactive mode is supported:
+
+```bash
+podstack pod create
+```
+
+The wizard guides you through project selection, image/template, compute resources, GPU options, and billing period.
 
 ### Basic Creation
 
@@ -176,39 +185,6 @@ podstack pod exec my-pod -it -- /bin/bash
 podstack pod exec my-pod --timeout 3600 -- python long_training.py
 ```
 
-### Web Terminal
-
-Open browser-based terminal:
-
-```bash
-podstack pod terminal my-pod
-```
-
-## File Transfer
-
-### Upload
-
-```bash
-# Single file
-podstack pod cp ./train.py my-pod:/workspace/train.py
-
-# Directory
-podstack pod cp ./data/ my-pod:/workspace/data/
-
-# With progress
-podstack pod cp --progress ./large_file.tar my-pod:/workspace/
-```
-
-### Download
-
-```bash
-# Single file
-podstack pod cp my-pod:/workspace/model.pt ./model.pt
-
-# Directory
-podstack pod cp my-pod:/workspace/results/ ./results/
-```
-
 ## Logs
 
 ```bash
@@ -228,61 +204,27 @@ podstack pod logs my-pod --since 2024-01-15T10:00:00Z
 podstack pod logs my-pod --since 1h
 ```
 
-## Port Forwarding
+## Stats / Metrics
 
-Forward pod ports to localhost:
-
-```bash
-# Forward single port
-podstack pod port-forward my-pod 8888:8888
-
-# Forward multiple ports
-podstack pod port-forward my-pod 8888:8888 6006:6006
-
-# Background
-podstack pod port-forward my-pod 8888:8888 &
-```
-
-## Pod Events
-
-View pod events:
+Retrieve real-time resource utilization statistics for a pod:
 
 ```bash
-podstack pod events my-pod
+podstack pod stats my-pod
+
+# JSON format
+podstack pod stats my-pod -o json
 ```
 
-## Metrics
+## Scaling
+
+Scale the number of replicas dynamically:
 
 ```bash
-podstack pod metrics my-pod
-```
+# Scale to 3 replicas
+podstack pod scale my-pod 3
 
-Output:
-
-```
-GPU Utilization: 85%
-GPU Memory: 32.5/40.0 GB
-CPU Usage: 45%
-Memory Usage: 48.2/64.0 GB
-Disk Usage: 120.5/200.0 GB
-```
-
-## Templates
-
-### Save as Template
-
-```bash
-podstack pod save-template my-pod \
-  --name pytorch-a100-template \
-  --description "PyTorch training environment"
-```
-
-### Create from Template
-
-```bash
-podstack pod create \
-  --template pytorch-a100-template \
-  --name new-pod
+# Scale down to 1
+podstack pod scale my-pod 1
 ```
 
 ## Batch Operations
@@ -306,9 +248,7 @@ podstack pod list --status stopped --quiet | xargs -I {} podstack pod delete {} 
 ```bash
 # Create, train, cleanup
 podstack pod create --name train --image pytorch/pytorch:latest --gpu-type A100 --wait
-podstack pod cp ./train.py train:/workspace/
 podstack pod exec train -- python /workspace/train.py
-podstack pod cp train:/workspace/model.pt ./
 podstack pod delete train --force
 ```
 
@@ -329,6 +269,6 @@ podstack pod get jupyter-dev --output json | jq -r '.jupyter_url'
 
 ## Next Steps
 
-- [Virtual Machines](/docs/cli/virtual-machines/) - VM commands
-- [Storage](/docs/cli/storage/) - Storage commands
-- [Configuration](/docs/cli/configuration/) - CLI settings
+- [Virtual Machines](/docs/cli/virtual-machines/) - VM management commands
+- [Storage](/docs/cli/storage/) - Bucket and volume commands
+- [GPUs & Templates](/docs/cli/gpu-and-templates/) - Check compute availability

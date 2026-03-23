@@ -1,7 +1,8 @@
 ---
 title: Templates
----
 
+weight: 10
+---
 # Launch Templates
 
 Templates allow you to save pod configurations for quick, repeatable deployments. Create a template once and deploy identical pods with a single click.

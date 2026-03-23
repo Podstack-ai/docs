@@ -1,7 +1,8 @@
 ---
 title: KYC Verification
----
 
+weight: 30
+---
 # KYC Verification
 
 Know Your Customer (KYC) verification is required for certain billing features, particularly postpaid billing and higher usage limits.

@@ -1,5 +1,7 @@
 ---
 title: Virtual Machines
+
+weight: 20
 description: "GPU virtual machines on Podstack. Deploy Ubuntu, CentOS, Debian, Rocky Linux VMs with NVIDIA GPU passthrough, up to 128 vCPUs and 1TB RAM."
 keywords:
   - GPU virtual machine
@@ -13,7 +15,6 @@ keywords:
   - GPU passthrough
   - cloud computing GPU
 ---
-
 # Virtual Machines
 
 Virtual Machines (VMs) provide full operating system control with dedicated resources. Unlike containers, VMs run a complete OS and offer maximum flexibility.

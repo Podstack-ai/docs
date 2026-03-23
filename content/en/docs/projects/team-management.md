@@ -1,7 +1,8 @@
 ---
 title: Team Management
----
 
+weight: 20
+---
 # Team Management
 
 Collaborate with your team by inviting members to your projects. This guide covers invitations, roles, and permissions.

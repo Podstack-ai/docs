@@ -1,5 +1,7 @@
 ---
 title: Error Handling
+
+weight: 70
 description: "Handle errors and exceptions in Podstack Python SDK. Learn about error types, retry strategies, and best practices."
 keywords:
   - SDK error handling
@@ -7,7 +9,6 @@ keywords:
   - API error handling
   - retry strategies
 ---
-
 # Error Handling
 
 Handle errors gracefully when using the Podstack SDK.

@@ -1,5 +1,7 @@
 ---
 title: GPU Marketplace
+
+weight: 30
 description: "Cheapest baremetal GPU rental - H100, H200, A100, L40S, V100 with NVLink. Zero lock-in, pay per hour. Best prices for dedicated GPU servers."
 keywords:
   - cheapest baremetal GPU
@@ -28,7 +30,6 @@ keywords:
   - NeoCloud alternative
   - Paperspace alternative
 ---
-
 # GPU Marketplace
 
 The GPU Marketplace provides access to dedicated baremetal GPU instances for maximum performance and resource isolation.

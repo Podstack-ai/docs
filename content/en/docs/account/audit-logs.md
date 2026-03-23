@@ -1,7 +1,8 @@
 ---
 title: Audit Logs
----
 
+weight: 40
+---
 # Audit Logs
 
 Audit logs track all activities in your account, providing visibility into who did what and when.

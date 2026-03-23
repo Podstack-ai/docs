@@ -1,7 +1,8 @@
 ---
 title: SSH Keys
----
 
+weight: 20
+---
 # SSH Keys
 
 SSH keys provide secure access to your pods and virtual machines. Manage your keys from the SSH Keys page.

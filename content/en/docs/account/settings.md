@@ -1,7 +1,8 @@
 ---
 title: Settings
----
 
+weight: 10
+---
 # Account Settings
 
 Configure your account preferences and manage your profile.

@@ -1,5 +1,7 @@
 ---
 title: Virtual Machines
+
+weight: 50
 description: "Manage GPU virtual machines with Podstack Python SDK. Create, configure, and control VMs programmatically."
 keywords:
   - SDK virtual machines
@@ -7,7 +9,6 @@ keywords:
   - GPU VM management
   - cloud VM SDK
 ---
-
 # Virtual Machines
 
 Manage GPU virtual machines using the Podstack SDK.

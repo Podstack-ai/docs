@@ -1,7 +1,8 @@
 ---
 title: Connecting to Pods
----
 
+weight: 30
+---
 # Connecting to Pods
 
 Podstack provides multiple ways to access your running pods: SSH, web terminal, and Jupyter notebooks.

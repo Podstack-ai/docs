@@ -1,7 +1,8 @@
 ---
 title: Creating Projects
----
 
+weight: 10
+---
 # Creating Projects
 
 This guide explains how to create and manage projects on Podstack.

@@ -1,7 +1,8 @@
 ---
 title: Dashboard Overview
----
 
+weight: 20
+---
 # Dashboard Overview
 
 The Podstack dashboard is your central hub for managing cloud resources. This guide explains the main interface components and navigation.

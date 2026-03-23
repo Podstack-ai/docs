@@ -1,7 +1,8 @@
 ---
 title: Object Storage
----
 
+weight: 10
+---
 # Object Storage
 
 Podstack provides S3-compatible object storage for storing files, datasets, model artifacts, and more.

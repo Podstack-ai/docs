@@ -1,7 +1,8 @@
 ---
 title: Quick Start Guide
----
 
+weight: 30
+---
 # Quick Start Guide
 
 Deploy your first GPU container on Podstack in just a few minutes. This guide covers the essential steps from account setup to running workload.

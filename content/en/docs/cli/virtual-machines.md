@@ -1,5 +1,6 @@
 ---
 title: Virtual Machines
+weight: 80
 description: "Podstack CLI VM commands. Create and manage GPU virtual machines from the terminal."
 keywords:
   - CLI VM commands
@@ -14,6 +15,14 @@ Manage GPU virtual machines using CLI commands.
 
 ## Create VM
 
+Interactive mode is supported:
+
+```bash
+podstack vm create
+```
+
+The wizard guides you through project, region, use-case, OS image, resource sizing, GPU options, authentication method, and billing estimate.
+
 ### Basic Creation
 
 ```bash
@@ -22,7 +31,7 @@ podstack vm create \
   --os ubuntu-22.04 \
   --cpu 4 \
   --memory 16 \
-  --disk 100
+  --disk 100 
 ```
 
 ### With GPU
@@ -157,12 +166,12 @@ podstack vm ssh my-vm --user ubuntu
 podstack vm ssh my-vm -- nvidia-smi
 ```
 
-### Console
+### Console / Terminal
 
-Open VNC console in browser:
+Get terminal access information for your VM (useful for out-of-band debugging):
 
 ```bash
-podstack vm console my-vm
+podstack vm terminal my-vm
 ```
 
 ## File Transfer
@@ -220,16 +229,6 @@ podstack vm snapshot delete my-vm --snapshot before-upgrade
 ```
 
 ## Networking
-
-### Public IP
-
-```bash
-# Allocate
-podstack vm ip allocate my-vm
-
-# Release
-podstack vm ip release my-vm
-```
 
 ### Firewall
 

@@ -1,5 +1,7 @@
 ---
 title: Compute
+
+weight: 30
 description: "Cheapest GPU compute - containers, VMs, and baremetal. Pay per minute, zero lock-in. NVIDIA A100, H100, V100, L40S, T4 GPUs for ML training and inference."
 keywords:
   - cheapest GPU compute
@@ -29,7 +31,6 @@ keywords:
   - instant GPU access
   - on-demand GPU compute
 ---
-
 # Compute Resources
 
 Podstack offers multiple ways to deploy compute workloads, from containerized applications to full virtual machines and dedicated GPU instances.

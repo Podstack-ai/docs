@@ -1,7 +1,8 @@
 ---
 title: NFS Volumes
----
 
+weight: 20
+---
 # NFS Volumes
 
 NFS (Network File System) volumes provide persistent, mountable storage that can be shared across multiple pods and VMs.

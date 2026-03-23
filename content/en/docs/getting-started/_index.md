@@ -1,5 +1,7 @@
 ---
 title: Getting Started
+
+weight: 10
 description: "Get started with the cheapest GPU cloud. Create account, deploy GPU containers in minutes. Zero lock-in, pay per minute. Perfect for students and beginners."
 keywords:
   - cheapest GPU cloud getting started
@@ -18,7 +20,6 @@ keywords:
   - RunPod alternative tutorial
   - Vast.ai alternative setup
 ---
-
 # Getting Started with Podstack
 
 This section helps you get up and running with Podstack quickly. Learn how to create your account, navigate the dashboard, and deploy your first workload.

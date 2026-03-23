@@ -1,7 +1,8 @@
 ---
 title: AI Studio
----
 
+weight: 30
+---
 # AI Studio
 
 AI Studio provides end-to-end model management capabilities: browse model catalogues, fine-tune models on your data, evaluate performance, and deploy for inference.

@@ -1,5 +1,7 @@
 ---
 title: Account
+
+weight: 60
 description: "Manage your Podstack account - SSH keys, API tokens, security settings, and audit logs for GPU cloud access and automation."
 keywords:
   - GPU cloud account
@@ -8,7 +10,6 @@ keywords:
   - cloud security settings
   - GPU access credentials
 ---
-
 # Account Settings
 
 Manage your Podstack account settings, security credentials, and access tokens.

@@ -126,16 +126,22 @@
       slug: installation
     - title: Authentication
       slug: authentication
+    - title: Configuration
+      slug: configuration
     - title: Quick Start
       slug: quickstart
+    - title: Projects
+      slug: projects
+    - title: GPUs & Templates
+      slug: gpu-and-templates
     - title: Pods
       slug: pods
     - title: Virtual Machines
       slug: virtual-machines
     - title: Storage
       slug: storage
-    - title: Configuration
-      slug: configuration
+    - title: Wallet & Pricing
+      slug: wallet-and-pricing
 
 - title: Customer Support
   slug: support

@@ -1,7 +1,8 @@
 ---
 title: Serverless GPU
----
 
+weight: 20
+---
 # Serverless GPU
 
 Serverless GPU provides instant Jupyter notebook environments with GPU access. Start coding immediately without configuring pods or infrastructure.

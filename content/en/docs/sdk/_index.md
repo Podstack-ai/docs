@@ -1,5 +1,7 @@
 ---
 title: SDK
+
+weight: 80
 description: "Podstack Python SDK for programmatic GPU cloud management. Create pods, VMs, manage storage, and automate ML infrastructure deployments via API."
 keywords:
   - GPU cloud SDK
@@ -11,7 +13,6 @@ keywords:
   - ML platform API
   - AI infrastructure SDK
 ---
-
 # SDK
 
 Integrate Podstack into your applications using our official Python SDK.

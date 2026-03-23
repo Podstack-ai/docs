@@ -1,7 +1,8 @@
 ---
 title: API Tokens
----
 
+weight: 30
+---
 # API Tokens
 
 API tokens enable programmatic access to Podstack services without interactive login. Use tokens for scripts, CI/CD pipelines, and integrations.

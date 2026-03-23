@@ -1,5 +1,7 @@
 ---
 title: CLI
+
+weight: 90
 description: "Podstack CLI for terminal-based GPU cloud management. Deploy containers, manage VMs, upload data, and control GPU resources from the command line."
 keywords:
   - GPU cloud CLI
@@ -10,7 +12,6 @@ keywords:
   - DevOps GPU tools
   - ML automation CLI
 ---
-
 # CLI
 
 Manage Podstack resources from your terminal using the official command-line interface.
@@ -48,6 +49,32 @@ podstack pod delete training-job
 - **CI/CD Ready** - Token-based auth for automation
 - **Fast & Lightweight** - Single binary, no dependencies
 
+## Interactive CLI Features
+
+Many commands support interactive mode. If you omit required arguments, the CLI can guide you with step-by-step prompts and selection menus.
+
+```bash
+# Prompts for API token input
+podstack auth login
+
+# Interactive project creation wizard
+podstack project create
+
+# Interactive pod creation wizard
+podstack pod create
+
+# Interactive VM creation wizard
+podstack vm create
+
+# Interactive bucket creation/upload
+podstack bucket create
+podstack bucket upload
+
+# Interactive volume workflows
+podstack volume create
+podstack volume resize
+```
+
 ## Installation
 
 ```bash
@@ -66,25 +93,31 @@ winget install podstack.cli
 | Guide | Description |
 |-------|-------------|
 | [Installation](/docs/cli/installation/) | Install on your platform |
-| [Authentication](/docs/cli/authentication/) | Login and configure access |
+| [Authentication](/docs/cli/authentication/) | Login and configure CLI access |
+| [Configuration](/docs/cli/configuration/) | CLI settings and environment defaults |
 | [Quick Start](/docs/cli/quickstart/) | Get started in minutes |
+| [Projects](/docs/cli/projects/) | Project management commands |
+| [GPUs & Templates](/docs/cli/gpu-and-templates/) | Compute templates and GPU availability |
 | [Pods](/docs/cli/pods/) | Container management commands |
-| [Virtual Machines](/docs/cli/virtual-machines/) | VM commands |
+| [Virtual Machines](/docs/cli/virtual-machines/) | VM management commands |
 | [Storage](/docs/cli/storage/) | Bucket and volume commands |
-| [Configuration](/docs/cli/configuration/) | CLI settings and defaults |
+| [Wallet & Pricing](/docs/cli/wallet-and-pricing/) | Balance, expenditure, and resource pricing |
 
 ## Common Commands
 
 | Command | Description |
 |---------|-------------|
 | `podstack auth login` | Authenticate with Podstack |
+| `podstack project use NAME` | Set active default project |
 | `podstack pod list` | List all pods |
 | `podstack pod create` | Create a new pod |
 | `podstack pod ssh NAME` | SSH into a pod |
 | `podstack pod delete NAME` | Delete a pod |
 | `podstack vm list` | List all VMs |
 | `podstack bucket list` | List storage buckets |
+| `podstack gpu availability` | Check global GPU inventory |
 | `podstack wallet balance` | Check wallet balance |
+| `podstack pricing` | View real-time compute pricing |
 
 ## Support
 

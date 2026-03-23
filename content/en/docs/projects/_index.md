@@ -1,5 +1,7 @@
 ---
 title: Projects
+
+weight: 20
 description: "Organize GPU cloud resources with projects. Team collaboration, role-based access control, and resource isolation for ML teams and organizations."
 keywords:
   - GPU cloud team management
@@ -9,7 +11,6 @@ keywords:
   - multi-tenant GPU
   - AI team platform
 ---
-
 # Projects
 
 Projects are the primary way to organize resources on Podstack. They provide isolation, access control, and a way to collaborate with team members.

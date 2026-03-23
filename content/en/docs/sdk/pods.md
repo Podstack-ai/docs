@@ -1,5 +1,7 @@
 ---
 title: Pods
+
+weight: 40
 description: "Manage GPU containers with Podstack Python SDK. Create, start, stop, and monitor pods programmatically."
 keywords:
   - SDK pods
@@ -7,7 +9,6 @@ keywords:
   - programmatic pod management
   - container API
 ---
-
 # Pods
 
 Manage GPU containers (pods) using the Podstack SDK.

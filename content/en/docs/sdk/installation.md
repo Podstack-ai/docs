@@ -1,5 +1,7 @@
 ---
 title: Installation
+
+weight: 10
 description: "Install the Podstack Python SDK for programmatic GPU cloud management. Supports Python 3.8+ with pip installation."
 keywords:
   - Podstack SDK install
@@ -7,7 +9,6 @@ keywords:
   - pip install podstack
   - SDK setup
 ---
-
 # Installation
 
 Install the Podstack Python SDK to programmatically manage your GPU cloud resources.

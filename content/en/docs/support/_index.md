@@ -1,5 +1,7 @@
 ---
 title: Support
+
+weight: 100
 description: "Podstack GPU cloud support - troubleshooting guides, documentation, and help resources for GPU containers, VMs, storage, and billing issues."
 keywords:
   - GPU cloud support
@@ -7,7 +9,6 @@ keywords:
   - cloud computing help
   - ML infrastructure support
 ---
-
 # Support
 
 Get help with Podstack through our support resources and troubleshooting guides.

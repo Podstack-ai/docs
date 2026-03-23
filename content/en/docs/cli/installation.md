@@ -1,5 +1,6 @@
 ---
 title: Installation
+weight: 10
 description: "Install Podstack CLI on macOS, Linux, and Windows. Manage GPU cloud resources from your terminal."
 keywords:
   - Podstack CLI install
@@ -168,6 +169,14 @@ winget uninstall podstack.cli
 ```
 
 ### Manual Removal
+
+If you installed from source or via script, you can use the built-in uninstall command:
+
+```bash
+podstack uninstall
+```
+
+Alternatively, you can manually remove the binary and configuration:
 
 ```bash
 # Remove binary

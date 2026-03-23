@@ -1,5 +1,7 @@
 ---
 title: Authentication
+
+weight: 20
 description: "Authenticate with Podstack SDK using API tokens. Supports environment variables, direct configuration, and config files."
 keywords:
   - Podstack API token
@@ -7,7 +9,6 @@ keywords:
   - API credentials
   - secure authentication
 ---
-
 # Authentication
 
 The Podstack SDK requires an API token for authentication. This guide covers all authentication methods.

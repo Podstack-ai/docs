@@ -1,5 +1,6 @@
 ---
 title: Quick Start
+weight: 40
 description: "Get started with Podstack CLI. Create and manage GPU pods from your terminal in minutes."
 keywords:
   - CLI quickstart
@@ -79,20 +80,19 @@ podstack pod exec my-first-pod -- nvidia-smi
 
 ## Step 6: Run Your Code
 
-Upload and run a script:
+Execute your training script remotely:
 
 ```bash
-# Upload
-podstack pod cp ./train.py my-first-pod:/workspace/
-
 # Run
 podstack pod exec my-first-pod -- python /workspace/train.py
 ```
 
-## Step 7: Download Results
+## Step 7: View Logs
+
+Monitor the pod logs:
 
 ```bash
-podstack pod cp my-first-pod:/workspace/model.pt ./model.pt
+podstack pod logs my-first-pod --follow
 ```
 
 ## Step 8: Stop and Cleanup
@@ -123,18 +123,13 @@ podstack pod create \
   --gpu-type A100 \
   --wait
 
-# Upload code
-echo "Uploading code..."
-podstack pod cp ./src/ training-job:/workspace/src/
-podstack pod cp ./data/ training-job:/workspace/data/
-
 # Run training
 echo "Running training..."
 podstack pod exec training-job -- python /workspace/src/train.py
 
-# Download results
-echo "Downloading results..."
-podstack pod cp training-job:/workspace/output/ ./results/
+# Retrieve stats
+echo "Checking stats..."
+podstack pod stats training-job
 
 # Cleanup
 echo "Cleaning up..."
@@ -150,14 +145,13 @@ echo "Done!"
 | List pods | `podstack pod list` |
 | Create pod | `podstack pod create --name NAME --image IMAGE` |
 | Get pod info | `podstack pod get NAME` |
+| Get pod stats| `podstack pod stats NAME` |
 | SSH to pod | `podstack pod ssh NAME` |
 | Run command | `podstack pod exec NAME -- COMMAND` |
 | View logs | `podstack pod logs NAME` |
 | Stop pod | `podstack pod stop NAME` |
 | Start pod | `podstack pod start NAME` |
 | Delete pod | `podstack pod delete NAME` |
-| Upload file | `podstack pod cp LOCAL POD:REMOTE` |
-| Download file | `podstack pod cp POD:REMOTE LOCAL` |
 
 ## Tips
 

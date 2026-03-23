@@ -1,7 +1,8 @@
 ---
 title: Troubleshooting
----
 
+weight: 10
+---
 # Troubleshooting
 
 Solutions to common issues on Podstack.

@@ -1,5 +1,7 @@
 ---
 title: Billing
+
+weight: 50
 description: "Cheapest GPU cloud pricing - pay per minute, zero lock-in, no commitment. Transparent pricing for A100, H100, V100, L40S GPUs. Perfect for students and startups."
 keywords:
   - cheapest GPU pricing
@@ -24,7 +26,6 @@ keywords:
   - low cost ML training
   - affordable AI compute
 ---
-
 # Billing & Payments
 
 Podstack uses a prepaid wallet system for billing. Add funds to your wallet and resources are charged against your balance in real-time.

@@ -1,5 +1,7 @@
 ---
 title: Storage
+
+weight: 60
 description: "Manage cloud storage with Podstack Python SDK. Work with S3-compatible buckets and NFS volumes programmatically."
 keywords:
   - SDK storage
@@ -7,7 +9,6 @@ keywords:
   - S3 compatible SDK
   - NFS volumes API
 ---
-
 # Storage
 
 Manage object storage (buckets) and NFS volumes using the Podstack SDK.

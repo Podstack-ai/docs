@@ -1,7 +1,8 @@
 ---
 title: Managing Pods
----
 
+weight: 20
+---
 # Managing Pods
 
 Learn how to monitor, control, and manage your running pods.

@@ -1,5 +1,7 @@
 ---
 title: Quick Start
+
+weight: 30
 description: "Get started with Podstack Python SDK. Learn to create pods, manage VMs, and handle storage in minutes."
 keywords:
   - Podstack quickstart
@@ -7,7 +9,6 @@ keywords:
   - Python GPU example
   - first pod SDK
 ---
-
 # Quick Start
 
 Get up and running with the Podstack SDK in minutes.

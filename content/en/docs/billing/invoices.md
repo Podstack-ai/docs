@@ -1,7 +1,8 @@
 ---
 title: Invoices
----
 
+weight: 20
+---
 # Invoices
 
 View, download, and manage your billing invoices for accounting and record-keeping.

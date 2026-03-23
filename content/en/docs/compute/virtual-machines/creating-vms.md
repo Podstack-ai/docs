@@ -1,7 +1,8 @@
 ---
 title: Creating VMs
----
 
+weight: 10
+---
 # Creating Virtual Machines
 
 This guide explains how to create and configure a virtual machine on Podstack.

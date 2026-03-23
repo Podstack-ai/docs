@@ -1,7 +1,8 @@
 ---
 title: Wallet
----
 
+weight: 10
+---
 # Wallet Management
 
 Your wallet is the central billing account for all Podstack resources. Manage your balance, add funds, and track spending.
