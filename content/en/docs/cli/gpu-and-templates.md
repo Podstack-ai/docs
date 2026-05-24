@@ -33,13 +33,13 @@ H100       2.0         10.0    80.0%    80.00 GB (Yes)
 
 ## View Global Templates
 
-List all available project, pod, or VM templates that you can base your resources on.
+List all available project or pod templates that you can base your resources on.
 
 ```bash
 # List all templates
 podstack templates
 
-# Filter by resource type (e.g. pods or vms)
+# Filter by resource type
 podstack templates --type pod
 
 # Output as JSON

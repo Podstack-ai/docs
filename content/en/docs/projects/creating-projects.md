@@ -39,7 +39,7 @@ The current project context is shown in the header. To switch projects:
 
 To delete a project:
 
-1. Ensure all resources (pods, VMs, storage) in the project are deleted
+1. Ensure all resources (pods, storage) in the project are deleted
 2. Go to **Project Settings**
 3. Scroll to the danger zone
 4. Click **Delete Project**
@@ -51,6 +51,21 @@ To delete a project:
 
 New accounts have a default project created automatically. You can rename it or create additional projects as needed.
 
+## Billing Ownership
+
+Each project has a billing owner who is charged for all resource usage within the project. By default, the project creator is the billing owner.
+
+### Transferring Billing
+
+To transfer billing responsibility to another project member:
+1. Go to **Project Settings**
+2. Navigate to the **Billing** section
+3. Click **Transfer Billing**
+4. Select the new billing owner from the member list
+5. Confirm the transfer
+
+The new billing owner must be an active member of the project.
+
 ## Project-Scoped Resources
 
 When you create resources, they belong to the currently selected project:
@@ -58,7 +73,6 @@ When you create resources, they belong to the currently selected project:
 | Resource | Project-Scoped |
 |----------|---------------|
 | Pods | Yes |
-| Virtual Machines | Yes |
 | NFS Volumes | Yes |
 | Object Storage Buckets | Yes |
 | Templates | Yes |

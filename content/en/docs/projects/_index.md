@@ -20,7 +20,6 @@ Projects are the primary way to organize resources on Podstack. They provide iso
 A project is a logical container that groups related resources together:
 
 - **Pods** (containers)
-- **Virtual Machines**
 - **Storage buckets and volumes**
 - **Templates**
 - **Team members and permissions**

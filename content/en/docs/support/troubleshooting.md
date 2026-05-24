@@ -107,52 +107,6 @@ ssh -i ~/.ssh/your_key root@<pod-address>
 3. Restart the pod
 4. Contact support if GPU was allocated but not visible
 
-## VM Issues
-
-### VM Won't Start
-
-**Problem**: VM stays in Stopped or fails to start
-
-**Solutions**:
-1. Check wallet balance
-2. Verify no resource conflicts
-3. Try stopping then starting again
-4. Contact support with VM ID
-
-### Cannot SSH to VM
-
-**Problem**: SSH connection fails
-
-**Checklist**:
-1. VM must be in **Running** state
-2. Note the correct public IP
-3. Use correct SSH key
-4. Port 22 must be accessible
-
-**Debug**:
-```bash
-# Test connectivity
-ping <vm-ip>
-
-# Verbose SSH
-ssh -v root@<vm-ip>
-```
-
-### VM Slow Performance
-
-**Problem**: VM is unresponsive or slow
-
-**Check**:
-1. Resource utilization (CPU, memory)
-2. Disk space availability
-3. Network bandwidth usage
-4. GPU memory (if applicable)
-
-**Solutions**:
-1. Stop unnecessary processes
-2. Increase resource allocation
-3. Check for runaway processes
-
 ## Storage Issues
 
 ### Bucket Creation Failed

@@ -269,6 +269,6 @@ podstack pod get jupyter-dev --output json | jq -r '.jupyter_url'
 
 ## Next Steps
 
-- [Virtual Machines](/docs/cli/virtual-machines/) - VM management commands
 - [Storage](/docs/cli/storage/) - Bucket and volume commands
 - [GPUs & Templates](/docs/cli/gpu-and-templates/) - Check compute availability
+- [Configuration](/docs/cli/configuration/) - CLI settings

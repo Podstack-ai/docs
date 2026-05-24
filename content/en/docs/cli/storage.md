@@ -285,5 +285,4 @@ podstack pod exec new-pod -- tar xzf /tmp/restore.tar.gz -C /
 ## Next Steps
 
 - [Pods](/docs/cli/pods/) - Pod commands
-- [Virtual Machines](/docs/cli/virtual-machines/) - VM commands
 - [Configuration](/docs/cli/configuration/) - CLI settings

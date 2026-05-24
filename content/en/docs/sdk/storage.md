@@ -312,5 +312,4 @@ client.buckets.copy(
 ## Next Steps
 
 - [Pods](/docs/sdk/pods/) - Container management
-- [Virtual Machines](/docs/sdk/virtual-machines/) - VM operations
 - [Error Handling](/docs/sdk/error-handling/) - Handle exceptions

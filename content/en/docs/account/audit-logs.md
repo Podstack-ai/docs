@@ -29,9 +29,9 @@ Each entry shows:
 | Create | New resource created |
 | Update | Resource modified |
 | Delete | Resource removed |
-| Start | Pod/VM started |
-| Stop | Pod/VM stopped |
-| Restart | Pod/VM restarted |
+| Start | Pod started |
+| Stop | Pod stopped |
+| Restart | Pod restarted |
 
 ### Account Actions
 
@@ -68,7 +68,6 @@ Filter to see specific actions:
 
 Filter by resource:
 - Pods
-- Virtual Machines
 - Storage
 - Projects
 - SSH Keys
@@ -169,10 +168,24 @@ Older logs are automatically archived.
 
 ## Real-Time Monitoring
 
-For active monitoring:
-- Logs update automatically
-- New entries appear at top
-- Refresh to see latest
+Audit logs support real-time streaming via WebSocket:
+
+### Live Updates
+- New log entries appear instantly without refreshing
+- Logs stream as actions happen across your project
+- Visual indicator shows when streaming is active
+
+### Enabling Real-Time Mode
+1. Open Audit Logs page
+2. Click **Enable Live Updates** or toggle the streaming switch
+3. New entries appear automatically at the top
+4. Streaming continues until you navigate away or disable it
+
+### Use Cases
+- Monitor team activity in real-time
+- Watch for specific actions during testing
+- Track deployment progress
+- Security monitoring during sensitive operations
 
 ## Best Practices
 

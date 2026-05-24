@@ -45,7 +45,6 @@ Podstack provides several ways to run your workloads:
 | Resource Type | Best For |
 |--------------|----------|
 | **Pods** | Containerized applications, ML training, Jupyter notebooks |
-| **Virtual Machines** | Full OS control, custom software stacks |
 | **Baremetal GPU** | Dedicated GPU instances for maximum performance |
 | **Serverless GPU** | Quick Jupyter notebook sessions |
 

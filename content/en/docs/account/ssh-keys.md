@@ -5,7 +5,7 @@ weight: 20
 ---
 # SSH Keys
 
-SSH keys provide secure access to your pods and virtual machines. Manage your keys from the SSH Keys page.
+SSH keys provide secure access to your pods. Manage your keys from the SSH Keys page.
 
 ## Why SSH Keys?
 
@@ -82,7 +82,7 @@ ssh-add ~/.ssh/podstack_key
 
 ## Setting a Default Key
 
-The default key is automatically selected when creating pods/VMs:
+The default key is automatically selected when creating pods:
 
 1. Find the key in the list
 2. Click **Set as Default**
@@ -92,7 +92,7 @@ The default key is automatically selected when creating pods/VMs:
 
 ### When Creating Resources
 
-1. During pod/VM creation
+1. During pod creation
 2. Select an SSH key from the dropdown
 3. Key is automatically configured in the resource
 
@@ -133,6 +133,17 @@ Benefits:
 - Well-tested
 - Works with older systems
 
+## Account Limits
+
+The number of SSH keys you can store depends on your account type:
+
+| Account Type | Max SSH Keys |
+|-------------|-------------|
+| Prepaid (unverified) | 1 |
+| Postpaid (KYC verified) | 20 |
+
+If you've reached your limit, an upgrade modal will prompt you to complete [KYC verification](/docs/billing/kyc/) to increase your limit.
+
 ## Managing Keys
 
 ### Viewing Key Details
@@ -140,14 +151,21 @@ Benefits:
 Click on a key to see:
 - Full public key
 - Fingerprint
-- Resources using this key
+- Resources using this key (which pods are using each key)
 - Creation and usage dates
+
+### Key Usage Tracking
+
+Podstack tracks which resources use each SSH key. Before deleting a key, check its usage:
+- View the list of pods using the key
+- Keys actively in use show a warning before deletion
 
 ### Deleting a Key
 
 1. Find the key in the list
 2. Click **Delete**
-3. Confirm deletion
+3. Review the usage warning (if key is in use)
+4. Confirm deletion
 
 **Warning**: Resources using this key will lose SSH access. Add a new key to those resources first.
 

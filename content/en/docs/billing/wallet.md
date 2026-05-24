@@ -12,7 +12,7 @@ Your wallet is the central billing account for all Podstack resources. Manage yo
 Navigate to **Billing > Wallet** to see:
 
 ### Balance
-Your current available funds in INR.
+Your current available funds displayed in your preferred currency (INR or USD). Toggle between currencies using the currency switch.
 
 ### Run Rate
 Current spending projections:
@@ -23,9 +23,22 @@ Current spending projections:
 ### Expenditure Breakdown
 Spending by resource type:
 - Pods/Containers
-- Virtual Machines
 - NFS Storage
 - Object Storage
+
+## Account Types
+
+Podstack supports two billing models:
+
+### Prepaid (Default)
+- Add funds to your wallet before using resources
+- Resources deduct from wallet balance in real-time
+- No invoices required - pay as you go
+
+### Postpaid (Enterprise)
+- Use resources and pay via monthly invoices
+- Requires KYC verification and approval
+- Auto-debit can be configured for automatic payments
 
 ## Adding Funds
 
@@ -33,25 +46,46 @@ Spending by resource type:
 
 1. Go to **Billing > Wallet**
 2. Click **Top Up**
-3. Enter the amount (minimum varies)
-4. Click **Proceed to Payment**
-5. Complete payment via Razorpay
+3. Enter the amount (minimum ₹100)
+4. Select your payment method
+5. Complete the payment
 6. Funds appear immediately after successful payment
 
 ### Payment Methods
 
-Razorpay supports:
-- **UPI**: Instant payment via UPI apps
-- **Cards**: Credit and debit cards
-- **Net Banking**: Most Indian banks
-- **Wallets**: Paytm, PhonePe, etc.
+**Razorpay (India)**
+- **UPI**: Instant payment via UPI apps (GPay, PhonePe, Paytm)
+- **Cards**: Credit and debit cards (Visa, Mastercard, RuPay)
+- **Net Banking**: Most Indian banks supported
+- **Wallets**: Paytm, PhonePe, Mobikwik, etc.
+
+**PayPal (International)**
+- Available for international users
+- Supports credit/debit cards via PayPal
+- PayPal balance payments
+- Automatic currency conversion (USD to INR)
+
+**Cryptocurrency (via Binance Pay)**
+- **USDT (TRC-20)**: Tether on TRON network
+- **USDC (ERC-20/Polygon)**: USD Coin
+- **Other supported tokens**: Check wallet page for current options
+- Powered by Binance Pay for secure crypto transactions
+- Crypto payments converted to INR/USD at current market rates
+- Order status can be queried in real-time
 
 ### Saved Payment Methods
 
-Save cards for faster future payments:
-1. Complete a payment
-2. Choose to save the card
-3. Use saved cards for subsequent top-ups
+Manage your payment methods:
+1. Go to **Wallet > Payment Methods**
+2. View all saved cards and methods
+3. Set a default payment method
+4. Delete unused payment methods
+
+**Adding a Payment Method:**
+1. Complete any payment and choose to save
+2. Or go to Payment Methods and click **Add**
+3. Enter card details securely
+4. Card is saved for future use
 
 ## Applying Coupons
 
@@ -134,9 +168,13 @@ Receive emails when:
 
 When wallet balance reaches zero:
 
-1. **New resources**: Cannot create new pods, VMs, or storage
+1. **New resources**: Cannot create new pods or storage
 2. **Running resources**: May be suspended after grace period
 3. **Action required**: Top up to restore service
+
+### Force-Recharge Modal
+
+When the wallet goes negative (e.g. after a renewal charge fails), a **force-recharge modal** blocks further portal actions until the balance is restored. Top up to dismiss the modal.
 
 ### Grace Period
 
@@ -169,14 +207,83 @@ Configure notifications when spending reaches thresholds:
 - Review weekly spending trends
 - Export transactions for analysis
 
+## Billing Model
+
+### Anniversary-Based Monthly Cycles
+
+Monthly subscriptions (bucket plans, NFS quotas, postpaid invoices) renew on the **anniversary** of the resource's creation date — not on the first of the calendar month. A bucket created on the 15th renews on the 15th of every subsequent month.
+
+### Quota-Based NFS Billing
+
+NFS volumes are billed on **provisioned quota**, not actual usage. If you provision a 500 GB volume and only use 50 GB, you still pay for 500 GB. Right-size your quota — expansion is online; shrinking requires support.
+
+### Billing Owner per Project
+
+Every project has a **billing owner** who is charged for the project's compute, storage, and managed services — regardless of which member created the resource. By default the project creator is the billing owner. Project members can use resources without being billed personally.
+
+To transfer billing ownership, see [Project Settings](/docs/projects/creating-projects/#billing-ownership).
+
+### No Pro-Rata Refunds
+
+Committed billing periods are **not refunded pro-rata** when you delete a resource mid-cycle. If a bucket plan or NFS quota has already been charged for the month, you keep access for the rest of the month but no portion of the charge is returned. Plan your provisioning around this — prefer right-sizing at creation over short-lived overcommitment.
+
+### Postpaid Upgrade (Admin-Only)
+
+Switching an account from **prepaid** to **postpaid** is now an admin-controlled operation. To request a postpaid upgrade:
+
+1. Complete [KYC verification](/docs/billing/kyc/)
+2. Contact support with your account email and expected monthly spend
+3. An admin reviews and enables postpaid
+
+Self-service postpaid upgrade is no longer available from the portal.
+
 ## Refunds
 
-Refunds may be processed for:
-- Failed provisioning
-- Service issues
-- Cancelled reservations (before provisioning)
+### Eligibility
 
-Refunds appear as credits in your wallet.
+Refunds may be available for:
+- Failed resource provisioning
+- Service issues or outages
+- Cancelled reservations (before provisioning starts)
+- Billing errors
+
+**Not eligible**: pro-rata refunds for committed billing periods on bucket plans, NFS quotas, or postpaid subscriptions — see "No Pro-Rata Refunds" above.
+
+### Requesting a Refund
+
+1. Go to **Billing > Wallet**
+2. Click **Request Refund**
+3. Check your refund eligibility
+4. Select the transactions for refund
+5. Choose refund reason from the list
+6. Submit the request
+
+### Refund Methods
+
+Choose how to receive your refund:
+- **Wallet Credit**: Instant credit to your Podstack wallet
+- **Original Payment Method**: Refund to the card/UPI used
+- **Bank Transfer**: Direct bank deposit (requires bank details)
+- **PayPal**: For payments made via PayPal
+- **Cryptocurrency**: For crypto payments (same token/network)
+
+### Refund Timeline
+
+| Method | Processing Time |
+|--------|-----------------|
+| Wallet Credit | Instant |
+| UPI | 1-3 business days |
+| Credit/Debit Card | 5-7 business days |
+| Bank Transfer | 3-5 business days |
+| PayPal | 3-5 business days |
+| Cryptocurrency | 1-2 business days |
+
+### Viewing Refund History
+
+Track all your refunds:
+1. Go to Wallet
+2. Click **Refund History**
+3. View status, amount, and method for each refund
 
 ## Best Practices
 

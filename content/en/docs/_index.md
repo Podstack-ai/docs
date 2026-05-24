@@ -1,6 +1,6 @@
 ---
 title: Documentation
-description: "Podstack - Cheapest GPU Cloud Platform. Deploy GPU containers and VMs with zero lock-in, pay per minute pricing. NVIDIA A100, H100, V100 GPUs for students, startups, and enterprises."
+description: "Podstack - Cheapest GPU Cloud Platform. Deploy GPU containers with zero lock-in, pay per minute pricing. NVIDIA A100, H100, V100 GPUs for students, startups, and enterprises."
 keywords:
   - cheapest GPU cloud
   - cheap GPU rental
@@ -48,7 +48,7 @@ Podstack is a GPU cloud platform that provides on-demand access to high-performa
 ### Platform Highlights
 
 - **GPU Access** - NVIDIA A100, H100, V100, L40S, and more
-- **Flexible Compute** - Containers (Pods) and Virtual Machines
+- **Flexible Compute** - Containers (Pods) and dedicated baremetal GPUs
 - **S3-Compatible Storage** - Object storage with public/private buckets
 - **NFS Volumes** - Persistent shared storage for your workloads
 - **Team Collaboration** - Projects with role-based access control
@@ -69,7 +69,7 @@ New to Podstack? Follow these steps:
 |---------|-------------|
 | [Getting Started](/docs/getting-started/) | Account setup and platform orientation |
 | [Projects](/docs/projects/) | Project management and team collaboration |
-| [Compute](/docs/compute/) | Pods, VMs, and GPU marketplace |
+| [Compute](/docs/compute/) | Pods and GPU marketplace |
 | [Storage](/docs/storage/) | Object storage and NFS volumes |
 | [Billing](/docs/billing/) | Wallet, invoices, and payments |
 | [Account](/docs/account/) | Settings, SSH keys, and API tokens |

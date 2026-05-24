@@ -14,6 +14,27 @@ Templates allow you to save pod configurations for quick, repeatable deployments
 - **Sharing**: Team members can use the same configurations
 - **Best Practices**: Codify optimal settings
 
+## Pod Templates
+
+Save container configurations including:
+- Docker image and registry settings
+- CPU, memory, and GPU allocation
+- Environment variables and ports
+- Volume mounts
+
+## Global Templates
+
+Browse pre-configured templates provided by Podstack:
+
+1. Go to **Templates**
+2. Click **Browse Global Templates**
+3. Filter by:
+   - GPU type
+   - Use case (training, inference, development)
+4. Click **Use Template** to create from a global template
+
+Global templates are maintained and updated by Podstack.
+
 ## Creating a Template
 
 ### From Scratch
@@ -79,15 +100,33 @@ The template list shows:
 - Resource configuration (GPU, CPU, memory)
 - Tags
 - Creation date
+- Creator (you or Podstack for global templates)
+
+### Searching and Filtering
+
+Find templates quickly:
+- **Search**: Search by name or description
+- **Filter by GPU**: Specific GPU type requirements
+- **Filter by Tags**: Custom tags you've applied
 
 ### Editing Templates
 
-1. Find the template
-2. Click **Edit**
-3. Modify settings
-4. Save changes
+1. Find the template in your list
+2. Click **Edit** (only available for your own templates)
+3. Modify settings as needed
+4. Click **Save Changes**
 
-Changes don't affect pods already deployed from the template.
+**Note**:
+- Changes don't affect resources already deployed from the template
+- Global templates cannot be edited (use "Duplicate" to create your own version)
+
+### Duplicating Templates
+
+Create a copy of any template to customize:
+1. Find the template (yours or global)
+2. Click **Duplicate**
+3. Modify settings
+4. Save as a new template
 
 ### Deleting Templates
 
@@ -95,7 +134,7 @@ Changes don't affect pods already deployed from the template.
 2. Click **Delete**
 3. Confirm deletion
 
-Deleting a template doesn't affect pods created from it.
+**Note**: Deleting a template doesn't affect pods created from it.
 
 ## Template Settings
 

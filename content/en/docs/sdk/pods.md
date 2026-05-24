@@ -300,6 +300,5 @@ for event in events:
 
 ## Next Steps
 
-- [Virtual Machines](/docs/sdk/virtual-machines/) - VM management
 - [Storage](/docs/sdk/storage/) - Buckets and volumes
 - [Error Handling](/docs/sdk/error-handling/) - Handle exceptions

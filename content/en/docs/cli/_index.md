@@ -2,7 +2,7 @@
 title: CLI
 
 weight: 90
-description: "Podstack CLI for terminal-based GPU cloud management. Deploy containers, manage VMs, upload data, and control GPU resources from the command line."
+description: "Podstack CLI for terminal-based GPU cloud management. Deploy containers, upload data, and control GPU resources from the command line."
 keywords:
   - GPU cloud CLI
   - cloud GPU command line
@@ -43,7 +43,7 @@ podstack pod delete training-job
 ## Features
 
 - **Cross-Platform** - Works on macOS, Linux, and Windows
-- **Full Coverage** - Manage pods, VMs, storage, projects
+- **Full Coverage** - Manage pods, storage, projects
 - **Multiple Outputs** - Table, JSON, YAML formats
 - **Shell Completion** - Tab completion for Bash, Zsh, Fish
 - **CI/CD Ready** - Token-based auth for automation
@@ -62,9 +62,6 @@ podstack project create
 
 # Interactive pod creation wizard
 podstack pod create
-
-# Interactive VM creation wizard
-podstack vm create
 
 # Interactive bucket creation/upload
 podstack bucket create
@@ -99,7 +96,6 @@ winget install podstack.cli
 | [Projects](/docs/cli/projects/) | Project management commands |
 | [GPUs & Templates](/docs/cli/gpu-and-templates/) | Compute templates and GPU availability |
 | [Pods](/docs/cli/pods/) | Container management commands |
-| [Virtual Machines](/docs/cli/virtual-machines/) | VM management commands |
 | [Storage](/docs/cli/storage/) | Bucket and volume commands |
 | [Wallet & Pricing](/docs/cli/wallet-and-pricing/) | Balance, expenditure, and resource pricing |
 
@@ -113,7 +109,6 @@ winget install podstack.cli
 | `podstack pod create` | Create a new pod |
 | `podstack pod ssh NAME` | SSH into a pod |
 | `podstack pod delete NAME` | Delete a pod |
-| `podstack vm list` | List all VMs |
 | `podstack bucket list` | List storage buckets |
 | `podstack gpu availability` | Check global GPU inventory |
 | `podstack wallet balance` | Check wallet balance |
