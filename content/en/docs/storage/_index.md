@@ -1,83 +1,58 @@
 ---
 title: Storage
-description: "Cloud storage for ML workloads - S3-compatible object storage and NFS volumes. Store training data, model checkpoints, and datasets with high-performance access."
+description: "Cloud storage for ML workloads - S3-compatible object storage, file storage, and NFS volumes. Store training data, model checkpoints, and datasets with high-performance access."
 keywords:
   - cloud GPU storage
   - ML dataset storage
   - S3 compatible storage
   - NFS cloud storage
+  - object storage
+  - file storage
   - model checkpoint storage
   - training data storage
-  - AI cloud storage
-  - persistent GPU storage
 ---
 
 # Storage
 
-Podstack provides two types of storage for your workloads: S3-compatible object storage for files and NFS volumes for persistent shared storage.
+Podstack offers three storage products tuned for different access patterns:
 
-## Storage Options
+| Product | Best for | Access |
+|---------|----------|--------|
+| **Object Storage** | Datasets, model artifacts, public sharing, backups | S3 API / HTTPS |
+| **File Storage** | Working data shared across pods (MinIO/TrueNAS-backed) | S3 API |
+| **NFS Volumes** | Filesystem mounts inside pods (checkpoints, working dirs) | NFS mount |
 
-### Object Storage (Buckets)
+## Object Storage
 
-S3-compatible storage for files and objects:
-- Store training data, models, logs
-- Public or private access control
-- Versioning support
-- Upload via web UI or API
-
-**Best for**: Large datasets, model artifacts, static files, backups
+S3-compatible buckets with per-bucket plan subscriptions, IAM users/roles, public sharing via presigned URLs, and versioning. Provisioned in a backing storage region per project.
 
 [Learn about Object Storage](/docs/storage/object-storage/)
 
-### NFS Volumes
+## File Storage
 
-Network-attached persistent storage:
-- Mount across multiple pods/VMs simultaneously
-- Persistent data that survives resource deletion
-- Configurable storage quotas
+Project-scoped S3-compatible storage backed by self-hosted MinIO/TrueNAS. Use when you want S3 semantics but on cluster-local infrastructure (lower egress, no third-party plan). Gated by the `REACT_APP_ENABLE_FILE_STORAGE` build flag.
 
-**Best for**: Shared datasets, working directories, checkpoints
+[Learn about File Storage](/docs/storage/file-storage/)
+
+## NFS Volumes
+
+Network-attached filesystem volumes that mount directly inside pods. Multiple pods can mount the same volume simultaneously. Billed on provisioned quota, not actual usage.
 
 [Learn about NFS Volumes](/docs/storage/nfs-volumes/)
 
 ## Comparison
 
-| Feature | Object Storage | NFS Volumes |
-|---------|---------------|-------------|
-| Access Pattern | HTTP/S3 API | Filesystem mount |
-| Sharing | URL/presigned links | Direct mount |
-| Performance | High throughput | Low latency |
-| Use Case | Large files, archives | Working data |
-| Public Access | Supported | No |
-| Mount in Pod/VM | Via S3 clients | Native NFS |
-
-## Storage Billing
-
-Both storage types are billed hourly:
-- **Object Storage**: Based on actual data stored
-- **NFS Volumes**: Based on provisioned quota
-
-View storage costs in your [Wallet](/docs/billing/wallet/) expenditure breakdown.
-
-## Best Practices
-
-### Data Organization
-- Use buckets for input data and final outputs
-- Use NFS for active working directories
-- Organize files with clear naming conventions
-
-### Cost Management
-- Delete unused files and buckets
-- Right-size NFS volume quotas
-- Use lifecycle policies for old data
-
-### Performance
-- Use NFS for frequently accessed data
-- Use object storage for archival
-- Consider data locality when deploying resources
+| Feature | Object Storage | File Storage | NFS Volumes |
+|---------|---------------|--------------|-------------|
+| Access | HTTP / S3 API | S3 API | Filesystem mount |
+| Public sharing | Yes (presigned + public buckets) | No | No |
+| Multi-pod access | Yes (via clients) | Yes (via clients) | Yes (native mount) |
+| Billing basis | Subscription plan | Subscription plan | Provisioned quota |
+| Versioning | Yes | Yes | No |
+| Best for | Datasets, artifacts | Working datasets | Checkpoints, working dirs |
 
 ## Next Steps
 
 - [Set up Object Storage](/docs/storage/object-storage/)
+- [Set up File Storage](/docs/storage/file-storage/)
 - [Create NFS Volumes](/docs/storage/nfs-volumes/)

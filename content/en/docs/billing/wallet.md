@@ -22,7 +22,6 @@ Current spending projections:
 ### Expenditure Breakdown
 Spending by resource type:
 - Pods/Containers
-- Virtual Machines
 - NFS Storage
 - Object Storage
 
@@ -168,9 +167,13 @@ Receive emails when:
 
 When wallet balance reaches zero:
 
-1. **New resources**: Cannot create new pods, VMs, or storage
+1. **New resources**: Cannot create new pods or storage
 2. **Running resources**: May be suspended after grace period
 3. **Action required**: Top up to restore service
+
+### Force-Recharge Modal
+
+When the wallet goes negative (e.g. after a renewal charge fails), a **force-recharge modal** blocks further portal actions until the balance is restored. Top up to dismiss the modal.
 
 ### Grace Period
 
@@ -203,6 +206,36 @@ Configure notifications when spending reaches thresholds:
 - Review weekly spending trends
 - Export transactions for analysis
 
+## Billing Model
+
+### Anniversary-Based Monthly Cycles
+
+Monthly subscriptions (bucket plans, NFS quotas, postpaid invoices) renew on the **anniversary** of the resource's creation date — not on the first of the calendar month. A bucket created on the 15th renews on the 15th of every subsequent month.
+
+### Quota-Based NFS Billing
+
+NFS volumes are billed on **provisioned quota**, not actual usage. If you provision a 500 GB volume and only use 50 GB, you still pay for 500 GB. Right-size your quota — expansion is online; shrinking requires support.
+
+### Billing Owner per Project
+
+Every project has a **billing owner** who is charged for the project's compute, storage, and managed services — regardless of which member created the resource. By default the project creator is the billing owner. Project members can use resources without being billed personally.
+
+To transfer billing ownership, see [Project Settings](/docs/projects/creating-projects/#billing-ownership).
+
+### No Pro-Rata Refunds
+
+Committed billing periods are **not refunded pro-rata** when you delete a resource mid-cycle. If a bucket plan or NFS quota has already been charged for the month, you keep access for the rest of the month but no portion of the charge is returned. Plan your provisioning around this — prefer right-sizing at creation over short-lived overcommitment.
+
+### Postpaid Upgrade (Admin-Only)
+
+Switching an account from **prepaid** to **postpaid** is now an admin-controlled operation. To request a postpaid upgrade:
+
+1. Complete [KYC verification](/docs/billing/kyc/)
+2. Contact support with your account email and expected monthly spend
+3. An admin reviews and enables postpaid
+
+Self-service postpaid upgrade is no longer available from the portal.
+
 ## Refunds
 
 ### Eligibility
@@ -212,6 +245,8 @@ Refunds may be available for:
 - Service issues or outages
 - Cancelled reservations (before provisioning starts)
 - Billing errors
+
+**Not eligible**: pro-rata refunds for committed billing periods on bucket plans, NFS quotas, or postpaid subscriptions — see "No Pro-Rata Refunds" above.
 
 ### Requesting a Refund
 

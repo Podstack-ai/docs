@@ -290,5 +290,4 @@ ssh-keygen -R ssh-<subdomain>.cloud.podstack.ai
 
 ## Next Steps
 
-- Learn about [Virtual Machines](/docs/compute/virtual-machines/) for full OS control
 - Explore [Storage options](/docs/storage/) for persistent data

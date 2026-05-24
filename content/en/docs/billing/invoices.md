@@ -55,7 +55,7 @@ Click on an invoice to view:
 
 ### Line Items
 Detailed breakdown of charges:
-- Resource type (pod, VM, storage)
+- Resource type (pod, storage)
 - Resource name
 - Usage period
 - Quantity and rate

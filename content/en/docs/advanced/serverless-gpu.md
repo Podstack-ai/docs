@@ -402,6 +402,74 @@ Compared to full pods:
 
 For advanced needs, use [Pods](/docs/compute/pods/).
 
+## AI Assistant
+
+Each notebook has an **AI Assistant** side panel (sparkle icon) that can read your dataset context, suggest cells, and edit cells in place.
+
+### Conversational Authoring
+
+Type a prompt into the AI panel and the assistant generates one or more cells in response. Generated cells appear inline with an **approve / reject** affordance so nothing executes without your consent.
+
+### Dataset-Aware Generation
+
+If you've attached datasets to the notebook (via the Resource Picker), the AI panel surfaces a **dataset chip** showing what data the AI can see, plus a **Generate from dataset** jumpstart button for empty notebooks. The jumpstart produces a multi-cell scaffold — load → inspect → visualize → summarize — instead of a single dump cell.
+
+### Per-Cell AI Actions
+
+Each cell has two AI buttons in its header:
+
+- **Fix with AI** — diagnose and rewrite a cell that errored. Reads the traceback, proposes a fix, and shows a diff before applying.
+- **Optimize with AI** — refactor a working cell for a specific goal. Pick the optimization target (speed, memory, readability, GPU efficiency) from the popover.
+
+### Auto Mode
+
+When enabled, the AI can chain multiple cell edits in response to a single prompt without per-edit approval — useful for "scaffold an entire pipeline" prompts. A status indicator shows when auto mode is active.
+
+## Pod Templates for Cells
+
+Reactive notebooks let each cell run on a different pod spec. **Pod Templates** (`/notebooks/pod-templates`) are reusable specs — image, CPU/memory/GPU, env vars, startup command — that you can attach to specific cells.
+
+Use cases:
+
+- Run a single GPU-heavy training cell on an H100 while keeping the rest of the notebook on CPU
+- Pin a cell to a custom image with non-standard dependencies
+- Share a template across teammates so everyone runs the cell with the same spec
+
+Create, edit, and delete templates from the Pod Templates page. Attach a template to a cell via the cell's resource picker.
+
+## Image-as-Code Builds
+
+Notebooks support **image-as-code** via `podstack.Image.build()` — declare your dependencies in Python, and the platform builds a Docker image for you to use as a cell runner.
+
+### Build History
+
+The **Image Builds** page (`/notebooks/image-builds`) shows every build submitted from this project. The list auto-refreshes every 3 seconds while builds are in flight.
+
+Each row shows:
+
+- Status (queued, building, success, failed)
+- Base image
+- A content hash of the Dockerfile (so identical builds dedupe)
+- Queued timestamp and duration
+- The pushed image URI
+
+### Using a Built Image
+
+Once a build succeeds, copy its URI and pass it to `@podstack.cell(runner_image=...)` to run that cell on the custom image. The same image can be reused across cells and notebooks.
+
+## Real-Time Collaboration
+
+When `REACT_APP_ENABLE_COLLABORATION=true`, notebooks support multi-user editing via Y.js:
+
+- A **Presence Bar** at the top shows everyone currently in the notebook.
+- Cell content syncs character-by-character; cursor positions are broadcast.
+- The platform seeds the shared Y.Text from the server, so opening a notebook never produces duplicated cell content.
+- Self-echo is skipped in `cell_updated` broadcasts so your cursor stays stable while typing.
+
+## Deploy from Notebook
+
+The notebook toolbar has a **Deploy** button that packages the notebook into a serving artifact and sends it through the deployment flow. Use this when a notebook has matured into a callable endpoint.
+
 ## Best Practices
 
 ### Save Work Frequently

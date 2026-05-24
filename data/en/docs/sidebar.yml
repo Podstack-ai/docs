@@ -51,13 +51,6 @@
           slug: managing-pods
         - title: Connecting to Pods
           slug: connecting-to-pods
-    - title: Virtual Machines
-      slug: virtual-machines
-      pages:
-        - title: Creating VMs
-          slug: creating-vms
-        - title: Managing VMs
-          slug: managing-vms
     - title: GPU Marketplace
       slug: gpu-marketplace
 
@@ -66,8 +59,13 @@
   pages:
     - title: Object Storage
       slug: object-storage
+    - title: File Storage
+      slug: file-storage
     - title: NFS Volumes
       slug: nfs-volumes
+
+- title: Sandboxes
+  slug: sandboxes
 
 - title: MLOps
   slug: mlops
@@ -76,6 +74,12 @@
       slug: experiment-tracking
     - title: Model Registry
       slug: model-registry
+    - title: Pipelines
+      slug: pipelines
+    - title: Model Monitoring
+      slug: model-monitoring
+    - title: Drift Detection
+      slug: drift-detection
     - title: Schedules
       slug: schedules
     - title: Approvals
@@ -90,6 +94,8 @@
       slug: api-keys
     - title: Playground
       slug: playground
+    - title: Serverless Inference
+      slug: serverless
 
 - title: Billing
   slug: billing
@@ -134,8 +140,6 @@
       slug: quickstart
     - title: Pods
       slug: pods
-    - title: Virtual Machines
-      slug: virtual-machines
     - title: Storage
       slug: storage
     - title: Error Handling
@@ -152,8 +156,6 @@
       slug: quickstart
     - title: Pods
       slug: pods
-    - title: Virtual Machines
-      slug: virtual-machines
     - title: Storage
       slug: storage
     - title: Configuration

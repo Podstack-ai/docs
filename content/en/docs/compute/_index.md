@@ -1,10 +1,9 @@
 ---
 title: Compute
-description: "Cheapest GPU compute - containers, VMs, and baremetal. Pay per minute, zero lock-in. NVIDIA A100, H100, V100, L40S, T4 GPUs for ML training and inference."
+description: "Cheapest GPU compute - containers and baremetal. Pay per minute, zero lock-in. NVIDIA A100, H100, V100, L40S, T4 GPUs for ML training and inference."
 keywords:
   - cheapest GPU compute
   - cheap GPU containers
-  - affordable GPU VM
   - budget GPU server
   - pay per minute GPU
   - pay for what you use
@@ -32,7 +31,7 @@ keywords:
 
 # Compute Resources
 
-Podstack offers multiple ways to deploy compute workloads, from containerized applications to full virtual machines and dedicated GPU instances.
+Podstack offers multiple ways to deploy compute workloads, from containerized applications to dedicated GPU instances.
 
 ## Compute Options
 
@@ -49,18 +48,6 @@ Pods are containerized workloads running on Kubernetes. They offer:
 
 [Learn about Pods](/docs/compute/pods/)
 
-### Virtual Machines
-
-VMs provide full operating system control with:
-- Choice of Linux distributions (Ubuntu, CentOS, Debian, Rocky)
-- Configurable CPU, memory, and storage
-- GPU passthrough support
-- Persistent disk storage
-
-**Best for**: Custom software stacks, legacy applications, full OS requirements
-
-[Learn about VMs](/docs/compute/virtual-machines/)
-
 ### GPU Marketplace (Baremetal)
 
 Reserve dedicated GPU instances from the marketplace:
@@ -74,13 +61,13 @@ Reserve dedicated GPU instances from the marketplace:
 
 ## Comparing Options
 
-| Feature | Pods | VMs | Baremetal |
-|---------|------|-----|-----------|
-| Deployment Speed | Fast (seconds) | Medium (minutes) | Varies |
-| GPU Sharing | Fractional supported | Whole GPUs | Dedicated |
-| OS Customization | Container image | Full OS | Full OS |
-| Billing Granularity | Per-second | Per-hour | Per-hour |
-| Best For | Dev/ML | Custom stacks | Production training |
+| Feature | Pods | Baremetal |
+|---------|------|-----------|
+| Deployment Speed | Fast (seconds) | Varies |
+| GPU Sharing | Fractional supported | Dedicated |
+| OS Customization | Container image | Full OS |
+| Billing Granularity | Per-second | Per-hour |
+| Best For | Dev/ML | Production training |
 
 ## GPU Types Available
 
@@ -100,5 +87,4 @@ Availability varies by region and demand.
 ## Next Steps
 
 - [Create a Pod](/docs/compute/pods/creating-pods/) for quick container deployment
-- [Create a VM](/docs/compute/virtual-machines/creating-vms/) for full OS control
 - [Browse GPU Marketplace](/docs/compute/gpu-marketplace/) for dedicated instances

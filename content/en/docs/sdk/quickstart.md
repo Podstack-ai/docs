@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-description: "Get started with Podstack Python SDK. Learn to create pods, manage VMs, and handle storage in minutes."
+description: "Get started with Podstack Python SDK. Learn to create pods and handle storage in minutes."
 keywords:
   - Podstack quickstart
   - SDK tutorial
@@ -216,5 +216,4 @@ except PodstackError as e:
 ## Next Steps
 
 - [Pods](/docs/sdk/pods/) - Advanced pod management
-- [Virtual Machines](/docs/sdk/virtual-machines/) - VM operations
 - [Storage](/docs/sdk/storage/) - Buckets and volumes

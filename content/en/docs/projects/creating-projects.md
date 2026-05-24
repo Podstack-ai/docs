@@ -38,7 +38,7 @@ The current project context is shown in the header. To switch projects:
 
 To delete a project:
 
-1. Ensure all resources (pods, VMs, storage) in the project are deleted
+1. Ensure all resources (pods, storage) in the project are deleted
 2. Go to **Project Settings**
 3. Scroll to the danger zone
 4. Click **Delete Project**
@@ -72,7 +72,6 @@ When you create resources, they belong to the currently selected project:
 | Resource | Project-Scoped |
 |----------|---------------|
 | Pods | Yes |
-| Virtual Machines | Yes |
 | NFS Volumes | Yes |
 | Object Storage Buckets | Yes |
 | Templates | Yes |

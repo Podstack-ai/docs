@@ -10,17 +10,22 @@ The Podstack Inference service provides an OpenAI-compatible API for running lar
 
 Inference includes:
 
-- **Model Catalog** - Browse and deploy inference-ready models
-- **Playground** - Test models interactively in the browser
-- **API Keys** - Manage authentication for API access
-- **OpenAI-Compatible API** - Drop-in replacement for OpenAI endpoints
-- **Usage Tracking** - Monitor request counts and costs
+- **Model Catalog** — browse and deploy inference-ready models
+- **Playground** — test models interactively in the browser
+- **API Keys** — manage authentication for API access
+- **Serverless Inference** — pay-per-token cold-start GPU inference (chat, code, embedding, video)
+- **OpenAI-Compatible API** — drop-in replacement for OpenAI endpoints
+- **Streaming and system prompts** — first-class support for streamed responses and per-request system prompts
+- **Chain-of-thought rendering** — `<think>` blocks separated from user-visible answers
+- **Usage Analytics** — request counts, token usage, latency, and cost breakdowns
+- **GPU Dashboard** — fleet-wide health and economics for serverless models
 
 ## Getting Started
 
 1. Browse the [Model Catalog](/docs/inference/catalog/) to find a model
 2. Generate an [API Key](/docs/inference/api-keys/) for authentication
 3. Test in the [Playground](/docs/inference/playground/) or call the API directly
+4. For pay-per-token cold-start workloads, see [Serverless Inference](/docs/inference/serverless/)
 
 ## OpenAI-Compatible API
 
@@ -98,8 +103,48 @@ Inference requires:
 
 Contact support if Inference isn't visible in your portal.
 
+## Streaming
+
+Set `stream: true` to receive tokens as they're generated:
+
+```python
+stream = client.chat.completions.create(
+    model="meta-llama/Llama-3.1-8B-Instruct",
+    messages=[{"role": "user", "content": "Hello"}],
+    stream=True,
+)
+for chunk in stream:
+    print(chunk.choices[0].delta.content or "", end="")
+```
+
+The playground also streams responses by default and exposes a **Stop** button to cancel in-flight generation.
+
+## System Prompts and Chat History
+
+The chat playground supports a persistent **system prompt** per session and stores chat history in a sidebar so you can revisit prior conversations. Use the **JSON** tab to see the exact request payload — useful when porting a prompt into your own code.
+
+## Chain-of-Thought Display
+
+Models that emit `<think>...</think>` reasoning blocks have those segments rendered separately from the final answer. Only the cleaned answer is saved to chat history; the think block is shown collapsed for inspection.
+
+## Usage Analytics
+
+Per-API-key analytics show:
+
+- Request count and token totals (prompt + completion)
+- Average latency and time-to-first-token (TTFT)
+- Per-model cost breakdown
+- Hourly time series
+
+Use these to detect runaway clients, attribute spend across teams, and pick the right model for your latency budget.
+
+## Cost Recommendations
+
+The platform suggests cheaper or faster model alternatives based on your recent traffic shape. Recommendations appear on the **Cost Recommendations** view inside the Inference section.
+
 ## Next Steps
 
 - [Browse the Model Catalog](/docs/inference/catalog/)
 - [Generate API Keys](/docs/inference/api-keys/)
 - [Test in the Playground](/docs/inference/playground/)
+- [Serverless Inference](/docs/inference/serverless/) for cold-start pay-per-token workloads

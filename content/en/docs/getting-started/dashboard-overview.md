@@ -21,7 +21,6 @@ When you log in, the dashboard displays real-time information about your account
 
 The run rate shows your real-time hourly cost calculated from all active resources:
 - **Pods** - GPU and compute costs for running containers
-- **Virtual Machines** - VM hourly charges
 - **NFS Storage** - Volume storage costs
 - **Object Storage** - Bucket storage and transfer costs
 
@@ -39,7 +38,6 @@ Track your spending across different time periods:
 
 Quick view of your active resources:
 - Active Pods/Containers
-- Running VMs
 - NFS Storage Volumes
 - Object Storage Buckets
 
@@ -47,7 +45,7 @@ Quick view of your active resources:
 
 Interactive chart showing:
 - Daily spending over the past 7 days
-- Breakdown by resource type (Containers, VMs, NFS, Object Storage)
+- Breakdown by resource type (Containers, NFS, Object Storage)
 - Hover for detailed daily costs
 - Percentage change vs. previous period
 
@@ -55,7 +53,6 @@ Interactive chart showing:
 
 Monthly spending split by category:
 - **Containers/Pods** - GPU and compute costs
-- **Virtual Machines** - VM hourly charges
 - **NFS Storage** - Volume storage costs
 - **Object Storage** - Bucket storage and transfer costs
 
@@ -93,7 +90,6 @@ The sidebar provides access to all platform features:
 
 ### Compute
 - **Pods** - Container deployments with GPU support
-- **Virtual Machines** - Full VMs with various OS options
 - **GPU Marketplace** - Browse and reserve baremetal GPU instances
 
 ### Storage
@@ -111,7 +107,7 @@ The sidebar provides access to all platform features:
 
 ### Management
 - **Projects** - Create and manage projects
-- **Templates** - Saved pod and VM configurations
+- **Templates** - Saved pod configurations
 - **SSH Keys** - Manage SSH keys for access
 
 ### Billing

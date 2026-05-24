@@ -25,7 +25,7 @@ Your account provides access to:
 ## In This Section
 
 - **[Settings](/docs/account/settings/)** - Profile and preferences
-- **[SSH Keys](/docs/account/ssh-keys/)** - Manage SSH keys for pod/VM access
+- **[SSH Keys](/docs/account/ssh-keys/)** - Manage SSH keys for pod access
 - **[API Tokens](/docs/account/api-tokens/)** - Generate tokens for API access
 - **[Audit Logs](/docs/account/audit-logs/)** - View account activity
 

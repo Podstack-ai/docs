@@ -34,13 +34,13 @@ Podstack uses a prepaid wallet system for billing. Add funds to your wallet and 
 ### Prepaid Model
 
 1. **Add funds** to your wallet via Razorpay
-2. **Deploy resources** (pods, VMs, storage)
+2. **Deploy resources** (pods, storage)
 3. **Charges deducted** automatically as you use resources
 4. **Top up** when balance runs low
 
 ### Billing Cycle
 
-- **Compute resources** (pods, VMs): Billed per second while running
+- **Compute resources** (pods): Billed per second while running
 - **Storage**: Billed hourly based on provisioned/used capacity
 - **GPU instances**: Billed per hour
 
@@ -77,7 +77,6 @@ Projected spending based on current resources:
 ### Expenditure Breakdown
 Costs split by resource type:
 - Pods/Containers
-- Virtual Machines
 - NFS Storage
 - Object Storage (Buckets)
 
@@ -85,7 +84,7 @@ Costs split by resource type:
 
 ### Stop Unused Resources
 - **Stop pods** when not actively using them
-- **Stop VMs** to pause CPU/GPU billing (storage charges continue)
+- Storage charges continue while data is provisioned
 
 ### Right-Size Resources
 - Don't over-allocate GPUs or memory
@@ -94,7 +93,6 @@ Costs split by resource type:
 
 ### Use Appropriate Resource Type
 - Use pods for short-term, bursty workloads
-- Use VMs for long-running services
 - Use baremetal for dedicated, high-performance needs
 
 ### Clean Up Storage

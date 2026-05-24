@@ -1,6 +1,6 @@
 ---
 title: SDK
-description: "Podstack Python SDK for programmatic GPU cloud management. Create pods, VMs, manage storage, and automate ML infrastructure deployments via API."
+description: "Podstack Python SDK for programmatic GPU cloud management. Create pods, manage storage, and automate ML infrastructure deployments via API."
 keywords:
   - GPU cloud SDK
   - Python GPU API
@@ -49,7 +49,7 @@ client.pods.delete(pod.id)
 ## Features
 
 - **Simple API** - Intuitive Python interface
-- **Full Coverage** - Manage pods, VMs, storage, and more
+- **Full Coverage** - Manage pods, storage, and more
 - **Type Hints** - Full typing support for IDE autocomplete
 - **Async Support** - Optional async/await patterns
 - **Error Handling** - Detailed exceptions for debugging
@@ -69,7 +69,6 @@ pip install podstack
 | [Authentication](/docs/sdk/authentication/) | Configure API access |
 | [Quick Start](/docs/sdk/quickstart/) | Get started in minutes |
 | [Pods](/docs/sdk/pods/) | Manage GPU containers |
-| [Virtual Machines](/docs/sdk/virtual-machines/) | VM operations |
 | [Storage](/docs/sdk/storage/) | Buckets and NFS volumes |
 | [Error Handling](/docs/sdk/error-handling/) | Handle exceptions |
 

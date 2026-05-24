@@ -28,9 +28,9 @@ Each entry shows:
 | Create | New resource created |
 | Update | Resource modified |
 | Delete | Resource removed |
-| Start | Pod/VM started |
-| Stop | Pod/VM stopped |
-| Restart | Pod/VM restarted |
+| Start | Pod started |
+| Stop | Pod stopped |
+| Restart | Pod restarted |
 
 ### Account Actions
 
@@ -67,7 +67,6 @@ Filter to see specific actions:
 
 Filter by resource:
 - Pods
-- Virtual Machines
 - Storage
 - Projects
 - SSH Keys

@@ -1,6 +1,6 @@
 ---
 title: Support
-description: "Podstack GPU cloud support - troubleshooting guides, documentation, and help resources for GPU containers, VMs, storage, and billing issues."
+description: "Podstack GPU cloud support - troubleshooting guides, documentation, and help resources for GPU containers, storage, and billing issues."
 keywords:
   - GPU cloud support
   - GPU troubleshooting
@@ -30,7 +30,7 @@ For issues not covered in documentation:
 
 When contacting support, include:
 - Your account email
-- Resource IDs (pod, VM, etc.)
+- Resource IDs (pod, bucket, etc.)
 - Error messages or screenshots
 - Steps to reproduce the issue
 
@@ -48,7 +48,6 @@ When contacting support, include:
 
 ### Resource Problems
 - [Pod troubleshooting](/docs/support/troubleshooting/#pod-issues)
-- [VM troubleshooting](/docs/support/troubleshooting/#vm-issues)
 - [Storage issues](/docs/support/troubleshooting/#storage-issues)
 
 ### Connection Issues

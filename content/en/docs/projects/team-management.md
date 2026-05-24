@@ -52,7 +52,7 @@ Customizable permissions based on your needs:
 
 | Permission | Description |
 |------------|-------------|
-| **Can Create** | Create new pods, VMs, storage |
+| **Can Create** | Create new pods, storage |
 | **Can Read** | View resources and their details |
 | **Can Update** | Modify existing resources |
 | **Can Delete** | Remove resources |

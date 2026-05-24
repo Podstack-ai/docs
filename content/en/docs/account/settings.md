@@ -93,7 +93,6 @@ Configure exactly which notifications you receive:
 | Notification | Description |
 |--------------|-------------|
 | Pod/Container Status | When pods start, stop, or fail |
-| VM Status | When VMs change state |
 | Resource Limit Warnings | Approaching quota limits |
 
 ### Billing Notifications
@@ -188,7 +187,7 @@ Available exports:
 
 To delete your account:
 
-1. Delete all resources (pods, VMs, storage)
+1. Delete all resources (pods, storage)
 2. Ensure no outstanding balance
 3. Go to Settings
 4. Click **Delete Account**

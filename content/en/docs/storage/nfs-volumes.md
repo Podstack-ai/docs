@@ -4,13 +4,13 @@ title: NFS Volumes
 
 # NFS Volumes
 
-NFS (Network File System) volumes provide persistent, mountable storage that can be shared across multiple pods and VMs.
+NFS (Network File System) volumes provide persistent, mountable storage that can be shared across multiple pods.
 
 ## What is NFS Storage?
 
 NFS volumes are network-attached storage that:
 - Persists independently of compute resources
-- Can be mounted by multiple pods/VMs simultaneously
+- Can be mounted by multiple pods simultaneously
 - Provides filesystem-level access (read/write files directly)
 - Survives pod restarts and deletions
 
@@ -53,29 +53,6 @@ The volume is automatically mounted when the pod starts.
 - `/checkpoints` - Training checkpoints
 - `/shared` - Shared team files
 
-### In Virtual Machines
-
-SSH into your VM and mount manually:
-
-```bash
-# Create mount point
-sudo mkdir -p /mnt/data
-
-# Mount the NFS volume
-sudo mount -t nfs <nfs-server>:<share-path> /mnt/data
-
-# Verify mount
-df -h /mnt/data
-```
-
-**Make mount persistent** (survives reboot):
-```bash
-# Add to /etc/fstab
-echo "<nfs-server>:<share-path> /mnt/data nfs defaults 0 0" | sudo tee -a /etc/fstab
-```
-
-The NFS server and share path are shown on the volume detail page.
-
 ## Managing Volumes
 
 ### Viewing Volumes
@@ -91,7 +68,7 @@ Navigate to **Storage > Volumes** to see:
 Click on a volume to see:
 - Mount instructions (NFS server and path)
 - Usage statistics (current usage vs quota)
-- Connected resources (pods/VMs using this volume)
+- Connected resources (pods using this volume)
 - Billing information (hourly rate, total cost)
 
 ### Usage Tracking
@@ -121,11 +98,11 @@ The volume detail page provides:
 - **NFS Server**: Server hostname/IP
 - **Share Path**: Mount path on the server
 - **Access Mode**: ReadWriteMany (RWX), ReadWriteOnce (RWO), or ReadOnlyMany (ROX)
-- **Mount Command**: Ready-to-use mount command for VMs
+- **Mount Command**: Ready-to-use mount command
 
 ### Deleting a Volume
 
-1. Ensure no pods/VMs are using the volume
+1. Ensure no pods are using the volume
 2. Click **Delete**
 3. Confirm deletion
 

@@ -4,7 +4,7 @@ title: SSH Keys
 
 # SSH Keys
 
-SSH keys provide secure access to your pods and virtual machines. Manage your keys from the SSH Keys page.
+SSH keys provide secure access to your pods. Manage your keys from the SSH Keys page.
 
 ## Why SSH Keys?
 
@@ -81,7 +81,7 @@ ssh-add ~/.ssh/podstack_key
 
 ## Setting a Default Key
 
-The default key is automatically selected when creating pods/VMs:
+The default key is automatically selected when creating pods:
 
 1. Find the key in the list
 2. Click **Set as Default**
@@ -91,7 +91,7 @@ The default key is automatically selected when creating pods/VMs:
 
 ### When Creating Resources
 
-1. During pod/VM creation
+1. During pod creation
 2. Select an SSH key from the dropdown
 3. Key is automatically configured in the resource
 
@@ -156,7 +156,7 @@ Click on a key to see:
 ### Key Usage Tracking
 
 Podstack tracks which resources use each SSH key. Before deleting a key, check its usage:
-- View the list of pods and VMs using the key
+- View the list of pods using the key
 - Keys actively in use show a warning before deletion
 
 ### Deleting a Key

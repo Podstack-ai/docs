@@ -170,7 +170,7 @@ Common reasons for rejection:
 
 When KYC enforcement is enabled on the platform:
 - A KYC banner appears on the dashboard
-- Resource creation (pods, VMs, storage) is blocked until KYC is complete
+- Resource creation (pods, storage) is blocked until KYC is complete
 - Modal prompts guide you to complete verification
 - Existing resources continue running
 

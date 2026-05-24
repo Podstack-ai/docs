@@ -1,240 +1,145 @@
 ---
 title: Object Storage
+description: "S3-compatible object storage with per-bucket subscription plans, IAM users, presigned URLs, and public sharing for ML datasets and model artifacts."
+keywords:
+  - object storage
+  - S3 compatible storage
+  - bucket IAM
+  - presigned URL
+  - public bucket
+  - versioning
 ---
 
 # Object Storage
 
-Podstack provides S3-compatible object storage for storing files, datasets, model artifacts, and more.
+Podstack Object Storage is an S3-compatible service for buckets, files, and structured access control. Each bucket is independently provisioned with a subscription plan and is project-scoped.
+
+Find it under **Object Storage** in the sidebar (also reachable at `/portal/drive`).
 
 ## Creating a Bucket
 
-1. Navigate to **Storage > Object Storage**
-2. Click **Create Bucket**
+1. Open **Object Storage** and pick your project.
+2. Click **Create Bucket**.
 3. Configure:
-   - **Name**: Unique bucket identifier (lowercase, no spaces)
-   - **Description**: Optional notes about the bucket's purpose
-   - **Max Size**: Maximum storage capacity (1GB - 10TB)
-   - **Visibility**: Public or Private
-   - **Versioning**: Enable to keep file history
-4. Click **Create**
+   - **Name**: lowercase, S3-compatible bucket name
+   - **Plan**: pick a storage subscription tier (sets the included capacity and monthly price)
+   - **Region**: backing storage region (set by platform config)
+   - **Versioning**: keep file history when objects are overwritten
+   - **Public**: list contents publicly via a presigned URL (otherwise private)
+4. Click **Create**.
 
-### Bucket Settings
+When you create a bucket the plan price is debited from your wallet, the bucket is provisioned in the backing storage, and a dedicated set of S3 credentials is generated for it.
 
-**Visibility Options**
-- **Private**: Only accessible with authentication (API keys or presigned URLs)
-- **Public**: Anyone with the URL can download files (use with caution)
+### Plans and Auto-Renewal
 
-**Max Size (Quota)**
-Set a maximum size limit for the bucket:
-- Prevents unexpected storage costs
-- Uploads fail when quota is reached
-- Can be increased later if needed
+Each bucket carries a plan subscription with a fixed monthly price for an included capacity ceiling.
 
-**Versioning**
-When enabled, uploading a file with the same name creates a new version rather than overwriting:
-- View version history for any file
-- Restore previous versions
-- Useful for backups and audit trails
-- Increases storage usage (all versions count)
+- Subscriptions renew automatically every cycle by debiting your wallet.
+- A failed renewal is retried hourly; after 24 hours of dunning the bucket is escalated to support.
+- The **Usage** bar on each bucket card shows current used capacity vs. the plan ceiling.
+- You can upgrade or downgrade the plan from the bucket settings panel; the new price applies from the next renewal.
+
+### Versioning
+
+When versioning is enabled, overwriting a file creates a new version rather than replacing it. You can browse and restore prior versions from the object's metadata panel.
 
 ## Managing Files
 
-### Uploading Files
+### Upload
 
-**Via Web UI**
-1. Open your bucket
-2. Click **Upload**
-3. Select files or drag and drop
-4. Monitor upload progress
-5. Files appear in the bucket listing
-
-**Via S3 API**
-Use any S3-compatible client:
+- **Web UI**: drag-and-drop or click **Upload**. Large files are chunked automatically and uploads continue across page navigation via the global upload manager.
+- **S3 API**: use any S3-compatible client with the credentials issued for the bucket.
 
 ```python
 import boto3
 
 s3 = boto3.client('s3',
     endpoint_url='https://s3.podstack.ai',
-    aws_access_key_id='your_access_key',
-    aws_secret_access_key='your_secret_key'
-)
+    aws_access_key_id='YOUR_ACCESS_KEY',
+    aws_secret_access_key='YOUR_SECRET_KEY')
 
-s3.upload_file('local_file.txt', 'my-bucket', 'remote_file.txt')
+s3.upload_file('local.bin', 'my-bucket', 'remote.bin')
 ```
 
-### Downloading Files
+### Object Browser
 
-**Via Web UI**
-1. Navigate to the file
-2. Click the **Download** button
+The web object browser supports:
 
-**Via S3 API**
-```python
-s3.download_file('my-bucket', 'remote_file.txt', 'local_file.txt')
-```
+- Folder-like prefixes (`foo/bar/baz.txt`)
+- Inline preview of small text/image files
+- Bulk select + bulk delete
+- Per-object metadata panel: size, last modified, ETag, content-type, version history
+- Per-object presigned download URL via the **Get Link** action (configurable expiry)
 
-**Via Pre-signed URL**
-Generate temporary download links:
-1. Select the file
-2. Click **Get Link**
-3. Set expiration time
-4. Share the URL
+### Delete
 
-### Organizing Files
+Single delete and bulk delete are both supported. With versioning enabled, deletes create a delete marker — previous versions remain restorable until the marker is purged.
 
-Create folder structure:
-1. Click **Create Folder**
-2. Enter folder name
-3. Upload files into folders
+## Sharing and Access
 
-Navigate folders using the breadcrumb trail.
+### Presigned URLs
 
-### Deleting Files
+Generate time-limited URLs for individual objects without exposing credentials. Right-click an object → **Get Link** → choose expiry.
 
-1. Select file(s) using checkboxes
-2. Click **Delete**
-3. Confirm the deletion
+### Public Buckets
 
-**Note**: Deleted files cannot be recovered unless versioning is enabled.
+Marking a bucket public lets anyone with the URL list and read its contents. Podstack serves public listings via a rotating 7-day presigned URL. The bucket card surfaces a one-click **Copy Public URL** action.
 
-## Bucket Operations
+If `public_url` generation is disabled on the platform, use the **Generate URL** button to mint an on-demand share link instead.
 
-### Editing Bucket Settings
+### IAM Users, Access Keys, and Roles
 
-1. Go to bucket list
-2. Click the settings icon
-3. Modify visibility or description
-4. Save changes
+Each bucket has its own **Access** panel for granular access control:
 
-### Changing Visibility
+- Create per-bucket IAM users with named credentials
+- Generate or rotate access keys per IAM user
+- Assign roles that scope what each user can do (read, write, list, delete)
+- Revoke keys at any time without touching the master credentials
 
-1. Open bucket settings
-2. Toggle Public/Private
-3. Confirm the change
+Use IAM users to give an application or teammate scoped access to one bucket without sharing the bucket's primary credentials.
 
-**Warning**: Making a bucket public exposes all files to anyone with the URL.
+## Using Object Storage from Pods
 
-### Deleting a Bucket
+### From a Container
 
-**Standard Deletion:**
-1. Delete all files in the bucket first
-2. Click **Delete Bucket**
-3. Confirm deletion
-
-**Force Delete:**
-To delete a bucket with all its contents:
-1. Click **Delete Bucket**
-2. Enable the **Force Delete** option
-3. Confirm by typing the bucket name
-4. All objects are permanently deleted with the bucket
-
-**Warning**: Force delete is irreversible. All data will be permanently lost.
-
-## Public Bucket Access
-
-Public buckets can be accessed via URL:
-```
-https://s3.podstack.ai/public/{bucket-name}/{file-path}
-```
-
-Use public buckets for:
-- Sharing datasets publicly
-- Hosting static assets
-- Public model distribution
-
-## Pre-signed URLs
-
-Generate temporary URLs for private files:
-
-### Download URL
-```python
-url = s3.generate_presigned_url(
-    'get_object',
-    Params={'Bucket': 'my-bucket', 'Key': 'file.txt'},
-    ExpiresIn=3600  # 1 hour
-)
-```
-
-### Upload URL
-```python
-url = s3.generate_presigned_url(
-    'put_object',
-    Params={'Bucket': 'my-bucket', 'Key': 'upload.txt'},
-    ExpiresIn=3600
-)
-```
-
-## Large File Uploads
-
-For files larger than 100MB, use multipart upload:
-
-### Via Web UI
-The upload manager automatically handles chunking for large files with:
-- Progress tracking
-- Resume capability
-- Background uploading
-
-### Via API
-```python
-from boto3.s3.transfer import TransferConfig
-
-config = TransferConfig(
-    multipart_threshold=100 * 1024 * 1024,  # 100MB
-    multipart_chunksize=100 * 1024 * 1024
-)
-
-s3.upload_file('large_file.tar', 'my-bucket', 'large_file.tar', Config=config)
-```
-
-## Using Object Storage with Pods
-
-### From Container
-
-Install AWS CLI or boto3:
 ```bash
-pip install awscli boto3
-```
-
-Configure credentials:
-```bash
-aws configure
-# Enter your access key and secret
-```
-
-Download data:
-```bash
+pip install boto3 awscli
+aws configure   # paste the bucket's access/secret key
 aws s3 cp s3://my-bucket/data.tar.gz /data/ --endpoint-url https://s3.podstack.ai
 ```
 
-### Mount as Filesystem
+### Mount as a Filesystem
 
-Use s3fs for filesystem-like access:
 ```bash
 sudo apt install s3fs
-
 echo "ACCESS_KEY:SECRET_KEY" > ~/.passwd-s3fs
 chmod 600 ~/.passwd-s3fs
-
 s3fs my-bucket /mnt/s3 -o passwd_file=~/.passwd-s3fs -o url=https://s3.podstack.ai
 ```
 
+## Deleting a Bucket
+
+1. Open the bucket's settings.
+2. Click **Delete Bucket** — confirm by typing the bucket name.
+3. All objects, versions, and delete markers are removed before the bucket itself is deprovisioned.
+
+Bucket deletion is irreversible and stops the plan subscription immediately. There are no pro-rata refunds — the current billing period has already been charged in full.
+
 ## Billing
 
-Object storage is billed based on:
-- **Storage**: Amount of data stored (per GB/hour)
-- **Transfer**: Data downloaded (egress)
+Buckets are billed on a **per-bucket subscription plan**, not on actual storage usage. Each bucket has a flat monthly price for an included capacity ceiling; exceeding the ceiling prompts you to upgrade the plan.
 
-View costs in your wallet expenditure breakdown.
+Charges appear under **Object Storage (Buckets)** in your wallet expenditure breakdown and on monthly invoices.
 
 ## Best Practices
 
-1. **Use meaningful names** - Organize files with clear naming
-2. **Enable versioning** - For important data that changes
-3. **Set appropriate visibility** - Keep sensitive data private
-4. **Clean up unused data** - Delete files you no longer need
-5. **Use pre-signed URLs** - For temporary access without making public
+1. **One bucket per logical dataset** — keeps lifecycle and access scoped.
+2. **Use IAM users** for shared workloads instead of distributing master keys.
+3. **Enable versioning** on irreplaceable buckets (training artifacts, eval datasets).
+4. **Right-size plans** — start small, upgrade when the usage bar approaches the ceiling.
+5. **Prefer presigned URLs** over making whole buckets public when you only need to share specific objects.
 
 ## Next Steps
 
-Learn about [NFS Volumes](/docs/storage/nfs-volumes/) for mountable persistent storage.
+- [File Storage](/docs/storage/file-storage/) — when you want S3 semantics on cluster-local infra
+- [NFS Volumes](/docs/storage/nfs-volumes/) — for filesystem mounts inside pods
