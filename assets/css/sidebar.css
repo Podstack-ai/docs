@@ -301,6 +301,17 @@
     font-weight: 500;
 }
 
+/* Level 0 leaf links - match level-0 section title styling so top-level
+   sections without children render at the same size/weight as ones with
+   children (e.g. Sandboxes alongside MLOps). */
+.nav-link--level-0 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color);
+    padding: 10px 8px 10px 16px;
+    letter-spacing: 0.01em;
+}
+
 /* Level-based padding for nav links */
 .nav-link--level-1 {
     padding: 8px 16px 8px 28px;
@@ -540,6 +551,10 @@ html[data-color="light"] .nav-section--level-6>.nav-section__header .nav-section
 
 html[data-color="light"] .nav-link {
     color: #6B7280;
+}
+
+html[data-color="light"] .nav-link--level-0 {
+    color: #0F172A;
 }
 
 html[data-color="light"] .nav-link:hover {
