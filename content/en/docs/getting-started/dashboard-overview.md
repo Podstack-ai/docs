@@ -156,14 +156,6 @@ Customize your dashboard experience:
 - Collapsible sidebar for more workspace
 - Your preference is saved automatically
 
-## Live Chat Support
-
-A Chatwoot chat widget is available on all pages (bottom-right corner) for real-time customer support. Use it to:
-- Ask questions about the platform
-- Report issues
-- Get help with configuration
-- Share files and screenshots
-
 ## Next Steps
 
 Ready to deploy? Follow the [Quick Start Guide](/docs/getting-started/quick-start/) to launch your first container.
