@@ -42,7 +42,7 @@ Meta's **SAM 3** segmentation model — promptable image and video segmentation.
 |----------|-------------|
 | `ENABLE_SSH` | Enable SSH server |
 | `ENABLE_JUPYTERHUB` | Enable JupyterHub on port 8000 |
-| `NOTEBOOK_USERNAME` / `NOTEBOOK_PASSWORD` | JupyterHub credentials (env-var auth variant) |
+| `PODSTACK_API_URL` | Backend URL for JupyterHub token validation |
 | `SAM3_CHECKPOINT_DIR` | Override checkpoint directory (default `/opt/sam3_checkpoints`) |
 | `SAM3_CHECKPOINT` | Override specific checkpoint file (default `sam3.pt`; use e.g. `sam3.1_multiplex.pt`) |
 | `SSH_PUBLIC_KEY` | Public key for SSH |
