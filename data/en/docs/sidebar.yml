@@ -67,6 +67,66 @@
 - title: Sandboxes
   slug: sandboxes
 
+- title: Container Images
+  slug: container-images
+  pages:
+    - title: a1111
+      slug: a1111
+    - title: sd-forge
+      slug: sd-forge
+    - title: comfyui
+      slug: comfyui
+    - title: kohya-ss
+      slug: kohya-ss
+    - title: axolotl
+      slug: axolotl
+    - title: llamafactory
+      slug: llamafactory
+    - title: unsloth
+      slug: unsloth
+    - title: unsloth-studio
+      slug: unsloth-studio
+    - title: vllm
+      slug: vllm
+    - title: sglang
+      slug: sglang
+    - title: ollama
+      slug: ollama
+    - title: text-gen-webui
+      slug: text-gen-webui
+    - title: tei
+      slug: tei
+    - title: triton
+      slug: triton
+    - title: pytorch
+      slug: pytorch
+    - title: tensorflow
+      slug: tensorflow
+    - title: jupyterlab-gpu
+      slug: jupyterlab-gpu
+    - title: rapids
+      slug: rapids
+    - title: tensorrt
+      slug: tensorrt
+    - title: cloudtts
+      slug: cloudtts
+    - title: whisperx
+      slug: whisperx
+    - title: alphafold
+      slug: alphafold
+    - title: gromacs
+      slug: gromacs
+    - title: octave
+      slug: octave
+    - title: cloudblenderrender
+      slug: cloudblenderrender
+    - title: ffmpeg-gpu
+      slug: ffmpeg-gpu
+    - title: sam3
+      slug: sam3
+    - title: ubuntu-ssh-cuda
+      slug: ubuntu-ssh-cuda
+
 - title: MLOps
   slug: mlops
   pages:
