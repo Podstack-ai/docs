@@ -27,47 +27,9 @@
 (function () {
     'use strict';
 
+    // Docs site is dark-only to match blog.podstack.ai.
+    // Light mode + theme switching disabled.
     const lsKeyColorPreference = 'color-preference'
-
-    /**
-     * Gets the current color preference
-     * Returns: saved preference, or system preference, or default
-     */
-    const getColorPreference = () => {
-        let lastUsedColorPreference = localStorage.getItem(lsKeyColorPreference)
-        if (lastUsedColorPreference !== null)
-            return lastUsedColorPreference
-        else
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    }
-
-    let colorPreference = getColorPreference()
-    localStorage.setItem(lsKeyColorPreference, colorPreference)
-    document.firstElementChild.setAttribute('data-color', colorPreference)
-
-    // Select all theme toggle buttons (in header and footer)
-    const colorPreferenceButtons = document.querySelectorAll('.theme-toggle, .theme-toggle-header, #content-wrapper > footer > div:last-child > button:last-child, #content-wrapper > header > nav > button.theme-toggle, #content-wrapper > header > button.theme-toggle')
-    colorPreferenceButtons.forEach(button => {
-        if (button) {
-            button.addEventListener('click', function () {
-                if (colorPreference == 'dark') {
-                    colorPreference = 'light'
-                } else {
-                    colorPreference = 'dark'
-                }
-                setColorPreference()
-            });
-        }
-    });
-
-    const setColorPreference = () => {
-        localStorage.setItem(lsKeyColorPreference, colorPreference)
-        document.firstElementChild.setAttribute('data-color', colorPreference)
-    }
-
-    window.matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', ({ matches: isDark }) => {
-            colorPreference = isDark ? 'dark' : 'light'
-            setColorPreference()
-        })
+    localStorage.setItem(lsKeyColorPreference, 'dark')
+    document.firstElementChild.setAttribute('data-color', 'dark')
 })();

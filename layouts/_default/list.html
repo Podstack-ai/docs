@@ -24,7 +24,7 @@
   - js/sidebar.js: Sidebar toggle and navigation
 -->
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default `en-US` }}">
+<html lang="{{ .Site.LanguageCode | default `en-US` }}" data-color="dark">
 
 <head>
   <meta charset="utf-8">
@@ -35,8 +35,7 @@
   {{ with .Params.keywords | default .Site.Params.keywords }}
   <meta name="keywords" content="{{ delimit . ", " }}">
   {{ end }}
-  <meta name="theme-color" content="{{ .Site.Params.project.themeColor.light }}" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="{{ .Site.Params.project.themeColor.dark }}" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0a0a0f">
   {{ with .Params.robots -}}
   <meta name="robots" content="{{ . }}">
   {{ else -}}
@@ -61,7 +60,7 @@
   <title>{{ .Title | .RenderString }} · {{ .Site.Title | .RenderString }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
 
-  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/sidebar.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") (resources.Get "css/pixel-decorations.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
+  {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/_select.css") (resources.Get "css/sidebar.css") (resources.Get "css/docs.css") (resources.Get "css/docs-article.css") (resources.Get "css/docs-chroma.css") (resources.Get "css/docs-shortcodes.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") | resources.Concat "assets/css/docs.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
 
   {{- $js := slice (resources.Get "js/sidebar.js") (resources.Get "js/color-preference.js") (resources.Get "js/header.js") (resources.Get "js/off-canvas.js") (resources.Get "js/table-of-contents.js") (resources.Get "js/code-copy.js") | resources.Concat "assets/js/main.js" | minify | fingerprint }}
@@ -75,7 +74,6 @@
 
 <body data-baseurl="{{ .Site.BaseURL }}">
 
-{{ partial "pixel-decorations.html" . }}
 {{ partial "header.html" . }}
 
 <div id="outer-wrapper">
