@@ -51,6 +51,8 @@
           slug: managing-pods
         - title: Connecting to Pods
           slug: connecting-to-pods
+        - title: SSH Tutorial (Video)
+          slug: ssh-tutorial
     - title: GPU Marketplace
       slug: gpu-marketplace
 
