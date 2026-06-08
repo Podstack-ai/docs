@@ -100,8 +100,12 @@ ssh root@ssh-<subdomain>.cloud.podstack.ai
 ```
 
 **Windows (PowerShell):**
+
+PowerShell needs a one-time OpenSSL proxy setup before the `ssh` command works. Follow the dedicated guide: [SSH from Windows PowerShell](/docs/compute/pods/ssh-powershell/).
+
 ```powershell
-ssh root@ssh-<subdomain>.cloud.podstack.ai
+# After the one-time setup:
+ssh -i ~/.ssh/<key_name> podstack@ssh-<subdomain>.cloud.podstack.ai
 ```
 
 **Windows (Git Bash):**

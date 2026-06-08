@@ -53,6 +53,8 @@
           slug: connecting-to-pods
         - title: SSH Tutorial (Video)
           slug: ssh-tutorial
+        - title: SSH from Windows PowerShell
+          slug: ssh-powershell
     - title: GPU Marketplace
       slug: gpu-marketplace
 
