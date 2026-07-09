@@ -2,105 +2,89 @@
 title: Quick Start Guide
 
 weight: 30
+description: "Go from zero to a running GPU pod on PodStack in about 10 minutes — sign in, verify identity, create a project, add an SSH key, fund your wallet, launch a pod, and connect over SSH. Console and CLI paths."
+keywords:
+  - PodStack quick start
+  - launch GPU pod fast
+  - deploy GPU container tutorial
+  - first GPU pod
+  - podstack CLI launch
 ---
 # Quick Start Guide
 
-Deploy your first GPU container on Podstack in just a few minutes. This guide covers the essential steps from account setup to running workload.
+This guide takes you from a brand-new account to a running GPU pod you can SSH
+into — about 10 minutes. Each step links to a deeper guide if you want detail.
 
-## Prerequisites
+## What you'll accomplish
 
-Before you begin:
-- [ ] Account created and verified
-- [ ] Wallet topped up with funds
-- [ ] Project created (or use default project)
+Sign in, get verified, set up a project and key, fund your wallet, launch a pod,
+and connect to it.
 
-## Step 1: Add Funds to Your Wallet
+## The path
 
-1. Navigate to **Billing > Wallet**
-2. Click **Top Up**
-3. Enter the amount (minimum varies)
-4. Complete payment via Razorpay (UPI, cards, net banking)
-5. Funds appear in your wallet immediately
+### 1. Sign in
 
-## Step 2: Create a Project
+Open the portal and sign in with an email code or a social login. Your first
+sign-in creates your account. → [Creating Your Account](/docs/getting-started/creating-account/)
 
-1. Go to **Projects** in the sidebar
-2. Click **Create Project**
-3. Enter a project name and description
-4. Click **Create**
+### 2. Verify your identity (KYC)
 
-Projects help organize resources and enable team collaboration.
+Complete identity verification — it's required before launching GPU compute.
+→ [Identity Verification](/docs/getting-started/identity-verification/)
 
-## Step 3: Add an SSH Key
+### 3. Create a project
 
-1. Navigate to **SSH Keys**
-2. Click **Add SSH Key**
-3. Either:
-   - Paste your existing public key, or
-   - Click **Generate New Key** to create one
-4. Give the key a name and save
-5. If generated, download the private key (one-time only)
+Create a project so your resources and costs have a home. It becomes your active
+context automatically. → [Creating & Switching Projects](/docs/projects/creating-projects/)
 
-## Step 4: Create Your First Pod
+### 4. Add an SSH key
 
-1. Go to **Compute > Pods**
-2. Click **Create Pod**
-3. Configure your pod:
+Generate a key in-platform (download the private key once) or upload an existing
+public key. → [SSH Keys](/docs/account/ssh-keys/)
 
-**Basic Settings**
-- **Name**: Give your pod a descriptive name
-- **Project**: Select your project
-- **Image**: Choose a container image (e.g., `pytorch/pytorch:latest`)
+### 5. Fund your wallet
 
-**Resources**
-- **GPU Type**: Select from available GPUs (A100, H100, V100, etc.)
-- **GPU Count**: Number of GPUs needed
-- **CPU**: Number of CPU cores
-- **Memory**: RAM allocation in GB
+Add funds so you can launch paid resources. Billing is **per-second** — you pay
+only for the GPU fraction and the seconds you use. → [Wallet & Billing](/docs/billing/wallet/)
 
-**Access**
-- **SSH Key**: Select your SSH key
-- **Ports**: Configure exposed ports (SSH is typically port 22)
+### 6. Launch a pod
 
-4. Review the estimated cost
-5. Click **Create Pod**
+**Console:** go to **Pods → Create Pod**, pick a GPU (fractional or full), choose
+a template or image, select your SSH key, and launch. For the full walkthrough,
+see [Creating Pods](/docs/compute/pods/creating-pods/).
 
-## Step 5: Connect to Your Pod
+**CLI:** the fastest path from a terminal:
 
-Once the pod status shows **Running**:
-
-### Via SSH
 ```bash
-ssh root@<pod-subdomain>.cloud.podstack.ai
+# Interactive: arrow-select a GPU, pick count + SSH key, confirm
+podstack launch
+
+# Or scripted, with flags
+podstack gpu instances create --gpu-type <type> --gpu-count 1
 ```
 
-The SSH connection details are displayed on the pod detail page.
+See the [CLI](/docs/cli/) section for setup and full commands.
 
-### Via Web Terminal
-Click the **Terminal** button on the pod card to open a browser-based terminal.
+### 7. Connect
 
-### Via Jupyter Notebook
-If you enabled notebook access, click the **Notebook** link to open JupyterLab.
+```bash
+ssh root@<pod-address>
+# or, with a specific key
+ssh -i ~/.ssh/podstack_key root@<pod-address>
+```
 
-## Step 6: Monitor Your Pod
+See [Connecting to Pods](/docs/compute/pods/connecting-to-pods/) for SSH config,
+port forwarding, and Windows instructions.
 
-From the Pods list or Pod Detail page, you can:
+## Verify it worked
 
-- **View Logs** - See container output
-- **Check Stats** - Monitor CPU, memory, GPU usage
-- **Stop/Start** - Pause billing when not in use
-- **Delete** - Remove the pod when done
+- The pod shows **Running** in the Pods list (or `podstack gpu instances list`).
+- You get a shell after `ssh`, greeted by the PodStack banner.
+- The dashboard's **Run Rate** card now shows an hourly cost.
 
-## Cost Management Tips
+## What's next
 
-- **Stop pods** when not actively using them (billing pauses)
-- **Right-size resources** - don't over-allocate GPUs or memory
-- **Use templates** - save configurations for quick redeployment
-- **Monitor spending** - check the dashboard for run rates
-
-## Next Steps
-
-- [Learn more about Pod management](/docs/compute/pods/)
-- [Set up object storage](/docs/storage/object-storage/)
-- [Invite team members](/docs/projects/team-management/)
-- [Create launch templates](/docs/advanced/templates/)
+- **[Compute](/docs/compute/)** — pods, VMs, sandboxes, notebooks, the GPU marketplace.
+- **[Storage](/docs/storage/)** — object storage, volumes, and NFS for your data.
+- **[Inference](/docs/inference/)** — serve models on OpenAI-compatible endpoints.
+- **[CLI](/docs/cli/)** — manage everything from your terminal.

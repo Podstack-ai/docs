@@ -2,226 +2,53 @@
 title: Audit Logs
 
 weight: 40
+description: "Review activity in your PodStack project with audit logs — create, update, delete, start/stop, login, and invite events across pods, VMs, buckets, NFS, SSH keys, and members, with live streaming and filters."
+keywords:
+  - PodStack audit logs
+  - cloud activity logs
+  - project audit trail
+  - compliance logging GPU cloud
+  - who did what cloud
 ---
 # Audit Logs
 
-Audit logs track all activities in your account, providing visibility into who did what and when.
+Audit logs record activity in your project — who did what, to which resource,
+and when. New events stream in **live** as they happen.
 
-## Viewing Audit Logs
+## What you'll accomplish
 
-Navigate to **Audit Logs** to see account activity.
+Find and filter the activity trail for a project.
 
-### Log Entry Details
+## Where to find it
 
-Each entry shows:
-- **Timestamp**: When the action occurred
-- **User**: Who performed the action
-- **Action**: What was done
-- **Resource**: What was affected
-- **Details**: Additional context
+Open **Audit Logs** from the navigation. Logs are shown for your currently
+selected project (you can switch the project from the filter bar).
 
-## Logged Actions
+## What each entry shows
 
-### Resource Operations
+- **Action** — e.g. `create`, `update`, `delete`/`remove`, `start`, `stop`, `scale`, `connect`, `login`, `logout`, `invite`, `join` (color-coded).
+- **Resource type** — container (pod), VM, bucket, NFS, SSH key, template, user, or project member.
+- **Resource name** — the specific resource affected.
+- **Timestamp** — when it happened (hover for the full date/time).
 
-| Action | Description |
-|--------|-------------|
-| Create | New resource created |
-| Update | Resource modified |
-| Delete | Resource removed |
-| Start | Pod started |
-| Stop | Pod stopped |
-| Restart | Pod restarted |
+## Filter and search
 
-### Account Actions
+Narrow the list with:
 
-| Action | Description |
-|--------|-------------|
-| Login | User logged in |
-| Logout | User logged out |
-| Token Created | API token generated |
-| Token Revoked | API token deleted |
-| SSH Key Added | New SSH key added |
-| SSH Key Deleted | SSH key removed |
+- **Project** — switch which project's logs you're viewing.
+- **Search** — free text over user, resource name, and action.
+- **Action** — limit to a single action type.
+- **Resource Type** — limit to one kind of resource.
 
-### Team Actions
+New events appear at the top in real time via a live connection, so you can
+watch activity as it occurs.
 
-| Action | Description |
-|--------|-------------|
-| Invite Sent | Team invitation sent |
-| Invite Accepted | User joined project |
-| Member Removed | User removed from project |
-| Permissions Changed | User permissions updated |
+## Verify it worked
 
-## Filtering Logs
+- Perform an action (e.g. start a pod) and confirm a matching entry appears.
+- Applying a filter narrows the list accordingly.
 
-### By Action Type
+## Related
 
-Filter to see specific actions:
-- All actions
-- Create
-- Update
-- Delete
-- Start/Stop
-
-### By Resource Type
-
-Filter by resource:
-- Pods
-- Storage
-- Projects
-- SSH Keys
-
-### By Date Range
-
-Select a time period:
-- Last 24 hours
-- Last 7 days
-- Last 30 days
-- Custom range
-
-### By User
-
-For projects with multiple members, filter by specific user.
-
-## Searching Logs
-
-Use the search bar to find specific entries:
-- Search by resource name
-- Search by action
-- Search by user email
-
-## Log Details
-
-Click on a log entry for full details:
-
-### Activity Information
-- Exact timestamp
-- User who performed action
-- User's IP address
-- User agent (browser/client)
-
-### Resource Information
-- Resource type and ID
-- Resource name
-- Project context
-
-### Change Details
-For updates, see what changed:
-- Previous values
-- New values
-- Modified fields
-
-## Use Cases
-
-### Security Monitoring
-
-Track unauthorized or suspicious activity:
-- Unexpected logins
-- Resource deletions
-- Permission changes
-- API token usage
-
-### Debugging
-
-Understand what happened:
-- When a resource was modified
-- Who made changes
-- Configuration history
-
-### Compliance
-
-Maintain audit trail for:
-- Access reviews
-- Change management
-- Incident investigation
-- Regulatory compliance
-
-### Team Coordination
-
-Track team activities:
-- Who created resources
-- Recent changes
-- Collaboration patterns
-
-## Exporting Logs
-
-Download logs for external analysis:
-
-1. Apply desired filters
-2. Click **Export**
-3. Select format (CSV)
-4. Download file
-
-Exported logs include:
-- All visible entries
-- Full details per entry
-- Timestamps in UTC
-
-## Log Retention
-
-Audit logs are retained for:
-- **Standard accounts**: 90 days
-- **Extended retention**: Available for enterprise
-
-Older logs are automatically archived.
-
-## Real-Time Monitoring
-
-Audit logs support real-time streaming via WebSocket:
-
-### Live Updates
-- New log entries appear instantly without refreshing
-- Logs stream as actions happen across your project
-- Visual indicator shows when streaming is active
-
-### Enabling Real-Time Mode
-1. Open Audit Logs page
-2. Click **Enable Live Updates** or toggle the streaming switch
-3. New entries appear automatically at the top
-4. Streaming continues until you navigate away or disable it
-
-### Use Cases
-- Monitor team activity in real-time
-- Watch for specific actions during testing
-- Track deployment progress
-- Security monitoring during sensitive operations
-
-## Best Practices
-
-### Regular Review
-
-1. Check logs weekly for unusual activity
-2. Review after security incidents
-3. Audit before compliance reviews
-
-### Alert on Critical Actions
-
-Monitor for:
-- Multiple failed logins
-- Mass deletions
-- Permission escalations
-- New API tokens
-
-### Document Incidents
-
-When investigating issues:
-1. Filter to relevant time period
-2. Identify key events
-3. Export for documentation
-4. Note findings
-
-## Privacy
-
-Audit logs contain:
-- User emails
-- IP addresses
-- Resource names
-- Action details
-
-Access audit logs only for legitimate purposes.
-
-## Next Steps
-
-- [Manage API Tokens](/docs/account/api-tokens/) to control programmatic access
-- [Review Settings](/docs/account/settings/) for account configuration
+- [Team Management](/docs/projects/team-management/) — control who can act in a project.
+- [Settings → Security](/docs/account/settings/) — review and revoke sessions.

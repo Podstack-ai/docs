@@ -2,72 +2,80 @@
 title: Creating Your Account
 
 weight: 10
+description: "Create a PodStack account with passwordless email-code sign-in or Google, GitHub, or Microsoft login. No password required — your first sign-in creates the account automatically."
+keywords:
+  - PodStack sign up
+  - passwordless login GPU cloud
+  - email OTP login
+  - Google login GPU cloud
+  - create GPU cloud account
 ---
 # Creating Your Account
 
-Podstack uses passwordless authentication with email-based OTP (One-Time Password) verification. This guide walks you through the signup and login process.
+PodStack uses **passwordless authentication**. There's no separate sign-up form
+and no password to remember — your **first sign-in creates your account
+automatically**. You can sign in with a one-time email code or with a social
+login.
 
-## Sign Up Process
+## What you'll accomplish
 
-### Step 1: Visit the Portal
+Sign in to PodStack for the first time and land on your dashboard.
 
-Navigate to the Podstack customer portal and click **Get Started** or **Sign In**.
+## Prerequisites
 
-### Step 2: Enter Your Email
+- A valid, **permanent** email address. Disposable/temporary email addresses are rejected.
+- A modern web browser.
 
-Enter your email address in the login form. If you're a new user, an account will be created automatically.
+## Sign in with an email code (primary method)
 
-### Step 3: Verify with OTP
+1. Open the PodStack portal and go to the sign-in page.
+2. Enter your email address and choose **Continue with Email**.
+3. Check your inbox for a **6-digit code**. The code **expires in 10 minutes** and can be used **once**.
+4. Enter the 6 digits and choose **Verify & Sign In**.
 
-1. Check your email for a 6-digit verification code
-2. The code expires in **10 minutes**
-3. Enter the code in the verification form
-4. Click **Verify** to complete authentication
+Your account is created on first verification, and your session stays valid for
+**7 days** on that device.
 
-### Step 4: Access Your Dashboard
+> _Screenshot: email entry → 6-digit code screen._
 
-After successful verification, you'll be redirected to your dashboard where you can:
+## Sign in with a social account
 
-- View your wallet balance
-- Create projects
-- Deploy resources
-- Manage settings
+If enabled for your workspace, you can skip the email code entirely:
 
-## Logging In
+- **Continue with Google**
+- **Continue with GitHub**
+- **Continue with Microsoft**
 
-Returning users follow the same process:
+These are one-click and land you on the same dashboard. (Which providers appear
+depends on how your PodStack instance is configured.)
 
-1. Enter your registered email address
-2. Receive OTP via email
-3. Enter the code to access your account
+## Choosing your currency
 
-## Session Management
+Your preferred billing currency (**INR** or **USD**) is set later in
+**Settings → Profile**, not during sign-in. See
+[Settings](/docs/account/settings/).
 
-- Your session remains active until you log out
-- Tokens are automatically refreshed for seamless access
-- Click **Logout** in the header to end your session securely
+## Verify it worked
 
-## Accepting Project Invitations
+- You're redirected to the **dashboard**.
+- Your email appears in the profile menu (top-right).
 
-If you've been invited to join a team project:
+## Sign out
 
-1. Check your email for the invitation
-2. Click the invitation link
-3. Verify with OTP (creates account if new)
-4. You'll be added to the project with assigned permissions
+Use **Log out** in the profile menu. This ends the session immediately on that
+device. You can also review and revoke sessions from
+[Settings → Security](/docs/account/settings/).
 
-## Troubleshooting
+## Troubleshoot
 
-**Not receiving OTP emails?**
-- Check your spam/junk folder
-- Verify you entered the correct email address
-- Wait 1-2 minutes and request a new code
-- Contact support if issues persist
+| Problem | Fix |
+|---------|-----|
+| "Please use a permanent email address" | Disposable/temporary domains are blocked — use a real personal or work email. |
+| Didn't receive the code | Check spam/junk, confirm the address, wait a minute, and request a new code. |
+| "Invalid or expired code" | Codes last 10 minutes and are single-use — request a fresh one. |
+| Social login button missing | That provider isn't enabled on your instance — use the email code instead. |
 
-**OTP expired?**
-- Request a new code by clicking "Resend OTP"
-- Codes are valid for 10 minutes
+## Next steps
 
-## Next Steps
-
-Once logged in, explore the [Dashboard Overview](/docs/getting-started/dashboard-overview/) to familiarize yourself with the portal.
+- [Verify your identity (KYC)](/docs/getting-started/identity-verification/) — required before launching GPU compute.
+- [Dashboard Overview](/docs/getting-started/dashboard-overview/)

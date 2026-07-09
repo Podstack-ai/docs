@@ -2,142 +2,79 @@
 title: Team Management
 
 weight: 20
+description: "Invite teammates to a PodStack project and manage roles. Admins and members, email-invite plus one-time-code accept flow, permissions, and 24-hour invitation expiry."
+keywords:
+  - GPU cloud team invite
+  - project roles permissions
+  - invite teammate cloud
+  - RBAC project members
+  - cloud team collaboration
 ---
 # Team Management
 
-Collaborate with your team by inviting members to your projects. This guide covers invitations, roles, and permissions.
+Invite teammates into a project and control what they can do. Invitations use
+the same passwordless flow as sign-in — teammates accept with a one-time code.
 
-## Inviting Team Members
+## What you'll accomplish
 
-### Send an Invitation
+Invite a teammate, assign their role, and manage members and pending invites.
 
-1. Navigate to your project
-2. Go to **Project Settings** > **Members**
-3. Click **Invite Member**
-4. Enter the team member's email address
-5. Select a role and permissions
-6. Click **Send Invitation**
+## Prerequisites
 
-The invitee will receive an email with instructions to join.
+- You must be a **project admin** of the project.
+- The teammate's email address.
 
-### Invitation Status
+## Roles
 
-Invitations can have the following statuses:
+| Role | Permissions |
+|------|-------------|
+| **Admin** | Full access — create, read, update, and delete resources, and manage members. |
+| **Member** | Read-only by default. You can grant specific create/read/update/delete permissions. |
 
-| Status | Description |
-|--------|-------------|
-| **Pending** | Invitation sent, awaiting acceptance |
-| **Accepted** | Member has joined the project |
-| **Expired** | Invitation expired (24 hours) |
-| **Revoked** | Invitation was cancelled |
+Granting any write permission to a member effectively promotes them toward admin
+capabilities; leave them read-only to keep them view-only. The project **owner
+cannot be removed**.
 
-### Managing Pending Invitations
+## Invite a teammate
 
-From the Members tab, you can:
-- **Resend** an invitation if it wasn't received
-- **Revoke** a pending invitation to cancel it
+1. Open **Project Settings → Members / Invitations**.
+2. Choose **Invite**.
+3. Enter the teammate's **email** and pick a **role** (optionally set custom permissions).
+4. Send the invitation.
 
-## Roles and Permissions
+The invitee receives an email with a link. When they open it, PodStack emails a
+**one-time code**; they enter it to accept and become a member. If they don't
+have a PodStack account yet, one is created automatically on accept.
 
-### Project Admin
+> _Screenshot: Invite member dialog with role selector._
 
-Full control over the project:
-- Manage all resources (create, read, update, delete)
-- Invite and remove team members
-- Modify project settings
-- Delete the project
+## Manage members and invitations
 
-### Project User
+- **Resend** a pending invite — generates a fresh link with a renewed expiry.
+- **Revoke** a pending invite.
+- **Change permissions** for an existing member.
+- **Remove** a member (except the owner).
 
-Customizable permissions based on your needs:
+## Rules & limits
 
-| Permission | Description |
-|------------|-------------|
-| **Can Create** | Create new pods, storage |
-| **Can Read** | View resources and their details |
-| **Can Update** | Modify existing resources |
-| **Can Delete** | Remove resources |
+- Invitations **expire after 24 hours**.
+- Only **one pending invitation per email** — revoke the existing one to re-invite.
 
-You can enable any combination of these permissions when inviting a user.
+## Verify it worked
 
-## Managing Members
+- The teammate appears in the **Members** list with the assigned role.
+- Pending invites show under **Invitations** until accepted, revoked, or expired.
 
-### View Members
+## Troubleshoot
 
-Go to **Project Settings** > **Members** to see:
-- All current project members
-- Their roles and permissions
-- Pending invitations
+| Message | Meaning |
+|---------|---------|
+| "User is already a member" | They're already on the project. |
+| "A pending invitation already exists" | Revoke it first, then re-invite. |
+| "Invitation has expired" | Resend to issue a new 24-hour link. |
+| "Invalid or expired code" | The accept code is single-use and time-limited — resend the invite. |
 
-### Update Permissions
+## Next steps
 
-To change a member's permissions:
-
-1. Find the member in the list
-2. Click the **Edit** button
-3. Modify their role or permissions
-4. Click **Save**
-
-### Deactivate a Member
-
-To temporarily remove access without deleting the member:
-
-1. Find the member in the list
-2. Click **Deactivate**
-3. The member loses access but can be reactivated later
-
-### Remove a Member
-
-To permanently remove a member:
-
-1. Find the member in the list
-2. Click **Remove**
-3. Confirm the removal
-
-The removed member will no longer have access to project resources.
-
-## Accepting an Invitation
-
-If you receive a project invitation:
-
-1. Check your email for the invitation
-2. Click the invitation link
-3. Verify with OTP (your email)
-4. If you don't have an account, one will be created
-5. You'll be added to the project with the assigned permissions
-
-Invitations expire after **24 hours**. Request a new invitation if yours has expired.
-
-## Permission Examples
-
-### Read-Only Access
-For stakeholders who need visibility but shouldn't modify resources:
-- Can Read: Yes
-- Can Create: No
-- Can Update: No
-- Can Delete: No
-
-### Developer Access
-For team members who need to work with resources:
-- Can Read: Yes
-- Can Create: Yes
-- Can Update: Yes
-- Can Delete: No
-
-### Full Access
-For trusted team members who need complete control:
-- Can Read: Yes
-- Can Create: Yes
-- Can Update: Yes
-- Can Delete: Yes
-
-## Audit Trail
-
-All team actions are logged in the [Audit Logs](/docs/account/audit-logs/). You can track:
-- When members were invited
-- Permission changes
-- Resource modifications by each member
-
-## Next Steps
-
-With your team set up, explore [Compute resources](/docs/compute/) to start deploying workloads.
+- [Manage projects](/docs/projects/creating-projects/)
+- [Audit logs](/docs/account/audit-logs/) to review team activity
