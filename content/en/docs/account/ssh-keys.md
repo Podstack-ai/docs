@@ -22,7 +22,7 @@ resources.
 
 ## Prerequisites
 
-- A signed-in account. **Adding** a key requires [KYC verification](/docs/getting-started/identity-verification/) when enforcement is on; **viewing** keys works before KYC.
+- A signed-in account.
 
 ## Generate a key in PodStack
 
@@ -65,16 +65,21 @@ any time with **Set as Default**.
 
 ## Account limits
 
-The number of keys you can store depends on your account type:
+The number of keys you can store depends on your billing account type:
 
 | Account type | Max SSH keys |
 |--------------|--------------|
 | **Prepaid** (new accounts) | **1** |
-| **Postpaid** (KYC-verified, upgraded) | **20** |
+| **Postpaid** (monthly billing) | **20** |
 
-New accounts start **prepaid**, so you get **one** key until you complete
-[KYC](/docs/getting-started/identity-verification/) and upgrade to postpaid.
-Hitting the limit shows an **upgrade prompt** rather than adding the key.
+New accounts start on **prepaid** billing, so you get **one** SSH key. Switching
+to **postpaid** (monthly invoiced billing) raises the limit to 20 — contact
+PodStack to enable postpaid billing on your account. Hitting the limit shows an
+**upgrade prompt** rather than adding the key.
+
+> Need more than one key on prepaid? A common pattern is to add a single key to
+> your account and use an [SSH agent](https://www.ssh.com/academy/ssh/agent) or
+> per-host `IdentityFile` entries locally.
 
 ## Verify it worked
 
@@ -107,7 +112,7 @@ Then just `ssh my-pod`. For a full walkthrough (including Windows), see
 
 | Problem | Cause / fix |
 |---------|-------------|
-| SSH key limit reached | Prepaid accounts allow 1 key — complete KYC and upgrade to postpaid for up to 20. |
+| SSH key limit reached | Prepaid accounts allow 1 key — switch to postpaid billing for up to 20 (contact PodStack). |
 | "Invalid SSH public key format" | Paste the full public key line, starting with `ssh-ed25519`/`ssh-rsa`. |
 | Duplicate name / fingerprint | Choose a unique name; the same key can't be added twice. |
 | Can't delete a key | It may be in use by a running/stopped pod — reassign that pod first. |

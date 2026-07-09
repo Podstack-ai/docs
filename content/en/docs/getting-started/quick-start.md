@@ -27,27 +27,22 @@ and connect to it.
 Open the portal and sign in with an email code or a social login. Your first
 sign-in creates your account. → [Creating Your Account](/docs/getting-started/creating-account/)
 
-### 2. Verify your identity (KYC)
-
-Complete identity verification — it's required before launching GPU compute.
-→ [Identity Verification](/docs/getting-started/identity-verification/)
-
-### 3. Create a project
+### 2. Create a project
 
 Create a project so your resources and costs have a home. It becomes your active
 context automatically. → [Creating & Switching Projects](/docs/projects/creating-projects/)
 
-### 4. Add an SSH key
+### 3. Add an SSH key
 
 Generate a key in-platform (download the private key once) or upload an existing
 public key. → [SSH Keys](/docs/account/ssh-keys/)
 
-### 5. Fund your wallet
+### 4. Fund your wallet
 
 Add funds so you can launch paid resources. Billing is **per-second** — you pay
 only for the GPU fraction and the seconds you use. → [Wallet & Billing](/docs/billing/wallet/)
 
-### 6. Launch a pod
+### 5. Launch a pod
 
 **Console:** go to **Pods → Create Pod**, pick a GPU (fractional or full), choose
 a template or image, select your SSH key, and launch. For the full walkthrough,
@@ -65,7 +60,7 @@ podstack gpu instances create --gpu-type <type> --gpu-count 1
 
 See the [CLI](/docs/cli/) section for setup and full commands.
 
-### 7. Connect
+### 6. Connect
 
 ```bash
 ssh root@<pod-address>

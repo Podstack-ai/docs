@@ -26,8 +26,6 @@
   pages:
     - title: Creating Your Account
       slug: creating-account
-    - title: Identity Verification (KYC)
-      slug: identity-verification
     - title: Dashboard Overview
       slug: dashboard-overview
     - title: Quick Start Guide

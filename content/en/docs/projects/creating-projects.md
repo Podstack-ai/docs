@@ -23,7 +23,6 @@ managing and deleting it.
 ## Prerequisites
 
 - A signed-in account.
-- **Identity verification (KYC)** — required to create a project when enforcement is on. See [Identity Verification](/docs/getting-started/identity-verification/).
 
 ## Create a project
 
@@ -65,7 +64,6 @@ project.
 
 | Problem | Cause / fix |
 |---------|-------------|
-| Can't create a project | Complete [KYC](/docs/getting-started/identity-verification/) first. |
 | "Cannot delete: active resources" | Delete the project's resources, then try again. |
 | Switching fails / "not a member" | You must be a member of a project to select it — ask an admin to invite you. |
 

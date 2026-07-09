@@ -55,7 +55,6 @@ On day one you'll see zeros, an empty chart, and the "No projects yet" state.
 You may also see:
 
 - A **project onboarding** prompt (because you have no projects).
-- A **KYC banner** if identity verification is still pending.
 - A **recharge prompt** if your wallet balance is negative.
 
 > _Screenshot: dashboard with expenditure cards, stat tiles, and spending charts._

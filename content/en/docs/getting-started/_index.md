@@ -40,17 +40,15 @@ This section takes you from zero to a running GPU workload.
 ## New here? Follow this path
 
 1. **[Create your account](/docs/getting-started/creating-account/)** — passwordless sign-in with an email code or a social login.
-2. **[Verify your identity (KYC)](/docs/getting-started/identity-verification/)** — required before launching GPU compute.
-3. **[Create a project](/docs/projects/creating-projects/)** — every resource lives inside a project.
-4. **[Add an SSH key](/docs/account/ssh-keys/)** — how you'll connect to pods and VMs.
-5. **[Launch your first pod](/docs/getting-started/quick-start/)** — the end-to-end Quick Start.
+2. **[Create a project](/docs/projects/creating-projects/)** — every resource lives inside a project.
+3. **[Add an SSH key](/docs/account/ssh-keys/)** — how you'll connect to pods and VMs.
+4. **[Launch your first pod](/docs/getting-started/quick-start/)** — the end-to-end Quick Start.
 
 ## Prerequisites
 
 Before you begin, have ready:
 
 - A valid, permanent email address (temporary/disposable addresses are rejected).
-- Identity documents for KYC verification (a government ID; India users may use PAN/Aadhaar).
 - A payment method to fund your wallet once you're ready to launch paid resources.
 - Optionally, an existing SSH public key — or generate one in the portal.
 

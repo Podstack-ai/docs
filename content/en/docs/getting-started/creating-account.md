@@ -77,5 +77,5 @@ device. You can also review and revoke sessions from
 
 ## Next steps
 
-- [Verify your identity (KYC)](/docs/getting-started/identity-verification/) — required before launching GPU compute.
-- [Dashboard Overview](/docs/getting-started/dashboard-overview/)
+- [Dashboard Overview](/docs/getting-started/dashboard-overview/) — get oriented.
+- [Create a project](/docs/projects/creating-projects/) — every resource lives in a project.
