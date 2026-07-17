@@ -25,23 +25,22 @@ Prices vary by GPU type, region, and tier. Query them with:
 
 ```bash
 podstack gpu pricing
-podstack gpu pricing --gpu-type h100
-podstack gpu pricing --gpu-type h100 --tier on_demand
-podstack gpu pricing --region us-east --tier spot
+podstack gpu pricing --gpu-type h100_sxm
+podstack gpu pricing --gpu-type h100_sxm --tier on_demand
 ```
 
 ```
-GPU TYPE   COUNT   REGION    TIER        PRICE      AVAIL
-H100       1       us-east   on_demand   $2.49/hr   6
-H100       1       us-east   spot        $1.79/hr   3
-A100-80G   1       us-east   on_demand   $1.69/hr   9
-L40S       1       us-east   on_demand   $0.99/hr   12
+GPU TYPE    COUNT   REGION        TIER        PRICE          AVAIL
+h100_sxm    1       asia-pacific  on_demand   ₹405.74/hr     4
+h100_pcie   1       ca-central    on_demand   ₹203.55/hr     84
+a100_80gb   1       ca-central    on_demand   ₹188.62/hr     4
+a100_40gb   1       india-south   on_demand   ₹120.77/hr     3
 ```
 
-- **`PRICE`** is the **final** Podstack price per hour — all fees are already included. There's no separate management or egress markup on top.
-- **`AVAIL`** is how many matching GPUs can be launched right now.
+- **`PRICE`** is the **final** Podstack price per hour (in INR) — all fees are already included. There's no separate management or egress markup on top.
+- **`AVAIL`** is how many matching GPUs can be launched right now, and **`REGION`** is where they run.
 
-Prices shown above are illustrative — always run `podstack gpu pricing` for the current rates.
+Prices shown above are illustrative snapshots — always run `podstack gpu pricing` for the current rates, regions, and availability.
 
 ## Spot vs on-demand
 
@@ -61,7 +60,7 @@ podstack gpu pricing --gpu-type h100
 When launching on `spot` (where prices can move), set a ceiling. The instance won't launch above your cap:
 
 ```bash
-podstack gpu instances create --type h100 --tier spot --max-price 2.00 \
+podstack gpu instances create --type h100_sxm --tier spot --max-price 2.00 \
   --ssh-key-id sshkey_abc123
 ```
 
@@ -106,7 +105,7 @@ podstack gpu instances list --status running
 Managed [fine-tuning](/docs/trainpod/fine-tuning/) jobs bill per run rather than per instance-hour. Cap the spend on a job with `--budget`:
 
 ```bash
-podstack train create --model podstack/qwen2.5-7b-instruct \
+podstack train create --model podstack/gemma-4-31b-it \
   --training-file file_123 --budget 25.00
 ```
 

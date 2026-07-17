@@ -50,7 +50,7 @@ Try another region, GPU type, or the other tier (`spot` vs `on_demand`). The `AV
 `podstack gpu instances create` needs both. Add them:
 
 ```bash
-podstack gpu instances create --type h100 --tier on_demand --ssh-key-id sshkey_abc123
+podstack gpu instances create --type h100_sxm --tier on_demand --ssh-key-id sshkey_abc123
 ```
 
 ### Instance stuck in `allocating` / `provisioning`
@@ -72,7 +72,7 @@ podstack gpu instances delete <id>
 `podstack gpu launch` requires a TTY. In scripts or CI, use the flag-driven command instead:
 
 ```bash
-podstack gpu instances create --type h100 --tier on_demand --ssh-key-id sshkey_abc123
+podstack gpu instances create --type h100_sxm --tier on_demand --ssh-key-id sshkey_abc123
 ```
 
 ---
@@ -230,7 +230,7 @@ Common causes: a malformed training file (re-check your JSONL and re-upload with
 Both flags are mandatory on `podstack train create`:
 
 ```bash
-podstack train create --model podstack/qwen2.5-7b-instruct --training-file file_123
+podstack train create --model podstack/gemma-4-31b-it --training-file file_123
 ```
 
 ### Job stuck in `queued`

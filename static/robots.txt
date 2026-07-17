@@ -64,8 +64,77 @@ Allow: /
 User-agent: Pinterest
 Allow: /
 
+# ---------------------------------------------------------------------------
+# AI / LLM crawlers — explicitly welcomed (search + training).
+# We want this documentation discovered by and included in LLM search engines
+# and training corpora, so every known AI crawler is allowed the full site.
+# ---------------------------------------------------------------------------
+
+# OpenAI (ChatGPT search, browsing, training)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+
+# Google AI (Gemini / Vertex training & grounding)
+User-agent: Google-Extended
+Allow: /
+User-agent: GoogleOther
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Common Crawl (widely used for LLM training)
+User-agent: CCBot
+Allow: /
+
+# Apple, Amazon, Meta, ByteDance, Cohere, You.com, Diffbot, Mistral, etc.
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: Meta-ExternalAgent
+Allow: /
+User-agent: FacebookBot
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: cohere-ai
+Allow: /
+User-agent: cohere-training-data-crawler
+Allow: /
+User-agent: YouBot
+Allow: /
+User-agent: Diffbot
+Allow: /
+User-agent: MistralAI-User
+Allow: /
+User-agent: Timpibot
+Allow: /
+
 # Sitemaps - Primary
 Sitemap: https://docs.podstack.ai/sitemap.xml
+
+# LLM-friendly site index (llmstxt.org)
+# See: https://docs.podstack.ai/llms.txt
 
 # Host directive for Yandex
 Host: https://docs.podstack.ai

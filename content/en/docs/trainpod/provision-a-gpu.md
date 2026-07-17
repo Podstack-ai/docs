@@ -57,7 +57,7 @@ Then check live pricing and availability. You can filter by GPU type, region, or
 ```bash
 podstack gpu pricing
 podstack gpu pricing --gpu-type h100
-podstack gpu pricing --gpu-type h100 --tier on_demand
+podstack gpu pricing --gpu-type h100_sxm --tier on_demand
 podstack gpu pricing --region us-east --tier spot
 ```
 
@@ -107,7 +107,7 @@ podstack gpu launch
 You can pre-filter the list so you only see relevant offers:
 
 ```bash
-podstack gpu launch --gpu-type h100 --tier on_demand --region us-east --name my-trainer
+podstack gpu launch --gpu-type h100_sxm --tier on_demand --region us-east --name my-trainer
 ```
 
 The flow is:
@@ -125,7 +125,7 @@ For automation, use `podstack gpu instances create`. `--type` and `--tier` are r
 
 ```bash
 podstack gpu instances create \
-  --type h100 \
+  --type h100_sxm \
   --tier on_demand \
   --count 1 \
   --name my-trainer \
@@ -145,7 +145,7 @@ podstack gpu instances create \
 Use `--ssh-key-id` more than once to inject several keys, and `--max-price` to protect against spot price spikes:
 
 ```bash
-podstack gpu instances create --type h100 --tier spot --max-price 2.00 \
+podstack gpu instances create --type h100_sxm --tier spot --max-price 2.00 \
   --ssh-key-id sshkey_abc123 --ssh-key-id sshkey_def456
 ```
 
@@ -219,7 +219,7 @@ Prefer a UI? The Podstack dashboard covers the same flow: open the GPU / instanc
 podstack gpu keys create --name trainer
 
 # 2. Launch an on-demand H100 with that key
-podstack gpu instances create --type h100 --tier on_demand \
+podstack gpu instances create --type h100_sxm --tier on_demand \
   --name llama-run --ssh-key-id sshkey_abc123
 
 # 3. Wait for it to be running

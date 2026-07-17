@@ -16,19 +16,31 @@ keywords:
 Rent and manage on-demand GPU instances (TrainPods) from your terminal.
 
 ```sh
-podstack gpu types list                                   # available GPU types
-podstack gpu pricing --gpu-type h100                      # price for a type
-podstack gpu keys list                                    # your SSH keys
-podstack gpu instances create --type h100 --count 1 --tier on_demand
-podstack gpu instances ssh <id>                           # connect
+podstack gpu types list                                        # available GPU types
+podstack gpu pricing --gpu-type h100_sxm                       # price for a type
+podstack gpu keys list                                         # your SSH keys
+podstack gpu instances create --type h100_sxm --count 1 --tier on_demand
+podstack gpu instances ssh <id>                                # connect
 ```
 
 ## Discover GPUs and pricing
 
 ```sh
-podstack gpu types list              # list GPU types (h100, a100, …)
-podstack gpu pricing --gpu-type h100 # show pricing for a GPU type
+podstack gpu types list                     # list GPU types
+podstack gpu pricing --gpu-type h100_sxm    # show pricing for a GPU type
 ```
+
+GPU type names are lowercase with a variant/VRAM suffix. Current types include:
+
+```
+a100_40gb  a100_80gb  a30  a40  b200
+h100_pcie  h100_sxm  h100_nvl  h200_sxm  h200_nvl
+l4  l40  l40s  v100
+rtx_3090  rtx_4090  rtx_5090  rtx_a4000  rtx_a6000
+rtx_4000_ada  rtx_6000_ada  rtx_pro_6000
+```
+
+Run `podstack gpu types list` for the live set. `podstack gpu pricing` returns the price per hour, region, availability, tier (`on_demand`/`spot`), and whether instant-boot is available — for example, `a100_40gb` in `india-south` was ~₹120/hr on-demand at the time of writing.
 
 ## SSH keys
 

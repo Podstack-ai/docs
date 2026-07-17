@@ -59,12 +59,12 @@ podstack train models
 
 ```
 MODEL                           MODALITY   STATUS
-podstack/qwen2.5-7b-instruct    text       available
+podstack/gemma-4-31b-it    text       available
 podstack/llama-3.1-8b-instruct  text       available
 ...
 ```
 
-Model ids are Podstack-namespaced (e.g. `podstack/qwen2.5-7b-instruct`). Pick one from the `MODEL` column.
+Model ids are Podstack-namespaced (e.g. `podstack/gemma-4-31b-it`). Pick one from the `MODEL` column.
 
 ---
 
@@ -74,7 +74,7 @@ Model ids are Podstack-namespaced (e.g. `podstack/qwen2.5-7b-instruct`). Pick on
 
 ```bash
 podstack train create \
-  --model podstack/qwen2.5-7b-instruct \
+  --model podstack/gemma-4-31b-it \
   --training-file file_123 \
   --method lora
 ```
@@ -120,7 +120,7 @@ podstack train list
 
 ```
 ID          MODEL                          STATUS      CREATED
-ft_job_abc  podstack/qwen2.5-7b-instruct   running     2026-07-17T10:30:00Z
+ft_job_abc  podstack/gemma-4-31b-it   running     2026-07-17T10:30:00Z
 ```
 
 Stream events live with `--follow` (polls for new events; Ctrl-C to stop):
@@ -151,10 +151,10 @@ podstack train get ft_job_abc
 
 ```
 ID:         ft_job_abc
-Model:      podstack/qwen2.5-7b-instruct
+Model:      podstack/gemma-4-31b-it
 Status:     succeeded
 Train file: file_123
-Result:     podstack/qwen2.5-7b-instruct:my-assistant
+Result:     podstack/gemma-4-31b-it:my-assistant
 Created:    2026-07-17T10:30:00Z
 ```
 

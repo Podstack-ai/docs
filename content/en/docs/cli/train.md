@@ -29,11 +29,13 @@ podstack files upload ./data.jsonl --purpose fine-tune
 podstack train models                # list available base models
 ```
 
+Base models span **chat**, **image**, and **video** modalities — for example `podstack/gemma-4-31b-it` and `podstack/deepseek-v4-flash` (chat), `podstack/flux.2-dev` and `podstack/seedream-4.0` (image), or `podstack/seedance-1.0-pro` (video). Run `podstack train models` for the live list and each model's modality.
+
 ## 3. Start a job
 
 ```sh
 podstack train create \
-  --model podstack/qwen2.5-7b-instruct \
+  --model podstack/gemma-4-31b-it \
   --training-file file_123 \
   --method lora
 ```
@@ -52,7 +54,7 @@ podstack train cancel <id>           # cancel a running job
 ## Scenario: fine-tune and serve
 
 1. `podstack files upload ./train.jsonl --purpose fine-tune`
-2. `podstack train create --model podstack/qwen2.5-7b-instruct --training-file file_… --method lora`
+2. `podstack train create --model podstack/gemma-4-31b-it --training-file file_… --method lora`
 3. `podstack train events <id> --follow` until it completes.
 4. Use the resulting model on [Inference Cloud](/docs/inference/) or list it with [`podstack models`](/docs/cli/models/).
 
