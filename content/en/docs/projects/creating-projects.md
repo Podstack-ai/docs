@@ -47,7 +47,7 @@ project.
 
 - **Update** name/description — requires the **admin** role.
 - **Members & invitations** — see [Team Management](/docs/projects/team-management/).
-- **Billing ownership** — each project has a billing owner (the creator by default). Transferring billing ownership is available via the API; there may not be a dedicated control in the portal UI.
+- <a id="billing-ownership"></a>**Billing ownership** — each project has a billing owner (the creator by default). Transferring billing ownership is available via the API; there may not be a dedicated control in the portal UI.
 
 ## Delete a project
 

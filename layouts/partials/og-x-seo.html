@@ -55,7 +55,6 @@
 <meta property="og:site_name" content="{{ $siteTitle }}">
 <meta property="og:locale" content="en_US">
 {{ if .IsPage }}
-<meta property="article:publisher" content="https://www.linkedin.com/company/podstack">
 <meta property="article:section" content="Technology">
 {{ end }}
 
@@ -66,12 +65,7 @@
 <meta name="twitter:description" content="{{ $description }}">
 <meta name="twitter:image" content="{{ $image }}">
 <meta name="twitter:image:alt" content="{{ $title }} - Podstack GPU Cloud">
-<meta name="twitter:site" content="@podstackai">
-<meta name="twitter:creator" content="@podstackai">
 <meta name="twitter:domain" content="docs.podstack.ai">
-
-<!-- LinkedIn Meta -->
-<meta property="linkedin:owner" content="podstack">
 
 <!-- Additional Meta Tags -->
 {{ with $author.name }}
