@@ -1,272 +1,63 @@
 ---
 title: Installation
 weight: 10
-description: "Install Podstack CLI on macOS, Linux, and Windows. Manage GPU cloud resources from your terminal."
+description: "Install and upgrade the Podstack CLI on macOS, Linux, and Windows with a single command."
 keywords:
   - Podstack CLI install
-  - command line install
-  - terminal GPU management
-  - CLI setup
+  - install podstack
+  - podstack upgrade
+  - CLI setup macOS Linux Windows
 ---
 
 # Installation
 
-Install the Podstack CLI to manage GPU cloud resources from your terminal.
+## One-line install (macOS & Linux)
 
-## Quick Install
-
-### macOS
-
-Using Homebrew:
-
-```bash
-brew install podstack/tap/podstack-cli
+```sh
+curl -fsSL https://github.com/Podstack-ai/podstack-cli-releases/releases/latest/download/install.sh | sh
 ```
 
-Or using the install script:
+The installer detects your OS (`Darwin`/`Linux`) and CPU architecture (`amd64`/`arm64`), downloads the matching build, verifies its SHA-256, and installs `podstack` to `/usr/local/bin` (or `~/.local/bin` if that isn't writable).
 
-```bash
-curl -sSL https://get.podstack.ai/cli | bash
+Verify:
+
+```sh
+podstack version      # e.g. v0.9.3
 ```
 
-### Linux
+If `~/.local/bin` isn't on your `PATH`, add it:
 
-Using the install script:
-
-```bash
-curl -sSL https://get.podstack.ai/cli | bash
+```sh
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc   # or ~/.bashrc
 ```
 
-Using apt (Debian/Ubuntu):
+## Windows
 
-```bash
-# Add repository
-curl -fsSL https://apt.podstack.ai/gpg | sudo gpg --dearmor -o /usr/share/keyrings/podstack.gpg
-echo "deb [signed-by=/usr/share/keyrings/podstack.gpg] https://apt.podstack.ai stable main" | sudo tee /etc/apt/sources.list.d/podstack.list
+Download the latest `podstack_windows_amd64.zip` from the [releases page](https://github.com/Podstack-ai/podstack-cli-releases/releases), extract `podstack.exe`, and place it on your `PATH`. PowerShell and cmd are both supported (Git Bash is recommended if you use the coding agent's bash tool).
 
-# Install
-sudo apt update
-sudo apt install podstack-cli
+## Manual / binary download
+
+Grab a build for your platform from the [releases page](https://github.com/Podstack-ai/podstack-cli-releases/releases) and put the `podstack` binary on your `PATH`.
+
+## Upgrade
+
+```sh
+podstack upgrade                   # to the latest release
+podstack upgrade --version v0.9.3  # pin a specific version
 ```
 
-Using yum (RHEL/CentOS/Fedora):
-
-```bash
-# Add repository
-sudo tee /etc/yum.repos.d/podstack.repo << 'EOF'
-[podstack]
-name=Podstack CLI
-baseurl=https://yum.podstack.ai/stable
-enabled=1
-gpgcheck=1
-gpgkey=https://yum.podstack.ai/gpg
-EOF
-
-# Install
-sudo yum install podstack-cli
-```
-
-### Windows
-
-Using winget:
-
-```powershell
-winget install podstack.cli
-```
-
-Using Scoop:
-
-```powershell
-scoop bucket add podstack https://github.com/podstack/scoop-bucket
-scoop install podstack-cli
-```
-
-Using Chocolatey:
-
-```powershell
-choco install podstack-cli
-```
-
-### From Source
-
-Requires Go 1.21+:
-
-```bash
-go install github.com/podstack/cli@latest
-```
-
-### Docker
-
-```bash
-docker run -it --rm podstack/cli --help
-```
-
-With credentials:
-
-```bash
-docker run -it --rm \
-  -e PODSTACK_API_TOKEN=$PODSTACK_API_TOKEN \
-  podstack/cli pod list
-```
-
-## Verify Installation
-
-```bash
-podstack version
-```
-
-Expected output:
-
-```
-Podstack CLI v1.2.3
-Build: 2024-01-15
-```
-
-## Update CLI
-
-### macOS (Homebrew)
-
-```bash
-brew upgrade podstack-cli
-```
-
-### Linux (apt)
-
-```bash
-sudo apt update && sudo apt upgrade podstack-cli
-```
-
-### All Platforms
-
-```bash
-podstack update
-```
-
-Check for updates:
-
-```bash
-podstack update --check
-```
+The CLI also nudges you when a newer release is available.
 
 ## Uninstall
 
-### macOS (Homebrew)
+Remove the binary and (optionally) its config:
 
-```bash
-brew uninstall podstack-cli
+```sh
+rm "$(command -v podstack)"
+rm -rf ~/.podstack ~/.config/podstack   # optional: settings + credentials
 ```
 
-### Linux (apt)
+## Next steps
 
-```bash
-sudo apt remove podstack-cli
-```
-
-### Windows (winget)
-
-```powershell
-winget uninstall podstack.cli
-```
-
-### Manual Removal
-
-If you installed from source or via script, you can use the built-in uninstall command:
-
-```bash
-podstack uninstall
-```
-
-Alternatively, you can manually remove the binary and configuration:
-
-```bash
-# Remove binary
-sudo rm /usr/local/bin/podstack
-
-# Remove config
-rm -rf ~/.podstack
-```
-
-## Shell Completion
-
-Enable tab completion for faster command entry.
-
-### Bash
-
-```bash
-# Add to ~/.bashrc
-eval "$(podstack completion bash)"
-
-# Or install permanently
-podstack completion bash | sudo tee /etc/bash_completion.d/podstack > /dev/null
-```
-
-### Zsh
-
-```bash
-# Add to ~/.zshrc
-eval "$(podstack completion zsh)"
-
-# Or install permanently
-podstack completion zsh > "${fpath[1]}/_podstack"
-```
-
-### Fish
-
-```bash
-podstack completion fish > ~/.config/fish/completions/podstack.fish
-```
-
-### PowerShell
-
-```powershell
-# Add to $PROFILE
-podstack completion powershell | Out-String | Invoke-Expression
-```
-
-## Troubleshooting
-
-### Command Not Found
-
-Add the install directory to your PATH:
-
-```bash
-# Linux/macOS
-export PATH="$HOME/.podstack/bin:$PATH"
-
-# Add to shell profile for persistence
-echo 'export PATH="$HOME/.podstack/bin:$PATH"' >> ~/.bashrc
-```
-
-### Permission Denied
-
-Make the binary executable:
-
-```bash
-chmod +x /usr/local/bin/podstack
-```
-
-### SSL Certificate Errors
-
-Update CA certificates:
-
-```bash
-# Ubuntu/Debian
-sudo apt update && sudo apt install ca-certificates
-
-# macOS
-brew install ca-certificates
-```
-
-### Proxy Configuration
-
-Set proxy environment variables:
-
-```bash
-export HTTP_PROXY=http://proxy.example.com:8080
-export HTTPS_PROXY=http://proxy.example.com:8080
-```
-
-## Next Steps
-
-- [Authentication](/docs/cli/authentication/) - Configure CLI access
-- [Quick Start](/docs/cli/quickstart/) - Create your first pod
+- [Authentication](/docs/cli/authentication/) — sign in.
+- [Quick Start](/docs/cli/quickstart/) — your first commands.

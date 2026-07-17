@@ -1,119 +1,80 @@
 ---
 title: CLI
-
-weight: 90
-description: "Podstack CLI for terminal-based GPU cloud management. Deploy containers, upload data, and control GPU resources from the command line."
+weight: 50
+description: "The Podstack CLI: an AI coding agent, live app previews in cloud sandboxes, on-demand GPUs, fine-tuning, and OpenAI-compatible inference — all from your terminal."
 keywords:
+  - Podstack CLI
   - GPU cloud CLI
-  - cloud GPU command line
-  - ML infrastructure CLI
-  - GPU deployment CLI
+  - AI coding agent CLI
   - terminal GPU management
-  - DevOps GPU tools
-  - ML automation CLI
+  - podstack code
+  - cloud sandbox preview
+  - command line ML platform
 ---
+
 # CLI
 
-Manage Podstack resources from your terminal using the official command-line interface.
+`podstack` is the official command-line interface for the Podstack cloud. It bundles four things into one binary:
 
-## Overview
+- **`podstack code`** — an AI coding agent that plans, builds, and previews full applications for you, live, in a cloud sandbox.
+- **Cloud sandboxes** — sync your workspace into a sandbox and get a public preview URL (`podstack sandbox`).
+- **On-demand GPUs & fine-tuning** — rent GPUs, SSH in, move data, and run managed fine-tuning jobs (`podstack gpu`, `podstack train`, `podstack files`).
+- **Inference** — list and use the models on Podstack Inference Cloud (`podstack models`).
 
-The Podstack CLI provides a powerful command-line interface for managing GPU cloud resources. Use it for quick operations, scripting, automation, and CI/CD integration.
+Authentication is a single browser sign-in (`podstack auth login`) — no API key to copy.
 
-## Quick Example
+## Install
 
-```bash
-# Create a GPU pod
-podstack pod create \
-  --name training-job \
-  --image pytorch/pytorch:latest \
-  --gpu-type A100 \
-  --wait
-
-# SSH into the pod
-podstack pod ssh training-job
-
-# Run a command
-podstack pod exec training-job -- nvidia-smi
-
-# Delete when done
-podstack pod delete training-job
+```sh
+curl -fsSL https://github.com/Podstack-ai/podstack-cli-releases/releases/latest/download/install.sh | sh
 ```
 
-## Features
+Then sign in and confirm:
 
-- **Cross-Platform** - Works on macOS, Linux, and Windows
-- **Full Coverage** - Manage pods, storage, projects
-- **Multiple Outputs** - Table, JSON, YAML formats
-- **Shell Completion** - Tab completion for Bash, Zsh, Fish
-- **CI/CD Ready** - Token-based auth for automation
-- **Fast & Lightweight** - Single binary, no dependencies
-
-## Interactive CLI Features
-
-Many commands support interactive mode. If you omit required arguments, the CLI can guide you with step-by-step prompts and selection menus.
-
-```bash
-# Prompts for API token input
-podstack auth login
-
-# Interactive project creation wizard
-podstack project create
-
-# Interactive pod creation wizard
-podstack pod create
-
-# Interactive bucket creation/upload
-podstack bucket create
-podstack bucket upload
-
-# Interactive volume workflows
-podstack volume create
-podstack volume resize
+```sh
+podstack auth login      # opens your browser (Google / GitHub / SSO)
+podstack version
 ```
 
-## Installation
+See [Installation](/docs/cli/installation/) for other platforms and upgrades.
 
-```bash
-# macOS
-brew install podstack/tap/podstack-cli
+## Command map
 
-# Linux
-curl -sSL https://get.podstack.ai/cli | bash
+| Command | What it does | Guide |
+|---------|--------------|-------|
+| `podstack auth` | Sign in / out, show identity | [Authentication](/docs/cli/authentication/) |
+| `podstack projects` | Pick the project resources bill to | [Projects](/docs/cli/projects/) |
+| `podstack code` | AI coding agent — build & preview apps | [Coding agent](/docs/cli/code/) |
+| `podstack sandbox` | Preview the current app in a cloud sandbox | [Sandboxes](/docs/cli/sandbox/) |
+| `podstack gpu` | Rent and manage GPU instances, SSH keys | [GPUs](/docs/cli/gpu/) |
+| `podstack train` | Managed fine-tuning jobs | [Fine-tuning](/docs/cli/train/) |
+| `podstack files` | Upload datasets for fine-tuning | [Files](/docs/cli/files/) |
+| `podstack models` | List Inference Cloud models | [Models](/docs/cli/models/) |
+| `podstack secrets` | Store secrets the agent can use blind | [Secrets](/docs/cli/secrets/) |
+| `podstack send` / `receive` | Peer-to-peer file transfer | [Send & receive](/docs/cli/send-receive/) |
+| `podstack upgrade` | Update the CLI | [Installation](/docs/cli/installation/) |
 
-# Windows
-winget install podstack.cli
-```
+## Global flags
 
-## In This Section
+- `--output json|table` — force the output format. The default is a human table on a terminal and JSON when piped, so `podstack gpu instances list | jq` just works.
+- `PODSTACK_API_KEY` — supply a `psk_` key via environment instead of an interactive login (useful in CI).
+- `PODSTACK_PROJECT_ID` — override the default project for a single command.
+
+## In this section
 
 | Guide | Description |
 |-------|-------------|
-| [Installation](/docs/cli/installation/) | Install on your platform |
-| [Authentication](/docs/cli/authentication/) | Login and configure CLI access |
-| [Configuration](/docs/cli/configuration/) | CLI settings and environment defaults |
-| [Quick Start](/docs/cli/quickstart/) | Get started in minutes |
-| [Projects](/docs/cli/projects/) | Project management commands |
-| [GPUs & Templates](/docs/cli/gpu-and-templates/) | Compute templates and GPU availability |
-| [Pods](/docs/cli/pods/) | Container management commands |
-| [Storage](/docs/cli/storage/) | Bucket and volume commands |
-| [Wallet & Pricing](/docs/cli/wallet-and-pricing/) | Balance, expenditure, and resource pricing |
-
-## Common Commands
-
-| Command | Description |
-|---------|-------------|
-| `podstack auth login` | Authenticate with Podstack |
-| `podstack project use NAME` | Set active default project |
-| `podstack pod list` | List all pods |
-| `podstack pod create` | Create a new pod |
-| `podstack pod ssh NAME` | SSH into a pod |
-| `podstack pod delete NAME` | Delete a pod |
-| `podstack bucket list` | List storage buckets |
-| `podstack gpu availability` | Check global GPU inventory |
-| `podstack wallet balance` | Check wallet balance |
-| `podstack pricing` | View real-time compute pricing |
-
-## Support
-
-For CLI issues, visit [Customer Support](/docs/support/) or check the [Troubleshooting](/docs/support/troubleshooting/) guide.
+| [Installation](/docs/cli/installation/) | Install, upgrade, platforms |
+| [Authentication](/docs/cli/authentication/) | Browser sign-in and CI keys |
+| [Quick Start](/docs/cli/quickstart/) | Zero to running in minutes |
+| [Coding agent](/docs/cli/code/) | `podstack code` — build & preview apps |
+| [Sandboxes](/docs/cli/sandbox/) | Live previews in cloud sandboxes |
+| [Projects](/docs/cli/projects/) | Choose the billing project |
+| [GPUs](/docs/cli/gpu/) | Rent and manage GPU instances |
+| [Fine-tuning](/docs/cli/train/) | Managed training jobs |
+| [Files](/docs/cli/files/) | Upload datasets |
+| [Models](/docs/cli/models/) | Inference Cloud models |
+| [Secrets](/docs/cli/secrets/) | Blind secret injection for the agent |
+| [Send & receive](/docs/cli/send-receive/) | Peer-to-peer transfer |
+| [Configuration](/docs/cli/configuration/) | Config files and environment |
+| [FAQs](/docs/cli/faqs/) | Common questions |

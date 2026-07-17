@@ -1,93 +1,62 @@
 ---
-title: Inference Playground
+title: Playground
+weight: 70
+description: "Test Podstack Inference models interactively in the portal: streaming chat, temperature and max-token controls, live token usage and cost, and copy-ready code."
+keywords:
+  - inference playground
+  - test LLM in browser
+  - streaming chat playground
+  - temperature max tokens
+  - reasoning tokens
+  - copy code snippet
+  - prompt engineering
 ---
 
-# Inference Playground
+# Playground
 
-Test inference models interactively in your browser before integrating into your applications.
+The Playground lets you test models interactively in the browser before writing any integration code. It streams responses in real time and shows the exact request and cost for each turn.
 
-## Accessing the Playground
+## Open the Playground
 
-1. Navigate to **Inference > Playground**
-2. Select a model from the dropdown
-3. Start sending messages
+1. Go to **Inference > Playground** in the portal (or click **Try in Playground** from a model's card in the [Catalog](/docs/inference/models/)).
+2. Select a model.
+3. Type a message and send.
 
-## Features
+You can authenticate the Playground with your signed-in session or by pasting a `psk_` API key.
 
-### Chat Interface
+## What you can do
 
-- Send messages and receive model responses
-- View full conversation history
-- Clear conversation to start fresh
-- Real-time streaming responses
+### Streaming chat
 
-### Model Selection
+Responses stream token by token over Server-Sent Events, exactly like `stream: true` in the API. For **reasoning models**, thinking tokens are shown in a separate, collapsible **Reasoning** section so the final answer stays clean.
 
-Choose from any available model in the catalog:
-- Switch models mid-conversation
-- Compare responses across models
-- View model details and pricing
+### Parameter controls
 
-### Parameter Tuning
+The Playground exposes the two most-used sampling controls:
 
-Adjust inference parameters in real-time:
+| Parameter | Range | Default |
+|-----------|-------|---------|
+| Temperature | 0.0 – 2.0 | 0.7 |
+| Max tokens | 1 – model max | 4096 |
 
-| Parameter | Description | Range |
-|-----------|-------------|-------|
-| Temperature | Controls randomness | 0.0 - 2.0 |
-| Max Tokens | Maximum response length | 1 - model max |
-| Top P | Nucleus sampling | 0.0 - 1.0 |
-| Top K | Top-k sampling | 1 - 100 |
-| Stop Sequences | Custom stop tokens | Custom strings |
+If a response stops because it hit the token limit (`finish_reason: "length"`), the Playground flags it as **truncated** and offers a one-click retry with a larger budget.
 
-### Token Usage
+### Live usage and cost
 
-The playground tracks token usage per conversation:
-- Input tokens per message
-- Output tokens per response
-- Total tokens consumed
-- Estimated cost
+Each turn reports the input and output tokens consumed and the per-turn cost, computed from the [pricing endpoint](/docs/inference/pricing-and-usage/). This is real usage — Playground requests are billed from your wallet like any other request.
 
-### Performance Metrics
+### Inspector: copy-ready code
 
-View real-time performance:
-- Time to first token
-- Tokens per second
-- Total response time
+An Inspector panel shows the **Request** and **Response** payloads and a **Code** tab with ready-to-paste **curl**, **Python**, and **JavaScript** snippets for the current model and settings — a fast way to move from experimenting to integrating.
 
-## Use Cases
+## Use it for
 
-### Prompt Engineering
+- **Prompt engineering** — iterate on a system prompt and see results immediately.
+- **Model evaluation** — send the same prompt to different models and compare quality, speed, and cost.
+- **Quick prototyping** — confirm a model handles your domain before writing code, then copy the snippet from the Inspector.
 
-Test and refine prompts before deployment:
-```
-System: You are a technical documentation writer.
-User: Write a brief explanation of GPU memory bandwidth.
-```
+## Next steps
 
-### Model Evaluation
-
-Compare models for your specific use case:
-1. Send the same prompt to different models
-2. Compare response quality
-3. Compare speed and cost
-4. Choose the best model for your needs
-
-### Quick Prototyping
-
-Test model capabilities before writing integration code:
-- Verify the model understands your domain
-- Test edge cases
-- Validate output format
-
-## Limitations
-
-- Playground uses your inference API quota
-- Conversations are not persisted between sessions
-- Large responses may be truncated at the model's context limit
-
-## Next Steps
-
-- [Generate API Keys](/docs/inference/api-keys/) to integrate into your application
-- [Browse the Model Catalog](/docs/inference/catalog/) for more models
-- [View API Reference](/docs/inference/) for programmatic access
+- [Quickstart](/docs/inference/quickstart/) — take a Playground prompt into code.
+- [API Reference](/docs/inference/api-reference/) — the full parameter set beyond temperature and max tokens.
+- [Serverless Inference](/docs/inference/serverless/) — a dedicated playground for cold-start GPU models, including video generation.

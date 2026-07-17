@@ -1,65 +1,39 @@
 ---
 title: Projects
-weight: 50
-description: "Podstack CLI project management commands. Set up and manage your working environments."
+weight: 60
+description: "Choose the Podstack project your sandboxes and compute bill to, from the CLI — podstack projects list, use, and create."
 keywords:
   - CLI project management
-  - podstack project
-  - terminal projects
+  - podstack projects
+  - default project CLI
+  - X-Project-ID
 ---
 
-# Projects
+# Projects — `podstack projects`
 
-Manage Podstack projects using CLI commands. Projects help you organize resources, isolate environments, and manage access.
+Every sandbox and compute resource runs inside a **project**, and its cost bills to that project. The project id is sent as the `X-Project-ID` header on API calls. Set a default so you don't have to pass it each time.
 
-## Create a Project
-
-You can run this command in interactive mode without flags:
-
-```bash
-podstack project create
+```sh
+podstack projects                    # list your projects (marks the default)
+podstack projects use <id-or-name>   # set the default project
+podstack projects create <name>      # create a project and make it the default
 ```
 
-The CLI prompts for project name and description, then can optionally set the new project as your default.
+The default is saved to `~/.podstack/config.json`. Override it for a single command with the `PODSTACK_PROJECT_ID` environment variable.
 
-```bash
-# Basic creation
-podstack project create --name my-project
+## First-run picker
 
-# With description
-podstack project create --name prod-env --desc "Production environment"
-```
+When you run `podstack code` (or `podstack auth login`) with no default project set, the CLI lists your projects and lets you pick one with the arrow keys — or create a new one on the spot. A single project is adopted automatically.
 
-## List Projects
+## Commands
 
-```bash
-# List all your projects
-podstack project list
+| Command | Description |
+|---------|-------------|
+| `podstack projects` / `projects list` | List projects; the default is marked |
+| `podstack projects use <id\|name>` | Set the default project (by id or name) |
+| `podstack projects create <name>` | Create a project and set it as the default |
 
-# Output as JSON
-podstack project list -o json
-```
+## Related
 
-## Set Default Project Context
-
-Set a specific project as your default. Future commands will use this project automatically if you don't supply a `--project` flag.
-
-```bash
-# By name
-podstack project use my-project
-
-# By ID
-podstack project use 13056913-fe35-461c-ac9f-703fb1338ed2
-```
-
-## View Current Project Context
-
-Check which project your CLI is currently scoped to.
-
-```bash
-# Check loaded project context
-podstack project current
-
-# JSON output
-podstack project current -o json
-```
+- [Authentication](/docs/cli/authentication/) — sign-in also selects a project.
+- [Configuration](/docs/cli/configuration/) — where the default is stored.
