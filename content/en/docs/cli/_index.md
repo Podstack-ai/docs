@@ -60,6 +60,30 @@ See [Installation](/docs/cli/installation/) for other platforms and upgrades.
 - `PODSTACK_API_KEY` — supply a `psk_` key via environment instead of an interactive login (useful in CI).
 - `PODSTACK_PROJECT_ID` — override the default project for a single command.
 
+## What's available today
+
+Every command below ships in the current `podstack` binary — no flags to unlock, no waitlist:
+
+- **AI coding agent** — `podstack code` runs the agent in your current directory, and `podstack code sessions list` / `delete` manage saved sessions so you can resume work.
+- **Cloud sandboxes** — `podstack sandbox run` syncs your workspace and returns a public preview URL; `list`, `logs`, `cost`, `renew`, and `close` manage the running sandboxes.
+- **On-demand GPUs** — `podstack gpu types list` and `podstack gpu pricing` browse the catalog; `podstack gpu launch` is an interactive quick-launch; `podstack gpu instances` covers `create`, `list`, `get`, `delete`, `ssh`, `cp`, and `expose`; `podstack gpu keys` manages your SSH keys (`list`, `create`, `delete`).
+- **Managed fine-tuning** — `podstack train create`, `list`, `get`, `cancel`, and `events` run LoRA/QLoRA jobs, and `podstack train models` lists base models.
+- **Dataset uploads** — `podstack files upload` sends datasets for fine-tuning.
+- **Inference** — `podstack models list` prints the Inference Cloud catalog.
+- **Secrets** — `podstack secrets set` / `list` / `rm` store values the coding agent can use without seeing them.
+- **Peer-to-peer transfer** — `podstack send` and `podstack receive` move files and directories between machines with a code phrase.
+- **Projects & auth** — `podstack auth login` / `whoami` / `logout`, and `podstack projects list` / `use` / `create` to choose the billing project.
+- **Scripting** — the `--output json|table` flag, plus the `PODSTACK_API_KEY` and `PODSTACK_PROJECT_ID` environment variables, make every command CI-friendly. `podstack upgrade` and `podstack version` keep the binary current.
+
+## Use cases
+
+- **Ship an app from a prompt** — a developer runs `podstack code` in a project directory and the agent plans, edits, and previews the running app in a cloud sandbox, then shares the preview URL with a teammate.
+- **Rent a GPU without leaving the terminal** — an ML engineer runs `podstack gpu launch`, picks an H100, and is dropped into an SSH shell on the box seconds later with their own key.
+- **Fine-tune hands-off** — a data scientist uploads a JSONL dataset with `podstack files upload`, kicks off a LoRA job with `podstack train create --budget 25`, and follows it to completion with `podstack train events --follow`.
+- **Wire inference into CI** — a platform engineer sets `PODSTACK_API_KEY` in a pipeline, runs `podstack models list --output json`, and pipes the catalog into a deploy step with `jq`.
+- **Move a dataset between machines** — a researcher runs `podstack send ./dataset` on their laptop and `podstack receive <code>` on a remote box for a resumable, relay-based transfer.
+- **Keep secrets out of prompts** — a developer stores an API token with `podstack secrets set STRIPE_KEY` so the coding agent can call the service without ever seeing the value.
+
 ## In this section
 
 | Guide | Description |

@@ -1,11 +1,17 @@
 ---
 title: Troubleshooting
-
-weight: 10
+weight: 60
+description: "Fixes for common Podstack problems — login and OTP, pods stuck pending or failing to connect, storage and NFS, wallet payments, and network/port access."
+keywords:
+  - Podstack troubleshooting
+  - pod stuck pending
+  - SSH connection refused
+  - wallet payment failed
+  - NFS mount failed
 ---
 # Troubleshooting
 
-Solutions to common issues on Podstack.
+Solutions to common issues on Podstack. If none of these resolve your problem, see [Getting Help](/docs/support/getting-help/) or the [Support Scenarios](/docs/support/scenarios/) for guided walkthroughs.
 
 ## Login Issues
 
@@ -235,10 +241,12 @@ If these solutions don't resolve your issue:
    - Screenshots
    - Steps to reproduce
 
-2. **Check audit logs** for related events
+2. **Check [audit logs](/docs/account/audit-logs/)** for related events
 
-3. **Contact support** with detailed information
+3. **Contact support** with detailed information — see [Getting Help](/docs/support/getting-help/) for every channel and what to include.
 
 4. **Include timestamps** when the issue occurred
 
 **Email us at:** [support@podstack.ai](mailto:support@podstack.ai)
+
+**Related:** [Support Scenarios](/docs/support/scenarios/) · [FAQs](/docs/support/faqs/) · [Account & Billing Help](/docs/support/account-and-billing/)

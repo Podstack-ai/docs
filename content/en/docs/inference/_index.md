@@ -72,6 +72,31 @@ For always-warm, dedicated serving or cold-start pay-per-GPU-second workloads (i
 | Usage analytics | `GET /v1/usage/summary`, `GET /v1/usage/requests` | Available |
 | Audio transcription | `POST /v1/audio/transcriptions` | Coming soon (returns `501`) |
 
+## What's available today
+
+Live right now, both in the portal and over the API:
+
+- **Model catalog** — browse the hosted models in the portal (**Inference > Model Catalog**) or list real IDs with `GET /v1/models` and `podstack models list`. See [Models](/docs/inference/models/).
+- **Playground** — an interactive, streaming chat playground in the portal (**Inference > Playground**) with temperature and max-token controls, live per-turn cost, and copy-ready curl/Python/JavaScript snippets. See [Playground](/docs/inference/playground/).
+- **API keys** — create, use, scope with limits, and revoke `psk_` keys from **Inference > API Keys**. See [Authentication](/docs/inference/authentication/).
+- **Chat completions (streaming)** — `POST /v1/chat/completions`, OpenAI-compatible.
+- **Embeddings** — `POST /v1/embeddings` on self-hosted models.
+- **Public pricing** — `GET /v1/pricing`.
+- **Usage analytics** — `GET /v1/usage/summary` and `GET /v1/usage/requests` report per-key token usage and cost over the API. See [Pricing & Usage](/docs/inference/pricing-and-usage/).
+
+> **Not yet generally available:**
+> - **Audio transcription** (`POST /v1/audio/transcriptions`) is not implemented yet — it returns `501` with a "coming soon" message.
+> - The dedicated **Serverless Inference** surface (Serverless Models catalog, serverless chat/video, and the GPU dashboard) is built but currently gated behind a feature flag, so it may not appear in your portal. The standard chat and embeddings endpoints above are already backed by on-demand cold-start GPUs under the hood.
+
+## Use cases
+
+- **Drop-in OpenAI replacement** — a backend engineer changes only the base URL and API key, and an existing chat application runs on open-source models with no other code change.
+- **Prompt engineering in the browser** — a product manager iterates on a system prompt in the Playground, watches the streamed output and per-turn cost, then copies the generated Python snippet into the app.
+- **Embeddings for RAG** — a developer calls `POST /v1/embeddings` on a self-hosted model to build a vector index for a retrieval pipeline.
+- **Per-key cost governance** — a platform lead issues a scoped API key with usage limits for a team and tracks spend through the usage endpoints.
+- **Coding-agent backend** — a developer runs `podstack code`, which calls this same OpenAI-compatible gateway for its model.
+- **Model comparison** — an ML engineer sends the same prompt to several catalog models in the Playground to compare quality, latency, and cost before committing to one.
+
 ## In this section
 
 | Guide | Description |

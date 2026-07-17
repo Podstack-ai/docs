@@ -1,213 +1,82 @@
 # ============================================================
 # SIDEBAR NAVIGATION DATA (data/en/docs/sidebar.yml)
-# PURPOSE: Defines the documentation sidebar structure with sections
+# PURPOSE: Defines the documentation sidebar structure.
 #
-# STRUCTURE:
-# - Root items: Top-level sections in sidebar
-# - Each item can have nested child items (pages array)
-# - Supports unlimited nesting depth
-# - Recursively rendered by layouts/partials/sidebar-item.html
+# The docs have exactly FIVE top-level sections:
+#   QuickPod · TrainPod · Inference · CLI · Support
+# Everything else (container image catalog, account, billing,
+# onboarding, SDK reference) is folded UNDER one of these five.
 #
 # ITEM PROPERTIES:
 # - title: Display name shown in sidebar (required)
-# - slug: URL path segment (e.g., "installation" → /docs/installation/)
-# - path: Full path override (alternative to slug, less common)
-# - pages: Array of child items (optional, creates nested sections)
+# - slug:  URL segment relative to the parent — builds
+#          /docs/<parent>/<slug>/. Use for a section's own pages.
+# - path:  ABSOLUTE path override — builds /docs/<path>/ and
+#          ignores the parent. Use to fold an existing section
+#          (e.g. /docs/account/) under a heading without moving files.
+# - pages: Array of child items (optional, nested section).
 #
-# USAGE:
-# - Loaded by layouts/partials/sidebar.html
-# - Rendered recursively via layouts/partials/sidebar-item.html
-# - Used by js/sidebar.js for toggle functionality
-# - Referenced in css/sidebar.css for styling
+# Rendered recursively by layouts/partials/sidebar-item.html.
+# Every slug/path below MUST resolve to a page that exists.
 # ============================================================
 
-- title: Getting Started
-  slug: getting-started
+- title: QuickPod
+  slug: quickpod
   pages:
-    - title: Creating Your Account
-      slug: creating-account
-    - title: Dashboard Overview
-      slug: dashboard-overview
-    - title: Quick Start Guide
-      slug: quick-start
+    - title: Launch a Pod
+      slug: launch-a-pod
+    - title: Templates
+      slug: templates
+    - title: Container Image Catalog
+      path: container-images
+    - title: Storage & Data
+      slug: storage-and-data
+    - title: MLOps
+      slug: mlops
+    - title: Manage & Scale
+      slug: manage-and-scale
+    - title: Use Cases & Scenarios
+      slug: scenarios
+    - title: Troubleshooting
+      slug: troubleshooting
 
-- title: Projects
-  slug: projects
+- title: TrainPod
+  slug: trainpod
   pages:
-    - title: Creating & Switching Projects
-      slug: creating-projects
-    - title: Team Management
-      slug: team-management
-
-- title: Compute
-  slug: compute
-  pages:
-    - title: Pods
-      slug: pods
-      pages:
-        - title: Creating Pods
-          slug: creating-pods
-        - title: Managing Pods
-          slug: managing-pods
-        - title: Connecting to Pods
-          slug: connecting-to-pods
-        - title: SSH Tutorial (Video)
-          slug: ssh-tutorial
-        - title: SSH from Windows PowerShell
-          slug: ssh-powershell
-    - title: GPU Marketplace
-      slug: gpu-marketplace
-
-- title: Storage
-  slug: storage
-  pages:
-    - title: Object Storage
-      slug: object-storage
-    - title: File Storage
-      slug: file-storage
-    - title: NFS Volumes
-      slug: nfs-volumes
-
-- title: Sandboxes
-  slug: sandboxes
-
-- title: Container Images
-  slug: container-images
-  pages:
-    - title: a1111
-      slug: a1111
-    - title: sd-forge
-      slug: sd-forge
-    - title: comfyui
-      slug: comfyui
-    - title: kohya-ss
-      slug: kohya-ss
-    - title: axolotl
-      slug: axolotl
-    - title: llamafactory
-      slug: llamafactory
-    - title: unsloth
-      slug: unsloth
-    - title: unsloth-studio
-      slug: unsloth-studio
-    - title: vllm
-      slug: vllm
-    - title: sglang
-      slug: sglang
-    - title: ollama
-      slug: ollama
-    - title: text-gen-webui
-      slug: text-gen-webui
-    - title: tei
-      slug: tei
-    - title: triton
-      slug: triton
-    - title: pytorch
-      slug: pytorch
-    - title: tensorflow
-      slug: tensorflow
-    - title: jupyterlab-gpu
-      slug: jupyterlab-gpu
-    - title: rapids
-      slug: rapids
-    - title: tensorrt
-      slug: tensorrt
-    - title: cloudtts
-      slug: cloudtts
-    - title: whisperx
-      slug: whisperx
-    - title: alphafold
-      slug: alphafold
-    - title: gromacs
-      slug: gromacs
-    - title: octave
-      slug: octave
-    - title: cloudblenderrender
-      slug: cloudblenderrender
-    - title: ffmpeg-gpu
-      slug: ffmpeg-gpu
-    - title: sam3
-      slug: sam3
-    - title: ubuntu-ssh-cuda
-      slug: ubuntu-ssh-cuda
-
-- title: MLOps
-  slug: mlops
-  pages:
-    - title: Experiment Tracking
-      slug: experiment-tracking
-    - title: Model Registry
-      slug: model-registry
-    - title: Pipelines
-      slug: pipelines
-    - title: Model Monitoring
-      slug: model-monitoring
-    - title: Drift Detection
-      slug: drift-detection
-    - title: Schedules
-      slug: schedules
-    - title: Approvals
-      slug: approvals
+    - title: Provision a GPU
+      slug: provision-a-gpu
+    - title: SSH Access
+      slug: ssh-access
+    - title: Move Data
+      slug: move-data
+    - title: Fine-Tuning
+      slug: fine-tuning
+    - title: Pricing & Billing
+      slug: pricing-and-billing
+    - title: Troubleshooting
+      slug: troubleshooting
 
 - title: Inference
   slug: inference
   pages:
-    - title: Model Catalog
-      slug: catalog
-    - title: API Keys
-      slug: api-keys
-    - title: Playground
-      slug: playground
-    - title: Serverless Inference
-      slug: serverless
-
-- title: Billing
-  slug: billing
-  pages:
-    - title: Wallet
-      slug: wallet
-    - title: Invoices
-      slug: invoices
-    - title: KYC Verification
-      slug: kyc
-
-- title: Account
-  slug: account
-  pages:
-    - title: Settings
-      slug: settings
-    - title: SSH Keys
-      slug: ssh-keys
-    - title: API Tokens
-      slug: api-tokens
-    - title: Audit Logs
-      slug: audit-logs
-
-- title: Advanced Features
-  slug: advanced
-  pages:
-    - title: Templates
-      slug: templates
-    - title: Serverless GPU
-      slug: serverless-gpu
-    - title: AI Studio
-      slug: ai-studio
-
-- title: SDK
-  slug: sdk
-  pages:
-    - title: Installation
-      slug: installation
+    - title: Quickstart
+      slug: quickstart
+    - title: Models
+      slug: models
     - title: Authentication
       slug: authentication
-    - title: Quick Start
-      slug: quickstart
-    - title: Pods
-      slug: pods
-    - title: Storage
-      slug: storage
-    - title: Error Handling
-      slug: error-handling
+    - title: API Reference
+      slug: api-reference
+    - title: Serverless Inference
+      slug: serverless
+    - title: Playground
+      slug: playground
+    - title: Pricing & Usage
+      slug: pricing-and-usage
+    - title: Python SDK
+      path: sdk
+    - title: FAQs
+      slug: faqs
 
 - title: CLI
   slug: cli
@@ -216,23 +85,47 @@
       slug: installation
     - title: Authentication
       slug: authentication
-    - title: Configuration
-      slug: configuration
     - title: Quick Start
       slug: quickstart
+    - title: Coding Agent
+      slug: code
+    - title: Sandboxes
+      slug: sandbox
     - title: Projects
       slug: projects
-    - title: GPUs & Templates
-      slug: gpu-and-templates
-    - title: Pods
-      slug: pods
-    - title: Storage
-      slug: storage
-    - title: Wallet & Pricing
-      slug: wallet-and-pricing
+    - title: GPUs
+      slug: gpu
+    - title: Fine-Tuning
+      slug: train
+    - title: Files
+      slug: files
+    - title: Models
+      slug: models
+    - title: Secrets
+      slug: secrets
+    - title: Send & Receive
+      slug: send-receive
+    - title: Configuration
+      slug: configuration
+    - title: FAQs & Scenarios
+      slug: faqs
 
-- title: Customer Support
+- title: Support
   slug: support
   pages:
+    - title: Getting Started
+      path: getting-started
+    - title: Getting Help
+      slug: getting-help
+    - title: Account & Billing
+      slug: account-and-billing
+    - title: Account Settings
+      path: account
+    - title: Billing & Wallet
+      path: billing
+    - title: Scenarios
+      slug: scenarios
     - title: Troubleshooting
       slug: troubleshooting
+    - title: FAQs
+      slug: faqs

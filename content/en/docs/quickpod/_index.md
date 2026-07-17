@@ -57,6 +57,32 @@ If you need dedicated, non-virtualized hardware for large-scale training, see th
 | **Per-second billing** | Pay only for the GPU fraction and the seconds you run. Stop a pod to pause billing. |
 | **Save your own templates** | Turn any pod configuration into a reusable 1-click template for your team. |
 
+## What's available today
+
+These features are live in the portal right now — launch a pod and you can use all of them:
+
+- **Pods list and pod detail** — see every pod, its status, and drill into one for logs, metrics, and connection details.
+- **One-click launch** — a three-step **GPU → template → configure** flow, with a **join-the-waitlist** option when a GPU type is temporarily out of capacity.
+- **1-click template catalog** — the pre-built app catalog plus any custom templates you've saved; deep-link into launch from the [Templates](/docs/quickpod/templates/) page.
+- **Fractional GPUs** — request a whole card or a percentage slice of one when you configure a pod. See [Manage & Scale](/docs/quickpod/manage-and-scale/).
+- **Persistent volumes** — create and attach volumes at a mount path during launch, and manage them from a standalone Volumes page. See [Storage & Data](/docs/quickpod/storage-and-data/).
+- **Live logs and real-time stats** — streaming container logs and CPU/GPU/memory metrics on the pod detail page.
+- **In-browser web terminal** — a full terminal for any running pod, no local setup.
+- **SSH access** — per-pod SSH connection details plus an SSH Keys page to register your keys. See [Launch a Pod](/docs/quickpod/launch-a-pod/).
+- **Save your own templates** — turn a working pod configuration into a reusable 1-click template for your team.
+- **Wallet and invoices** — per-second billing, wallet balance, and invoices, all in the portal.
+
+> **Not yet generally available:** the built-in **MLOps** suite (experiment tracking, model registry, monitoring, drift detection, pipelines, and schedules) is built but currently gated behind a feature flag, so it may not appear in your portal. If the MLOps/registry sections aren't visible, they aren't enabled for your account yet — see [MLOps](/docs/quickpod/mlops/) or contact support.
+
+## Use cases
+
+- **Notebook experimentation** — a researcher launches a JupyterLab template on an L40S, attaches a volume at `/data`, iterates in the notebook, then stops the pod to pause billing.
+- **Run a ready-made app** — a creative technologist launches the ComfyUI (or Automatic1111) template and opens its auto-generated HTTPS URL to start generating images, with no image to build.
+- **Serve a model for a prototype** — a developer launches the Ollama or vLLM template on a fractional GPU, exposes the port, and hits an OpenAI-style endpoint from their app.
+- **Fine-tune in a prebuilt environment** — an ML engineer picks an Axolotl or Unsloth template, opens the web terminal, and runs a LoRA job against a dataset that lives on a persistent volume.
+- **Cost-controlled dev box** — a student rents a fractional slice of a GPU for light development, using the web terminal and live metrics, and pays only for the seconds it runs.
+- **Standardize a team environment** — a team lead configures a pod once (image, ports, env vars), saves it as a custom template, and the whole team launches identical environments in one click.
+
 ## The path
 
 Work through these pages in order, or jump to the one you need:
