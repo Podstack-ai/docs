@@ -1,7 +1,7 @@
 ---
 title: Your Account
 
-weight: 60
+weight: 150
 description: "Manage your PodStack account — profile and currency, security and sessions, SSH keys, API tokens, and audit logs for GPU cloud access and automation."
 keywords:
   - GPU cloud account

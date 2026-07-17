@@ -1,7 +1,7 @@
 ---
 title: Container Images
 
-weight: 35
+weight: 110
 description: "Pre-built Podstack container images for GPU workloads — image generation, LLM training and serving, scientific computing, and more."
 keywords:
   - container images

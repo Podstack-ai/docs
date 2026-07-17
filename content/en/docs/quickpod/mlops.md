@@ -1,6 +1,9 @@
 ---
 title: MLOps
 weight: 60
+aliases:
+  - /docs/mlops/experiment-tracking/
+  - /docs/mlops/model-registry/
 description: "Built-in MLOps for Podstack QuickPods — track experiments and runs, register and version models, monitor performance and drift, and automate training with pipelines and schedules."
 keywords:
   - MLOps

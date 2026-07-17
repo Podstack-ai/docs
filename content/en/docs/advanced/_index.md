@@ -1,7 +1,7 @@
 ---
 title: Advanced Features
 
-weight: 70
+weight: 180
 description: "Serverless GPU, AI Studio, launch templates. Pay for what you use, zero lock-in. Fine-tune LLMs, deploy models, run Jupyter notebooks with GPU."
 keywords:
   - serverless GPU cheap

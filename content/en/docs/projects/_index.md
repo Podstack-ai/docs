@@ -1,7 +1,7 @@
 ---
 title: Projects
 
-weight: 20
+weight: 160
 description: "Organize GPU cloud resources with PodStack projects. Every pod, volume, SSH key, and cost belongs to a project, with per-project billing and role-based team access."
 keywords:
   - GPU cloud team management

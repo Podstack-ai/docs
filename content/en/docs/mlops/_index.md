@@ -1,5 +1,6 @@
 ---
 title: MLOps
+weight: 170
 description: "Track ML experiments, manage model versions, and streamline your machine learning workflow with Podstack's MLOps tools."
 keywords:
   - MLOps
@@ -41,5 +42,5 @@ Contact support if MLOps isn't visible in your portal.
 
 ## Next Steps
 
-- [Experiment Tracking](/docs/mlops/experiment-tracking/) - Track and compare experiments
-- [Model Registry](/docs/mlops/model-registry/) - Manage model versions
+- [Experiment Tracking](/docs/quickpod/mlops/) - Track and compare experiments
+- [Model Registry](/docs/quickpod/mlops/) - Manage model versions

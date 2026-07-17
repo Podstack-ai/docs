@@ -28,7 +28,7 @@ Find monitoring under **MLOps > Monitoring**. The feature is gated by `REACT_APP
 
 1. Go to **MLOps > Monitoring** → **Create Monitor**.
 2. Pick:
-   - **Model** and **Model Version** (from the [Model Registry](/docs/mlops/model-registry/))
+   - **Model** and **Model Version** (from the [Model Registry](/docs/quickpod/mlops/))
    - **Name**
    - **Endpoint URL** the model is served from
    - **Window size**: `5m`, `15m`, `1h`, `6h`, or `1d` — controls how much history each snapshot covers
@@ -70,4 +70,4 @@ Alerts surface in the notifications panel and can be emailed (configure in **Set
 
 - [Drift Detection](/docs/mlops/drift-detection/) — catch input distribution shift before it shows up as errors
 - [Pipelines](/docs/mlops/pipelines/) — wire monitoring into automatic retraining
-- [Model Registry](/docs/mlops/model-registry/) — version models that monitors point at
+- [Model Registry](/docs/quickpod/mlops/) — version models that monitors point at

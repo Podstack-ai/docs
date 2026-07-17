@@ -60,5 +60,5 @@ View past executions for each schedule:
 
 ## Next Steps
 
-- [Experiment Tracking](/docs/mlops/experiment-tracking/) - View scheduled run results
-- [Model Registry](/docs/mlops/model-registry/) - Register models from successful runs
+- [Experiment Tracking](/docs/quickpod/mlops/) - View scheduled run results
+- [Model Registry](/docs/quickpod/mlops/) - Register models from successful runs

@@ -1,6 +1,8 @@
 ---
 title: Sandboxes
 weight: 50
+aliases:
+  - /docs/sandboxes/
 description: "Preview the app in your current directory in a Podstack cloud sandbox and get a public URL — with podstack sandbox run, logs, cost, and close."
 keywords:
   - cloud sandbox
