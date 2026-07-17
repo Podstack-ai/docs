@@ -83,7 +83,6 @@ Go to **Experiment Tracking** (heading *"Track and manage your ML experiments an
    - **Params** view — a **Parameters Comparison** table with differing values highlighted.
 
 <!-- screenshot: the Experiment Tracking overview with stat cards and Runs by Status chart -->
-![Experiment Tracking overview](/images/quickpod/experiment-tracking.png)
 
 Run statuses are **running**, **completed**, **failed**, and **killed**. Archive an experiment to hide it from the default view (archived experiments remain viewable but not modifiable).
 
@@ -179,7 +178,6 @@ Automate multi-step ML workflows on the **Create Pipeline** page (*"Define your 
 Trigger a run from the portal or with `registry`-side pipeline APIs. Runs and their steps report **pending**, **running**, **completed**, **failed**, or **cancelled**, and you can cancel a run in progress.
 
 <!-- screenshot: the Pipeline Builder with steps and the dependency graph -->
-![Pipeline Builder](/images/quickpod/pipeline-builder.png)
 
 ## Schedules
 

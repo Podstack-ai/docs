@@ -29,7 +29,6 @@ Go to **Pods** to see every pod in the current project. Filter by project with t
 - **Actions** — the controls for that pod
 
 <!-- screenshot: the Pods list with status badges and row actions -->
-![The Pods list](/images/quickpod/pods-list.png)
 
 ### Pod states
 
@@ -77,7 +76,6 @@ On notebook images, the **Notebook Access** card shows the notebook URL, usernam
 - **Infrastructure Stats** show real-time CPU, memory, storage, and GPU utilization for the pod.
 
 <!-- screenshot: the pod detail page showing live logs and infrastructure stats -->
-![Pod detail with logs and stats](/images/quickpod/pod-detail.png)
 
 ### Billing
 

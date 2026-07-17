@@ -32,7 +32,6 @@ The Podstack catalog is browsed **inside the launch wizard**, on the **Choose a 
 5. Adjust anything you like, then click **Launch Pod**.
 
 <!-- screenshot: the "Choose a Template" step in the launch wizard, categories expanded -->
-![The 1-click template catalog in the launch wizard](/images/quickpod/template-catalog.png)
 
 Prefer to build from scratch? Click **Custom Configuration** at the top of the step instead.
 

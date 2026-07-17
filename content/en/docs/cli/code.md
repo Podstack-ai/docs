@@ -23,6 +23,8 @@ podstack code
 
 Run it with no arguments for an interactive session, or pass `-p` to run a single prompt non-interactively (great for scripts and CI).
 
+> **Pick a model.** If no model is configured, the CLI lists the available ones and asks you to choose. Pass `--model <id>` (from [`podstack models list`](/docs/cli/models/)), set `PODSTACK_MODEL`, or switch inside a session with `/model`.
+
 ## The build loop
 
 Ask for an app and the agent takes it end to end:

@@ -54,7 +54,6 @@ You can create a volume ahead of time from the **NFS Volumes** page, or inline w
 4. Click **Create Volume**.
 
 <!-- screenshot: the Create NFS Volume dialog with quota dropdown and estimated cost -->
-![Create NFS Volume dialog](/images/quickpod/create-nfs-volume.png)
 
 A volume's status is one of **active**, **suspended**, **pending_deletion**, **deleted**, or **error**. You can mount an **active** volume into any pod in the same project.
 

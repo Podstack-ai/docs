@@ -55,7 +55,6 @@ Goal: a running ComfyUI instance for node-graph image/video generation, with mod
 8. Add models and custom nodes into `/data` (over SSH/SCP or from object storage). They'll still be there after a stop/start. See the [ComfyUI image reference](/docs/container-images/comfyui/).
 
 <!-- screenshot: a running ComfyUI pod's exposed-port endpoint opening the ComfyUI UI -->
-![ComfyUI running from a template](/images/quickpod/comfyui-scenario.png)
 
 ## Scenario 3 — Track an experiment and register a model
 

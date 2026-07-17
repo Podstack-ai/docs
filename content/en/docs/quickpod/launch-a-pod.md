@@ -19,7 +19,6 @@ keywords:
 This is the full click-by-click flow for launching a QuickPod from the customer portal. The launch wizard has three steps — **Instance Type**, **Template**, and **Configure** — shown as a progress indicator at the top of the page.
 
 <!-- screenshot: the Launch Pod wizard header with the 3-step progress indicator -->
-![The Launch Pod wizard](/images/quickpod/launch-wizard.png)
 
 ## Before you start
 
@@ -74,7 +73,6 @@ The **Configure Your Pod** step is a set of cards on the left with a live **Summ
 - **GPU Memory/Cores per GPU** — the percentage of each GPU to use, from **5%** to **100%** in 5% steps. This is the fractional-GPU control. A donut chart shows what's already booked, your request, and what's free, and a summary line shows the effective VRAM.
 
 <!-- screenshot: the Resources card showing the vCPU/Memory sliders and the GPU percentage donut -->
-![Configuring pod resources and fractional GPU](/images/quickpod/configure-resources.png)
 
 ### NFS Volume (optional)
 
