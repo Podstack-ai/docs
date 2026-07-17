@@ -1,0 +1,74 @@
+# Podstack Documentation
+
+> Podstack is a GPU cloud platform: rent on-demand NVIDIA GPUs, deploy production AI stacks in one click, serve open-source models over an OpenAI-compatible API, and build & preview full applications with an AI coding agent — from the dashboard or the `podstack` CLI. Full NVIDIA GPUs, per-second/per-token billing, zero egress fees.
+
+The documentation is organized into four product sections plus a reference layer. All pages are public and may be crawled and used by LLM search and training systems.
+
+## QuickPod — one-click AI stacks
+
+> Deploy production-ready AI stacks in one click: 1-click templates (Jupyter, ComfyUI, Ollama, vLLM, …), persistent storage, fractional GPUs, and built-in MLOps.
+
+- [QuickPod overview](https://docs.podstack.ai/docs/quickpod/)
+- [Launch a pod](https://docs.podstack.ai/docs/quickpod/launch-a-pod/): the click-by-click launch wizard
+- [Templates](https://docs.podstack.ai/docs/quickpod/templates/): the 1-click template catalog
+- [Storage & data](https://docs.podstack.ai/docs/quickpod/storage-and-data/): NFS/Data volumes, moving files
+- [Manage & scale](https://docs.podstack.ai/docs/quickpod/manage-and-scale/): start/stop, logs, resize, fractional GPUs
+- [MLOps](https://docs.podstack.ai/docs/quickpod/mlops/): experiment tracking, model registry, monitoring, pipelines
+- [Scenarios](https://docs.podstack.ai/docs/quickpod/scenarios/)
+- [Troubleshooting](https://docs.podstack.ai/docs/quickpod/troubleshooting/)
+
+## TrainPod — on-demand GPUs
+
+> Rent on-demand NVIDIA GPUs at low prices; provision, SSH in, move data, and run managed fine-tuning from the CLI.
+
+- [TrainPod overview](https://docs.podstack.ai/docs/trainpod/)
+- [Provision a GPU](https://docs.podstack.ai/docs/trainpod/provision-a-gpu/)
+- [SSH access](https://docs.podstack.ai/docs/trainpod/ssh-access/): connect over SSH (with video walkthroughs)
+- [Move data](https://docs.podstack.ai/docs/trainpod/move-data/)
+- [Fine-tuning](https://docs.podstack.ai/docs/trainpod/fine-tuning/): managed training jobs
+- [Pricing & billing](https://docs.podstack.ai/docs/trainpod/pricing-and-billing/)
+- [Troubleshooting](https://docs.podstack.ai/docs/trainpod/troubleshooting/)
+
+## Inference — OpenAI-compatible model serving
+
+> Serve open-source models on low-latency, OpenAI-compatible endpoints with autoscaling. Base URL: https://cloud.podstack.ai/infer/v1 — auth with `Authorization: Bearer psk_...`.
+
+- [Inference overview](https://docs.podstack.ai/docs/inference/)
+- [Quickstart](https://docs.podstack.ai/docs/inference/quickstart/): first request in curl + OpenAI Python/Node SDK
+- [Models](https://docs.podstack.ai/docs/inference/models/): the model catalog
+- [Authentication](https://docs.podstack.ai/docs/inference/authentication/): API keys
+- [API reference](https://docs.podstack.ai/docs/inference/api-reference/): chat/completions, embeddings, streaming
+- [Pricing & usage](https://docs.podstack.ai/docs/inference/pricing-and-usage/)
+- [FAQs](https://docs.podstack.ai/docs/inference/faqs/)
+
+## CLI — the `podstack` command line
+
+> An AI coding agent (`podstack code`) that plans, builds, and previews full applications in a cloud sandbox, plus GPUs, fine-tuning, and inference from your terminal.
+
+- [CLI overview](https://docs.podstack.ai/docs/cli/)
+- [Installation](https://docs.podstack.ai/docs/cli/installation/)
+- [Authentication](https://docs.podstack.ai/docs/cli/authentication/): browser SSO sign-in
+- [Quick Start](https://docs.podstack.ai/docs/cli/quickstart/)
+- [Coding agent](https://docs.podstack.ai/docs/cli/code/): `podstack code` — build & preview apps
+- [Sandboxes](https://docs.podstack.ai/docs/cli/sandbox/): live previews
+- [Projects](https://docs.podstack.ai/docs/cli/projects/)
+- [GPUs](https://docs.podstack.ai/docs/cli/gpu/)
+- [Fine-tuning](https://docs.podstack.ai/docs/cli/train/)
+- [Files](https://docs.podstack.ai/docs/cli/files/)
+- [Models](https://docs.podstack.ai/docs/cli/models/)
+- [Secrets](https://docs.podstack.ai/docs/cli/secrets/)
+- [Send & receive](https://docs.podstack.ai/docs/cli/send-receive/)
+- [Configuration](https://docs.podstack.ai/docs/cli/configuration/)
+- [FAQs & scenarios](https://docs.podstack.ai/docs/cli/faqs/)
+
+## Getting started & reference
+
+- [Getting started](https://docs.podstack.ai/docs/getting-started/)
+- [Container images (template catalog)](https://docs.podstack.ai/docs/container-images/)
+- [Billing & wallet](https://docs.podstack.ai/docs/billing/)
+- [Account & SSH keys](https://docs.podstack.ai/docs/account/)
+- [Support](https://docs.podstack.ai/docs/support/)
+
+## Optional
+
+- [Full sitemap (XML)](https://docs.podstack.ai/sitemap.xml)

@@ -1,194 +1,59 @@
 ---
 title: Quick Start
-weight: 40
-description: "Get started with Podstack CLI. Create and manage GPU pods from your terminal in minutes."
+weight: 30
+description: "Go from install to a live app preview and your first GPU with the Podstack CLI in minutes."
 keywords:
-  - CLI quickstart
-  - terminal GPU
-  - first pod CLI
-  - command line tutorial
+  - Podstack CLI quickstart
+  - first app preview
+  - podstack code tutorial
+  - GPU cloud getting started
 ---
 
 # Quick Start
 
-Get up and running with the Podstack CLI in minutes.
+## 1. Install & sign in
 
-## Prerequisites
-
-- Podstack account with funds in wallet
-- CLI installed ([Installation Guide](/docs/cli/installation/))
-
-## Step 1: Authenticate
-
-```bash
-podstack auth login
+```sh
+curl -fsSL https://github.com/Podstack-ai/podstack-cli-releases/releases/latest/download/install.sh | sh
+podstack auth login          # opens your browser (Google / GitHub / SSO)
 ```
 
-This opens your browser for secure login.
+`login` also selects your default project. If you have more than one, pick it later with `podstack projects use <name>`.
 
-Verify:
+## 2. Build and preview an app
 
-```bash
-podstack auth status
+```sh
+mkdir my-app && cd my-app
+podstack code
 ```
 
-## Step 2: Check Balance
+At the prompt, describe what you want — for example:
 
-```bash
-podstack wallet balance
+> "Build a FastAPI todo API with a small React front end, then show me a live preview."
+
+The agent recommends the app shape, plans it, installs everything in a cloud sandbox, builds it, and hands you a **public preview URL**. Backends include interactive Swagger docs, and every project gets a `README.md`.
+
+Track spend with `/cost`, and stop the preview (and its billing) with `/preview off`. See [Coding agent](/docs/cli/code/).
+
+## 3. (Optional) Rent a GPU
+
+```sh
+podstack gpu launch                 # pick a GPU and launch it
+podstack gpu instances ssh <id>     # connect over SSH
 ```
 
-## Step 3: Create a Pod
+See [GPUs](/docs/cli/gpu/) and the [TrainPod](/docs/trainpod/) guides.
 
-Create a GPU pod with PyTorch:
+## 4. (Optional) Call a model
 
-```bash
-podstack pod create \
-  --name my-first-pod \
-  --image pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime \
-  --gpu-type A100 \
-  --gpu-count 1 \
-  --cpu 4 \
-  --memory 16
+```sh
+podstack models list                # models on Inference Cloud
 ```
 
-## Step 4: Check Status
+Use them over an OpenAI-compatible API — see [Inference](/docs/inference/).
 
-```bash
-podstack pod list
-```
+## Where to next
 
-Wait for status to show `running`:
-
-```bash
-podstack pod get my-first-pod --watch
-```
-
-## Step 5: Connect to Pod
-
-SSH into the pod:
-
-```bash
-podstack pod ssh my-first-pod
-```
-
-Or run a command:
-
-```bash
-podstack pod exec my-first-pod -- nvidia-smi
-```
-
-## Step 6: Run Your Code
-
-Execute your training script remotely:
-
-```bash
-# Run
-podstack pod exec my-first-pod -- python /workspace/train.py
-```
-
-## Step 7: View Logs
-
-Monitor the pod logs:
-
-```bash
-podstack pod logs my-first-pod --follow
-```
-
-## Step 8: Stop and Cleanup
-
-Stop the pod (pause billing):
-
-```bash
-podstack pod stop my-first-pod
-```
-
-Delete the pod:
-
-```bash
-podstack pod delete my-first-pod
-```
-
-## Complete Workflow Example
-
-```bash
-#!/bin/bash
-# training-job.sh
-
-# Create pod
-echo "Creating pod..."
-podstack pod create \
-  --name training-job \
-  --image pytorch/pytorch:latest \
-  --gpu-type A100 \
-  --wait
-
-# Run training
-echo "Running training..."
-podstack pod exec training-job -- python /workspace/src/train.py
-
-# Retrieve stats
-echo "Checking stats..."
-podstack pod stats training-job
-
-# Cleanup
-echo "Cleaning up..."
-podstack pod delete training-job --force
-
-echo "Done!"
-```
-
-## Common Commands Reference
-
-| Task | Command |
-|------|---------|
-| List pods | `podstack pod list` |
-| Create pod | `podstack pod create --name NAME --image IMAGE` |
-| Get pod info | `podstack pod get NAME` |
-| Get pod stats| `podstack pod stats NAME` |
-| SSH to pod | `podstack pod ssh NAME` |
-| Run command | `podstack pod exec NAME -- COMMAND` |
-| View logs | `podstack pod logs NAME` |
-| Stop pod | `podstack pod stop NAME` |
-| Start pod | `podstack pod start NAME` |
-| Delete pod | `podstack pod delete NAME` |
-
-## Tips
-
-### Use --wait Flag
-
-Wait for pod to be ready:
-
-```bash
-podstack pod create --name my-pod --image image:tag --wait
-```
-
-### Output Formats
-
-Get JSON output for scripting:
-
-```bash
-podstack pod list --output json | jq '.[] | .name'
-```
-
-### Follow Logs
-
-Stream logs in real-time:
-
-```bash
-podstack pod logs my-pod --follow
-```
-
-### Quick Delete
-
-Force delete without confirmation:
-
-```bash
-podstack pod delete my-pod --force
-```
-
-## Next Steps
-
-- [Pods](/docs/cli/pods/) - Full pod command reference
-- [Storage](/docs/cli/storage/) - Bucket and volume commands
-- [Configuration](/docs/cli/configuration/) - CLI settings
+- [Coding agent](/docs/cli/code/) — the full `podstack code` reference.
+- [Sandboxes](/docs/cli/sandbox/) — drive previews directly.
+- [FAQs & scenarios](/docs/cli/faqs/) — common questions and end-to-end walkthroughs.

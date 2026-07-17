@@ -1,8 +1,8 @@
 ---
 title: Projects
 
-weight: 20
-description: "Organize GPU cloud resources with projects. Team collaboration, role-based access control, and resource isolation for ML teams and organizations."
+weight: 160
+description: "Organize GPU cloud resources with PodStack projects. Every pod, volume, SSH key, and cost belongs to a project, with per-project billing and role-based team access."
 keywords:
   - GPU cloud team management
   - ML team collaboration
@@ -10,45 +10,27 @@ keywords:
   - RBAC GPU cloud
   - multi-tenant GPU
   - AI team platform
+  - project-scoped billing
 ---
 # Projects
 
-Projects are the primary way to organize resources on Podstack. They provide isolation, access control, and a way to collaborate with team members.
+**Projects are PodStack's top-level scope.** Every resource you create — pods,
+VMs, sandboxes, volumes, buckets, SSH keys — belongs to exactly one project, and
+**cost rolls up per project**. Behind the scenes, your currently selected
+project is attached to every request, so you always act "inside" one project at
+a time.
 
-## What is a Project?
+Projects give you:
 
-A project is a logical container that groups related resources together:
+- **Isolation** — resources and spend are separated per project.
+- **Collaboration** — invite teammates with admin or member roles.
+- **Billing ownership** — each project has a billing owner responsible for its costs.
 
-- **Pods** (containers)
-- **Storage buckets and volumes**
-- **Templates**
-- **Team members and permissions**
+## In this section
 
-## Benefits of Projects
+- **[Creating & Switching Projects](/docs/projects/creating-projects/)** — create a project, switch between them, and manage or delete them.
+- **[Team Management](/docs/projects/team-management/)** — invite teammates, set roles, and manage access.
 
-### Resource Organization
-Keep related workloads together. For example, create separate projects for:
-- Development vs. Production environments
-- Different clients or applications
-- Research experiments vs. deployed models
+## Get started
 
-### Access Control
-Control who can access resources with role-based permissions:
-- **Project Admin** - Full control over project resources and members
-- **Project User** - Customizable permissions (create, read, update, delete)
-
-### Cost Tracking
-View spending and resource usage on a per-project basis in the dashboard.
-
-## In This Section
-
-- **[Creating Projects](/docs/projects/creating-projects/)** - Set up new projects
-- **[Team Management](/docs/projects/team-management/)** - Invite members and manage permissions
-
-## Project Limits
-
-Each user can create multiple projects. Resources within a project are isolated from other projects - team members only see resources in projects they have access to.
-
-## Next Steps
-
-Start by [Creating a Project](/docs/projects/creating-projects/) to organize your resources.
+Head to **[Creating & Switching Projects](/docs/projects/creating-projects/)**.

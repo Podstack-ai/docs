@@ -1,267 +1,86 @@
 ---
 title: Authentication
 weight: 20
-description: "Authenticate Podstack CLI with your account. Login via browser, API token, or environment variables."
+description: "Sign in to the Podstack CLI with a single browser sign-in (Google, GitHub, or SSO) — no API key to copy. Plus API keys for CI."
 keywords:
   - CLI authentication
-  - podstack login
-  - API token CLI
-  - terminal login
+  - podstack auth login
+  - browser SSO login
+  - Google GitHub sign in
+  - PODSTACK_API_KEY CI
 ---
 
-# Authentication
+# Authentication — `podstack auth`
 
-Configure the Podstack CLI to access your account.
+## Sign in (browser)
 
-## Login Methods
-
-### Interactive Login (Recommended)
-
-Prompts for your API token directly in the terminal:
-
-```bash
+```sh
 podstack auth login
 ```
 
-This will:
-1. Show where to generate a token in the Podstack portal
-2. Prompt you to paste the token securely in your terminal
-3. Save credentials to your config (or keyring if enabled)
-
-### API Token Login
-
-Use an API token for non-interactive environments:
-
-```bash
-podstack auth login --token YOUR_API_TOKEN
-```
-
-Generate a token at **Account > API Tokens** in the dashboard.
-
-### Environment Variable
-
-Set the token as an environment variable:
-
-```bash
-# Linux/macOS
-export PODSTACK_API_TOKEN=your_api_token
-
-# Windows (PowerShell)
-$env:PODSTACK_API_TOKEN = "your_api_token"
-
-# Windows (CMD)
-set PODSTACK_API_TOKEN=your_api_token
-```
-
-## Verify Authentication
-
-Check your authentication status:
-
-```bash
-podstack auth status
-```
-
-Output:
+This opens your browser to sign in with **Google, GitHub, or SSO**. After you sign in, the CLI receives a token, stores it, verifies it, and selects your default project — nothing to copy or paste.
 
 ```
-Authenticated as: user@example.com
-Account ID: acc_123456
-Token expires: 2024-12-31
+Opening your browser to sign in…
+Logged in as you@example.com. Key stored at ~/.config/podstack/credentials.json
+✓ using project my-project (…)
 ```
 
-View current user:
+If the browser can't open (a remote/SSH shell), the CLI prints the URL to open manually.
 
-```bash
+## Confirm who you are
+
+```sh
 podstack auth whoami
 ```
 
-## Configuration File
+## Sign out
 
-The CLI stores credentials in `~/.podstack/config.yaml`:
-
-```yaml
-auth:
-  token: your_api_token
-  expires: 2024-12-31T00:00:00Z
-
-defaults:
-  project: my-project
-  output: table
-```
-
-### Multiple Profiles
-
-Configure multiple accounts:
-
-```yaml
-profiles:
-  default:
-    token: personal_token
-    project: personal-project
-
-  work:
-    token: work_token
-    project: work-project
-    api_endpoint: https://api.work.podstack.ai
-```
-
-Use a specific profile:
-
-```bash
-podstack --profile work pod list
-```
-
-Or set the default:
-
-```bash
-podstack config set-profile work
-```
-
-## Project Context
-
-Set the default project:
-
-```bash
-# Set default project
-podstack project use my-project
-
-# Or via environment variable
-export PODSTACK_PROJECT=my-project
-```
-
-View current project:
-
-```bash
-podstack project current
-```
-
-## Logout
-
-Remove stored credentials:
-
-```bash
+```sh
 podstack auth logout
 ```
 
-This removes the token from the config file.
+Removes the stored credentials.
 
-## Token Management
+## Headless / CI
 
-### View Token Info
+For CI and scripts, skip the browser:
 
-```bash
-podstack auth token-info
-```
+- **`--key`** — pass a `psk_` API key directly (mint one in the dashboard):
+  ```sh
+  podstack auth login --key psk_xxx
+  ```
+- **`--manual`** — paste a key at a hidden prompt instead of opening a browser.
+- **`PODSTACK_API_KEY`** — set the key in the environment; no `login` needed at all:
+  ```sh
+  export PODSTACK_API_KEY=psk_xxx        # macOS/Linux
+  $env:PODSTACK_API_KEY = "psk_xxx"      # Windows PowerShell
+  ```
 
-### Refresh Token
-
-```bash
-podstack auth refresh
-```
-
-### Revoke Token
-
-Revoke the current token (requires re-authentication):
-
-```bash
-podstack auth revoke
-```
-
-## CI/CD Integration
-
-### GitHub Actions
+Example GitHub Actions step:
 
 ```yaml
-- name: Setup Podstack CLI
+- name: Install & use Podstack CLI
+  env:
+    PODSTACK_API_KEY: ${{ secrets.PODSTACK_API_KEY }}
   run: |
-    curl -sSL https://get.podstack.ai/cli | bash
-    podstack auth login --token ${{ secrets.PODSTACK_API_TOKEN }}
-
-- name: Deploy Pod
-  run: podstack pod create --name ci-pod --image myimage:latest
+    curl -fsSL https://github.com/Podstack-ai/podstack-cli-releases/releases/latest/download/install.sh | sh
+    podstack projects list
 ```
 
-### GitLab CI
+## Where credentials live
 
-```yaml
-deploy:
-  script:
-    - curl -sSL https://get.podstack.ai/cli | bash
-    - export PODSTACK_API_TOKEN=$PODSTACK_TOKEN
-    - podstack pod create --name ci-pod --image myimage:latest
-```
+- Credentials: `~/.config/podstack/credentials.json` (mode `0600`).
+- Default project and settings: `~/.podstack/config.json`. See [Configuration](/docs/cli/configuration/).
 
-### Jenkins
+The token is sent as `Authorization: Bearer` on every API call.
 
-```groovy
-pipeline {
-    environment {
-        PODSTACK_API_TOKEN = credentials('podstack-token')
-    }
-    stages {
-        stage('Deploy') {
-            steps {
-                sh 'podstack pod create --name ci-pod --image myimage:latest'
-            }
-        }
-    }
-}
-```
+## Security tips
 
-## Security Best Practices
+- Prefer a scoped API key (not a personal token) in CI, and store it as a CI secret — never commit it.
+- Run `podstack auth logout` on shared machines.
 
-1. **Use environment variables** in CI/CD
-2. **Never commit tokens** to version control
-3. **Rotate tokens regularly**
-4. **Use minimal permission tokens** when possible
-5. **Logout on shared machines**
+## Next
 
-### Secure Token Storage
-
-On Linux, use a keyring:
-
-```bash
-# Store token securely
-podstack auth login --use-keyring
-```
-
-On macOS, tokens are stored in Keychain by default.
-
-## Troubleshooting
-
-### Token Expired
-
-```
-Error: Token expired
-```
-
-Solution: Re-authenticate
-
-```bash
-podstack auth login
-```
-
-### Invalid Token
-
-```
-Error: Invalid authentication token
-```
-
-Solution: Generate a new token from the dashboard
-
-### Permission Denied
-
-```
-Error: Permission denied for resource
-```
-
-Solution: Check if the token has access to the project
-
-```bash
-podstack project list
-```
-
-## Next Steps
-
-- [Quick Start](/docs/cli/quickstart/) - Create your first pod
-- [Pods](/docs/cli/pods/) - Pod management commands
+- [Choose your project](/docs/cli/projects/)
+- [Quick Start](/docs/cli/quickstart/)

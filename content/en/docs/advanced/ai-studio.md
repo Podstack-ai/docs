@@ -477,5 +477,5 @@ Contact support if AI Studio isn't visible in your portal.
 
 - [Create a Pod](/docs/compute/pods/) for custom training setups
 - [Set up Storage](/docs/storage/) for datasets
-- [Use the Model Registry](/docs/mlops/model-registry/) to version models
+- [Use the Model Registry](/docs/quickpod/mlops/) to version models
 - [Manage Billing](/docs/billing/) for AI Studio costs

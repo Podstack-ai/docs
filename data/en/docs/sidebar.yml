@@ -34,7 +34,7 @@
 - title: Projects
   slug: projects
   pages:
-    - title: Creating Projects
+    - title: Creating & Switching Projects
       slug: creating-projects
     - title: Team Management
       slug: team-management

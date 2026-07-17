@@ -1,7 +1,7 @@
 ---
 title: Billing
 
-weight: 50
+weight: 140
 description: "Cheapest GPU cloud pricing - pay per minute, zero lock-in, no commitment. Transparent pricing for A100, H100, V100, L40S GPUs. Perfect for students and startups."
 keywords:
   - cheapest GPU pricing

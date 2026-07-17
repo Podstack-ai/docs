@@ -1,8 +1,8 @@
 ---
-title: Account
+title: Your Account
 
-weight: 60
-description: "Manage your Podstack account - SSH keys, API tokens, security settings, and audit logs for GPU cloud access and automation."
+weight: 150
+description: "Manage your PodStack account — profile and currency, security and sessions, SSH keys, API tokens, and audit logs for GPU cloud access and automation."
 keywords:
   - GPU cloud account
   - SSH key management
@@ -10,48 +10,13 @@ keywords:
   - cloud security settings
   - GPU access credentials
 ---
-# Account Settings
+# Your Account
 
-Manage your Podstack account settings, security credentials, and access tokens.
+Everything tied to your identity and access lives here.
 
-## Account Overview
+## In this section
 
-Your account provides access to:
-- All projects you own or are a member of
-- Personal settings and preferences
-- SSH keys for resource access
-- API tokens for programmatic access
-- Activity audit logs
-
-## In This Section
-
-- **[Settings](/docs/account/settings/)** - Profile and preferences
-- **[SSH Keys](/docs/account/ssh-keys/)** - Manage SSH keys for pod access
-- **[API Tokens](/docs/account/api-tokens/)** - Generate tokens for API access
-- **[Audit Logs](/docs/account/audit-logs/)** - View account activity
-
-## Security
-
-### Authentication
-
-Podstack uses passwordless authentication:
-- Email-based OTP for login
-- No passwords to remember or manage
-- Secure, phishing-resistant
-
-### Session Management
-
-- Sessions remain active until logout
-- Tokens auto-refresh for seamless access
-- Logout from header menu to end session
-
-### API Security
-
-- API tokens have configurable expiration
-- Tokens can be revoked at any time
-- Use separate tokens for different integrations
-
-## Next Steps
-
-- [Configure your settings](/docs/account/settings/)
-- [Add SSH keys](/docs/account/ssh-keys/)
+- **[Settings](/docs/account/settings/)** — profile, preferred currency (INR/USD), security, sessions, appearance, and notifications.
+- **[SSH Keys](/docs/account/ssh-keys/)** — add or generate the keys you use to connect to pods and VMs.
+- **[API Tokens](/docs/account/api-tokens/)** — create the `psk_…` keys used by the `podstack` CLI and the REST/OpenAI-compatible API.
+- **[Audit Logs](/docs/account/audit-logs/)** — review account and project activity.

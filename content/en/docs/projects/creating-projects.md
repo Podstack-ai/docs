@@ -1,84 +1,73 @@
 ---
-title: Creating Projects
+title: Creating & Switching Projects
 
 weight: 10
+description: "Create and switch between PodStack projects. Every resource is project-scoped; the project creator becomes admin and billing owner. Learn create, switch, manage, and delete rules."
+keywords:
+  - create GPU cloud project
+  - switch project cloud
+  - project scoped resources
+  - delete cloud project
+  - project billing owner
 ---
-# Creating Projects
+# Creating & Switching Projects
 
-This guide explains how to create and manage projects on Podstack.
+Every resource on PodStack lives inside a project. This guide covers creating
+projects, switching between them, and managing or deleting them.
 
-## Create a New Project
+## What you'll accomplish
 
-1. Navigate to **Projects** in the sidebar
-2. Click the **Create Project** button
-3. Fill in the project details:
-   - **Name**: A descriptive name for the project
-   - **Description**: Optional notes about the project's purpose
-4. Click **Create**
+Create a project, make it your active context, and understand the rules for
+managing and deleting it.
 
-You'll be automatically assigned as the **Project Admin** for any project you create.
+## Prerequisites
 
-## Project Settings
+- A signed-in account.
 
-To modify a project after creation:
+## Create a project
 
-1. Go to **Projects** and select the project
-2. Click **Settings** or the gear icon
-3. Update the name or description
-4. Click **Save Changes**
+1. Go to **Projects**.
+2. Choose **Create Project**.
+3. Enter a **name** (required) and an optional **description**.
+4. Confirm.
 
-## Switching Projects
+The person who creates a project automatically becomes its **admin** and its
+**billing owner**.
 
-The current project context is shown in the header. To switch projects:
+> _Screenshot: Projects list with the Create Project dialog._
 
-1. Click the project name in the header
-2. Select a different project from the dropdown
-3. The view updates to show resources from the selected project
+## Switch your active project
 
-## Deleting a Project
+Use the **project switcher** to change which project you're working in. Your
+selection is **saved to your profile on the server**, so it persists across
+devices and sessions. From then on, everything you create lands in the selected
+project.
 
-To delete a project:
+## Manage a project
 
-1. Ensure all resources (pods, storage) in the project are deleted
-2. Go to **Project Settings**
-3. Scroll to the danger zone
-4. Click **Delete Project**
-5. Confirm the deletion
+- **Update** name/description — requires the **admin** role.
+- **Members & invitations** — see [Team Management](/docs/projects/team-management/).
+- **Billing ownership** — each project has a billing owner (the creator by default). Transferring billing ownership is available via the API; there may not be a dedicated control in the portal UI.
 
-**Warning**: Project deletion is permanent and cannot be undone.
+## Delete a project
 
-## Default Project
+1. Open the project and choose **Delete**.
+2. Deletion requires the **admin** role.
+3. A project with **active resources cannot be deleted** — remove its pods, VMs, volumes, and other resources first.
 
-New accounts have a default project created automatically. You can rename it or create additional projects as needed.
+## Verify it worked
 
-## Billing Ownership
+- The new project appears in your **Projects** list.
+- The project switcher shows it as active, and new resources are created under it.
 
-Each project has a billing owner who is charged for all resource usage within the project. By default, the project creator is the billing owner.
+## Troubleshoot
 
-### Transferring Billing
+| Problem | Cause / fix |
+|---------|-------------|
+| "Cannot delete: active resources" | Delete the project's resources, then try again. |
+| Switching fails / "not a member" | You must be a member of a project to select it — ask an admin to invite you. |
 
-To transfer billing responsibility to another project member:
-1. Go to **Project Settings**
-2. Navigate to the **Billing** section
-3. Click **Transfer Billing**
-4. Select the new billing owner from the member list
-5. Confirm the transfer
+## Next steps
 
-The new billing owner must be an active member of the project.
-
-## Project-Scoped Resources
-
-When you create resources, they belong to the currently selected project:
-
-| Resource | Project-Scoped |
-|----------|---------------|
-| Pods | Yes |
-| NFS Volumes | Yes |
-| Object Storage Buckets | Yes |
-| Templates | Yes |
-| SSH Keys | No (account-level) |
-| API Tokens | No (account-level) |
-
-## Next Steps
-
-After creating a project, [invite team members](/docs/projects/team-management/) to collaborate.
+- [Invite your team](/docs/projects/team-management/)
+- [Add an SSH key](/docs/account/ssh-keys/) and [launch a pod](/docs/getting-started/quick-start/)

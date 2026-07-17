@@ -1,354 +1,74 @@
 ---
 title: Configuration
-weight: 30
-description: "Configure Podstack CLI settings. Customize defaults, output formats, and environment variables."
+weight: 130
+description: "Configure the Podstack CLI — credentials, default project, output format, and the environment variables that override them."
 keywords:
-  - CLI configuration
-  - podstack config
+  - Podstack CLI configuration
+  - podstack config.json
+  - PODSTACK_API_KEY
+  - PODSTACK_PROJECT_ID
   - CLI settings
-  - environment variables
 ---
 
 # Configuration
 
-Customize the Podstack CLI behavior and defaults.
+The CLI is configured by a few files and a handful of environment variables. Environment variables always win over files.
 
-## Configuration File
+## Files
 
-The CLI configuration is stored at `~/.podstack/config.yaml`:
+| Path | Holds |
+|------|-------|
+| `~/.config/podstack/credentials.json` | Your API key (written by `podstack auth login`, mode `0600`) |
+| `~/.podstack/config.json` | Global settings — notably your default `project_id` |
+| `./.podstack/config.json` | Per-project settings, including the `sandbox` block used for previews |
 
-```yaml
-# Authentication
-auth:
-  token: your_api_token
-  expires: 2024-12-31T00:00:00Z
-
-# Defaults
-defaults:
-  project: my-default-project
-  output: table
-  gpu_type: A100
-
-# API settings
-api:
-  endpoint: https://api.podstack.ai
-  timeout: 30
-
-# CLI behavior
-cli:
-  color: true
-  pager: less
-  confirm: true
-```
-
-## Config Commands
-
-### View Configuration
-
-```bash
-# Show all config
-podstack config show
-
-# Show specific value
-podstack config get defaults.project
-```
-
-### Set Configuration
-
-```bash
-# Set default project
-podstack config set defaults.project my-project
-
-# Set default output format
-podstack config set defaults.output json
-
-# Set default GPU type
-podstack config set defaults.gpu_type A100
-```
-
-### Reset Configuration
-
-```bash
-# Reset single value
-podstack config unset defaults.project
-
-# Reset all
-podstack config reset
-```
-
-## Default Values
-
-### Default Project
-
-Set the default project for all commands:
-
-```bash
-podstack config set defaults.project my-project
-
-# Or use project command
-podstack project use my-project
-```
-
-Override per-command:
-
-```bash
-podstack pod list --project other-project
-```
-
-### Default Output Format
-
-```bash
-podstack config set defaults.output json
-```
-
-Options: `table`, `json`, `yaml`, `wide`
-
-### Default GPU Type
-
-```bash
-podstack config set defaults.gpu_type A100
-```
-
-## Environment Variables
-
-Environment variables override config file values:
-
-| Variable | Description |
-|----------|-------------|
-| `PODSTACK_API_TOKEN` | API authentication token |
-| `PODSTACK_PROJECT` | Default project |
-| `PODSTACK_OUTPUT` | Output format |
-| `PODSTACK_API_ENDPOINT` | API endpoint URL |
-| `PODSTACK_NO_COLOR` | Disable colored output |
-| `PODSTACK_DEBUG` | Enable debug mode |
-
-Example:
-
-```bash
-export PODSTACK_API_TOKEN=your_token
-export PODSTACK_PROJECT=my-project
-export PODSTACK_OUTPUT=json
-```
-
-## Output Formats
-
-### Table (Default)
-
-```bash
-podstack pod list --output table
-```
-
-```
-NAME          STATUS    GPU       CREATED
-my-pod        running   A100 x1   2024-01-15
-training      stopped   H100 x2   2024-01-14
-```
-
-### Wide
-
-```bash
-podstack pod list --output wide
-```
-
-Shows additional columns.
-
-### JSON
-
-```bash
-podstack pod list --output json
-```
+Example `~/.podstack/config.json`:
 
 ```json
-[
-  {
-    "id": "pod-123",
-    "name": "my-pod",
-    "status": "running",
-    "gpu_type": "A100",
-    "gpu_count": 1
-  }
-]
-```
-
-### YAML
-
-```bash
-podstack pod list --output yaml
-```
-
-### Quiet
-
-IDs only, for scripting:
-
-```bash
-podstack pod list --quiet
-```
-
-```
-pod-123
-pod-456
-```
-
-## Profiles
-
-Manage multiple accounts or environments:
-
-```yaml
-# ~/.podstack/config.yaml
-profiles:
-  default:
-    auth:
-      token: personal_token
-    defaults:
-      project: personal
-
-  work:
-    auth:
-      token: work_token
-    api:
-      endpoint: https://api.work.podstack.ai
-    defaults:
-      project: work-project
-
-  staging:
-    auth:
-      token: staging_token
-    api:
-      endpoint: https://api.staging.podstack.ai
-```
-
-### Using Profiles
-
-```bash
-# Use specific profile
-podstack --profile work pod list
-
-# Set default profile
-podstack config set-profile work
-
-# Show current profile
-podstack config get-profile
-```
-
-## CLI Behavior
-
-### Disable Confirmation Prompts
-
-```bash
-podstack config set cli.confirm false
-```
-
-Or use `--yes` flag:
-
-```bash
-podstack pod delete my-pod --yes
-```
-
-### Disable Colors
-
-```bash
-podstack config set cli.color false
-
-# Or via environment
-export PODSTACK_NO_COLOR=1
-```
-
-### Custom Pager
-
-```bash
-podstack config set cli.pager "less -R"
-```
-
-### Debug Mode
-
-```bash
-# Enable debug output
-podstack --debug pod list
-
-# Or via environment
-export PODSTACK_DEBUG=1
-```
-
-## API Configuration
-
-### Custom Endpoint
-
-For enterprise or self-hosted:
-
-```bash
-podstack config set api.endpoint https://api.custom.podstack.ai
-```
-
-### Timeout
-
-```bash
-podstack config set api.timeout 60  # seconds
-```
-
-### Proxy
-
-```bash
-export HTTP_PROXY=http://proxy.example.com:8080
-export HTTPS_PROXY=http://proxy.example.com:8080
-```
-
-## Aliases
-
-Create command aliases in your shell:
-
-```bash
-# ~/.bashrc or ~/.zshrc
-
-# Quick pod creation
-alias newpod='podstack pod create --gpu-type A100 --wait'
-
-# List running pods
-alias pods='podstack pod list --status running'
-
-# SSH to pod
-psh() {
-  podstack pod ssh "$1"
+{
+  "project_id": "b90d34a5-…"
 }
 ```
 
-## Shell Integration
+Example per-project `./.podstack/config.json` (the coding agent writes the `sandbox` block itself):
 
-### Auto-completion
-
-See [Installation](/docs/cli/installation/) for shell completion setup.
-
-### Prompt Integration
-
-Show current project in prompt:
-
-```bash
-# ~/.bashrc
-PS1='$(podstack project current 2>/dev/null) \$ '
+```json
+{
+  "sandbox": {
+    "image": "python-3.12",
+    "port": 8000,
+    "setup": "pip install -r requirements.txt",
+    "run": "uvicorn main:app --host 0.0.0.0 --port 8000"
+  }
+}
 ```
 
-## Troubleshooting
+## Environment variables
 
-### View Debug Info
+| Variable | Effect |
+|----------|--------|
+| `PODSTACK_API_KEY` | Use this `psk_` key instead of the stored credentials (CI-friendly) |
+| `PODSTACK_PROJECT_ID` | Override the default project for a single run |
 
-```bash
-podstack --debug config show
+## Output format
+
+Every command accepts `--output json` or `--output table`. The default is a human table on a terminal and JSON when the output is piped, so scripting just works:
+
+```sh
+podstack gpu instances list --output json | jq '.[].id'
 ```
 
-### Check Config Location
+## Agent project files
 
-```bash
-podstack config path
-```
+Inside a project the coding agent also uses:
 
-### Reset Everything
+- `.podstack/PODSTACK.md` — instructions the agent always follows (create with `/init`).
+- `.podstack/plans/` — implementation plans.
+- `.podstack/progress.json` — the resumable build checkpoint.
 
-```bash
-rm -rf ~/.podstack
-podstack auth login
-```
+You'll usually want to commit `PODSTACK.md` and `plans/` but git-ignore `progress.json`.
 
-## Next Steps
+## Related
 
-- [Authentication](/docs/cli/authentication/) - Login methods
-- [Quick Start](/docs/cli/quickstart/) - Get started
-- [Pods](/docs/cli/pods/) - Pod commands
+- [Authentication](/docs/cli/authentication/)
+- [Projects](/docs/cli/projects/)

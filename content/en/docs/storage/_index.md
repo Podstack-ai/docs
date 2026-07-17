@@ -1,7 +1,7 @@
 ---
 title: Storage
 
-weight: 40
+weight: 130
 description: "Cloud storage for ML workloads - S3-compatible object storage, file storage, and NFS volumes. Store training data, model checkpoints, and datasets with high-performance access."
 keywords:
   - cloud GPU storage

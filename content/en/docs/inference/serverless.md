@@ -1,5 +1,6 @@
 ---
 title: Serverless Inference
+weight: 80
 description: "Cold-start GPU inference for chat, code, embedding, and video-generation models. Pay only for actual usage with per-token billing."
 keywords:
   - serverless GPU
@@ -106,6 +107,6 @@ Find rates and usage under the **Usage Analytics** tab and on monthly invoices.
 
 ## Next Steps
 
-- [Model Catalog](/docs/inference/catalog/) — for always-on managed inference
-- [API Keys](/docs/inference/api-keys/) — generate keys for programmatic access
+- [Models](/docs/inference/models/) — the catalog for always-on managed inference
+- [Authentication](/docs/inference/authentication/) — generate keys for programmatic access
 - [Playground](/docs/inference/playground/) — interactive testing for managed inference models

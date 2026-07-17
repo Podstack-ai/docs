@@ -2,52 +2,68 @@
 title: Getting Started
 
 weight: 10
-description: "Get started with the cheapest GPU cloud. Create account, deploy GPU containers in minutes. Zero lock-in, pay per minute. Perfect for students and beginners."
+description: "Get started with PodStack — the global GPU cloud for developers. Create an account, verify identity, and launch fractional or full NVIDIA GPUs with per-second billing and zero egress fees."
 keywords:
-  - cheapest GPU cloud getting started
+  - GPU cloud getting started
   - cheap GPU setup tutorial
-  - budget GPU cloud tutorial
+  - fractional GPU cloud
+  - per-second GPU billing
   - GPU cloud for students
-  - student GPU getting started
   - beginner GPU cloud
-  - free GPU trial
-  - easy GPU deployment
+  - NVIDIA GPU cloud tutorial
+  - zero egress GPU cloud
   - quick GPU setup
   - instant GPU access
   - zero lock-in GPU
-  - pay per minute GPU
-  - serverless GPU tutorial
   - RunPod alternative tutorial
   - Vast.ai alternative setup
 ---
-# Getting Started with Podstack
+# Getting Started with PodStack
 
-This section helps you get up and running with Podstack quickly. Learn how to create your account, navigate the dashboard, and deploy your first workload.
+PodStack is a **global GPU cloud for developers**, built on a proprietary stack
+(PodVirt) rather than OpenStack or vanilla Kubernetes. You get **fractional and
+full NVIDIA GPUs**, **per-second billing**, **zero egress fees**, instant
+provisioning, and an ISO&nbsp;27001-certified platform — available both as a
+managed cloud and as a licensable platform.
 
-## In This Section
+This section takes you from zero to a running GPU workload.
 
-- **[Creating Your Account](/docs/getting-started/creating-account/)** - Sign up and verify your email
-- **[Dashboard Overview](/docs/getting-started/dashboard-overview/)** - Understand the portal interface
-- **[Quick Start Guide](/docs/getting-started/quick-start/)** - Deploy your first container in minutes
+## The four PodStack products
+
+| Product | Use it to… |
+|---------|-----------|
+| **[QuickPods](/docs/quickpod/)** | Deploy production-ready AI stacks in one click — 1-click templates, built-in MLOps, fractional GPUs. |
+| **[TrainPods](/docs/trainpod/)** | Get on-demand NVIDIA GPUs at low prices — provision, SSH, and move data from the `podstack` CLI. |
+| **[Inference](/docs/inference/)** | Serve open-source models on low-latency, OpenAI-compatible endpoints with autoscaling. |
+| **[CLI](/docs/cli/)** | Do it all from your terminal — an AI coding agent, live app previews, GPUs, fine-tuning, and inference. |
+| **DC Suite** | Operate your own GPU datacenter — orchestration, BillOps and FinOps, licensable for self-hosting. |
+
+## New here? Follow this path
+
+1. **[Create your account](/docs/getting-started/creating-account/)** — passwordless sign-in with an email code or a social login.
+2. **[Create a project](/docs/projects/creating-projects/)** — every resource lives inside a project.
+3. **[Add an SSH key](/docs/account/ssh-keys/)** — how you'll connect to pods and VMs.
+4. **[Launch your first pod](/docs/getting-started/quick-start/)** — the end-to-end Quick Start.
 
 ## Prerequisites
 
-Before you begin, ensure you have:
+Before you begin, have ready:
 
-- A valid email address for account verification
-- A payment method for wallet top-up (UPI, cards, or net banking)
-- SSH public key (optional, can be generated in the portal)
+- A valid, permanent email address (temporary/disposable addresses are rejected).
+- A payment method to fund your wallet once you're ready to launch paid resources.
+- Optionally, an existing SSH public key — or generate one in the portal.
 
-## Platform Overview
+## What you can run
 
-Podstack provides several ways to run your workloads:
+| Resource | Best for |
+|----------|----------|
+| **Pods** | Containerized GPU workloads with persistent storage — training, Jupyter, apps. |
+| **VMs** | Full virtual machines with GPU passthrough. |
+| **Baremetal** | Dedicated physical GPU servers for maximum performance. |
+| **Sandboxes** | Fast, ephemeral compute environments. |
+| **Notebooks** | GPU Jupyter notebooks with checkpoint rewind (Time-Travel). |
+| **Inference endpoints** | OpenAI-compatible model serving with autoscaling. |
 
-| Resource Type | Best For |
-|--------------|----------|
-| **Pods** | Containerized applications, ML training, Jupyter notebooks |
-| **Baremetal GPU** | Dedicated GPU instances for maximum performance |
-| **Serverless GPU** | Quick Jupyter notebook sessions |
+## Next step
 
-## Next Steps
-
-Start with [Creating Your Account](/docs/getting-started/creating-account/) to begin your Podstack journey.
+Start with **[Creating Your Account](/docs/getting-started/creating-account/)**.

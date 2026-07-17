@@ -1,7 +1,7 @@
 ---
 title: Compute
 
-weight: 30
+weight: 120
 description: "Cheapest GPU compute - containers and baremetal. Pay per minute, zero lock-in. NVIDIA A100, H100, V100, L40S, T4 GPUs for ML training and inference."
 keywords:
   - cheapest GPU compute

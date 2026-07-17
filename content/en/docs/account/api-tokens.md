@@ -2,210 +2,84 @@
 title: API Tokens
 
 weight: 30
+description: "Create PodStack API tokens (psk_ keys) for the podstack CLI and the REST/OpenAI-compatible API. Set an expiry, copy once, use up to 5 tokens, and revoke instantly."
+keywords:
+  - PodStack API token
+  - psk key
+  - podstack CLI auth
+  - API key GPU cloud
+  - programmatic access cloud
 ---
 # API Tokens
 
-API tokens enable programmatic access to Podstack services without interactive login. Use tokens for scripts, CI/CD pipelines, and integrations.
+API tokens give scripts, CI/CD, the `podstack` CLI, and the REST/OpenAI-compatible
+API access to your account without an interactive sign-in.
 
-## What Are API Tokens?
+## What you'll accomplish
 
-API tokens are:
-- Secure credentials for API access
-- Scoped to your account
-- Configurable expiration
-- Revocable at any time
+Create an API token and use it to authenticate the `podstack` CLI.
 
-Use cases:
-- Automated deployments
-- CI/CD pipelines
-- Custom scripts
-- Third-party integrations
-- JupyterHub authentication
+## Prerequisites
 
-## Viewing Tokens
+- A signed-in account.
 
-Navigate to **Settings > API Tokens** to see:
+## Create a token
 
-- **Name**: Token identifier
-- **Prefix**: First characters (for identification)
-- **Created**: When token was created
-- **Expires**: Expiration date
-- **Last Used**: Recent activity
+1. Go to **Settings → Tokens**.
+2. Choose **Create**.
+3. Enter a **name** and pick an **expiry**: 7, 30, 90, 180, or 365 days, or **never** (default is 30 days).
+4. **Copy the token now** — it starts with `psk_` and is shown **only once**.
 
-## Creating a Token
+You can hold up to **5 tokens** at a time.
 
-### Step 1: Create Token
+> _Screenshot: Tokens tab with the create dialog and one-time token reveal._
 
-1. Click **Create Token**
-2. Enter a descriptive name (e.g., "CI Pipeline", "Training Script")
-3. Select expiration:
-   - 7 days
-   - 30 days
-   - 90 days
-   - 180 days
-   - 365 days
-   - Never expires
-
-### Step 2: Copy Token
-
-**Important**: Copy the token immediately!
-
-1. Token is displayed once after creation
-2. Click **Copy** to copy to clipboard
-3. Store securely (password manager, secrets vault)
-4. Token cannot be viewed again
-
-### Token Limits
-
-Each account can have up to **5 active tokens**. Delete unused tokens to create new ones.
-
-## Using Tokens
-
-### API Authentication
-
-Include the token in the Authorization header:
+## Use it with the CLI
 
 ```bash
-curl -H "Authorization: Bearer YOUR_TOKEN" \
-     https://api.podstack.ai/v1/pods
+# Interactive: paste the key when prompted (input is hidden)
+podstack auth login
+
+# Or via environment variable (overrides the stored key)
+export PODSTACK_API_KEY=psk_xxxxxxxxxxxxxxxxxxxx
+
+# Confirm who you are
+podstack auth whoami
 ```
 
-### Python Example
+The key is stored at `~/.config/podstack/credentials.json` (mode `0600`,
+honoring `XDG_CONFIG_HOME`). The same token authenticates every CLI command —
+`code`, `models`, `gpu`, `train`, `send`/`receive`. See the
+[CLI Authentication](/docs/cli/authentication/) guide.
 
-```python
-import requests
+## Use it with the API
 
-headers = {
-    'Authorization': 'Bearer YOUR_TOKEN'
-}
-
-response = requests.get(
-    'https://api.podstack.ai/v1/pods',
-    headers=headers
-)
-print(response.json())
-```
-
-### JupyterHub Authentication
-
-Tokens can authenticate with JupyterHub instances:
-
-1. Navigate to your Jupyter URL
-2. Use token for authentication
-3. Access notebooks programmatically
-
-## Managing Tokens
-
-### Identifying Tokens
-
-Since you can't view full tokens after creation, use:
-- **Name**: Descriptive identifier you set
-- **Prefix**: First 8 characters shown
-- **Last Used**: Identify active vs. unused tokens
-
-### Revoking Tokens
-
-To revoke a token:
-
-1. Find the token in the list
-2. Click **Revoke**
-3. Confirm revocation
-4. Token is immediately invalidated
-
-Revoked tokens cannot access the API.
-
-### When to Revoke
-
-Revoke tokens when:
-- No longer needed
-- Potentially compromised
-- Employee leaves the team
-- Rotating credentials
-
-## Security Best Practices
-
-### Token Storage
-
-**DO:**
-- Store in password managers
-- Use secrets management (Vault, AWS Secrets Manager)
-- Inject via environment variables
-
-**DON'T:**
-- Commit to git repositories
-- Share in plain text
-- Store in code files
-- Log tokens in output
-
-### Environment Variables
+Send the token as a bearer credential:
 
 ```bash
-# Set in shell
-export PODSTACK_API_TOKEN="your_token"
-
-# Use in code
-import os
-token = os.environ.get('PODSTACK_API_TOKEN')
+curl https://cloud.podstack.ai/infer/v1/models \
+  -H "Authorization: Bearer psk_xxxxxxxxxxxxxxxxxxxx"
 ```
 
-### CI/CD Secrets
+## Verify it worked
 
-Most CI/CD platforms support secrets:
-- GitHub Actions: Repository secrets
-- GitLab CI: CI/CD variables
-- Jenkins: Credentials plugin
+- `podstack auth whoami` prints your user id and email.
+- The token appears in **Settings → Tokens** with its name and expiry.
 
-### Token Expiration
+## Revoke a token
 
-Choose appropriate expiration:
-- **Short-lived (7-30 days)**: CI/CD, temporary access
-- **Medium (90-180 days)**: Regular scripts, integrations
-- **Long (365 days)**: Stable, monitored integrations
-- **Never**: Only for highly secure environments with rotation
+Delete a token from **Settings → Tokens** to invalidate it immediately. Any CLI
+or script using it will stop working on the next request.
 
-### Regular Audits
+## Troubleshoot
 
-Periodically review tokens:
-1. Check "Last Used" dates
-2. Revoke unused tokens
-3. Verify each token has a purpose
-4. Rotate long-lived tokens
+| Problem | Fix |
+|---------|-----|
+| Lost the token value | You can't re-view it — delete it and create a new one. |
+| "Maximum tokens reached" | You can hold 5 tokens; delete an unused one first. |
+| CLI says unauthorized | The token may be expired or revoked — create a fresh one. |
 
-## Token Identification
+## Related
 
-The token prefix helps identify which token is used:
-
-```
-podstack_abc123_...
-         ^^^^^^
-         Prefix shown in UI
-```
-
-When reviewing logs or debugging, match the prefix to identify the token.
-
-## Troubleshooting
-
-### 401 Unauthorized
-
-- Verify token is correct (no extra spaces)
-- Check token hasn't expired
-- Ensure token hasn't been revoked
-- Verify Bearer prefix in header
-
-### 403 Forbidden
-
-- Token may lack required permissions
-- Resource may be in different project
-- Check account status
-
-### Rate Limiting
-
-API requests may be rate-limited:
-- Implement exponential backoff
-- Cache responses where appropriate
-- Contact support for higher limits
-
-## Next Steps
-
-- [View Audit Logs](/docs/account/audit-logs/) to track API usage
-- [Explore the API](/docs/support/) for available endpoints
+- [CLI Authentication](/docs/cli/authentication/)
+- [Settings](/docs/account/settings/)

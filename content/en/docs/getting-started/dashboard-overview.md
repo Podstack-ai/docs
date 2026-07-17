@@ -2,160 +2,64 @@
 title: Dashboard Overview
 
 weight: 20
+description: "Tour the PodStack dashboard — expenditure and run-rate cards, wallet and active-resource stats, spending charts, and recent projects. Understand what a new account shows and where each card links."
+keywords:
+  - PodStack dashboard
+  - GPU cloud dashboard overview
+  - GPU spending tracker
+  - cloud run rate
+  - GPU cloud portal
 ---
 # Dashboard Overview
 
-The Podstack dashboard is your central hub for managing cloud resources. This guide explains the main interface components and navigation.
+The dashboard is your home base — it summarizes what you're spending, what's
+running, and where to go next. Data refreshes automatically as you work.
 
-## Main Dashboard
+## What you'll accomplish
 
-When you log in, the dashboard displays real-time information about your account and resources. The data refreshes automatically every 30 seconds.
+Understand each part of the home dashboard so you can monitor cost and jump to
+your resources quickly.
 
-### Wallet Summary
-- **Current Balance** - Available funds in your wallet (toggle between INR and USD)
-- **Held Balance** - Funds temporarily reserved for pending operations
-- **Run Rate** - Current hourly spending based on running resources
-- **Estimated Hours Remaining** - How long your balance will last at current usage
-- **Service Status** - Indicator showing if services are available based on balance
+## Expenditure cards
 
-### Run Rate Breakdown
+Across the top, three cards track cost:
 
-The run rate shows your real-time hourly cost calculated from all active resources:
-- **Pods** - GPU and compute costs for running containers
-- **NFS Storage** - Volume storage costs
-- **Object Storage** - Bucket storage and transfer costs
+- **Current Usage** — spend accrued so far in the current period.
+- **Run Rate** — your live cost per hour, broken down by pods, VMs, NFS, and buckets.
+- **Projected Monthly** — an estimate if the current run rate continues.
 
-Hover over the run rate to see a breakdown by resource type, with daily and monthly projections.
+When nothing is running, these read **"No active resources."**
 
-### Expenditure Summary
+## Stat cards
 
-Track your spending across different time periods:
-- **Current Period** - Accrued costs this billing period
-- **Weekly Total** - Last 7 days expenditure with percentage change
-- **Monthly Total** - Last 30 days expenditure
-- **Last Month Comparison** - Month-over-month spending comparison
+Quick-glance tiles, each linking to its section:
 
-### Resource Counters
+- **Wallet Balance** → [Wallet](/docs/billing/wallet/)
+- **Active Pods** → [Pods](/docs/compute/pods/)
+- **Volumes** → [Data Volumes](/docs/storage/)
+- **Buckets** → [Object Storage](/docs/storage/object-storage/)
 
-Quick view of your active resources:
-- Active Pods/Containers
-- NFS Storage Volumes
-- Object Storage Buckets
+## Charts
 
-### Weekly Spending Trends
+- **Weekly Spending Trend** — a 7-day area chart of daily spend.
+- **Monthly Breakdown by Resource** — spend split across Pods, VMs, NFS, and Object storage.
 
-Interactive chart showing:
-- Daily spending over the past 7 days
-- Breakdown by resource type (Containers, NFS, Object Storage)
-- Hover for detailed daily costs
-- Percentage change vs. previous period
+## Recent Projects
 
-### Resource-Specific Breakdown
+Your five most recent projects, with a shortcut to open each. If you have none
+yet, you'll see a **"No projects yet"** prompt to create your first one.
 
-Monthly spending split by category:
-- **Containers/Pods** - GPU and compute costs
-- **NFS Storage** - Volume storage costs
-- **Object Storage** - Bucket storage and transfer costs
+## What a brand-new account shows
 
-### Quick Actions
+On day one you'll see zeros, an empty chart, and the "No projects yet" state.
+You may also see:
 
-One-click shortcuts to common tasks:
-- **Launch Pod** - Go directly to pod creation
-- **Create Storage Bucket** - Create a new object storage bucket
-- **Create Volume** - Create a new NFS volume
-- **Top Up Wallet** - Add funds to your wallet
+- A **project onboarding** prompt (because you have no projects).
+- A **recharge prompt** if your wallet balance is negative.
 
-### Recent Projects
+> _Screenshot: dashboard with expenditure cards, stat tiles, and spending charts._
 
-The dashboard shows your 5 most recent projects with quick navigation links to each project's resources.
+## Next steps
 
-### Low Balance Alerts
-
-When your balance is low:
-- Yellow indicator for warning threshold
-- Red indicator for critical balance
-- Estimated time until services may be affected
-- Quick link to top up wallet
-
-## Currency Toggle
-
-Switch between INR and USD display across the entire platform:
-- Click the currency toggle in the wallet summary or header
-- All costs, balances, and rates update to your selected currency
-- Exchange rates are tracked in real-time
-- Original payment currency is preserved in transaction history
-
-## Navigation Menu
-
-The sidebar provides access to all platform features:
-
-### Compute
-- **Pods** - Container deployments with GPU support
-- **GPU Marketplace** - Browse and reserve baremetal GPU instances
-
-### Storage
-- **Object Storage** - S3-compatible buckets for files
-- **Volumes** - NFS persistent storage
-
-### MLOps (if enabled)
-- **Experiment Tracking** - Track ML experiments and runs
-- **Model Registry** - Version and manage trained models
-
-### Inference (if enabled)
-- **Model Catalog** - Browse inference-ready models
-- **Playground** - Test models interactively
-- **API Keys** - Manage inference API keys
-
-### Management
-- **Projects** - Create and manage projects
-- **Templates** - Saved pod configurations
-- **SSH Keys** - Manage SSH keys for access
-
-### Billing
-- **Wallet** - Balance, top-up, transactions
-- **Invoices** - View and pay invoices
-- **KYC** - Identity verification for compliance
-
-### Account
-- **Settings** - Profile, notifications, and appearance
-- **API Tokens** - Tokens for programmatic access
-- **Audit Logs** - Activity history
-
-### Advanced Features
-- **Serverless GPU** - Reactive notebooks with GPU access
-- **AI Studio** - Model fine-tuning and deployment
-
-## Header Bar
-
-The top navigation includes:
-
-- **Project Selector** - Switch between projects (persists across pages)
-- **Currency Toggle** - Switch between INR and USD display
-- **Theme Toggle** - Switch between light and dark mode
-- **Notifications** - View alerts and updates with unread count
-- **Account Menu** - Settings, profile, and logout
-
-## Project Context
-
-Most resources are organized within projects. The current project context is shown in the header, and you can switch projects using the project selector dropdown. All API requests automatically include the selected project context via the `X-Project-ID` header. Resource access, billing, and team permissions are tied to the selected project.
-
-## Appearance Settings
-
-Customize your dashboard experience:
-
-### Theme
-- **Light Mode** - Clean, bright interface
-- **Dark Mode** - Reduced eye strain for extended use
-- Toggle via the header icon or in Settings > Appearance
-
-### Compact Mode
-- Reduce spacing for more information density
-- Enable in Settings > Appearance
-
-### Sidebar
-- Collapsible sidebar for more workspace
-- Your preference is saved automatically
-
-## Next Steps
-
-Ready to deploy? Follow the [Quick Start Guide](/docs/getting-started/quick-start/) to launch your first container.
+- [Create your first project](/docs/projects/creating-projects/)
+- [Quick Start: launch a pod](/docs/getting-started/quick-start/)
