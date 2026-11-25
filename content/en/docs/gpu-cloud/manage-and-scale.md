@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/quickpod/manage-and-scale/
 title: Manage & Scale
 weight: 50
-description: "Manage Podstack QuickPods after launch — start and stop to control billing, stream logs and live GPU metrics, expose ports, use fractional GPUs, and relaunch failed pods."
+description: "Manage Podstack GPU Cloud after launch — start and stop to control billing, stream logs and live GPU metrics, expose ports, use fractional GPUs, and relaunch failed pods."
 keywords:
   - manage GPU pod
   - start stop pod
@@ -50,7 +52,7 @@ From the list row or the pod's detail page header:
 - **Relaunch** — appears on a **failed** pod. If the pod failed because it ran out of memory, the relaunch dialog lets you bump its **memory** before trying again.
 - **Delete** — permanently removes the pod. Confirm in the **Delete Pod** dialog. There's no pro-rated refund — you're billed for the full billing cycle even if you delete early.
 
-> **Save money:** stop pods you aren't actively using. Stopping pauses billing immediately while preserving the pod's setup. Delete pods you're finished with. Keep anything important on a [volume](/docs/quickpod/storage-and-data/) so a stop or delete doesn't lose it.
+> **Save money:** stop pods you aren't actively using. Stopping pauses billing immediately while preserving the pod's setup. Delete pods you're finished with. Keep anything important on a [volume](/docs/gpu-cloud/storage-and-data/) so a stop or delete doesn't lose it.
 
 > **Low balance auto-stop.** If your wallet balance runs out, running pods may be stopped automatically after a grace period. Keep enough balance (or enable auto-debit) to avoid interruption.
 
@@ -96,7 +98,7 @@ Each exposed port gets a public HTTPS endpoint:
 
 ## Fractional GPUs
 
-You don't have to rent a whole GPU. When you configure a pod you set two independent controls (see [Launch a Pod](/docs/quickpod/launch-a-pod/#resources)):
+You don't have to rent a whole GPU. When you configure a pod you set two independent controls (see [Launch a Pod](/docs/gpu-cloud/launch-a-pod/#resources)):
 
 - **Number of GPUs** — how many GPUs to attach (1 or more).
 - **GPU Memory/Cores per GPU** — the percentage of each GPU to use, from **5%** to **100%** in 5% steps. 100% is a whole card.
@@ -109,12 +111,12 @@ If your requested fraction exceeds what's free right now, the pod may queue unti
 
 CPU, memory, GPU count, and GPU fraction are set at launch and aren't changed in place. To run with different compute:
 
-- **Change compute:** launch a new pod with the new sizing (save your config as a [template](/docs/quickpod/templates/) first to make this one click), point it at the same [volume](/docs/quickpod/storage-and-data/) so your data carries over, then delete the old pod.
+- **Change compute:** launch a new pod with the new sizing (save your config as a [template](/docs/gpu-cloud/templates/) first to make this one click), point it at the same [volume](/docs/gpu-cloud/storage-and-data/) so your data carries over, then delete the old pod.
 - **Add memory to a failed pod:** if a pod failed from running out of memory, use **Relaunch** to bump its memory.
 - **Change ports:** edit exposed ports on a running pod any time (above).
 
 ## Next steps
 
-- [Storage & Data](/docs/quickpod/storage-and-data/) — keep data across relaunches.
-- [Troubleshooting](/docs/quickpod/troubleshooting/) — fixes for common issues.
-- [Scenarios & Walkthroughs](/docs/quickpod/scenarios/) — end-to-end examples.
+- [Storage & Data](/docs/gpu-cloud/storage-and-data/) — keep data across relaunches.
+- [Troubleshooting](/docs/gpu-cloud/troubleshooting/) — fixes for common issues.
+- [Scenarios & Walkthroughs](/docs/gpu-cloud/scenarios/) — end-to-end examples.

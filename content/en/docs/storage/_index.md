@@ -25,7 +25,7 @@ Podstack offers three storage products tuned for different access patterns:
 
 ## Object Storage
 
-S3-compatible buckets with per-bucket plan subscriptions, IAM users/roles, public sharing via presigned URLs, and versioning. Provisioned in a backing storage region per project.
+S3-compatible buckets with IAM users/roles, public sharing via presigned URLs, and versioning. Extra disk is billed per GB-hour from the prepaid wallet.
 
 [Learn about Object Storage](/docs/storage/object-storage/)
 

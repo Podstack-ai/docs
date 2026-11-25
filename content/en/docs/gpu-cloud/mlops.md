@@ -2,9 +2,10 @@
 title: MLOps
 weight: 60
 aliases:
+  - /docs/quickpod/mlops/
   - /docs/mlops/experiment-tracking/
   - /docs/mlops/model-registry/
-description: "Built-in MLOps for Podstack QuickPods — track experiments and runs, register and version models, monitor performance and drift, and automate training with pipelines and schedules."
+description: "Built-in MLOps for Podstack GPU Cloud — track experiments and runs, register and version models, monitor performance and drift, and automate training with pipelines and schedules."
 keywords:
   - MLOps
   - experiment tracking
@@ -19,7 +20,7 @@ keywords:
 ---
 # MLOps
 
-QuickPods ships with a built-in MLOps stack so you can track experiments, version models, monitor them in production, and automate retraining — all from the same portal you launch pods in. Experiment tracking is MLflow-compatible under the hood, but you use it through the Podstack **registry** SDK and the portal.
+GPU Cloud ships with a built-in MLOps stack so you can track experiments, version models, monitor them in production, and automate retraining — all from the same portal you launch pods in. Experiment tracking is MLflow-compatible under the hood, but you use it through the Podstack **registry** SDK and the portal.
 
 Everything here is **project-scoped**. Pick your project at the top of each MLOps page.
 
@@ -33,7 +34,7 @@ Log experiments from any pod (or your laptop) with the Podstack registry SDK:
 from podstack import registry
 
 registry.init(
-    api_key="psk_...",          # or set PODSTACK_API_KEY
+    api_key="ps_live_...",          # or set PODSTACK_API_KEY
     project_id="your-project",  # or set PODSTACK_PROJECT_ID
     # api_url defaults to https://cloud.podstack.ai/registry
 )
@@ -48,7 +49,7 @@ Generate an API key at **Account > API Tokens**.
 ```python
 from podstack import registry
 
-registry.init(api_key="psk_...", project_id="your-project")
+registry.init(api_key="ps_live_...", project_id="your-project")
 registry.set_experiment("bert-fine-tuning")   # created if it doesn't exist
 
 with registry.start_run(name="training-v1") as run:
@@ -192,6 +193,6 @@ The schedules table shows **Next Fire**, **Last Fired**, and the total **Fires**
 
 ## Next steps
 
-- [Scenarios & Walkthroughs](/docs/quickpod/scenarios/) — track an experiment and register a model end to end.
-- [Launch a Pod](/docs/quickpod/launch-a-pod/) — run your training on a GPU.
+- [Scenarios & Walkthroughs](/docs/gpu-cloud/scenarios/) — track an experiment and register a model end to end.
+- [Launch a Pod](/docs/gpu-cloud/launch-a-pod/) — run your training on a GPU.
 - [MLOps reference](/docs/mlops/) — deeper reference for each feature.

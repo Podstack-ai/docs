@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/quickpod/templates/
 title: Templates
 weight: 30
-description: "Podstack QuickPods 1-click template catalog — launch ComfyUI, Ollama, vLLM, Jupyter, PyTorch, and 20+ more GPU apps in one click, or save your own pod config as a reusable template."
+description: "Podstack GPU Cloud 1-click template catalog — launch ComfyUI, Ollama, vLLM, Jupyter, PyTorch, and 20+ more GPU apps in one click, or save your own pod config as a reusable template."
 keywords:
   - 1-click templates
   - GPU app templates
@@ -26,7 +28,7 @@ Templates turn a full pod configuration — image, ports, environment, resources
 The Podstack catalog is browsed **inside the launch wizard**, on the **Choose a Template** step:
 
 1. Go to **Pods** and click **Launch Pod**.
-2. Pick a GPU on the **Instance Type** step (see [Launch a Pod](/docs/quickpod/launch-a-pod/)).
+2. Pick a GPU on the **Instance Type** step (see [Launch a Pod](/docs/gpu-cloud/launch-a-pod/)).
 3. On the **Choose a Template** step, find your app. Filter with the **Search templates by name, image, GPU...** box or the **All Categories** dropdown. Templates are grouped into collapsible categories.
 4. Click the template card. Its image, ports, environment variables, and startup command are applied, and you jump to the **Configure** step.
 5. Adjust anything you like, then click **Launch Pod**.
@@ -83,7 +85,7 @@ Every image is GPU-ready, expects persistent storage at **`/data`**, exposes SSH
 ### Base
 - [ubuntu-ssh-cuda](/docs/container-images/ubuntu-ssh-cuda/) — Bare Ubuntu + CUDA + SSH (bring your own stack)
 
-> **JupyterHub login.** On images with JupyterHub, log in with any username and your Podstack API token (`psk_...`) as the password. Generate one at **Account > API Tokens**.
+> **JupyterHub login.** On images with JupyterHub, log in with any username and your Podstack API token (`ps_live_...`) as the password. Generate one at **Account > API Tokens**.
 
 ## Save your own template
 
@@ -115,6 +117,6 @@ To create a template from scratch, click **Create Template** on the Templates pa
 
 ## Next steps
 
-- [Launch a Pod](/docs/quickpod/launch-a-pod/) — the full launch flow.
-- [Storage & Data](/docs/quickpod/storage-and-data/) — persist your models and outputs.
-- [Scenarios & Walkthroughs](/docs/quickpod/scenarios/) — deploy ComfyUI, run Jupyter on an A100, and more.
+- [Launch a Pod](/docs/gpu-cloud/launch-a-pod/) — the full launch flow.
+- [Storage & Data](/docs/gpu-cloud/storage-and-data/) — persist your models and outputs.
+- [Scenarios & Walkthroughs](/docs/gpu-cloud/scenarios/) — deploy ComfyUI, run Jupyter on an A100, and more.

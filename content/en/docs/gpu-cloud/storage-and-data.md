@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/quickpod/storage-and-data/
 title: Storage & Data
 weight: 40
-description: "Give your Podstack QuickPods persistent storage — attach NFS volumes at /data so datasets, models, and outputs survive restarts, plus object storage for large data and how to move files in and out."
+description: "Give your Podstack GPU Cloud persistent storage — attach NFS volumes at /data so datasets, models, and outputs survive restarts, plus object storage for large data and how to move files in and out."
 keywords:
   - persistent GPU storage
   - NFS volume
@@ -37,7 +39,7 @@ Every Podstack image expects your persistent storage at **`/data`**. Mount a vol
 | **Object Storage** | Large datasets, artifacts, S3-compatible access | Accessed over the S3 API / CLI from inside the pod |
 | **File Storage** | On-cluster S3 buckets with lower egress | Accessed over the S3 API (may be gated per account) |
 
-For most QuickPod workflows you'll attach an **NFS Volume** at `/data`. See the full [Storage](/docs/storage/) section for object and file storage.
+For most GPU Cloud workflows you'll attach an **NFS Volume** at `/data`. See the full [Storage](/docs/storage/) section for object and file storage.
 
 ## Create an NFS Volume
 
@@ -48,20 +50,19 @@ You can create a volume ahead of time from the **NFS Volumes** page, or inline w
    - **Volume Name** — letters, numbers, and hyphens only (no dots or spaces).
    - **Project** — pre-selected (read-only).
    - **Quota (GB)** — choose **No Limit** or a size (10, 25, 50, 100, 250, 500, or 1000 GB). Default is 50 GB.
-   - **Billing Period** — **Monthly**, **Quarterly**, or **Annual**.
    - **Enable NFS access** — leave checked so pods can mount it.
-3. Review the **Estimated Cost** panel (rate per GB, GST, and any period discount). The volume is billed upfront for the period.
+3. Extra disk is billed **per GB-hour** from the prepaid wallet. There is no monthly, quarterly, or annual plan.
 4. Click **Create Volume**.
 
 <!-- screenshot: the Create NFS Volume dialog with quota dropdown and estimated cost -->
 
 A volume's status is one of **active**, **suspended**, **pending_deletion**, **deleted**, or **error**. You can mount an **active** volume into any pod in the same project.
 
-> Billing is on the **provisioned quota**, not on how much you've written. The whole billing cycle is charged with no pro-rated refund if you delete early.
+> Extra disk is billed **per GB-hour** for the space you provision. There is no monthly plan and no charge for a period you have not used. Delete the volume to stop the meter.
 
 ## Attach a volume to a pod
 
-During launch, in the **Configure** step's **NFS Volume** card (see [Launch a Pod](/docs/quickpod/launch-a-pod/#nfs-volume-optional)):
+During launch, in the **Configure** step's **NFS Volume** card (see [Launch a Pod](/docs/gpu-cloud/launch-a-pod/#nfs-volume-optional)):
 
 1. Select your volume from the list (or **No Volume** for ephemeral storage only).
 2. Set the **Mount Path Inside Pod** — keep the default `/data` unless you have a reason to change it.
@@ -115,6 +116,6 @@ To download generated files (renders, images, processed video) from `/data/outpu
 
 ## Next steps
 
-- [Launch a Pod](/docs/quickpod/launch-a-pod/) — attach a volume during launch.
-- [MLOps](/docs/quickpod/mlops/) — track experiments and register the models you produce.
+- [Launch a Pod](/docs/gpu-cloud/launch-a-pod/) — attach a volume during launch.
+- [MLOps](/docs/gpu-cloud/mlops/) — track experiments and register the models you produce.
 - [Storage](/docs/storage/) — object storage, file storage, and NFS in depth.

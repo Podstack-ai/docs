@@ -79,7 +79,7 @@ Pair a drift monitor with an **on_drift** [Pipeline](/docs/mlops/pipelines/) to 
 
 ## Use Cases
 
-- Detect upstream data-pipeline changes
+- Detect earlier data-pipeline changes
 - Catch seasonal distribution shift (e.g. new product launch, holiday traffic)
 - Trigger retraining when input distribution diverges from training
 - Audit a model before promoting it from staging to production
@@ -88,4 +88,4 @@ Pair a drift monitor with an **on_drift** [Pipeline](/docs/mlops/pipelines/) to 
 
 - [Pipelines](/docs/mlops/pipelines/) — wire drift into automatic retraining
 - [Model Monitoring](/docs/mlops/model-monitoring/) — combine input drift with runtime metrics
-- [Experiment Tracking](/docs/quickpod/mlops/) — log retraining runs triggered by drift
+- [Experiment Tracking](/docs/gpu-cloud/mlops/) — log retraining runs triggered by drift

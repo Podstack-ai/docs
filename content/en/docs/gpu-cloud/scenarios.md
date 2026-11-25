@@ -1,12 +1,14 @@
 ---
+aliases:
+  - /docs/quickpod/scenarios/
 title: Scenarios & Walkthroughs
 weight: 70
-description: "End-to-end Podstack QuickPods walkthroughs — run a Jupyter notebook on an A100, deploy ComfyUI from a 1-click template, and track an experiment and register a model."
+description: "End-to-end Podstack GPU Cloud walkthroughs — run a Jupyter notebook on an A100, deploy ComfyUI from a 1-click template, and track an experiment and register a model."
 keywords:
   - Jupyter A100
   - deploy ComfyUI
   - GPU notebook walkthrough
-  - QuickPods tutorial
+  - GPU Cloud tutorial
   - experiment tracking walkthrough
   - register model
   - ComfyUI template
@@ -16,13 +18,13 @@ keywords:
 ---
 # Scenarios & Walkthroughs
 
-Three end-to-end examples that tie the QuickPods flow together. Each assumes you're verified, have a project, and have funded your wallet — see [Launch a Pod](/docs/quickpod/launch-a-pod/#before-you-start).
+Three end-to-end examples that tie the GPU Cloud flow together. Each assumes you're verified, have a project, and have funded your wallet — see [Launch a Pod](/docs/gpu-cloud/launch-a-pod/#before-you-start).
 
 ## Scenario 1 — Run a Jupyter notebook on an A100
 
 Goal: an interactive GPU notebook for experimentation, with your work saved to a volume.
 
-1. **Create a volume first (optional but recommended).** Go to **NFS Volumes → Create Volume**, name it `notebooks`, set **Quota (GB)** to 100, pick a **Billing Period**, and click **Create Volume**. See [Storage & Data](/docs/quickpod/storage-and-data/).
+1. **Create a volume first (optional but recommended).** Go to **NFS Volumes → Create Volume**, name it `notebooks`, set **Quota (GB)** to 100, and click **Create Volume**. Extra disk is billed per GB-hour. See [Storage & Data](/docs/gpu-cloud/storage-and-data/).
 2. **Launch the pod.** Go to **Pods → Launch Pod**.
 3. On **Instance Type**, search `A100`, confirm it shows availability, and click **Select**.
 4. On **Choose a Template**, pick the **pytorch** template (PyTorch + Jupyter) — or **jupyterlab-gpu** for a bare JupyterLab.
@@ -36,7 +38,7 @@ Goal: an interactive GPU notebook for experimentation, with your work saved to a
 7. When the pod is **running**, open it and use the **Notebook Access** card: open the **Notebook URL**, log in with username `podstack` and the shown **Password** (copy it — it's shown once).
 8. Save your notebooks and data under `/data` so they persist. Stop the pod when you're done to pause billing.
 
-> On JupyterHub-based images, log in with any username and your Podstack API token (`psk_...`) as the password — generate one at **Account > API Tokens**.
+> On JupyterHub-based images, log in with any username and your Podstack API token (`ps_live_...`) as the password — generate one at **Account > API Tokens**.
 
 ## Scenario 2 — Deploy ComfyUI from a template
 
@@ -58,17 +60,17 @@ Goal: a running ComfyUI instance for node-graph image/video generation, with mod
 
 ## Scenario 3 — Track an experiment and register a model
 
-Goal: run training on a pod, log metrics to experiment tracking, then register the resulting model. See [MLOps](/docs/quickpod/mlops/) for full detail on each step.
+Goal: run training on a pod, log metrics to experiment tracking, then register the resulting model. See [MLOps](/docs/gpu-cloud/mlops/) for full detail on each step.
 
-1. **Launch a training pod.** Use the **pytorch** template on a suitable GPU, attach a volume at `/data` for your dataset and checkpoints, and add an SSH key so you can push code. See [Launch a Pod](/docs/quickpod/launch-a-pod/).
-2. **Get an API key.** At **Account > API Tokens**, create a token (`psk_...`).
+1. **Launch a training pod.** Use the **pytorch** template on a suitable GPU, attach a volume at `/data` for your dataset and checkpoints, and add an SSH key so you can push code. See [Launch a Pod](/docs/gpu-cloud/launch-a-pod/).
+2. **Get an API key.** At **Account > API Tokens**, create a token (`ps_live_...`).
 3. **Instrument your training script** with the Podstack registry SDK:
 
    ```python
    from podstack import registry
    import torch
 
-   registry.init(api_key="psk_...", project_id="your-project")
+   registry.init(api_key="ps_live_...", project_id="your-project")
    registry.set_experiment("sentiment-fine-tuning")
 
    with registry.start_run(name="run-1") as run:
@@ -103,4 +105,4 @@ Goal: run training on a pod, log metrics to experiment tracking, then register t
    registry.set_model_alias("sentiment-classifier", alias="champion", version=1)
    ```
 
-7. **Automate it.** Create a **Training Schedule** for `sentiment-fine-tuning` (e.g. weekly, `0 2 * * 1`) so the model retrains on a cadence, and add a **Drift Monitor** to trigger retraining when input drift is detected. See [MLOps](/docs/quickpod/mlops/).
+7. **Automate it.** Create a **Training Schedule** for `sentiment-fine-tuning` (e.g. weekly, `0 2 * * 1`) so the model retrains on a cadence, and add a **Drift Monitor** to trigger retraining when input drift is detected. See [MLOps](/docs/gpu-cloud/mlops/).

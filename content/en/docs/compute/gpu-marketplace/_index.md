@@ -112,7 +112,7 @@ Each listing shows:
    - Debian 11
    - Rocky Linux 8
 3. **SSH Key**: Select key for access
-4. **Billing Period**: Hourly or monthly commitment
+4. **Billing**: GPU time is billed per second from the hourly rate, from boot until you terminate the machine. There is no monthly commitment.
 5. Review total cost
 
 ### Step 4: Complete Reservation

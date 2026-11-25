@@ -49,11 +49,9 @@ If enabled for your workspace, you can skip the email code entirely:
 These are one-click and land you on the same dashboard. (Which providers appear
 depends on how your PodStack instance is configured.)
 
-## Choosing your currency
+## Where prices are shown
 
-Your preferred billing currency (**INR** or **USD**) is set later in
-**Settings → Profile**, not during sign-in. See
-[Settings](/docs/account/settings/).
+Prices follow your location, which you set later in **Settings**. India is shown in **INR**. Every other location is shown in **USD**. See [Settings](/docs/account/settings/).
 
 ## Verify it worked
 

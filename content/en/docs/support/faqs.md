@@ -16,27 +16,27 @@ General questions about accounts, billing, KYC, security, and support. For produ
 ## Billing & payments
 
 **How does billing work?**
-Podstack uses a **prepaid wallet**. You add funds, deploy resources, and charges are deducted in real time — compute per second, storage on provisioned quota, inference per token. See [Billing](/docs/billing/).
+Podstack uses a **prepaid wallet**. GPU time is billed per second from the hourly rate, from boot until you terminate the instance. Jobs are billed only while running. Inference is billed per token. Extra disk is billed per GB-hour. There is no monthly or annual subscription. See [Billing](/docs/billing/).
 
 **Which currency am I billed in?**
-All charges settle in INR; amounts are **displayed** in your preferred currency — INR or USD — which you set in [Account Settings](/docs/account/settings/). Payments via PayPal and crypto are converted at the current rate. See [Wallet](/docs/billing/wallet/).
+Prices are shown in **INR** for India and in **USD** everywhere else. Set your location in [Account Settings](/docs/account/settings/). See [Wallet](/docs/billing/wallet/).
 
 **What payment methods can I use?**
 Razorpay (UPI, cards, net banking, wallets) for India, PayPal for international users, and cryptocurrency via Binance Pay (USDT/USDC and other supported tokens). See [Wallet](/docs/billing/wallet/#adding-funds).
 
 **Can I get a refund?**
-Refunds may apply to failed provisioning, billing errors, service issues, or reservations cancelled before provisioning. Committed billing periods (bucket plans, NFS quota, postpaid) are **not** refunded pro-rata. Request one from **Billing > Wallet > Request Refund**. See [Refunds](/docs/billing/wallet/#refunds).
+Refunds may apply to failed provisioning, billing errors, or service issues. Podstack does not sell monthly or annual plans, so there is no unused plan period to refund. See [Wallet](/docs/billing/wallet/).
 
 **Do I get GST invoices?**
 Yes. Business accounts with a verified GSTIN get GST details on their invoices. Complete [KYC](/docs/billing/kyc/) and add your GSTIN, then see [Invoices](/docs/billing/invoices/).
 
-**How do I move from prepaid to postpaid?**
-Postpaid is admin-controlled. Complete [KYC verification](/docs/billing/kyc/), then contact support with your account email and expected monthly spend for review. Self-service postpaid upgrade is not available from the portal.
+**Is there a monthly or annual plan?**
+No. The wallet is prepaid. GPU time, jobs, tokens, and extra disk are metered as they run. See [Billing](/docs/billing/).
 
 ## KYC
 
 **Is KYC mandatory?**
-It depends on platform configuration. When KYC enforcement is enabled, KYC is required before creating resources; otherwise it's needed only for postpaid billing and higher limits. See [KYC Verification](/docs/billing/kyc/).
+KYC is identity verification some accounts are asked to complete. It does not enable a subscription. See [KYC Verification](/docs/billing/kyc/).
 
 **How long does KYC take?**
 Didit is usually instant to a few minutes (automated), WhatsApp is a few minutes once you finish the chat, and Government ID is manual review — typically within 24 hours.
@@ -50,7 +50,7 @@ Read the rejection reason on the KYC page, fix the mismatched detail or re-uploa
 Podstack is passwordless — there's no password to reset. Codes are single-use and expire in 10 minutes; check spam, wait a couple of minutes, and use **Resend**. If you've lost access to the account email, follow the [Lost account access](/docs/support/scenarios/#i-lost-access-to-my-account) scenario.
 
 **How do I get an API key or SSH key?**
-Create `psk_…` API tokens in [Account > API Tokens](/docs/account/api-tokens/) and manage connection keys in [Account > SSH Keys](/docs/account/ssh-keys/).
+Create a `ps_live_` API key in [API Keys](/docs/account/api-tokens/) and manage connection keys in [Account > SSH Keys](/docs/account/ssh-keys/).
 
 ## Security & data
 

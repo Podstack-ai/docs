@@ -132,7 +132,7 @@ When you edit a cell:
 
 Analyze individual cells or the entire notebook:
 - View which variables a cell reads and writes
-- See upstream and downstream dependencies
+- See earlier and later cells in the notebook
 - Identify potential circular dependencies
 
 ## Checkpoints (Time-Travel)

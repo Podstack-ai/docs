@@ -12,13 +12,10 @@ Your wallet is the central billing account for all Podstack resources. Manage yo
 Navigate to **Billing > Wallet** to see:
 
 ### Balance
-Your current available funds displayed in your preferred currency (INR or USD). Toggle between currencies using the currency switch.
+Your current available funds. Prices and the balance are shown in **INR** when your location is India and in **USD** otherwise. Set the location in **Settings**.
 
 ### Run Rate
-Current spending projections:
-- **Hourly cost**: Based on running resources
-- **Daily projection**: Hourly rate × 24
-- **Monthly projection**: Daily rate × 30
+Current spending rate from what is running now. A longer forecast is that hourly rate extended. It is not a subscription.
 
 ### Expenditure Breakdown
 Spending by resource type:
@@ -26,19 +23,17 @@ Spending by resource type:
 - NFS Storage
 - Object Storage
 
-## Account Types
+## How usage is billed
 
-Podstack supports two billing models:
+Podstack has one billing model: a **prepaid wallet**. There is no postpaid plan and no monthly or annual subscription.
 
-### Prepaid (Default)
-- Add funds to your wallet before using resources
-- Resources deduct from wallet balance in real-time
-- No invoices required - pay as you go
+- Add credits before you launch.
+- **GPU instances** are billed per second from the hourly rate, from boot until you terminate them.
+- **Jobs** are billed only while they are running.
+- **Inference** is billed per token.
+- **Extra disk** is billed per GB-hour.
 
-### Postpaid (Enterprise)
-- Use resources and pay via monthly invoices
-- Requires KYC verification and approval
-- Auto-debit can be configured for automatic payments
+Prices are shown in **INR** for India and in **USD** everywhere else.
 
 ## Adding Funds
 
@@ -46,7 +41,7 @@ Podstack supports two billing models:
 
 1. Go to **Billing > Wallet**
 2. Click **Top Up**
-3. Enter the amount (minimum ₹100)
+3. Enter the amount. The page shows the minimum top-up.
 4. Select your payment method
 5. Complete the payment
 6. Funds appear immediately after successful payment
@@ -134,7 +129,7 @@ Set up automatic payments to avoid service interruption:
 1. Go to Wallet settings
 2. Click **Set Up Auto-Debit**
 3. Configure:
-   - Trigger balance (e.g., when below ₹500)
+   - Trigger balance (when the balance falls below the amount you choose)
    - Top-up amount
 4. Authorize the mandate via your bank
 5. Auto-debit activates
@@ -207,35 +202,16 @@ Configure notifications when spending reaches thresholds:
 - Review weekly spending trends
 - Export transactions for analysis
 
-## Billing Model
+## Billing model
 
-### Anniversary-Based Monthly Cycles
+Usage is metered as it runs. There are no monthly or annual subscriptions, no anniversary renewals, and no postpaid upgrade.
 
-Monthly subscriptions (bucket plans, NFS quotas, postpaid invoices) renew on the **anniversary** of the resource's creation date — not on the first of the calendar month. A bucket created on the 15th renews on the 15th of every subsequent month.
+- **GPU instances:** per second from the hourly rate, from boot until you terminate them.
+- **Jobs:** only while the job is running.
+- **Inference:** per token.
+- **Extra disk:** per GB-hour.
 
-### Quota-Based NFS Billing
-
-NFS volumes are billed on **provisioned quota**, not actual usage. If you provision a 500 GB volume and only use 50 GB, you still pay for 500 GB. Right-size your quota — expansion is online; shrinking requires support.
-
-### Billing Owner per Project
-
-Every project has a **billing owner** who is charged for the project's compute, storage, and managed services — regardless of which member created the resource. By default the project creator is the billing owner. Project members can use resources without being billed personally.
-
-To transfer billing ownership, see [Project Settings](/docs/projects/creating-projects/#billing-ownership).
-
-### No Pro-Rata Refunds
-
-Committed billing periods are **not refunded pro-rata** when you delete a resource mid-cycle. If a bucket plan or NFS quota has already been charged for the month, you keep access for the rest of the month but no portion of the charge is returned. Plan your provisioning around this — prefer right-sizing at creation over short-lived overcommitment.
-
-### Postpaid Upgrade (Admin-Only)
-
-Switching an account from **prepaid** to **postpaid** is now an admin-controlled operation. To request a postpaid upgrade:
-
-1. Complete [KYC verification](/docs/billing/kyc/)
-2. Contact support with your account email and expected monthly spend
-3. An admin reviews and enables postpaid
-
-Self-service postpaid upgrade is no longer available from the portal.
+The project that owns the resource is billed for it.
 
 ## Refunds
 
@@ -247,7 +223,7 @@ Refunds may be available for:
 - Cancelled reservations (before provisioning starts)
 - Billing errors
 
-**Not eligible**: pro-rata refunds for committed billing periods on bucket plans, NFS quotas, or postpaid subscriptions — see "No Pro-Rata Refunds" above.
+**Not eligible**: there is no unused portion of a monthly or annual plan to return, because Podstack does not sell those plans. GPU, job, token, and disk charges are for usage that already ran.
 
 ### Requesting a Refund
 
@@ -296,4 +272,4 @@ Track all your refunds:
 ## Next Steps
 
 - [View and pay invoices](/docs/billing/invoices/)
-- [Complete KYC](/docs/billing/kyc/) for postpaid options
+- [How billing works](/docs/billing/)

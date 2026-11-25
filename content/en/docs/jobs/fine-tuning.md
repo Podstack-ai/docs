@@ -1,4 +1,6 @@
 ---
+aliases:
+  - /docs/trainpod/fine-tuning/
 title: Fine-Tuning
 weight: 50
 description: "Run managed fine-tuning jobs on Podstack with podstack train — upload a JSONL dataset, pick a base model, launch a LoRA or QLoRA job, stream events, and get your fine-tuned model back. No GPU box to manage."
@@ -19,7 +21,7 @@ keywords:
 
 Podstack offers **managed fine-tuning** through `podstack train`. You upload a dataset, choose a base model and method (LoRA or QLoRA), and Podstack runs the training job for you — provisioning, running, and tearing down the GPUs automatically. There's no instance to SSH into or terminate.
 
-Use managed fine-tuning when you want a fine-tuned model without operating the box. If you'd rather run your own training script on a raw GPU, [provision a TrainPod](/docs/trainpod/provision-a-gpu/) and SSH in instead.
+Use managed fine-tuning when you want a fine-tuned model without operating the box. If you'd rather run your own training script on a raw GPU, [provision a Jobs](/docs/jobs/provision-a-gpu/) and SSH in instead.
 
 ## The flow at a glance
 
@@ -57,14 +59,7 @@ List the base models available to fine-tune:
 podstack train models
 ```
 
-```
-MODEL                           MODALITY   STATUS
-podstack/gemma-4-31b-it    text       available
-podstack/llama-3.1-8b-instruct  text       available
-...
-```
-
-Model ids are Podstack-namespaced (e.g. `podstack/gemma-4-31b-it`). Pick one from the `MODEL` column.
+Copy an id from the `MODEL` column, or from [podstack.ai/app/models](https://podstack.ai/app/models). These docs do not publish a model catalog. The inference examples elsewhere use `podstack/kimi-k3` only as a chat id — confirm any training id with `podstack train models` before you start a job.
 
 ---
 
@@ -74,7 +69,7 @@ Model ids are Podstack-namespaced (e.g. `podstack/gemma-4-31b-it`). Pick one fro
 
 ```bash
 podstack train create \
-  --model podstack/gemma-4-31b-it \
+  --model <MODEL_ID> \
   --training-file file_123 \
   --method lora
 ```
@@ -98,7 +93,7 @@ A fuller example with a name suffix, a fixed seed, and a spend cap:
 
 ```bash
 podstack train create \
-  --model podstack/llama-3.1-8b-instruct \
+  --model <MODEL_ID> \
   --training-file file_123 \
   --method qlora \
   --suffix my-assistant \
@@ -120,7 +115,7 @@ podstack train list
 
 ```
 ID          MODEL                          STATUS      CREATED
-ft_job_abc  podstack/gemma-4-31b-it   running     2026-07-17T10:30:00Z
+ft_job_abc  <MODEL_ID>   running     2026-07-17T10:30:00Z
 ```
 
 Stream events live with `--follow` (polls for new events; Ctrl-C to stop):
@@ -151,10 +146,10 @@ podstack train get ft_job_abc
 
 ```
 ID:         ft_job_abc
-Model:      podstack/gemma-4-31b-it
+Model:      <MODEL_ID>
 Status:     succeeded
 Train file: file_123
-Result:     podstack/gemma-4-31b-it:my-assistant
+Result:     <MODEL_ID>:my-assistant
 Created:    2026-07-17T10:30:00Z
 ```
 
@@ -186,7 +181,7 @@ podstack train models
 
 # 3. Launch a QLoRA job with a spend cap
 podstack train create \
-  --model podstack/llama-3.1-8b-instruct \
+  --model <MODEL_ID> \
   --training-file file_456 \
   --method qlora \
   --suffix support-bot \
@@ -200,11 +195,11 @@ podstack train events ft_job_xyz --follow
 podstack train get ft_job_xyz
 ```
 
-> **Want full control instead?** To run your own training loop (custom framework, custom data pipeline, multi-GPU script), [provision a raw GPU](/docs/trainpod/provision-a-gpu/), [SSH in](/docs/trainpod/ssh-access/), [move your data](/docs/trainpod/move-data/), and run your script directly.
+> **Want full control instead?** To run your own training loop (custom framework, custom data pipeline, multi-GPU script), [provision a raw GPU](/docs/jobs/provision-a-gpu/), [SSH in](/docs/jobs/ssh-access/), [move your data](/docs/jobs/move-data/), and run your script directly.
 
 ## Managed fine-tuning vs your own script
 
-| | **`podstack train` (managed)** | **Raw TrainPod + your script** |
+| | **`podstack train` (managed)** | **Raw Jobs + your script** |
 |---|---|---|
 | GPU management | Automatic — no box to launch or terminate | You launch, SSH in, and terminate |
 | Methods | LoRA / QLoRA | Anything you can run |
@@ -218,7 +213,7 @@ podstack train get ft_job_xyz
 A JSONL file uploaded with `podstack files upload`. Follow your base model's expected instruction/chat format for the records.
 
 **How is a managed job billed?**
-By the training run, against your wallet. Use `--budget <USD>` to cap spend. See [Pricing & billing](/docs/trainpod/pricing-and-billing/).
+By the training run, against your wallet. Use `--budget <USD>` to cap spend. See [Pricing & billing](/docs/jobs/pricing-and-billing/).
 
 **What's the difference between LoRA and QLoRA?**
 Both train low-rank adapters. QLoRA quantizes the base model to save memory, which helps fit larger models or reduce cost. Set it with `--method qlora`.
@@ -237,6 +232,6 @@ Yes — `podstack train cancel <id>` stops a queued or running job.
 
 ## Next steps
 
-- [Move data](/docs/trainpod/move-data/) — prepare and move datasets.
-- [Pricing & billing](/docs/trainpod/pricing-and-billing/) — job budgets and the wallet.
+- [Move data](/docs/jobs/move-data/) — prepare and move datasets.
+- [Pricing & billing](/docs/jobs/pricing-and-billing/) — job budgets and the wallet.
 - [CLI reference](/docs/cli/) — every `podstack` command.

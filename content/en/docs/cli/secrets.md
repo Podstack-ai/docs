@@ -23,9 +23,9 @@ Store named secrets **locally** that the [coding agent](/docs/cli/code/) can use
 ## Commands
 
 ```sh
-podstack secrets set OPENAI_API_KEY      # value read from stdin or a hidden prompt
+podstack secrets set MY_KEY      # value read from stdin or a hidden prompt
 podstack secrets list                    # names only — never values
-podstack secrets rm OPENAI_API_KEY       # delete a secret
+podstack secrets rm MY_KEY       # delete a secret
 ```
 
 Set from stdin (e.g. from a password manager) without it hitting your shell history:

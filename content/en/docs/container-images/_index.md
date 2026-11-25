@@ -64,7 +64,7 @@ Image-specific variables (e.g. `ENABLE_COMFYUI`, `COMFYUI_EXTRA_ARGS`, `VNC_PORT
 For images with JupyterHub, log in with:
 
 - **Username**: any name (it's just a session label)
-- **Password**: your Podstack API token (`psk_...`) — generate one at **Account > API Tokens**
+- **Password**: your Podstack API token (`ps_live_...`) — generate one at **Account > API Tokens**
 
 The token is validated against the Podstack backend.
 

@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/quickpod/troubleshooting/
 title: Troubleshooting
 weight: 80
-description: "Fix common Podstack QuickPods issues — pods stuck pending, GPU unavailable and the waitlist, insufficient balance, out-of-memory failures, image pull errors, and connection problems."
+description: "Fix common Podstack GPU Cloud issues — pods stuck pending, GPU unavailable and the waitlist, insufficient balance, out-of-memory failures, image pull errors, and connection problems."
 keywords:
   - pod stuck pending
   - GPU unavailable
@@ -16,7 +18,7 @@ keywords:
 ---
 # Troubleshooting
 
-Common issues when launching and running QuickPods, and how to fix them.
+Common issues when launching and running GPU Cloud, and how to fix them.
 
 ## Can't open the launch wizard
 
@@ -30,7 +32,7 @@ Launching requires a **verified account**. Complete identity verification and tr
 
 - On the **Instance Type** step, the button reads **Join Waitlist** for sold-out GPUs. Click it to queue — you'll be notified when capacity frees up, and you'll see your queue position.
 - Alternatively, tick **Show All GPUs** to compare, then pick a different GPU type or reduce the **Number of GPUs**.
-- Consider a **fractional GPU** (a smaller percentage of a card) if a whole card isn't free — see [Fractional GPUs](/docs/quickpod/manage-and-scale/#fractional-gpus).
+- Consider a **fractional GPU** (a smaller percentage of a card) if a whole card isn't free — see [Fractional GPUs](/docs/gpu-cloud/manage-and-scale/#fractional-gpus).
 - For guaranteed dedicated hardware, see the [GPU Marketplace](/docs/compute/gpu-marketplace/).
 
 ## Insufficient balance
@@ -77,7 +79,7 @@ The auto-generated notebook password is shown **once** on the **Notebook Access*
 
 ## Lost data after stopping a pod
 
-Data written to the container's own disk can be lost on stop or delete. Keep datasets, checkpoints, and outputs on an attached volume mounted at `/data`. See [Storage & Data](/docs/quickpod/storage-and-data/).
+Data written to the container's own disk can be lost on stop or delete. Keep datasets, checkpoints, and outputs on an attached volume mounted at `/data`. See [Storage & Data](/docs/gpu-cloud/storage-and-data/).
 
 ## MLOps section isn't visible
 
@@ -86,5 +88,5 @@ MLOps features may be gated by a feature flag or account level. If experiment tr
 ## Still stuck?
 
 - Check the pod's **Container Logs** and **Infrastructure Stats** on the detail page.
-- Review [Manage & Scale](/docs/quickpod/manage-and-scale/) for lifecycle actions.
+- Review [Manage & Scale](/docs/gpu-cloud/manage-and-scale/) for lifecycle actions.
 - Reach out through [Support](/docs/support/).

@@ -1,4 +1,6 @@
 ---
+aliases:
+  - /docs/trainpod/provision-a-gpu/
 title: Provision a GPU
 weight: 20
 description: "Launch an on-demand NVIDIA GPU pod on Podstack — fund your wallet, browse GPU types and prices, register an SSH key, and create a running H100, A100, or L40S instance from the podstack CLI or the portal."
@@ -17,7 +19,7 @@ keywords:
 
 # Provision a GPU
 
-This page walks through launching a TrainPod GPU instance end to end: sign in, fund your wallet, choose a GPU, and create a running instance. Two paths are covered — the interactive **quick launch** and the scriptable **flag-driven** command.
+This page walks through launching a Jobs GPU instance end to end: sign in, fund your wallet, choose a GPU, and create a running instance. Two paths are covered — the interactive **quick launch** and the scriptable **flag-driven** command.
 
 ## Before you start
 
@@ -28,13 +30,13 @@ This page walks through launching a TrainPod GPU instance end to end: sign in, f
    podstack auth whoami     # confirm you're authenticated
    ```
 
-   For CI or headless machines, set an API key (it starts with `psk_`) instead:
+   For CI or headless machines, set an API key (it starts with `ps_live_`) instead:
 
    ```bash
-   export PODSTACK_API_KEY=psk_xxxxxxxxxxxxxxxxxxxx
+   export PODSTACK_API_KEY=ps_live_...
    ```
 
-2. **Fund your wallet.** GPUs bill per hour against your wallet balance. Add funds in the dashboard, or see [Pricing & billing](/docs/trainpod/pricing-and-billing/) and the [Wallet docs](/docs/billing/wallet/).
+2. **Fund your wallet.** GPUs bill per hour against your wallet balance. Add funds in the dashboard, or see [Pricing & billing](/docs/jobs/pricing-and-billing/) and the [Wallet docs](/docs/billing/wallet/).
 
 ## Step 1 — See what's available
 
@@ -92,7 +94,7 @@ Note the key **id** (`sshkey_abc123`) — you pass it to `--ssh-key-id` when cre
 podstack gpu keys list
 ```
 
-Full details, including registering an existing public key, are on the [SSH access](/docs/trainpod/ssh-access/) page.
+Full details, including registering an existing public key, are on the [SSH access](/docs/jobs/ssh-access/) page.
 
 ## Step 3 — Launch a GPU
 
@@ -190,7 +192,7 @@ Created:  2026-07-17T10:20:00Z
 SSH:      ssh -p 22 root@203.0.113.10
 ```
 
-Once the status is **`running`**, head to [SSH access](/docs/trainpod/ssh-access/) to connect.
+Once the status is **`running`**, head to [SSH access](/docs/jobs/ssh-access/) to connect.
 
 ## Step 5 — Stop paying: terminate when done
 
@@ -206,7 +208,7 @@ Run it with no id to arrow-select the instance and confirm:
 podstack gpu instances delete
 ```
 
-> **Terminating is permanent.** Local disk on the instance is wiped. Move any results off the box first — see [Move data](/docs/trainpod/move-data/).
+> **Terminating is permanent.** Local disk on the instance is wiped. Move any results off the box first — see [Move data](/docs/jobs/move-data/).
 
 ## Provisioning in the portal
 
@@ -257,7 +259,7 @@ Terminate the instance with `podstack gpu instances delete <id>`. Billing stops 
 
 ## Next steps
 
-- [SSH access](/docs/trainpod/ssh-access/) — connect to your running instance.
-- [Move data](/docs/trainpod/move-data/) — get your dataset onto the box.
-- [Pricing & billing](/docs/trainpod/pricing-and-billing/) — understand per-hour costs and the wallet.
+- [SSH access](/docs/jobs/ssh-access/) — connect to your running instance.
+- [Move data](/docs/jobs/move-data/) — get your dataset onto the box.
+- [Pricing & billing](/docs/jobs/pricing-and-billing/) — understand per-hour costs and the wallet.
 - [CLI reference](/docs/cli/) — every `podstack` command.

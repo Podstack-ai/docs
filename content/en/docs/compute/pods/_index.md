@@ -2,13 +2,13 @@
 title: Pods
 
 weight: 10
-description: "Cheapest GPU containers - deploy PyTorch, TensorFlow with A100, H100, L40S, V100. Pay per minute, zero lock-in. Jupyter notebooks, SSH access included."
+description: "GPU containers on Podstack. Billed per second from the hourly rate, from boot until you terminate the pod."
 keywords:
   - cheapest GPU containers
   - cheap GPU pods
   - affordable GPU container
   - budget Docker GPU
-  - pay per minute containers
+  - billed per second containers
   - serverless GPU containers
   - zero lock-in pods
   - GPU containers for students

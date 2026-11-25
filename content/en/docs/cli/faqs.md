@@ -15,7 +15,7 @@ keywords:
 ## Frequently asked questions
 
 **How do I sign in without a browser (CI/servers)?**
-Set `PODSTACK_API_KEY=psk_…` in the environment, or run `podstack auth login --key psk_…`. See [Authentication](/docs/cli/authentication/).
+Set `PODSTACK_API_KEY=ps_live_...` in the environment, or run `podstack auth login --key ps_live_...`. See [Authentication](/docs/cli/authentication/).
 
 **Where are my credentials and settings stored?**
 Credentials in `~/.config/podstack/credentials.json`; default project and settings in `~/.podstack/config.json`. See [Configuration](/docs/cli/configuration/).
@@ -57,7 +57,7 @@ Press **shift+tab** to **plan** mode, review the plan the agent writes to `.pods
 ### One-shot change in CI
 
 ```sh
-export PODSTACK_API_KEY=psk_…
+export PODSTACK_API_KEY=ps_live_...
 podstack code -p "bump the version in package.json and update CHANGELOG.md" \
   --allow-tools read,edit --output-format json
 ```
@@ -75,7 +75,7 @@ podstack send ./results/                  # ship results back (code phrase)
 
 ```sh
 podstack files upload ./train.jsonl --purpose fine-tune       # → file_123
-podstack train create --model podstack/qwen2.5-7b-instruct \
+podstack train create --model <MODEL_ID> \
   --training-file file_123 --method lora
 podstack train events <id> --follow
 ```

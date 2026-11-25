@@ -2,12 +2,12 @@
 title: Compute
 
 weight: 120
-description: "Cheapest GPU compute - containers and baremetal. Pay per minute, zero lock-in. NVIDIA A100, H100, V100, L40S, T4 GPUs for ML training and inference."
+description: "GPU compute on Podstack. Prepaid wallet, billed per second from the hourly rate, from boot until you terminate the instance."
 keywords:
   - cheapest GPU compute
   - cheap GPU containers
   - budget GPU server
-  - pay per minute GPU
+  - billed per second GPU
   - pay for what you use
   - serverless GPU compute
   - zero lock-in GPU

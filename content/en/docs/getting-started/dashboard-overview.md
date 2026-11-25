@@ -24,9 +24,8 @@ your resources quickly.
 
 Across the top, three cards track cost:
 
-- **Current Usage** — spend accrued so far in the current period.
-- **Run Rate** — your live cost per hour, broken down by pods, VMs, NFS, and buckets.
-- **Projected Monthly** — an estimate if the current run rate continues.
+- **Run rate** — live cost per hour from what is running now.
+- **Forecast** — what that hourly rate would come to over a longer stretch. It is not a monthly bill.
 
 When nothing is running, these read **"No active resources."**
 

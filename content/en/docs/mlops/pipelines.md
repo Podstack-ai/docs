@@ -55,7 +55,7 @@ Use cron triggers for nightly retraining, weekly evaluations, or any cadence-dri
 
 ### Webhook
 
-Each webhook-triggered pipeline exposes a unique URL. POST to it from your CI, a Slack workflow, or an upstream system to start a run.
+Each webhook-triggered pipeline exposes a unique URL. POST to it from your CI or another system to start a run.
 
 ### On Drift
 

@@ -144,15 +144,11 @@ Create invoices for specific date ranges:
 
 Invoices are generated automatically:
 
-### Prepaid Model
-- Transaction receipts for wallet top-ups
-- Usage summaries for accounting periods
-- Can generate custom invoices for any date range
+### Prepaid wallet
+- Receipts for credits you add
+- Usage summaries for a date range you choose
 
-### Postpaid Model (if enabled)
-- Monthly invoices for resource usage
-- Due within specified payment terms (typically 15-30 days)
-- Late payment may result in service suspension
+Podstack does not issue monthly postpaid invoices. There is no monthly or annual subscription.
 
 ## GST and Taxes
 

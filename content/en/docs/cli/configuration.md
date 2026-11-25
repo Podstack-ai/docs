@@ -47,7 +47,7 @@ Example per-project `./.podstack/config.json` (the coding agent writes the `sand
 
 | Variable | Effect |
 |----------|--------|
-| `PODSTACK_API_KEY` | Use this `psk_` key instead of the stored credentials (CI-friendly) |
+| `PODSTACK_API_KEY` | Use this `ps_live_` key instead of the stored credentials (CI-friendly) |
 | `PODSTACK_PROJECT_ID` | Override the default project for a single run |
 
 ## Output format

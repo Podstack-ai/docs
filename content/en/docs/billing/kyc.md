@@ -5,17 +5,13 @@ weight: 30
 ---
 # KYC Verification
 
-Know Your Customer (KYC) verification is required for certain billing features, particularly postpaid billing and higher usage limits. Podstack offers three verification methods — pick whichever fits the documents you have.
+Know Your Customer (KYC) is identity verification Podstack may ask for on an account. It does not turn the account into a monthly or annual subscription. Usage is still billed from the prepaid wallet: GPU time per second, jobs only while running, inference per token, and extra disk per GB-hour.
 
 ## Why KYC?
 
 KYC verification:
-- Enables postpaid billing options
-- Increases account limits (SSH keys, resources)
-- Enables auto-pay setup
-- Unlocks higher credit limits
-- Required for business accounts that need GST invoicing
-- Compliance with financial regulations
+- Confirms identity when the platform asks for it
+- Does not enable a monthly or annual subscription
 
 ## Verification Methods
 
@@ -170,7 +166,7 @@ Your KYC information is:
 ## Frequently Asked Questions
 
 **Is KYC mandatory?**
-Depends on platform configuration. When KYC enforcement is enabled, KYC is required before creating resources. Otherwise it's required only for postpaid billing and higher limits.
+KYC does not change the meter. Podstack does not offer postpaid monthly billing. See [Billing](/docs/billing/).
 
 **How long does verification take?**
 - **Didit**: usually instant to a few minutes (automated)
@@ -189,6 +185,6 @@ Yes — until your KYC is approved you can abandon one method and start another 
 ## Next Steps
 
 After KYC verification:
-- [Set up postpaid billing](/docs/billing/wallet/)
+- [Billing](/docs/billing/) — the prepaid wallet
 - [View invoices](/docs/billing/invoices/) with correct tax details
 - [Manage SSH keys](/docs/account/ssh-keys/) with increased limits

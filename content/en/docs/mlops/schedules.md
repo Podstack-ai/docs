@@ -60,5 +60,5 @@ View past executions for each schedule:
 
 ## Next Steps
 
-- [Experiment Tracking](/docs/quickpod/mlops/) - View scheduled run results
-- [Model Registry](/docs/quickpod/mlops/) - Register models from successful runs
+- [Experiment Tracking](/docs/gpu-cloud/mlops/) - View scheduled run results
+- [Model Registry](/docs/gpu-cloud/mlops/) - Register models from successful runs

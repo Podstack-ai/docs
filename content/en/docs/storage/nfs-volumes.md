@@ -22,7 +22,6 @@ NFS volumes are network-attached storage that:
 3. Configure:
    - **Name**: Descriptive identifier
    - **Quota**: Storage size in GB
-   - **Billing Period**: Monthly or on-demand
 4. Click **Create**
 
 ### Volume Configuration
@@ -30,9 +29,7 @@ NFS volumes are network-attached storage that:
 **Quota**
 Set the maximum storage size. You can increase the quota later, but reducing it requires data migration.
 
-**Billing Period**
-- **Monthly**: Fixed monthly cost, better for long-term use
-- **On-demand**: Hourly billing, flexible for short-term needs
+Extra disk is billed **per GB-hour** from the prepaid wallet. There is no monthly plan. Delete a volume to stop the charge.
 
 ## Mounting Volumes
 
@@ -179,14 +176,11 @@ Volume: /workspace
 
 ## Billing
 
-NFS volumes are billed based on:
-- **Provisioned quota** (not actual usage)
-- Hourly rate per GB
+NFS volumes are extra disk. They are billed **per GB-hour** from the prepaid wallet for the quota you provision. There is no monthly plan.
 
-To minimize costs:
+To minimize cost:
 - Right-size quotas based on actual needs
 - Delete unused volumes
-- Consider monthly billing for long-term storage
 
 ## Troubleshooting
 

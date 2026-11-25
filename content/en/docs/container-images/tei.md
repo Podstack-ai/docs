@@ -40,7 +40,6 @@ Hugging Face's **Text Embeddings Inference** — a Rust-based server for embeddi
 | `ENABLE_TEI` | Start the TEI server on port 8080 |
 | `TEI_MODEL_ID` | Hugging Face model ID (e.g. `BAAI/bge-large-en-v1.5`) |
 | `TEI_EXTRA_ARGS` | Extra CLI args |
-| `HF_TOKEN` | Hugging Face token for gated models |
 | `SSH_PUBLIC_KEY` | Public key for SSH |
 
 ## Quick test

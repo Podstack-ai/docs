@@ -1,74 +1,58 @@
 ---
 title: Quickstart
 weight: 20
-description: "Get an API key and make your first Podstack Inference request in minutes with curl and the OpenAI Python and Node.js SDKs."
+description: "Create a ps_live_ API key and call https://api.podstack.ai/v1 with curl and the OpenAI Python and Node.js SDKs."
 keywords:
   - inference quickstart
   - OpenAI-compatible API
-  - first chat completion
-  - OpenAI SDK base URL
-  - podstack API key
-  - curl chat completions
-  - openai python podstack
+  - api.podstack.ai
+  - ps_live_ key
+  - podstack/kimi-k3
+  - chat completions
 ---
 
 # Quickstart
 
-Make your first call to the Podstack Inference Cloud. You will get an API key, list the available models, and send a chat completion with **curl**, the **OpenAI Python SDK**, and the **OpenAI Node.js SDK** — all against the real endpoint.
+Send a chat completion to Podstack. You need a funded wallet — inference is billed per token — and a `ps_live_` API key.
 
-## Prerequisites
+Base URL:
 
-- A Podstack account with a **funded wallet** (inference is billed per token; a request with a zero balance returns `402 insufficient_funds`).
-- The endpoint base URL: `https://cloud.podstack.ai/infer/v1`
+```
+https://api.podstack.ai/v1
+```
 
 ## Step 1 — Create an API key
 
-1. Open the Podstack **Inference** portal and go to **API Keys**.
-2. Click **Create API Key**, give it a name (e.g. `dev-laptop`), and pick an expiry.
-3. **Copy the key immediately** — it's shown only once. Keys start with `psk_`.
-
-Store it as an environment variable so you never hardcode it:
+1. Open **API Keys** in the [Podstack console](https://podstack.ai/app/api-keys).
+2. Click **Create key**, give it a name, and choose an access level. **Inference** is enough for chat, embeddings, images, and video.
+3. **Copy the key immediately.** It is shown once and starts with `ps_live_`.
 
 ```bash
-export PODSTACK_API_KEY="psk_xxxxxxxxxxxxxxxxxxxx"
+export PODSTACK_API_KEY="ps_live_..."
 ```
 
-See [Authentication](/docs/inference/authentication/) for key limits, rotation, and revocation.
+See [Authentication](/docs/inference/authentication/) for access levels and revocation.
 
-## Step 2 — Find a model ID
+## Step 2 — Pick a model id
 
-The catalog is managed per deployment, so **model IDs are not fixed** — list them before you hardcode one.
-
-From the terminal with the [CLI](/docs/cli/):
+The catalog changes. List it before you hardcode an id:
 
 ```bash
-podstack models list
+curl https://api.podstack.ai/v1/models
 ```
 
-```
-NAME                    CONTEXT   ID
-...                     ...       ...
-```
+Or open [podstack.ai/app/models](https://podstack.ai/app/models). Copy the `id` field. The examples below use `podstack/kimi-k3`.
 
-Or over HTTP:
-
-```bash
-curl https://cloud.podstack.ai/infer/v1/models \
-  -H "Authorization: Bearer $PODSTACK_API_KEY"
-```
-
-Pick an `id` from the output and use it as the `model` value below. In the examples we write it as `<MODEL_ID>`.
-
-## Step 3 — Send your first request
+## Step 3 — Send a chat completion
 
 ### curl
 
 ```bash
-curl https://cloud.podstack.ai/infer/v1/chat/completions \
+curl https://api.podstack.ai/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "<MODEL_ID>",
+    "model": "podstack/kimi-k3",
     "messages": [{"role": "user", "content": "Hello"}]
   }'
 ```
@@ -80,21 +64,20 @@ pip install openai
 ```
 
 ```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://cloud.podstack.ai/infer/v1",
-    api_key="PODSTACK_API_KEY",  # or read os.environ["PODSTACK_API_KEY"]
+    base_url="https://api.podstack.ai/v1",
+    api_key=os.environ["PODSTACK_API_KEY"],
 )
 
 resp = client.chat.completions.create(
-    model="<MODEL_ID>",
+    model="podstack/kimi-k3",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Explain quantum computing in one sentence."},
     ],
-    temperature=0.7,
-    max_tokens=500,
 )
 
 print(resp.choices[0].message.content)
@@ -110,12 +93,12 @@ npm install openai
 import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://cloud.podstack.ai/infer/v1",
+  baseURL: "https://api.podstack.ai/v1",
   apiKey: process.env.PODSTACK_API_KEY,
 });
 
 const resp = await client.chat.completions.create({
-  model: "<MODEL_ID>",
+  model: "podstack/kimi-k3",
   messages: [{ role: "user", content: "Hello" }],
 });
 
@@ -124,26 +107,23 @@ console.log(resp.choices[0].message.content);
 
 ## Step 4 — Stream the response
 
-Set `stream: true` to receive tokens as they are generated (Server-Sent Events under the hood):
-
 ```python
 stream = client.chat.completions.create(
-    model="<MODEL_ID>",
+    model="podstack/kimi-k3",
     messages=[{"role": "user", "content": "Write a haiku about GPUs."}],
     stream=True,
 )
 for chunk in stream:
-    delta = chunk.choices[0].delta.content
-    if delta:
-        print(delta, end="", flush=True)
+    if chunk.choices and chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="", flush=True)
 ```
 
-## Step 5 — Check your usage
+## Step 5 — Read the price
 
-Every request is metered and billed from your wallet. See per-key request counts, token totals, and cost under **Inference > Usage** in the portal, or read [Pricing & Usage](/docs/inference/pricing-and-usage/).
+Each request is billed per token from your wallet. Current rates are on the model in [podstack.ai/app/models](https://podstack.ai/app/models). India is shown in INR. Every other location is shown in USD. See [Pricing & Usage](/docs/inference/pricing-and-usage/).
 
 ## Next steps
 
-- [API Reference](/docs/inference/api-reference/) — every supported route, parameter, and error code.
-- [Models](/docs/inference/models/) — browse and filter the catalog.
-- [Playground](/docs/inference/playground/) — try a model in the browser first.
+- [API Reference](/docs/inference/api-reference/) — routes and errors.
+- [Models](/docs/inference/models/) — how ids are chosen.
+- [Playground](/docs/inference/playground/) — try a model in the browser.

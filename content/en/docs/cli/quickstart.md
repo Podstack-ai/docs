@@ -42,7 +42,7 @@ podstack gpu launch                 # pick a GPU and launch it
 podstack gpu instances ssh <id>     # connect over SSH
 ```
 
-See [GPUs](/docs/cli/gpu/) and the [TrainPod](/docs/trainpod/) guides.
+See [GPUs](/docs/cli/gpu/) and the [Jobs](/docs/jobs/) guides.
 
 ## 4. (Optional) Call a model
 

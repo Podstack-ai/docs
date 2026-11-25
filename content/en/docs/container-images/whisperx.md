@@ -40,7 +40,6 @@ weight: 51
 | `ENABLE_SSH` | Enable SSH server |
 | `ENABLE_WHISPERX` | Start the WhisperX service |
 | `WHISPERX_EXTRA_ARGS` | Extra CLI args |
-| `HF_TOKEN` | Hugging Face token (required for pyannote diarization model access) |
 | `SSH_PUBLIC_KEY` | Public key for SSH |
 
 ## Persistence

@@ -42,13 +42,15 @@ Reference: [KYC Verification](/docs/billing/kyc/).
 
 **Try this first:**
 
-1. Open **Billing > Wallet** and read the **run rate** — it shows the current hourly/daily/monthly projection from everything running right now. A forgotten running pod or provisioned storage is the most common surprise.
+1. Open **Billing > Wallet** and read the **run rate** — the hourly rate of everything running right now. A forgotten running pod or extra disk is the most common surprise.
 2. Check the **expenditure breakdown** to see which resource type (pods, NFS storage, object storage, inference) is driving the cost.
 3. Scroll to **Transaction History** — every debit has a description and the balance after it. **Export** the range to CSV if you want to reconcile.
-4. Remember the billing rules that catch people out:
-   - **NFS** bills on **provisioned quota**, not usage — a 500 GB volume costs 500 GB even if you store 50 GB.
-   - Monthly plans renew on the **anniversary** of creation, not the 1st of the month.
-   - Deleting a resource mid-cycle gives **no pro-rata refund** for the committed period.
+4. Remember how the meter works:
+   - **GPU time** is billed per second from the hourly rate, from boot until you terminate the instance.
+   - **Jobs** are billed only while they are running.
+   - **Inference** is billed per token.
+   - **Extra disk** is billed per GB-hour.
+   - There is no monthly or annual plan, and nothing renews on an anniversary date.
 5. Stop anything you're not using to halt further charges.
 
 **If a charge is still unexplained or looks wrong**, contact support (or, for a formal invoice, do **not** pay a disputed invoice). Include:
@@ -75,7 +77,7 @@ Reference: [Wallet](/docs/billing/wallet/) · [Invoices](/docs/billing/invoices/
 - Your region preference and rough timeline / expected duration.
 - Whether an alternative GPU would work in the meantime.
 
-For terminal-first provisioning across available GPUs, see [TrainPods](/docs/trainpod/) and the [CLI](/docs/cli/gpu/).
+For terminal-first provisioning across available GPUs, see [Jobs](/docs/jobs/) and the [CLI](/docs/cli/gpu/).
 
 ## I lost access to my account
 

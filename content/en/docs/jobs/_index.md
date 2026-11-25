@@ -1,7 +1,9 @@
 ---
-title: TrainPods
+aliases:
+  - /docs/trainpod/
+title: Jobs
 weight: 30
-description: "Rent on-demand NVIDIA GPUs at low prices with Podstack TrainPods — provision a GPU pod, SSH in, move datasets in and out, and run managed fine-tuning jobs, all from the podstack CLI."
+description: "Rent on-demand NVIDIA GPUs at low prices with Podstack Jobs — provision a GPU pod, SSH in, move datasets in and out, and run managed fine-tuning jobs, all from the podstack CLI."
 keywords:
   - on-demand GPU
   - rent NVIDIA GPU
@@ -17,11 +19,13 @@ keywords:
   - LoRA fine-tuning
 ---
 
-# TrainPods
+# Jobs
 
-**TrainPods** are Podstack's raw, on-demand NVIDIA GPU compute: rent a GPU pod, SSH in with your own key, move data in and out, and run training or fine-tuning — provisioned, connected, and controlled entirely from the [`podstack` CLI](/docs/cli/).
+Jobs was formerly called TrainPod. Links under `/docs/trainpod/` still open this section.
 
-If you want a machine with GPUs that behaves like a plain Linux box you SSH into, TrainPods are it. Pick a GPU, launch it, connect, and start working. You pay by the hour only while the instance runs.
+**Jobs** are Podstack's on-demand GPU machines and managed training: rent a GPU, SSH in with your own key, move data in and out, and run fine-tuning — provisioned and controlled from the [`podstack` CLI](/docs/cli/).
+
+GPU time is billed **per second from the hourly rate**, from boot until you terminate the instance. A job is billed **only while it is running**. Both come out of your prepaid wallet. There is no monthly or annual subscription.
 
 ## What you can do
 
@@ -33,17 +37,17 @@ If you want a machine with GPUs that behaves like a plain Linux box you SSH into
 
 ## What's available today
 
-TrainPods are driven through the [`podstack` CLI](/docs/cli/), and every step below works right now:
+Jobs are driven through the [`podstack` CLI](/docs/cli/), and every step below works right now:
 
 - **Provision GPUs on demand** — `podstack gpu instances create` (or the interactive `podstack gpu launch`) starts an instance; browse the catalog and rates first with `podstack gpu types list` and `podstack gpu pricing`, on `spot` or `on_demand` pricing.
 - **Manage instances** — `podstack gpu instances list`, `get`, and `delete` cover the full lifecycle.
 - **SSH with your own key** — register keys with `podstack gpu keys create` / `list` / `delete`, then `podstack gpu instances ssh <id>` drops into a shell. Only your public key is registered; the private key stays local.
 - **Move data in and out** — `podstack gpu instances cp` for SCP transfers, or `podstack send` / `podstack receive` for large, resumable, relay-based transfers.
 - **Expose services locally** — `podstack gpu instances expose <id> <port>` tunnels TensorBoard, a dashboard, or an inference server to `localhost`.
-- **Run managed fine-tuning** — `podstack train create` runs LoRA/QLoRA jobs with no box to manage; `podstack train list` / `get` / `cancel` / `events` track them and `podstack files upload` sends the dataset. See [Fine-tuning](/docs/trainpod/fine-tuning/).
-- **Per-hour, wallet-based billing** — you pay by the hour only while an instance runs. See [Pricing & billing](/docs/trainpod/pricing-and-billing/).
+- **Run managed fine-tuning** — `podstack train create` runs LoRA/QLoRA jobs with no box to manage; `podstack train list` / `get` / `cancel` / `events` track them and `podstack files upload` sends the dataset. See [Fine-tuning](/docs/jobs/fine-tuning/).
+- **Per-hour, wallet-based billing** — you pay by the hour only while an instance runs. See [Pricing & billing](/docs/jobs/pricing-and-billing/).
 
-> **Not yet generally available:** an in-portal GPU marketplace (browse and order instances from the dashboard) is built but currently gated behind a feature flag, so it may not appear in your portal. Today, provision TrainPods through the CLI.
+> **Not yet generally available:** an in-portal GPU marketplace (browse and order instances from the dashboard) is built but currently gated behind a feature flag, so it may not appear in your portal. Today, provision Jobs through the CLI.
 
 ## Use cases
 
@@ -54,11 +58,11 @@ TrainPods are driven through the [`podstack` CLI](/docs/cli/), and every step be
 - **Watch training remotely** — an engineer starts TensorBoard on the instance and runs `podstack gpu instances expose <id> 6006` to view the curves at `localhost` over SSH.
 - **Move a large dataset to the GPU** — a researcher pushes a multi-gigabyte dataset with `podstack send` and pulls checkpoints back with `podstack receive`, resuming if the link drops.
 
-## TrainPods vs QuickPods
+## Jobs vs GPU Cloud
 
 Podstack offers two ways to get GPUs. Pick based on how much of the environment you want to manage.
 
-| | **TrainPods** (this section) | **QuickPods** (Pods) |
+| | **Jobs** (this section) | **GPU Cloud** (Pods) |
 |---|---|---|
 | What you get | A raw GPU instance you SSH into | A container running a template (PyTorch, ComfyUI, JupyterLab…) |
 | Best for | Custom training, fine-tuning, full control of the box | One-click apps, notebooks, pre-built ML environments |
@@ -72,16 +76,16 @@ Podstack offers two ways to get GPUs. Pick based on how much of the environment 
 
 Work through these pages in order, or jump to what you need:
 
-1. **[Provision a GPU](/docs/trainpod/provision-a-gpu/)** — fund your wallet, pick a GPU, and launch an instance.
-2. **[SSH access](/docs/trainpod/ssh-access/)** — register an SSH key and connect from macOS, Linux, or Windows (with video walkthroughs).
-3. **[Move data](/docs/trainpod/move-data/)** — upload datasets and pull results back with `cp`, `send`, and `receive`.
-4. **[Fine-tuning](/docs/trainpod/fine-tuning/)** — run managed `podstack train` LoRA/QLoRA jobs.
-5. **[Pricing & billing](/docs/trainpod/pricing-and-billing/)** — how per-hour pricing, spot vs on-demand, and the wallet work.
-6. **[Troubleshooting](/docs/trainpod/troubleshooting/)** — fixes for the common provisioning, SSH, and data-transfer issues.
+1. **[Provision a GPU](/docs/jobs/provision-a-gpu/)** — fund your wallet, pick a GPU, and launch an instance.
+2. **[SSH access](/docs/jobs/ssh-access/)** — register an SSH key and connect from macOS, Linux, or Windows (with video walkthroughs).
+3. **[Move data](/docs/jobs/move-data/)** — upload datasets and pull results back with `cp`, `send`, and `receive`.
+4. **[Fine-tuning](/docs/jobs/fine-tuning/)** — run managed `podstack train` LoRA/QLoRA jobs.
+5. **[Pricing & billing](/docs/jobs/pricing-and-billing/)** — per-second GPU billing, jobs, and the prepaid wallet.
+6. **[Troubleshooting](/docs/jobs/troubleshooting/)** — fixes for the common provisioning, SSH, and data-transfer issues.
 
 ## Prerequisites
 
-- A [Podstack account](https://cloud.podstack.ai) with wallet balance — see [Pricing & billing](/docs/trainpod/pricing-and-billing/).
+- A [Podstack account](https://cloud.podstack.ai) with wallet balance — see [Pricing & billing](/docs/jobs/pricing-and-billing/).
 - The `podstack` CLI installed and authenticated — see [CLI installation](/docs/cli/installation/) and [authentication](/docs/cli/authentication/).
 - `ssh` and `scp` available on your machine (standard on macOS/Linux; on Windows use PowerShell or Git Bash).
 
@@ -100,16 +104,16 @@ Whatever is in the catalog — H100, A100, L40S, and more. List live options and
 `spot` is cheaper but can be reclaimed when capacity is needed; `on_demand` costs more but is more stable for long runs. Pick the mode when you create the instance.
 
 **How do I connect to an instance?**
-`podstack gpu instances ssh <id>` opens a shell using your local SSH key. Register keys first with `podstack gpu keys create`. See [SSH access](/docs/trainpod/ssh-access/).
+`podstack gpu instances ssh <id>` opens a shell using your local SSH key. Register keys first with `podstack gpu keys create`. See [SSH access](/docs/jobs/ssh-access/).
 
 **Where does my SSH private key go?**
 Nowhere — Podstack only registers your public key. The private key never leaves your machine.
 
 **How am I billed?**
-Per hour, from your wallet, only while the instance is running. Delete the instance to stop billing. See [Pricing & billing](/docs/trainpod/pricing-and-billing/).
+Per hour, from your wallet, only while the instance is running. Delete the instance to stop billing. See [Pricing & billing](/docs/jobs/pricing-and-billing/).
 
 **Can I provision from the dashboard instead of the CLI?**
 Today, provisioning is through the `podstack` CLI. An in-portal GPU marketplace is built but not yet generally available.
 
 **When should I use managed fine-tuning instead of a raw box?**
-Use `podstack train` when you want a LoRA/QLoRA model without managing a GPU. Rent a raw TrainPod when you need a custom framework, data pipeline, or full control of the machine. See [Fine-tuning](/docs/trainpod/fine-tuning/).
+Use `podstack train` when you want a LoRA/QLoRA model without managing a GPU. Rent a raw Jobs when you need a custom framework, data pipeline, or full control of the machine. See [Fine-tuning](/docs/jobs/fine-tuning/).

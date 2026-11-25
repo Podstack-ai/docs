@@ -42,5 +42,5 @@ Contact support if MLOps isn't visible in your portal.
 
 ## Next Steps
 
-- [Experiment Tracking](/docs/quickpod/mlops/) - Track and compare experiments
-- [Model Registry](/docs/quickpod/mlops/) - Manage model versions
+- [Experiment Tracking](/docs/gpu-cloud/mlops/) - Track and compare experiments
+- [Model Registry](/docs/gpu-cloud/mlops/) - Manage model versions
