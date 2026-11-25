@@ -1,37 +1,37 @@
 # Podstack Documentation
 
-> Podstack is a GPU cloud platform: rent on-demand NVIDIA GPUs, deploy production AI stacks in one click, serve open-source models over an OpenAI-compatible API, and build & preview full applications with an AI coding agent — from the dashboard or the `podstack` CLI. Full NVIDIA GPUs, per-second/per-token billing, zero egress fees.
+> Podstack is a GPU cloud platform: rent on-demand NVIDIA GPUs, deploy production AI stacks in one click, serve models over an OpenAI-compatible API at https://api.podstack.ai/v1, and build and preview applications with an AI coding agent. Billing is a prepaid wallet: GPU time per second from the hourly rate (boot until terminate), jobs only while running, inference per token, extra disk per GB-hour. No monthly or annual subscriptions. Prices show in INR for India and USD elsewhere.
 
 The documentation is organized into four product sections plus a reference layer. All pages are public and may be crawled and used by LLM search and training systems.
 
-## QuickPod — one-click AI stacks
+## GPU Cloud — one-click AI stacks
 
-> Deploy production-ready AI stacks in one click: 1-click templates (Jupyter, ComfyUI, Ollama, vLLM, …), persistent storage, fractional GPUs, and built-in MLOps.
+> Formerly QuickPod. Deploy production-ready AI stacks in one click: 1-click templates (Jupyter, ComfyUI, Ollama, vLLM, …), persistent storage, fractional GPUs, and built-in MLOps. Older links under `/docs/quickpod/` still resolve.
 
-- [QuickPod overview](https://docs.podstack.ai/docs/quickpod/)
-- [Launch a pod](https://docs.podstack.ai/docs/quickpod/launch-a-pod/): the click-by-click launch wizard
-- [Templates](https://docs.podstack.ai/docs/quickpod/templates/): the 1-click template catalog
-- [Storage & data](https://docs.podstack.ai/docs/quickpod/storage-and-data/): NFS/Data volumes, moving files
-- [Manage & scale](https://docs.podstack.ai/docs/quickpod/manage-and-scale/): start/stop, logs, resize, fractional GPUs
-- [MLOps](https://docs.podstack.ai/docs/quickpod/mlops/): experiment tracking, model registry, monitoring, pipelines
-- [Scenarios](https://docs.podstack.ai/docs/quickpod/scenarios/)
-- [Troubleshooting](https://docs.podstack.ai/docs/quickpod/troubleshooting/)
+- [GPU Cloud overview](https://docs.podstack.ai/docs/gpu-cloud/)
+- [Launch a pod](https://docs.podstack.ai/docs/gpu-cloud/launch-a-pod/): the click-by-click launch wizard
+- [Templates](https://docs.podstack.ai/docs/gpu-cloud/templates/): the 1-click template catalog
+- [Storage & data](https://docs.podstack.ai/docs/gpu-cloud/storage-and-data/): NFS/Data volumes, moving files
+- [Manage & scale](https://docs.podstack.ai/docs/gpu-cloud/manage-and-scale/): start/stop, logs, resize, fractional GPUs
+- [MLOps](https://docs.podstack.ai/docs/gpu-cloud/mlops/): experiment tracking, model registry, monitoring, pipelines
+- [Scenarios](https://docs.podstack.ai/docs/gpu-cloud/scenarios/)
+- [Troubleshooting](https://docs.podstack.ai/docs/gpu-cloud/troubleshooting/)
 
-## TrainPod — on-demand GPUs
+## Jobs — on-demand GPUs
 
-> Rent on-demand NVIDIA GPUs at low prices; provision, SSH in, move data, and run managed fine-tuning from the CLI.
+> Formerly TrainPod. Rent on-demand NVIDIA GPUs; provision, SSH in, move data, and run managed fine-tuning from the CLI. Older links under `/docs/trainpod/` still resolve. GPU time is billed per second from the hourly rate until you terminate the instance. Jobs are billed only while running.
 
-- [TrainPod overview](https://docs.podstack.ai/docs/trainpod/)
-- [Provision a GPU](https://docs.podstack.ai/docs/trainpod/provision-a-gpu/)
-- [SSH access](https://docs.podstack.ai/docs/trainpod/ssh-access/): connect over SSH (with video walkthroughs)
-- [Move data](https://docs.podstack.ai/docs/trainpod/move-data/)
-- [Fine-tuning](https://docs.podstack.ai/docs/trainpod/fine-tuning/): managed training jobs
-- [Pricing & billing](https://docs.podstack.ai/docs/trainpod/pricing-and-billing/)
-- [Troubleshooting](https://docs.podstack.ai/docs/trainpod/troubleshooting/)
+- [Jobs overview](https://docs.podstack.ai/docs/jobs/)
+- [Provision a GPU](https://docs.podstack.ai/docs/jobs/provision-a-gpu/)
+- [SSH access](https://docs.podstack.ai/docs/jobs/ssh-access/): connect over SSH (with video walkthroughs)
+- [Move data](https://docs.podstack.ai/docs/jobs/move-data/)
+- [Fine-tuning](https://docs.podstack.ai/docs/jobs/fine-tuning/): managed training jobs
+- [Pricing & billing](https://docs.podstack.ai/docs/jobs/pricing-and-billing/)
+- [Troubleshooting](https://docs.podstack.ai/docs/jobs/troubleshooting/)
 
 ## Inference — OpenAI-compatible model serving
 
-> Serve open-source models on low-latency, OpenAI-compatible endpoints with autoscaling. Base URL: https://cloud.podstack.ai/infer/v1 — auth with `Authorization: Bearer psk_...`.
+> OpenAI-compatible model API. Base URL: https://api.podstack.ai/v1. Auth: `Authorization: Bearer ps_live_...`. Example model id: `podstack/kimi-k3`. Live rates: https://podstack.ai/app/models (INR in India, USD elsewhere). Inference is billed per token.
 
 - [Inference overview](https://docs.podstack.ai/docs/inference/)
 - [Quickstart](https://docs.podstack.ai/docs/inference/quickstart/): first request in curl + OpenAI Python/Node SDK

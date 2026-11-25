@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/trainpod/move-data/
 title: Move Data
 weight: 40
-description: "Move datasets and results in and out of a Podstack TrainPod GPU instance — SCP transfers with podstack gpu instances cp, and fast, resumable, relay-based transfers with podstack send and podstack receive."
+description: "Move datasets and results in and out of a Podstack Jobs GPU instance — SCP transfers with podstack gpu instances cp, and fast, resumable, relay-based transfers with podstack send and podstack receive."
 keywords:
   - upload dataset to GPU
   - download model from GPU
@@ -58,7 +60,7 @@ podstack gpu instances cp gpu-abc123:/workspace/results ./results -r
 | `--identity <path>` | Use an explicit private key path |
 | `--key <name>` | Use the local private key for a named Podstack key |
 
-`cp` picks your SSH identity the same way `ssh` does (see [SSH access](/docs/trainpod/ssh-access/#choosing-which-private-key-to-use)) and connects as `root`.
+`cp` picks your SSH identity the same way `ssh` does (see [SSH access](/docs/jobs/ssh-access/#choosing-which-private-key-to-use)) and connects as `root`.
 
 > **Only one side may be remote.** Both a local path and a remote path are required; `cp` errors if you give two locals or two remotes.
 
@@ -122,11 +124,11 @@ podstack receive --yes my-shared-code
 | `receive` | `--out <dir>` | Output directory (default: current directory) |
 | `receive` | `--yes` | Auto-accept the incoming transfer |
 | both | `--relay <host[:port]>` | Use a specific relay (overrides the default) |
-| both | `--relay-default` | Use the upstream public relay instead of the Podstack one |
+| both | `--relay-default` | Use the public relay instead of the Podstack relay |
 
 **Resuming:** if a `send` or `receive` is interrupted, re-run the exact same command in the same directory. The partial file is detected by hash and the transfer picks up where it left off.
 
-> By default, transfers use the Podstack relay. `--relay-default` switches to the upstream public relay, and `--relay host:port` points at a specific one.
+> By default, transfers use the Podstack relay. `--relay-default` switches to the public relay, and `--relay host:port` points at a specific one.
 
 ---
 
@@ -168,7 +170,7 @@ podstack gpu instances delete gpu-abc123
 ## FAQs
 
 **Do transfers cost extra?**
-Data movement uses your GPU time while the instance runs, but there's no separate per-GB transfer charge. See [Pricing & billing](/docs/trainpod/pricing-and-billing/).
+Data movement uses your GPU time while the instance runs, but there's no separate per-GB transfer charge. See [Pricing & billing](/docs/jobs/pricing-and-billing/).
 
 **Where should I put files on the instance?**
 `/workspace` is the conventional working directory in the examples, but any path the `root` user can write to works.
@@ -187,6 +189,6 @@ Transfers use a code phrase that both sides must share. Use a strong custom `--c
 
 ## Next steps
 
-- [Fine-tuning](/docs/trainpod/fine-tuning/) — hand a dataset to a managed training job instead of managing the box.
-- [SSH access](/docs/trainpod/ssh-access/) — connect to the instance.
-- [Troubleshooting](/docs/trainpod/troubleshooting/) — transfer and connection fixes.
+- [Fine-tuning](/docs/jobs/fine-tuning/) — hand a dataset to a managed training job instead of managing the box.
+- [SSH access](/docs/jobs/ssh-access/) — connect to the instance.
+- [Troubleshooting](/docs/jobs/troubleshooting/) — transfer and connection fixes.

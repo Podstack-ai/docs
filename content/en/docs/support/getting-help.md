@@ -24,7 +24,7 @@ Email is the primary support channel.
 For faster routing, some topics have dedicated addresses:
 
 - **[billing@podstack.ai](mailto:billing@podstack.ai)** — charges, invoices, refunds, and payment questions.
-- **[sales@podstack.ai](mailto:sales@podstack.ai)** — enterprise, postpaid, and volume/reservation inquiries.
+- **[sales@podstack.ai](mailto:sales@podstack.ai)** — enterprise and volume inquiries.
 - **[hello@podstack.ai](mailto:hello@podstack.ai)** — general inquiries.
 - **[privacy@podstack.ai](mailto:privacy@podstack.ai)** / **[grievance@podstack.ai](mailto:grievance@podstack.ai)** — data-protection and grievance requests.
 
@@ -49,7 +49,7 @@ This documentation is the fastest path for how-to and troubleshooting questions:
 - [Troubleshooting](/docs/support/troubleshooting/) — solutions to common problems.
 - [Support Scenarios](/docs/support/scenarios/) — step-by-step walkthroughs.
 - [FAQs](/docs/support/faqs/) — quick answers.
-- Product sections: [QuickPods](/docs/quickpod/), [TrainPods](/docs/trainpod/), [Inference](/docs/inference/), and the [CLI](/docs/cli/).
+- Product sections: [GPU Cloud](/docs/gpu-cloud/), [Jobs](/docs/jobs/), [Inference](/docs/inference/), and the [CLI](/docs/cli/).
 
 ## What to include in a request
 

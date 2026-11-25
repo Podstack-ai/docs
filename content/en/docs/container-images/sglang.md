@@ -42,7 +42,6 @@ LMSYS's **SGLang** — an LLM serving runtime optimized for **structured output*
 | `ENABLE_SGLANG` | Start the SGLang server |
 | `SGLANG_MODEL` | Hugging Face model ID to load |
 | `SGLANG_EXTRA_ARGS` | Extra CLI args (`--tp 2`, `--mem-fraction 0.85`) |
-| `HF_TOKEN` | Hugging Face token for gated models |
 | `SSH_PUBLIC_KEY` | Public key for SSH |
 
 ## Persistence

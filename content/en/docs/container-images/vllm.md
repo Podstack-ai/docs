@@ -42,7 +42,6 @@ High-throughput, low-latency LLM serving with PagedAttention and continuous batc
 | `ENABLE_VLLM` | Start the vLLM server on port 8000 |
 | `VLLM_MODEL` | Hugging Face model ID to load (e.g. `meta-llama/Llama-3.1-8B-Instruct`) |
 | `VLLM_EXTRA_ARGS` | Extra CLI args (`--tensor-parallel-size 2`, `--max-model-len 8192`, `--quantization awq`) |
-| `HF_TOKEN` | Hugging Face token for gated models |
 | `SSH_PUBLIC_KEY` | Public key for SSH |
 
 ## Quick test

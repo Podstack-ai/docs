@@ -1,116 +1,81 @@
 ---
 title: Inference
 weight: 40
-description: "Serve open-source LLMs on low-latency, OpenAI-compatible endpoints with API keys, per-token wallet billing, and autoscaling on the Podstack Inference Cloud."
+description: "Call Podstack models with an OpenAI-compatible API at https://api.podstack.ai/v1. Authenticate with a ps_live_ key. Inference is billed per token from a prepaid wallet."
 keywords:
-  - Podstack Inference Cloud
+  - Podstack inference
   - OpenAI-compatible API
-  - open-source LLM inference
-  - hosted LLM endpoint
+  - api.podstack.ai
+  - ps_live_ key
   - chat completions API
   - per-token billing
-  - LLM autoscaling
-  - inference API key
+  - podstack/kimi-k3
 ---
 
 # Inference
 
-The **Podstack Inference Cloud** serves open-source models on **low-latency, OpenAI-compatible endpoints** with autoscaling. Browse a catalog of hosted models, generate an API key, and call them from any OpenAI SDK — no infrastructure to manage. Usage is metered per token and billed directly from your Podstack wallet.
+Podstack serves models on an **OpenAI-compatible API**. Set the base URL to `https://api.podstack.ai/v1`, send a `ps_live_` API key, and set `model` to a catalog id such as `podstack/kimi-k3`.
 
-If you already have code that talks to OpenAI, you can point it at Podstack by changing two things: the **base URL** and the **API key**.
+Inference is billed **per token** from your prepaid wallet. There is no monthly or annual subscription.
 
 ## The endpoint
 
-All requests go to the OpenAI-compatible gateway:
-
 ```
-https://cloud.podstack.ai/infer/v1
+https://api.podstack.ai/v1
 ```
 
-Authenticate with a Podstack API key (prefix `psk_`) as a bearer token:
+```
+Authorization: Bearer ps_live_...
+```
 
-```
-Authorization: Bearer psk_xxxxxxxxxxxxxxxxxxxx
-```
+Create a key in the console under **API Keys**. The full key is shown once. See [Authentication](/docs/inference/authentication/).
 
 ## Quick example
 
 ```python
+import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://cloud.podstack.ai/infer/v1",
-    api_key="psk_xxxxxxxxxxxxxxxxxxxx",
+    base_url="https://api.podstack.ai/v1",
+    api_key=os.environ["PODSTACK_API_KEY"],
 )
 
 resp = client.chat.completions.create(
-    model="<MODEL_ID>",  # list real ids: podstack models list
+    model="podstack/kimi-k3",
     messages=[{"role": "user", "content": "Hello"}],
 )
 print(resp.choices[0].message.content)
 ```
 
-> Model IDs are **not fixed** — the catalog is managed per deployment. Always pull a real ID from the catalog before hardcoding one. See [Models](/docs/inference/models/).
-
-## When to use it
-
-- You want to call **open-source models** (chat, code, embeddings, vision) without provisioning or scaling GPUs yourself.
-- You want a **drop-in OpenAI replacement** — same SDK, same request/response shape, streaming included.
-- You want **per-token, pay-as-you-go** pricing billed from a wallet, with usage analytics per API key.
-- You are using `podstack code` (the CLI coding agent), which calls this same gateway.
-
-For always-warm, dedicated serving or cold-start pay-per-GPU-second workloads (including video generation), see [Serverless Inference](/docs/inference/serverless/).
+`podstack/kimi-k3` is an example id. Confirm it is still listed before you hardcode it. The live catalog is at [podstack.ai/app/models](https://podstack.ai/app/models) and at `GET /v1/models`. See [Models](/docs/inference/models/).
 
 ## What's supported
 
-| Capability | Endpoint | Status |
-|------------|----------|--------|
-| Chat completions (streaming) | `POST /v1/chat/completions` | Available |
-| Embeddings | `POST /v1/embeddings` | Available (self-hosted models) |
-| List / describe models | `GET /v1/models`, `GET /v1/models/{id}` | Available |
-| Pricing | `GET /v1/pricing` | Available (public) |
-| Usage analytics | `GET /v1/usage/summary`, `GET /v1/usage/requests` | Available |
-| Audio transcription | `POST /v1/audio/transcriptions` | Coming soon (returns `501`) |
+| Capability | Endpoint |
+|------------|----------|
+| Chat completions, including streaming | `POST /v1/chat/completions` |
+| Embeddings | `POST /v1/embeddings` |
+| Image generation | `POST /v1/images/generations` |
+| Video generation | `POST /v1/videos` |
+| List models (no key required) | `GET /v1/models` |
 
-## What's available today
-
-Live right now, both in the portal and over the API:
-
-- **Model catalog** — browse the hosted models in the portal (**Inference > Model Catalog**) or list real IDs with `GET /v1/models` and `podstack models list`. See [Models](/docs/inference/models/).
-- **Playground** — an interactive, streaming chat playground in the portal (**Inference > Playground**) with temperature and max-token controls, live per-turn cost, and copy-ready curl/Python/JavaScript snippets. See [Playground](/docs/inference/playground/).
-- **API keys** — create, use, scope with limits, and revoke `psk_` keys from **Inference > API Keys**. See [Authentication](/docs/inference/authentication/).
-- **Chat completions (streaming)** — `POST /v1/chat/completions`, OpenAI-compatible.
-- **Embeddings** — `POST /v1/embeddings` on self-hosted models.
-- **Public pricing** — `GET /v1/pricing`.
-- **Usage analytics** — `GET /v1/usage/summary` and `GET /v1/usage/requests` report per-key token usage and cost over the API. See [Pricing & Usage](/docs/inference/pricing-and-usage/).
-
-> **Not yet generally available:**
-> - **Audio transcription** (`POST /v1/audio/transcriptions`) is not implemented yet — it returns `501` with a "coming soon" message.
-> - The dedicated **Serverless Inference** surface (Serverless Models catalog, serverless chat/video, and the GPU dashboard) is built but currently gated behind a feature flag, so it may not appear in your portal. The standard chat and embeddings endpoints above are already backed by on-demand cold-start GPUs under the hood.
-
-## Use cases
-
-- **Drop-in OpenAI replacement** — a backend engineer changes only the base URL and API key, and an existing chat application runs on open-source models with no other code change.
-- **Prompt engineering in the browser** — a product manager iterates on a system prompt in the Playground, watches the streamed output and per-turn cost, then copies the generated Python snippet into the app.
-- **Embeddings for RAG** — a developer calls `POST /v1/embeddings` on a self-hosted model to build a vector index for a retrieval pipeline.
-- **Per-key cost governance** — a platform lead issues a scoped API key with usage limits for a team and tracks spend through the usage endpoints.
-- **Coding-agent backend** — a developer runs `podstack code`, which calls this same OpenAI-compatible gateway for its model.
-- **Model comparison** — an ML engineer sends the same prompt to several catalog models in the Playground to compare quality, latency, and cost before committing to one.
+Live rates are on each model in the console and on [podstack.ai](https://podstack.ai/#pricing). India is shown in INR. Every other location is shown in USD. See [Pricing & Usage](/docs/inference/pricing-and-usage/).
 
 ## In this section
 
 | Guide | Description |
 |-------|-------------|
-| [Quickstart](/docs/inference/quickstart/) | Get a key and make your first request with curl and the OpenAI SDK |
-| [Models](/docs/inference/models/) | The model catalog and how to list real model IDs |
-| [Authentication](/docs/inference/authentication/) | Create, use, limit, and revoke API keys |
-| [API Reference](/docs/inference/api-reference/) | OpenAI-compatible routes, parameters, streaming, and errors |
-| [Pricing & Usage](/docs/inference/pricing-and-usage/) | Per-token billing, the wallet, and usage tracking |
-| [Playground](/docs/inference/playground/) | Test models interactively in the portal |
-| [Serverless Inference](/docs/inference/serverless/) | Cold-start pay-per-use GPU inference |
+| [Quickstart](/docs/inference/quickstart/) | Create a key and send a chat completion |
+| [Models](/docs/inference/models/) | How to read the live catalog |
+| [Authentication](/docs/inference/authentication/) | `ps_live_` keys and access levels |
+| [API Reference](/docs/inference/api-reference/) | Routes, streaming, and errors |
+| [Pricing & Usage](/docs/inference/pricing-and-usage/) | Per-token billing and where to read prices |
+| [Playground](/docs/inference/playground/) | Try a model in the console |
+| [Serverless Inference](/docs/inference/serverless/) | The same hosted API, billed per token |
 | [FAQs](/docs/inference/faqs/) | Common questions |
 
 ## Next steps
 
 - New here? Start with the [Quickstart](/docs/inference/quickstart/).
-- Prefer the terminal? `podstack models list` prints the catalog — see the [CLI](/docs/cli/).
+- Browse models at [podstack.ai/app/models](https://podstack.ai/app/models).

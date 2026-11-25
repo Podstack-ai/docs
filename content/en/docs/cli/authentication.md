@@ -46,15 +46,15 @@ Removes the stored credentials.
 
 For CI and scripts, skip the browser:
 
-- **`--key`** — pass a `psk_` API key directly (mint one in the dashboard):
+- **`--key`** — pass a `ps_live_` API key directly (mint one in the dashboard):
   ```sh
-  podstack auth login --key psk_xxx
+  podstack auth login --key ps_live_...
   ```
 - **`--manual`** — paste a key at a hidden prompt instead of opening a browser.
 - **`PODSTACK_API_KEY`** — set the key in the environment; no `login` needed at all:
   ```sh
-  export PODSTACK_API_KEY=psk_xxx        # macOS/Linux
-  $env:PODSTACK_API_KEY = "psk_xxx"      # Windows PowerShell
+  export PODSTACK_API_KEY=ps_live_...        # macOS/Linux
+  $env:PODSTACK_API_KEY = "ps_live_..."      # Windows PowerShell
   ```
 
 Example GitHub Actions step:

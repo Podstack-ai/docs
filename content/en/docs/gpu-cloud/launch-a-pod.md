@@ -1,12 +1,14 @@
 ---
+aliases:
+  - /docs/quickpod/launch-a-pod/
 title: Launch a Pod
 weight: 20
-description: "Click-by-click guide to launching a GPU pod on Podstack QuickPods — pick a GPU, choose a template, configure resources and storage, and connect over SSH, web terminal, or Jupyter."
+description: "Click-by-click guide to launching a GPU pod on Podstack GPU Cloud — pick a GPU, choose a template, configure resources and storage, and connect over SSH, web terminal, or Jupyter."
 keywords:
   - launch GPU pod
   - create pod
   - deploy GPU container
-  - QuickPods launch
+  - GPU Cloud launch
   - select GPU instance
   - fractional GPU
   - pod SSH access
@@ -16,7 +18,7 @@ keywords:
 ---
 # Launch a Pod
 
-This is the full click-by-click flow for launching a QuickPod from the customer portal. The launch wizard has three steps — **Instance Type**, **Template**, and **Configure** — shown as a progress indicator at the top of the page.
+This is the full click-by-click flow for launching a GPU Cloud from the customer portal. The launch wizard has three steps — **Instance Type**, **Template**, and **Configure** — shown as a progress indicator at the top of the page.
 
 <!-- screenshot: the Launch Pod wizard header with the 3-step progress indicator -->
 
@@ -34,13 +36,13 @@ You need:
 1. Go to **Pods** and click **Launch Pod**.
 2. On the **Select Instance Type** step, browse the available GPUs. Use the search box (**Search GPUs (e.g., A100, RTX, H100)...**) to filter.
 3. By default only GPUs with live availability are shown. Tick **Show All GPUs** to include everything, including sold-out types.
-4. Each GPU card shows its VRAM, CUDA/Tensor cores, the included CPU and RAM (e.g. *Includes 4 vCPU + 16GB RAM*), an availability badge (e.g. **3/8 Available**), and the price per minute and per hour.
+4. Each GPU card shows its VRAM, CUDA/Tensor cores, the included CPU and RAM (e.g. *Includes 4 vCPU + 16GB RAM*), an availability badge (e.g. **3/8 Available**), and the live hourly rate. You are billed per second from that rate, from boot until you terminate the pod. Prices on [podstack.ai](https://podstack.ai/#pricing) are INR in India and USD elsewhere.
 5. Click **Select** on the GPU you want.
-   - If the GPU is sold out, the button reads **Join Waitlist** instead. Click it to queue for capacity; you'll be notified when it frees up. See [Troubleshooting](/docs/quickpod/troubleshooting/).
+   - If the GPU is sold out, the button reads **Join Waitlist** instead. Click it to queue for capacity; you'll be notified when it frees up. See [Troubleshooting](/docs/gpu-cloud/troubleshooting/).
 
 Selecting a GPU auto-fills sensible defaults: 1 GPU, 100% of the card, and the CPU/RAM included with that GPU.
 
-> **Fractional GPUs.** You don't have to take a whole card. You'll set the exact GPU count and the percentage of each GPU in Step 3 — see [Fractional GPUs](/docs/quickpod/manage-and-scale/#fractional-gpus).
+> **Fractional GPUs.** You don't have to take a whole card. You'll set the exact GPU count and the percentage of each GPU in Step 3 — see [Fractional GPUs](/docs/gpu-cloud/manage-and-scale/#fractional-gpus).
 
 ## Step 2 — Choose a Template
 
@@ -50,7 +52,7 @@ Selecting a GPU auto-fills sensible defaults: 1 GPU, 100% of the card, and the C
 2. Filter templates with the search box (**Search templates by name, image, GPU...**) or the **All Categories** dropdown. Templates you've saved yourself appear under the **User Templates** category.
 3. Each template card shows its name, description, container image, and resource chips (vCPU, RAM, GPU type). Click one to pre-fill the configuration and jump to Step 3.
 
-For the full catalog and how to save your own, see [Templates](/docs/quickpod/templates/).
+For the full catalog and how to save your own, see [Templates](/docs/gpu-cloud/templates/).
 
 ## Step 3 — Configure Your Pod
 
@@ -82,7 +84,7 @@ Attach persistent storage so your work survives restarts:
 2. Set the **Mount Path Inside Pod** — defaults to `/data`, the path every Podstack image expects.
 3. No volume yet? Click **Create Volume** (a project must be selected first).
 
-See [Storage & Data](/docs/quickpod/storage-and-data/) for details.
+See [Storage & Data](/docs/gpu-cloud/storage-and-data/) for details.
 
 ### Configuration
 
@@ -91,17 +93,17 @@ See [Storage & Data](/docs/quickpod/storage-and-data/) for details.
 - **Entry Point Command** (optional) — override the container's default command, e.g. `python app.py`.
 - **Exposed Ports** — enter a port and click **Add Port** to make it reachable over HTTPS. Each container port is mapped to a public URL after launch. Jupyter/notebook images default to port `8888`.
 
-### Billing Period
+### Billing
 
-Choose how you're billed: **Per Minute**, **Per Hour**, **Per Day**, **Per Month**, **Per Quarter**, or **Per Year**. Longer periods can carry a discount — click **Compare Savings** to see the breakdown. The default is **Per Minute**.
+GPU time is billed **per second from the hourly rate**, from boot until you terminate the pod. Extra disk is billed per GB-hour. There is no per-minute, daily, monthly, quarterly, or annual plan. The summary shows the hourly rate the meter uses. Live prices are on [podstack.ai/#pricing](https://podstack.ai/#pricing).
 
 ### Review and launch
 
-1. Check the **Summary** panel — it shows your GPU allocation, CPU, memory, billing period, and the total cost with GST.
+1. Check the **Summary** panel — it shows your GPU allocation, CPU, memory, and the hourly rate.
 2. Click **Launch Pod**. (The button stays disabled until Pod Name and Project are set.)
 3. You're taken to the **Pods** list, where the new pod appears and moves through **creating → pending → running**.
 
-> **Tip:** Want to reuse this exact setup? Click **Save as Template** in the Summary panel before launching. See [Templates](/docs/quickpod/templates/#save-your-own-template).
+> **Tip:** Want to reuse this exact setup? Click **Save as Template** in the Summary panel before launching. See [Templates](/docs/gpu-cloud/templates/#save-your-own-template).
 
 If you see an **insufficient balance** prompt, top up your wallet and try again. If the GPU became unavailable between Step 1 and launch, you'll be offered the waitlist.
 
@@ -134,10 +136,10 @@ The **Exposed Ports & Endpoints** card lists every port and its public URL:
 - HTTP services: `https://<subdomain>-<port>.cloud.podstack.ai`
 - SSH (port 22): `ssh-<subdomain>.cloud.podstack.ai`
 
-Click **Edit** to add or remove ports on a running pod. See [Manage & Scale](/docs/quickpod/manage-and-scale/#exposed-ports).
+Click **Edit** to add or remove ports on a running pod. See [Manage & Scale](/docs/gpu-cloud/manage-and-scale/#exposed-ports).
 
 ## Next steps
 
-- [Templates](/docs/quickpod/templates/) — the 1-click catalog.
-- [Storage & Data](/docs/quickpod/storage-and-data/) — keep your data between runs.
-- [Manage & Scale](/docs/quickpod/manage-and-scale/) — start/stop, logs, metrics, and fractional GPUs.
+- [Templates](/docs/gpu-cloud/templates/) — the 1-click catalog.
+- [Storage & Data](/docs/gpu-cloud/storage-and-data/) — keep your data between runs.
+- [Manage & Scale](/docs/gpu-cloud/manage-and-scale/) — start/stop, logs, metrics, and fractional GPUs.

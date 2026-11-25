@@ -2,59 +2,36 @@
 title: Settings
 
 weight: 10
-description: "Configure your PodStack account — profile and photo, preferred currency (INR/USD), passwordless security with session management, appearance, and notification preferences."
+description: "Podstack settings — project name and the location that chooses INR or USD prices."
 keywords:
-  - PodStack account settings
-  - currency INR USD toggle
-  - session management cloud
-  - passwordless security
-  - notification preferences
+  - Podstack settings
+  - location INR USD prices
+  - project name
 ---
 # Settings
 
-Account settings are grouped into a few tabs. This page covers each one.
+The console **Settings** page is per project.
 
-## Profile
+## Project
 
-Set your personal details and how billing appears:
+Rename the current project. Owners and admins can save the name. A team project's owner can delete the project from this page after stopping anything still running. Deleting a project revokes its API keys. Billing records are kept, and any balance moves to the personal project.
 
-- **Name, phone, timezone**
-- **Profile photo** — JPG, PNG, GIF, or WebP, up to 2&nbsp;MB
-- **Country** — auto-detected from your timezone; adjustable
-- **Preferred currency** — toggle **INR** or **USD** (default **INR**)
+## Location and prices
 
-> **This is the only place you set your currency.** It controls how prices,
-> wallet balance, and invoices are displayed.
+Set **Location** on the same page.
 
-## Security
+Prices follow that location. **India is shown in INR. Every other location is shown in USD.** Choose **Automatic** to use the country of the connection.
 
-PodStack is **passwordless** — you sign in with an email code or a social
-login, so there's no password or 2FA to manage here. What you can do:
+There is no separate currency toggle, and there is no monthly or annual subscription price.
 
-- Review your **active sessions** (device, browser, OS, IP).
-- **Revoke** an individual session.
-- **Revoke all other sessions** to sign out everywhere except this device.
-
-Email codes are 6 digits, expire in 10 minutes, and are single-use.
-
-## Appearance
-
-- **Theme** — dark is fully supported; light is marked "coming soon."
-- **Density** and **sidebar** layout preferences.
-
-## Notifications
-
-Toggle notification categories on or off to control what PodStack emails you
-about.
+The page also shows the email you are signed in with.
 
 ## Verify it worked
 
-- Profile changes show immediately in the profile menu.
-- A currency change updates the amounts shown across the dashboard, wallet, and invoices.
-- Revoked sessions disappear from the sessions list.
+- A renamed project shows the new name in the project switcher.
+- Saving a location updates the currency shown on prices and the wallet: INR for India, USD otherwise.
 
 ## Related
 
-- [SSH Keys](/docs/account/ssh-keys/)
 - [API Tokens](/docs/account/api-tokens/)
 - [Billing & Wallet](/docs/billing/wallet/)

@@ -51,5 +51,5 @@ Navigate to **MLOps > Approvals** to see:
 
 ## Next Steps
 
-- [Model Registry](/docs/quickpod/mlops/) - Manage model versions and stages
-- [Experiment Tracking](/docs/quickpod/mlops/) - View training details
+- [Model Registry](/docs/gpu-cloud/mlops/) - Manage model versions and stages
+- [Experiment Tracking](/docs/gpu-cloud/mlops/) - View training details

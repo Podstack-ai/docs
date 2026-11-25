@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/trainpod/ssh-access/
 title: SSH Access
 weight: 30
-description: "Connect to your Podstack TrainPod GPU instance over SSH — register an SSH key, connect from macOS, Linux, or Windows PowerShell with the podstack CLI, and expose ports to localhost. Includes video walkthroughs."
+description: "Connect to your Podstack Jobs GPU instance over SSH — register an SSH key, connect from macOS, Linux, or Windows PowerShell with the podstack CLI, and expose ports to localhost. Includes video walkthroughs."
 keywords:
   - SSH into GPU instance
   - podstack gpu instances ssh
@@ -20,13 +22,13 @@ og_image: https://img.youtube.com/vi/vO0khicfxM4/maxresdefault.jpg
 
 # SSH Access
 
-Once a TrainPod instance is **running**, you connect to it over SSH using your own private key. Podstack only ever stores your **public** key — the private key stays on your machine and never leaves it.
+Once a Jobs instance is **running**, you connect to it over SSH using your own private key. Podstack only ever stores your **public** key — the private key stays on your machine and never leaves it.
 
 The `podstack` CLI is the fastest path: `podstack gpu instances ssh <id>` reads the connection details from Podstack, picks the right local key, and opens a shell. This page covers registering keys, connecting from every OS, and tunneling ports. Two video walkthroughs at the bottom show the terminal and Windows PowerShell setup step by step.
 
 ## Prerequisites
 
-- A **running** instance — see [Provision a GPU](/docs/trainpod/provision-a-gpu/).
+- A **running** instance — see [Provision a GPU](/docs/jobs/provision-a-gpu/).
 - `ssh` available on your machine (built in on macOS/Linux; on Windows use PowerShell or Git Bash).
 - An SSH key registered with Podstack and injected into the instance.
 
@@ -72,7 +74,7 @@ Delete a key by id when you no longer need it:
 podstack gpu keys delete sshkey_abc123
 ```
 
-> The key must be **injected into the instance at launch** — pass its id with `--ssh-key-id` on `podstack gpu instances create`, or select it during `podstack gpu launch`. A key registered after an instance is created is not added retroactively. See [Provision a GPU](/docs/trainpod/provision-a-gpu/).
+> The key must be **injected into the instance at launch** — pass its id with `--ssh-key-id` on `podstack gpu instances create`, or select it during `podstack gpu launch`. A key registered after an instance is created is not added retroactively. See [Provision a GPU](/docs/jobs/provision-a-gpu/).
 
 ---
 
@@ -152,7 +154,7 @@ Copy that command and add your private key with `-i`:
 ssh -i ~/.ssh/podstack_my-key -p 22 root@203.0.113.10
 ```
 
-- The default login user for TrainPod instances is `root`.
+- The default login user for Jobs instances is `root`.
 - The host and port come from the instance's connection details.
 
 > **Fix key permissions if you see a warning.** SSH refuses keys that are too open:
@@ -187,7 +189,7 @@ The tunnel stays open until you press **Ctrl-C**. Like `ssh`, `expose` accepts `
 
 ## Video walkthroughs
 
-These video guides cover the Podstack SSH experience — registering a key, configuring your local SSH client, and connecting from your terminal. The concepts (a local private key, a terminal on macOS/Linux, PowerShell + OpenSSL on Windows) apply directly to TrainPods; from the CLI, `podstack gpu instances ssh <id>` handles the connection for you.
+These video guides cover the Podstack SSH experience — registering a key, configuring your local SSH client, and connecting from your terminal. The concepts (a local private key, a terminal on macOS/Linux, PowerShell + OpenSSL on Windows) apply directly to Jobs; from the CLI, `podstack gpu instances ssh <id>` handles the connection for you.
 
 ### macOS, Linux & Git Bash
 
@@ -245,7 +247,7 @@ Windows PowerShell needs OpenSSL to route the SSH connection. This guide install
 In `~/.ssh/podstack_<name>` on the machine where you ran `podstack gpu keys create`. Podstack never sees or stores it — only the matching public key is registered.
 
 **I get "Permission denied (publickey)". Why?**
-The private key you're offering doesn't match a public key injected into the instance. Confirm the key was passed at launch with `--ssh-key-id`, that `podstack gpu keys list` shows **LOCAL KEY: yes**, and select the right key with `--key`/`--identity`. See [Troubleshooting](/docs/trainpod/troubleshooting/#permission-denied-publickey).
+The private key you're offering doesn't match a public key injected into the instance. Confirm the key was passed at launch with `--ssh-key-id`, that `podstack gpu keys list` shows **LOCAL KEY: yes**, and select the right key with `--key`/`--identity`. See [Troubleshooting](/docs/jobs/troubleshooting/#permission-denied-publickey).
 
 **Can I connect from a second machine?**
 Yes, but the private key lives on the machine that created it. Copy the private key file over securely, or register a second key and inject it at launch. `podstack gpu keys list` shows **LOCAL KEY: no** on machines without the private key.
@@ -253,14 +255,14 @@ Yes, but the private key lives on the machine that created it. Copy the private 
 **What user do I log in as?**
 `root`. The CLI and the `podstack gpu instances get` SSH command both use it.
 
-**Do I need the Windows OpenSSL/proxy setup for TrainPods?**
-No. That proxy setup in the PowerShell video is for container **Pods** that route through `cloud.podstack.ai`. TrainPod instances are reached directly, so `podstack gpu instances ssh <id>` (or plain `ssh -i <key> root@<host>`) works from PowerShell without the proxy.
+**Do I need the Windows OpenSSL/proxy setup for Jobs?**
+No. That proxy setup in the PowerShell video is for container **Pods** that route through `cloud.podstack.ai`. Jobs instances are reached directly, so `podstack gpu instances ssh <id>` (or plain `ssh -i <key> root@<host>`) works from PowerShell without the proxy.
 
 **How do I add a key to an already-running instance?**
 Keys are injected at launch. Register the key, then re-launch (or manually append the public key to `~/.ssh/authorized_keys` on the box while you're connected with an existing key).
 
 ## Next steps
 
-- [Move data](/docs/trainpod/move-data/) — upload datasets and pull results back.
-- [Fine-tuning](/docs/trainpod/fine-tuning/) — run managed training jobs.
-- [Troubleshooting](/docs/trainpod/troubleshooting/) — SSH and connection fixes.
+- [Move data](/docs/jobs/move-data/) — upload datasets and pull results back.
+- [Fine-tuning](/docs/jobs/fine-tuning/) — run managed training jobs.
+- [Troubleshooting](/docs/jobs/troubleshooting/) — SSH and connection fixes.

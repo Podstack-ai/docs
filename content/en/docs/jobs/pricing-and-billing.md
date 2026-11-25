@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/trainpod/pricing-and-billing/
 title: Pricing & Billing
 weight: 60
-description: "How Podstack TrainPod GPU pricing and billing work — per-hour on-demand and spot pricing, checking live prices with podstack gpu pricing, funding your wallet, max-price caps, low-balance warnings, and fine-tuning budgets."
+description: "How Podstack bills GPU time and jobs from a prepaid wallet. Live prices are on podstack.ai, in INR for India and USD elsewhere."
 keywords:
   - GPU pricing per hour
   - spot vs on demand pricing
@@ -17,11 +19,18 @@ keywords:
 
 # Pricing & Billing
 
-TrainPod GPUs bill **per hour** for as long as an instance runs, drawn from your Podstack **wallet** balance. Managed [fine-tuning](/docs/trainpod/fine-tuning/) jobs bill per run, which you can cap with a budget. This page explains how to check prices, fund your wallet, and control spend.
+Podstack uses a **prepaid wallet**. There are no monthly or annual subscriptions.
+
+- **GPU instances** are billed per second from the hourly rate, from boot until you terminate them.
+- **Jobs** are billed only while they are running. Managed [fine-tuning](/docs/jobs/fine-tuning/) is a job: the meter runs while the job runs, and you can cap it with `--budget`.
+- **Extra disk** is billed per GB-hour.
+- **Inference** is billed per token. See [Pricing & Usage](/docs/inference/pricing-and-usage/).
 
 ## Check live prices
 
-Prices vary by GPU type, region, and tier. Query them with:
+Rates are not listed in these docs. Read them on [podstack.ai/#pricing](https://podstack.ai/#pricing). Prices are shown in **INR** for India and in **USD** everywhere else.
+
+`podstack gpu pricing` prints the same live offers (GPU type, region, tier, hourly rate, and what is available right now):
 
 ```bash
 podstack gpu pricing
@@ -29,18 +38,7 @@ podstack gpu pricing --gpu-type h100_sxm
 podstack gpu pricing --gpu-type h100_sxm --tier on_demand
 ```
 
-```
-GPU TYPE    COUNT   REGION        TIER        PRICE          AVAIL
-h100_sxm    1       asia-pacific  on_demand   ₹405.74/hr     4
-h100_pcie   1       ca-central    on_demand   ₹203.55/hr     84
-a100_80gb   1       ca-central    on_demand   ₹188.62/hr     4
-a100_40gb   1       india-south   on_demand   ₹120.77/hr     3
-```
-
-- **`PRICE`** is the **final** Podstack price per hour (in INR) — all fees are already included. There's no separate management or egress markup on top.
-- **`AVAIL`** is how many matching GPUs can be launched right now, and **`REGION`** is where they run.
-
-Prices shown above are illustrative snapshots — always run `podstack gpu pricing` for the current rates, regions, and availability.
+The hourly figure is the rate the per-second meter uses. You are charged for elapsed time, not for a full hour up front.
 
 ## Spot vs on-demand
 
@@ -92,7 +90,7 @@ Billing continues for as long as an instance is **running**. To stop charges, te
 podstack gpu instances delete gpu-abc123
 ```
 
-> Terminating wipes the instance's local disk. [Move results off the box first](/docs/trainpod/move-data/).
+> Terminating wipes the instance's local disk. [Move results off the box first](/docs/jobs/move-data/).
 
 Verify nothing is still running (and racking up cost):
 
@@ -102,10 +100,10 @@ podstack gpu instances list --status running
 
 ## Fine-tuning budgets
 
-Managed [fine-tuning](/docs/trainpod/fine-tuning/) jobs bill per run rather than per instance-hour. Cap the spend on a job with `--budget`:
+Managed [fine-tuning](/docs/jobs/fine-tuning/) jobs are billed only while they run. Cap the spend on a job with `--budget`:
 
 ```bash
-podstack train create --model podstack/gemma-4-31b-it \
+podstack train create --model <MODEL_ID> \
   --training-file file_123 --budget 25.00
 ```
 
@@ -121,10 +119,10 @@ podstack train create --model podstack/gemma-4-31b-it \
 ## FAQs
 
 **How am I charged for a GPU instance?**
-Per hour, for the entire time the instance is `running`, from your wallet. Terminate to stop charges.
+Per second from the hourly rate, from boot until you terminate it, drawn from your prepaid wallet.
 
 **Is the price shown the final price?**
-Yes. `PRICE` in `podstack gpu pricing` is the final Podstack rate with all fees included.
+Yes. The hourly rate on [podstack.ai/#pricing](https://podstack.ai/#pricing) and in `podstack gpu pricing` is the rate you are metered against. India is shown in INR and every other location in USD.
 
 **What happens if my wallet runs out mid-run?**
 Podstack warns you (visible in `podstack gpu instances list`) and can stop the instance to prevent a negative balance. Top up before that happens; checkpoint spot/interruptible work.
@@ -136,13 +134,13 @@ Usually yes, but spot instances can be reclaimed. Compare both with `podstack gp
 Pass `--max-price <usd>` on `podstack gpu instances create` so it won't launch above your ceiling.
 
 **How is fine-tuning billed differently?**
-Managed `podstack train` jobs bill per run. Cap them with `--budget <usd>`.
+A managed `podstack train` job is billed only while it is running, not as a GPU you leave up. Cap it with `--budget`.
 
 **Do data transfers cost extra?**
 There's no separate per-GB charge; transfers happen during the instance runtime you're already paying for.
 
 ## Next steps
 
-- [Provision a GPU](/docs/trainpod/provision-a-gpu/) — launch with the right tier and price cap.
+- [Provision a GPU](/docs/jobs/provision-a-gpu/) — launch with the right tier and price cap.
 - [Wallet](/docs/billing/wallet/) — fund and manage your balance.
 - [CLI: Wallet & pricing](/docs/cli/gpu/) — pricing and balance from the terminal.

@@ -13,7 +13,7 @@ keywords:
 
 # GPUs — `podstack gpu`
 
-Rent and manage on-demand GPU instances (TrainPods) from your terminal.
+Rent and manage on-demand GPU instances (Jobs) from your terminal.
 
 ```sh
 podstack gpu types list                                        # available GPU types
@@ -40,7 +40,7 @@ rtx_3090  rtx_4090  rtx_5090  rtx_a4000  rtx_a6000
 rtx_4000_ada  rtx_6000_ada  rtx_pro_6000
 ```
 
-Run `podstack gpu types list` for the live set. `podstack gpu pricing` returns the price per hour, region, availability, tier (`on_demand`/`spot`), and whether instant-boot is available — for example, `a100_40gb` in `india-south` was ~₹120/hr on-demand at the time of writing.
+Run `podstack gpu types list` for the live set. `podstack gpu pricing` returns the current hourly rate, region, availability, and tier. Live prices are also on [podstack.ai/#pricing](https://podstack.ai/#pricing) (INR in India, USD elsewhere). GPU time is billed per second from that hourly rate, from boot until you terminate the instance.
 
 ## SSH keys
 
@@ -77,10 +77,10 @@ podstack gpu instances --help        # start/stop/terminate and more
 
 ## Billing
 
-GPU instances bill from your wallet while running. Terminate an instance to stop billing. See [Wallet & pricing](/docs/trainpod/pricing-and-billing/) and the [TrainPod](/docs/trainpod/) section for the end-to-end provision → SSH → train workflow, including video walkthroughs.
+GPU instances bill per second from the hourly rate, from boot until you terminate them. Jobs bill only while they run. Both use the prepaid wallet. See [Wallet & pricing](/docs/jobs/pricing-and-billing/) and the [Jobs](/docs/jobs/) section for the provision → SSH → train workflow, including video walkthroughs.
 
 ## Related
 
-- [TrainPods](/docs/trainpod/) — the full on-demand GPU product and SSH tutorials.
+- [Jobs](/docs/jobs/) — the full on-demand GPU product and SSH tutorials.
 - [Fine-tuning](/docs/cli/train/) — managed training without managing a box.
 - [Send & receive](/docs/cli/send-receive/) — move data to and from an instance.

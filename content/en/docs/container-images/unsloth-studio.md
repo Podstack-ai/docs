@@ -13,7 +13,7 @@ A managed web UI for Unsloth fine-tuning — config, launch, and monitor runs fr
 
 ## What's in this image
 
-- Base: `unsloth/unsloth:stable` (upstream Unsloth image)
+- Base: `unsloth/unsloth:stable` (Unsloth image)
 - Unsloth Studio web UI
 - All Unsloth dependencies
 - JupyterHub and Jupyter Notebook (port 8888)

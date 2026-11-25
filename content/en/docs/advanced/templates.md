@@ -162,7 +162,6 @@ Pre-configure environment:
 CUDA_VISIBLE_DEVICES=0,1
 MODEL_PATH=/models
 BATCH_SIZE=32
-WANDB_API_KEY=your_key
 ```
 
 ### Port Configuration

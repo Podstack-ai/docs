@@ -2,13 +2,13 @@
 title: SSH Keys
 
 weight: 20
-description: "Add or generate SSH keys on PodStack to access pods and VMs. Generate ed25519/RSA keys in-platform (private key shown once), upload existing keys, set a default, and understand prepaid (1) vs postpaid (20) key limits."
+description: "Add or generate SSH keys on Podstack to access GPU instances. The private key is shown once."
 keywords:
   - PodStack SSH keys
   - GPU pod SSH access
   - generate ssh key cloud
   - ed25519 rsa key
-  - ssh key limit prepaid postpaid
+  - ssh key GPU instance
 ---
 # SSH Keys
 
@@ -63,23 +63,9 @@ ssh-add ~/.ssh/podstack_key
 Your first key automatically becomes the **default**. Set a different default
 any time with **Set as Default**.
 
-## Account limits
+## Billing
 
-The number of keys you can store depends on your billing account type:
-
-| Account type | Max SSH keys |
-|--------------|--------------|
-| **Prepaid** (new accounts) | **1** |
-| **Postpaid** (monthly billing) | **20** |
-
-New accounts start on **prepaid** billing, so you get **one** SSH key. Switching
-to **postpaid** (monthly invoiced billing) raises the limit to 20 — contact
-PodStack to enable postpaid billing on your account. Hitting the limit shows an
-**upgrade prompt** rather than adding the key.
-
-> Need more than one key on prepaid? A common pattern is to add a single key to
-> your account and use an [SSH agent](https://www.ssh.com/academy/ssh/agent) or
-> per-host `IdentityFile` entries locally.
+SSH keys are not a subscription. Podstack bills a prepaid wallet: GPU time per second from the hourly rate, from boot until you terminate the instance. There is no monthly or annual plan that changes how many keys you can store.
 
 ## Verify it worked
 
@@ -112,7 +98,7 @@ Then just `ssh my-pod`. For a full walkthrough (including Windows), see
 
 | Problem | Cause / fix |
 |---------|-------------|
-| SSH key limit reached | Prepaid accounts allow 1 key — switch to postpaid billing for up to 20 (contact PodStack). |
+| SSH key limit reached | Remove a key you no longer use, then add the new one. Billing is a prepaid wallet, not a plan that raises a key cap. |
 | "Invalid SSH public key format" | Paste the full public key line, starting with `ssh-ed25519`/`ssh-rsa`. |
 | Duplicate name / fingerprint | Choose a unique name; the same key can't be added twice. |
 | Can't delete a key | It may be in use by a running/stopped pod — reassign that pod first. |

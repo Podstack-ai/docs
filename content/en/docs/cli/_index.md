@@ -57,7 +57,7 @@ See [Installation](/docs/cli/installation/) for other platforms and upgrades.
 ## Global flags
 
 - `--output json|table` — force the output format. The default is a human table on a terminal and JSON when piped, so `podstack gpu instances list | jq` just works.
-- `PODSTACK_API_KEY` — supply a `psk_` key via environment instead of an interactive login (useful in CI).
+- `PODSTACK_API_KEY` — supply a `ps_live_` key via environment instead of an interactive login (useful in CI).
 - `PODSTACK_PROJECT_ID` — override the default project for a single command.
 
 ## What's available today

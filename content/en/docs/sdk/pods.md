@@ -53,12 +53,6 @@ pod = client.pods.create(
     # Networking
     ports=[8888, 6006],  # Expose Jupyter and TensorBoard
 
-    # Environment
-    env={
-        "WANDB_API_KEY": "your-key",
-        "HF_TOKEN": "your-token"
-    },
-
     # Startup command
     command="jupyter lab --ip=0.0.0.0 --allow-root",
 

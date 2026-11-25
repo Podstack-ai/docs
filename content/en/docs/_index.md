@@ -1,6 +1,6 @@
 ---
 title: Documentation
-description: "Podstack - Cheapest GPU Cloud Platform. Deploy GPU containers with zero lock-in, pay per minute pricing. NVIDIA A100, H100, V100 GPUs for students, startups, and enterprises."
+description: "Podstack GPU cloud documentation. Prepaid wallet: GPU time billed per second from the hourly rate, jobs only while running, inference per token, extra disk per GB-hour."
 keywords:
   - cheapest GPU cloud
   - cheap GPU rental
@@ -13,7 +13,7 @@ keywords:
   - GPU cloud no lock-in
   - zero lock-in GPU
   - no commitment GPU rental
-  - pay per minute GPU
+  - billed per second GPU
   - pay for what you use GPU
   - pay as you go GPU
   - serverless GPU

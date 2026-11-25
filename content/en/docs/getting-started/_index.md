@@ -32,8 +32,8 @@ This section takes you from zero to a running GPU workload.
 
 | Product | Use it to… |
 |---------|-----------|
-| **[QuickPods](/docs/quickpod/)** | Deploy production-ready AI stacks in one click — 1-click templates, built-in MLOps, fractional GPUs. |
-| **[TrainPods](/docs/trainpod/)** | Get on-demand NVIDIA GPUs at low prices — provision, SSH, and move data from the `podstack` CLI. |
+| **[GPU Cloud](/docs/gpu-cloud/)** | Deploy production-ready AI stacks in one click — 1-click templates, built-in MLOps, fractional GPUs. |
+| **[Jobs](/docs/jobs/)** | Get on-demand NVIDIA GPUs at low prices — provision, SSH, and move data from the `podstack` CLI. |
 | **[Inference](/docs/inference/)** | Serve open-source models on low-latency, OpenAI-compatible endpoints with autoscaling. |
 | **[CLI](/docs/cli/)** | Do it all from your terminal — an AI coding agent, live app previews, GPUs, fine-tuning, and inference. |
 | **DC Suite** | Operate your own GPU datacenter — orchestration, BillOps and FinOps, licensable for self-hosting. |

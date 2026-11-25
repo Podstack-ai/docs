@@ -21,7 +21,7 @@ Find it under **File Storage** in the sidebar (`/portal/storage`). The page is h
 |------------------------|--------------------------|
 | Data is hot — pods read it on every job | Data is archival or cold |
 | You want low egress between pods and storage | You need public sharing or presigned URLs |
-| You're keeping the data inside one cluster | You want managed regional storage with a subscription plan |
+| You're keeping the data inside one cluster | You want managed regional storage, billed per GB-hour |
 
 For long-term archives, public datasets, and model release artifacts, prefer [Object Storage](/docs/storage/object-storage/).
 

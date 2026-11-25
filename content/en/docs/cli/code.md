@@ -56,7 +56,7 @@ Type `/` to see the command palette. Highlights:
 | Command | Does |
 |---------|------|
 | `/preview` | Launch (or, with `/preview off`, close) the live cloud-sandbox preview |
-| `/cost` | Development spend for this project — tokens plus ₹ (sandbox compute + wallet) |
+| `/cost` | Development spend for this project — tokens and wallet usage |
 | `/wallet [n]` | Account balance and the last *n* deductions |
 | `/auto` | Toggle auto-approve on/off |
 | `/models`, `/model [n\|id]` | Switch the model |

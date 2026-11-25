@@ -1,7 +1,9 @@
 ---
+aliases:
+  - /docs/trainpod/troubleshooting/
 title: Troubleshooting
 weight: 70
-description: "Fix common Podstack TrainPod issues — provisioning stuck or failing, SSH permission denied, no SSH connection yet, ambiguous SSH keys, scp/cp errors, port-forwarding, low-balance stops, and fine-tuning job failures."
+description: "Fix common Podstack Jobs issues — provisioning stuck or failing, SSH permission denied, no SSH connection yet, ambiguous SSH keys, scp/cp errors, port-forwarding, low-balance stops, and fine-tuning job failures."
 keywords:
   - GPU provisioning failed
   - permission denied publickey
@@ -17,7 +19,7 @@ keywords:
 
 # Troubleshooting
 
-Fixes for the most common issues when provisioning, connecting to, and moving data with TrainPods. If you're stuck after this, contact **support@podstack.ai**.
+Fixes for the most common issues when provisioning, connecting to, and moving data with Jobs. If you're stuck after this, contact **support@podstack.ai**.
 
 ## First, check the basics
 
@@ -200,7 +202,7 @@ podstack gpu instances list
 ⚠  my-trainer: under 5 min of runtime left — recharge or this instance will stop
 ```
 
-Top up your wallet — see [Pricing & billing](/docs/trainpod/pricing-and-billing/) and the [Wallet docs](/docs/billing/wallet/). For interruptible work, checkpoint frequently.
+Top up your wallet — see [Pricing & billing](/docs/jobs/pricing-and-billing/) and the [Wallet docs](/docs/billing/wallet/). For interruptible work, checkpoint frequently.
 
 ### I'm being charged and don't know why
 
@@ -230,7 +232,7 @@ Common causes: a malformed training file (re-check your JSONL and re-upload with
 Both flags are mandatory on `podstack train create`:
 
 ```bash
-podstack train create --model podstack/gemma-4-31b-it --training-file file_123
+podstack train create --model <MODEL_ID> --training-file file_123
 ```
 
 ### Job stuck in `queued`
@@ -247,6 +249,6 @@ Cancel if needed with `podstack train cancel <id>`.
 
 ## Still stuck?
 
-- Re-read the relevant guide: [Provision](/docs/trainpod/provision-a-gpu/) · [SSH](/docs/trainpod/ssh-access/) · [Move data](/docs/trainpod/move-data/) · [Fine-tuning](/docs/trainpod/fine-tuning/).
+- Re-read the relevant guide: [Provision](/docs/jobs/provision-a-gpu/) · [SSH](/docs/jobs/ssh-access/) · [Move data](/docs/jobs/move-data/) · [Fine-tuning](/docs/jobs/fine-tuning/).
 - Check the [CLI reference](/docs/cli/).
 - Email **support@podstack.ai** with the command you ran, the instance or job id, and the full error output.

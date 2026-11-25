@@ -2,7 +2,7 @@
 title: Billing
 
 weight: 140
-description: "Cheapest GPU cloud pricing - pay per minute, zero lock-in, no commitment. Transparent pricing for A100, H100, V100, L40S GPUs. Perfect for students and startups."
+description: "Podstack prepaid wallet billing. GPU time per second from the hourly rate, jobs only while running, inference per token, extra disk per GB-hour. No monthly or annual subscriptions."
 keywords:
   - cheapest GPU pricing
   - cheap GPU cloud cost
@@ -11,7 +11,7 @@ keywords:
   - pocket friendly GPU
   - GPU cloud for students
   - student GPU pricing
-  - pay per minute GPU
+  - billed per second GPU
   - pay for what you use
   - pay as you go GPU
   - zero lock-in pricing
@@ -28,39 +28,26 @@ keywords:
 ---
 # Billing & Payments
 
-Podstack uses a prepaid wallet system for billing. Add funds to your wallet and resources are charged against your balance in real-time.
+Podstack bills a **prepaid wallet**. Add credits, then usage is deducted as it happens. There are no monthly or annual subscriptions.
 
-## How Billing Works
+## How billing works
 
-### Prepaid Model
+- **GPU instances** are billed per second from the hourly rate, from boot until you terminate them.
+- **Jobs** are billed only while they are running.
+- **Inference** is billed per token.
+- **Extra disk** is billed per GB-hour.
 
-1. **Add funds** to your wallet via Razorpay
-2. **Deploy resources** (pods, storage)
-3. **Charges deducted** automatically as you use resources
-4. **Top up** when balance runs low
-
-### Billing Cycle
-
-- **Compute resources** (pods): Billed per second while running
-- **Storage**: Billed hourly based on provisioned/used capacity
-- **GPU instances**: Billed per hour
-
-### Real-time Billing
-
-Charges are calculated and deducted continuously:
-- Balance updates in real-time on the dashboard
-- Run rate shows current hourly/daily/monthly projections
-- Insufficient balance prevents new resource creation
+A project with no credits cannot start new usage. Live GPU prices are on [podstack.ai/#pricing](https://podstack.ai/#pricing). Model rates are on [podstack.ai/app/models](https://podstack.ai/app/models).
 
 ## Currency
 
-All billing is in **Indian Rupees (INR)**. Prices displayed include applicable taxes.
+Prices are shown in **INR** for India and in **USD** everywhere else. Set your location in **Settings**. Until you do, Podstack uses the country of the connection. The wallet itself is stored in US cents. The amount you see is that balance converted for display.
 
 ## In This Section
 
 - **[Wallet](/docs/billing/wallet/)** - Manage balance, top-up, transactions
 - **[Invoices](/docs/billing/invoices/)** - View and download invoices
-- **[KYC Verification](/docs/billing/kyc/)** - Identity verification for postpaid
+- **[KYC Verification](/docs/billing/kyc/)** - Identity verification when your account requires it
 
 ## Billing Dashboard
 
@@ -69,11 +56,8 @@ The main dashboard shows:
 ### Wallet Balance
 Current available funds in your account.
 
-### Run Rate
-Projected spending based on current resources:
-- **Hourly**: Current cost per hour
-- **Daily**: Projected daily cost
-- **Monthly**: Projected monthly cost
+### Run rate
+Projected spending based on what is running now. It is a forecast from the current hourly rates, not a subscription.
 
 ### Expenditure Breakdown
 Costs split by resource type:

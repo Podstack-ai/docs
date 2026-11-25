@@ -118,7 +118,7 @@ Set team's working hours in tawk.to settings. Outside hours, the offline form fi
 | Shortcut | Response |
 |---|---|
 | `#finetune` | *"To fine-tune a model: go to AI Studio → browse the model catalog → select a base model → create a fine-tuning job with your dataset and parameters. Need help choosing between Unsloth (fast LoRA) and Axolotl (full fine-tuning)?"* |
-| `#inference` | *"Our Inference API is OpenAI-compatible. Deploy a model from the catalog at cloud.podstack.ai/infer and use it with your existing OpenAI SDK — just swap the base URL."* |
+| `#inference` | *"Our Inference API is OpenAI-compatible at https://api.podstack.ai/v1. Create a ps_live_ key and point your OpenAI SDK at that base URL."* |
 
 ### Documentation
 

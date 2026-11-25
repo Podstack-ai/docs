@@ -57,9 +57,10 @@ For private images, provide:
 - Each replica runs independently and is billed separately
 - Useful for load balancing or parallel processing
 
-**Billing Period**
-- Select billing frequency (hourly, daily, monthly)
-- Monthly billing may offer better rates for long-running workloads
+**Billing**
+- GPU time is billed per second from the hourly rate, from boot until you terminate the pod
+- Extra disk is billed per GB-hour
+- There is no hourly, daily, or monthly plan to select
 
 ### Networking
 

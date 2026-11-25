@@ -2,7 +2,7 @@
 title: Object Storage
 
 weight: 10
-description: "S3-compatible object storage with per-bucket subscription plans, IAM users, presigned URLs, and public sharing for ML datasets and model artifacts."
+description: "S3-compatible object storage for ML datasets and model artifacts. Extra disk is billed per GB-hour from the prepaid wallet. There is no monthly plan."
 keywords:
   - object storage
   - S3 compatible storage
@@ -13,7 +13,7 @@ keywords:
 ---
 # Object Storage
 
-Podstack Object Storage is an S3-compatible service for buckets, files, and structured access control. Each bucket is independently provisioned with a subscription plan and is project-scoped.
+Podstack Object Storage is an S3-compatible service for buckets and files. It is project-scoped. Extra disk is billed **per GB-hour** from the prepaid wallet. There is no monthly subscription.
 
 Find it under **Object Storage** in the sidebar (also reachable at `/portal/drive`).
 
@@ -23,22 +23,16 @@ Find it under **Object Storage** in the sidebar (also reachable at `/portal/driv
 2. Click **Create Bucket**.
 3. Configure:
    - **Name**: lowercase, S3-compatible bucket name
-   - **Plan**: pick a storage subscription tier (sets the included capacity and monthly price)
    - **Region**: backing storage region (set by platform config)
    - **Versioning**: keep file history when objects are overwritten
    - **Public**: list contents publicly via a presigned URL (otherwise private)
 4. Click **Create**.
 
-When you create a bucket the plan price is debited from your wallet, the bucket is provisioned in the backing storage, and a dedicated set of S3 credentials is generated for it.
+When you create a bucket it is provisioned and a dedicated set of S3 credentials is generated for it. Extra disk is billed per GB-hour while the data is stored.
 
-### Plans and Auto-Renewal
+### Capacity
 
-Each bucket carries a plan subscription with a fixed monthly price for an included capacity ceiling.
-
-- Subscriptions renew automatically every cycle by debiting your wallet.
-- A failed renewal is retried hourly; after 24 hours of dunning the bucket is escalated to support.
-- The **Usage** bar on each bucket card shows current used capacity vs. the plan ceiling.
-- You can upgrade or downgrade the plan from the bucket settings panel; the new price applies from the next renewal.
+There is no monthly plan and no anniversary renewal. Extra disk is billed per GB-hour from the prepaid wallet. Delete data you no longer need to stop that charge.
 
 ### Versioning
 
@@ -124,20 +118,18 @@ s3fs my-bucket /mnt/s3 -o passwd_file=~/.passwd-s3fs -o url=https://s3.podstack.
 2. Click **Delete Bucket** — confirm by typing the bucket name.
 3. All objects, versions, and delete markers are removed before the bucket itself is deprovisioned.
 
-Bucket deletion is irreversible and stops the plan subscription immediately. There are no pro-rata refunds — the current billing period has already been charged in full.
+Bucket deletion is irreversible and stops further disk charges.
 
 ## Billing
 
-Buckets are billed on a **per-bucket subscription plan**, not on actual storage usage. Each bucket has a flat monthly price for an included capacity ceiling; exceeding the ceiling prompts you to upgrade the plan.
-
-Charges appear under **Object Storage (Buckets)** in your wallet expenditure breakdown and on monthly invoices.
+Extra disk is billed **per GB-hour** from the prepaid wallet. There is no per-bucket monthly plan.
 
 ## Best Practices
 
 1. **One bucket per logical dataset** — keeps lifecycle and access scoped.
 2. **Use IAM users** for shared workloads instead of distributing master keys.
 3. **Enable versioning** on irreplaceable buckets (training artifacts, eval datasets).
-4. **Right-size plans** — start small, upgrade when the usage bar approaches the ceiling.
+4. **Right-size capacity** — delete data you are not using. Extra disk is billed per GB-hour.
 5. **Prefer presigned URLs** over making whole buckets public when you only need to share specific objects.
 
 ## Next Steps

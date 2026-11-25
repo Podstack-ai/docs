@@ -1,85 +1,53 @@
 ---
 title: API Tokens
-
 weight: 30
-description: "Create PodStack API tokens (psk_ keys) for the podstack CLI and the REST/OpenAI-compatible API. Set an expiry, copy once, use up to 5 tokens, and revoke instantly."
+description: "Create Podstack API keys (ps_live_) for the API, CLI, and SDK. The key is shown once. Revoke it from API Keys."
 keywords:
-  - PodStack API token
-  - psk key
-  - podstack CLI auth
+  - Podstack API key
+  - ps_live_ key
+  - PODSTACK_API_KEY
   - API key GPU cloud
-  - programmatic access cloud
+  - programmatic access
 ---
+
 # API Tokens
 
-API tokens give scripts, CI/CD, the `podstack` CLI, and the REST/OpenAI-compatible
-API access to your account without an interactive sign-in.
+API keys let scripts, CI, and the OpenAI-compatible API act as your project. Every key starts with `ps_live_` and is billed to the project where you created it.
 
-## What you'll accomplish
+## Create a key
 
-Create an API token and use it to authenticate the `podstack` CLI.
+1. Open **API Keys** in the [console](https://podstack.ai/app/api-keys).
+2. Choose **Create key**.
+3. Enter a name and an access level (full, read only, jobs, functions and endpoints, or inference).
+4. **Copy the key now.** It starts with `ps_live_` and is shown only once.
 
-## Prerequisites
+Viewers cannot create keys. Only project admins and owners can create a full-access key.
 
-- A signed-in account.
-
-## Create a token
-
-1. Go to **Settings → Tokens**.
-2. Choose **Create**.
-3. Enter a **name** and pick an **expiry**: 7, 30, 90, 180, or 365 days, or **never** (default is 30 days).
-4. **Copy the token now** — it starts with `psk_` and is shown **only once**.
-
-You can hold up to **5 tokens** at a time.
-
-> _Screenshot: Tokens tab with the create dialog and one-time token reveal._
-
-## Use it with the CLI
+## Use it
 
 ```bash
-# Interactive: paste the key when prompted (input is hidden)
-podstack auth login
+export PODSTACK_API_KEY="ps_live_..."
 
-# Or via environment variable (overrides the stored key)
-export PODSTACK_API_KEY=psk_xxxxxxxxxxxxxxxxxxxx
-
-# Confirm who you are
-podstack auth whoami
+curl https://api.podstack.ai/v1/chat/completions \
+  -H "Authorization: Bearer $PODSTACK_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"podstack/kimi-k3","messages":[{"role":"user","content":"Hello"}]}'
 ```
 
-The key is stored at `~/.config/podstack/credentials.json` (mode `0600`,
-honoring `XDG_CONFIG_HOME`). The same token authenticates every CLI command —
-`code`, `models`, `gpu`, `train`, `send`/`receive`. See the
-[CLI Authentication](/docs/cli/authentication/) guide.
-
-## Use it with the API
-
-Send the token as a bearer credential:
+Listing models does not require a key:
 
 ```bash
-curl https://cloud.podstack.ai/infer/v1/models \
-  -H "Authorization: Bearer psk_xxxxxxxxxxxxxxxxxxxx"
+curl https://api.podstack.ai/v1/models
 ```
 
-## Verify it worked
+Details, access levels, and errors: [Inference authentication](/docs/inference/authentication/).
 
-- `podstack auth whoami` prints your user id and email.
-- The token appears in **Settings → Tokens** with its name and expiry.
+## Revoke a key
 
-## Revoke a token
-
-Delete a token from **Settings → Tokens** to invalidate it immediately. Any CLI
-or script using it will stop working on the next request.
-
-## Troubleshoot
-
-| Problem | Fix |
-|---------|-----|
-| Lost the token value | You can't re-view it — delete it and create a new one. |
-| "Maximum tokens reached" | You can hold 5 tokens; delete an unused one first. |
-| CLI says unauthorized | The token may be expired or revoked — create a fresh one. |
+On **API Keys**, choose **Revoke**. The key stops working on the next request. If you lose the secret, revoke it and create another. It cannot be displayed again.
 
 ## Related
 
-- [CLI Authentication](/docs/cli/authentication/)
+- [Inference authentication](/docs/inference/authentication/)
+- [CLI authentication](/docs/cli/authentication/)
 - [Settings](/docs/account/settings/)

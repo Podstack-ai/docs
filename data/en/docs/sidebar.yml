@@ -3,7 +3,7 @@
 # PURPOSE: Defines the documentation sidebar structure.
 #
 # The docs have exactly FIVE top-level sections:
-#   QuickPod · TrainPod · Inference · CLI · Support
+#   GPU Cloud · Jobs · Inference · CLI · Support
 # Everything else (container image catalog, account, billing,
 # onboarding, SDK reference) is folded UNDER one of these five.
 #
@@ -20,8 +20,8 @@
 # Every slug/path below MUST resolve to a page that exists.
 # ============================================================
 
-- title: QuickPod
-  slug: quickpod
+- title: GPU Cloud
+  slug: gpu-cloud
   pages:
     - title: Launch a Pod
       slug: launch-a-pod
@@ -40,8 +40,8 @@
     - title: Troubleshooting
       slug: troubleshooting
 
-- title: TrainPod
-  slug: trainpod
+- title: Jobs
+  slug: jobs
   pages:
     - title: Provision a GPU
       slug: provision-a-gpu

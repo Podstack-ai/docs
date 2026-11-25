@@ -53,7 +53,7 @@ Support points you at the detailed references — it doesn't duplicate them:
 
 Each product section has its own guides and troubleshooting:
 
-- [QuickPods](/docs/quickpod/) — one-click GPU pods and templates.
-- [TrainPods](/docs/trainpod/) — on-demand GPUs and fine-tuning from the CLI.
+- [GPU Cloud](/docs/gpu-cloud/) — one-click GPU pods and templates.
+- [Jobs](/docs/jobs/) — on-demand GPUs and fine-tuning from the CLI.
 - [Inference](/docs/inference/) — OpenAI-compatible model endpoints.
 - [CLI](/docs/cli/) — the `podstack` command line and coding agent.
