@@ -33,7 +33,7 @@ jobs:
           extended: true
 
       - name: Build Hugo site
-        run: hugo --minify --environment production
+        run: hugo --minify --environment production && python3 scripts/publish-agent-docs.py
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

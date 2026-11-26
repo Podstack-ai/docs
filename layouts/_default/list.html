@@ -82,6 +82,7 @@
         </nav>
  
         <div id="article-body">
+          {{ if in .RelPermalink "/docs/" }}{{ partial "agent-md-actions.html" . }}{{ end }}
           {{/* Render the _index.md content */}}
           {{ .Content | safeHTML }}
 

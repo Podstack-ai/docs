@@ -92,6 +92,7 @@
         </section>
     
         <div id="article-body">
+          {{ if in .RelPermalink "/docs/" }}{{ partial "agent-md-actions.html" . }}{{ end }}
           {{ .Content | safeHTML }}
         </div>
 
