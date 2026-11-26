@@ -30,7 +30,7 @@ A key is bound to the project where you created it. Spend is billed to that proj
 Send it as a bearer token:
 
 ```bash
-curl https://api.podstack.ai/v1/chat/completions \
+curl https://podstack.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"podstack/kimi-k3","messages":[{"role":"user","content":"Hello"}]}'

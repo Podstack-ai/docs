@@ -1,12 +1,12 @@
 ---
 title: API Reference
 weight: 50
-description: "OpenAI-compatible API reference for Podstack: https://api.podstack.ai/v1, ps_live_ keys, chat completions, embeddings, images, and video."
+description: "OpenAI-compatible API reference for Podstack: https://podstack.ai/api/v1, ps_live_ keys, chat completions, embeddings, images, and video."
 keywords:
   - OpenAI-compatible API reference
   - chat completions endpoint
   - embeddings endpoint
-  - api.podstack.ai
+  - podstack.ai/api/v1
   - ps_live_ key
   - podstack/kimi-k3
 ---
@@ -15,7 +15,7 @@ keywords:
 
 The API follows the OpenAI contract. Official OpenAI SDKs work after you set the base URL and a Podstack key.
 
-- **Base URL:** `https://api.podstack.ai/v1`
+- **Base URL:** `https://podstack.ai/api/v1`
 - **Auth:** `Authorization: Bearer ps_live_...` (see [Authentication](/docs/inference/authentication/))
 - **Content type:** `application/json` for request bodies
 
@@ -43,7 +43,7 @@ There is no `/infer/v1` path. Keys that do not start with `ps_live_` are rejecte
 `model` and `messages` are required. Standard OpenAI chat fields (`temperature`, `top_p`, `max_tokens`, `stop`, `tools`, `response_format`, `stream`, and the rest) are accepted. A model may ignore a field it does not implement.
 
 ```bash
-curl https://api.podstack.ai/v1/chat/completions \
+curl https://podstack.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -88,7 +88,7 @@ for await (const chunk of stream) {
 ## Embeddings
 
 ```bash
-curl https://api.podstack.ai/v1/embeddings \
+curl https://podstack.ai/api/v1/embeddings \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -144,7 +144,7 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://api.podstack.ai/v1",
+    base_url="https://podstack.ai/api/v1",
     api_key=os.environ["PODSTACK_API_KEY"],
 )
 

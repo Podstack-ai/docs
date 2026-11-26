@@ -125,7 +125,7 @@ params:
   description: "Podstack docs for GPU cloud, jobs, inference, endpoints, functions, deploy, reservations, and the prepaid wallet. GPU time is billed per second. Prices show in INR for India and USD elsewhere."
 
   seo:
-    keywords: "Podstack, GPU cloud, GPU instances, jobs, OpenAI-compatible inference, api.podstack.ai, ps_live_, endpoints, functions, deploy, reservations, prepaid wallet, per-second GPU billing, Razorpay"
+    keywords: "Podstack, GPU cloud, GPU instances, jobs, OpenAI-compatible inference, podstack.ai/api/v1, ps_live_, endpoints, functions, deploy, reservations, prepaid wallet, per-second GPU billing, Razorpay"
     ogImage: /images/og-image.png
 
     # Competitor comparison keywords for rich snippets

@@ -14,7 +14,7 @@ keywords:
 >
 > PyPI currently has podstack 1.7.0, the old notebook API. Version 1.8.0 removes that surface. Do not install 1.7.0 for the pages in this section.
 
-The 1.8.0 client calls `https://podstack.ai/api/v1`. It does not call `api.podstack.ai`. GPU types, VRAM, regions, and prices come from the API. The package does not ship a catalogue or a price table.
+The 1.8.0 client calls `https://podstack.ai/api/v1`. GPU types, VRAM, regions, and prices come from the API. The package does not ship a catalogue or a price table.
 
 ```python
 from podstack import Podstack

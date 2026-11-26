@@ -42,6 +42,6 @@ with Podstack(api_key="ps_live_...") as client:
     print(len(client.models.list()))
 ```
 
-Override the base URL with `base_url=` or `PODSTACK_API_BASE`. The default is `https://podstack.ai/api/v1`. Do not point this client at `api.podstack.ai`.
+Override the base URL with `base_url=` or `PODSTACK_API_BASE`. The default is `https://podstack.ai/api/v1`.
 
 `podstack auth login` writes the same credentials file, so a machine that is already signed in to the CLI does not need a second copy of the key.

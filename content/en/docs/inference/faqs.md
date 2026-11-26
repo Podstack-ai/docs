@@ -1,11 +1,11 @@
 ---
 title: FAQs
 weight: 90
-description: "FAQs for the Podstack inference API: base URL https://api.podstack.ai/v1, ps_live_ keys, model ids, and per-token billing."
+description: "FAQs for the Podstack inference API: base URL https://podstack.ai/api/v1, ps_live_ keys, model ids, and per-token billing."
 keywords:
   - inference FAQ
   - OpenAI-compatible
-  - api.podstack.ai
+  - podstack.ai/api/v1
   - ps_live_ key
   - per-token billing
 ---
@@ -14,15 +14,15 @@ keywords:
 
 ### What is the base URL and how do I authenticate?
 
-The base URL is `https://api.podstack.ai/v1`. Send `Authorization: Bearer ps_live_...`. See [Authentication](/docs/inference/authentication/).
+The base URL is `https://podstack.ai/api/v1`. Send `Authorization: Bearer ps_live_...`. See [Authentication](/docs/inference/authentication/).
 
 ### Can I use the OpenAI SDK?
 
-Yes. Set `base_url` / `baseURL` to `https://api.podstack.ai/v1`, set the key to your `ps_live_` key, and set `model` to a Podstack id such as `podstack/kimi-k3`. See the [API Reference](/docs/inference/api-reference/).
+Yes. Set `base_url` / `baseURL` to `https://podstack.ai/api/v1`, set the key to your `ps_live_` key, and set `model` to a Podstack id such as `podstack/kimi-k3`. See the [API Reference](/docs/inference/api-reference/).
 
 ### Which model id do I use?
 
-Take it from [podstack.ai/app/models](https://podstack.ai/app/models) or from `GET https://api.podstack.ai/v1/models`. The catalog is not a fixed list in these docs. See [Models](/docs/inference/models/).
+Take it from [podstack.ai/app/models](https://podstack.ai/app/models) or from `GET https://podstack.ai/api/v1/models`. The catalog is not a fixed list in these docs. See [Models](/docs/inference/models/).
 
 ### How am I billed?
 
@@ -38,4 +38,4 @@ Yes. `POST /v1/embeddings`, `POST /v1/images/generations`, and `POST /v1/videos`
 
 ### What if my old base URL or key no longer works?
 
-Older docs used a different host and a different key prefix. The API accepts `https://api.podstack.ai/v1` and `ps_live_` keys only. Create a new key under **API Keys**.
+Older docs used a different host and a different key prefix. The API accepts `https://podstack.ai/api/v1` and `ps_live_` keys only. Create a new key under **API Keys**.

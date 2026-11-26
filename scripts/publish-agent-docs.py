@@ -19,9 +19,9 @@ BASE = "https://docs.podstack.ai"
 
 INTRO = """# Podstack Documentation
 
-> Podstack is the console at https://podstack.ai. GPU instances are billed per second from the hourly rate, from boot until you terminate them. Extra disk is billed per GB-hour. Jobs are billed only while they run. Inference is billed per token from a prepaid wallet. There is no monthly or annual subscription. Prices show in INR for India and USD elsewhere. The OpenAI-compatible API is https://api.podstack.ai/v1 with keys that start with ps_live_. The podstack CLI is release 1.2.0. The Python package podstack 1.8.0 is releasing soon; PyPI still has the older 1.7.0 notebook API.
+> Podstack is the console at https://podstack.ai. GPU instances are billed per second from the hourly rate, from boot until you terminate them. Extra disk is billed per GB-hour. Jobs are billed only while they run. Inference is billed per token from a prepaid wallet. There is no monthly or annual subscription. Prices show in INR for India and USD elsewhere. The OpenAI-compatible API is https://podstack.ai/api/v1 with keys that start with ps_live_. The podstack CLI is release 1.2.0. The Python package podstack 1.8.0 is releasing soon; PyPI still has the older 1.7.0 notebook API.
 
-Live model ids and rates: https://podstack.ai/app/models and GET https://api.podstack.ai/v1/models. Live GPU rates: https://podstack.ai/#pricing.
+Live model ids and rates: https://podstack.ai/app/models and GET https://podstack.ai/api/v1/models. Live GPU rates: https://podstack.ai/#pricing.
 """
 
 

@@ -20,7 +20,7 @@ GPU time, jobs, and extra disk are billed separately. See [Billing](/docs/billin
 
 Rates change, and they are not listed in these docs.
 
-- Model rates: [podstack.ai/app/models](https://podstack.ai/app/models) and `GET https://api.podstack.ai/v1/models`
+- Model rates: [podstack.ai/app/models](https://podstack.ai/app/models) and `GET https://podstack.ai/api/v1/models`
 - GPU and platform pricing: [podstack.ai/#pricing](https://podstack.ai/#pricing)
 
 Prices are shown in **INR** for India and in **USD** for every other location. A signed-in user sets that location in **Settings**. Until they do, Podstack uses the country of the connection.

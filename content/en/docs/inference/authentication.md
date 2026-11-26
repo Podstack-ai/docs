@@ -1,7 +1,7 @@
 ---
 title: Authentication
 weight: 40
-description: "Create and revoke Podstack API keys. Keys use the ps_live_ prefix and authenticate https://api.podstack.ai/v1 as a bearer token."
+description: "Create and revoke Podstack API keys. Keys use the ps_live_ prefix and authenticate https://podstack.ai/api/v1 as a bearer token."
 keywords:
   - inference API key
   - ps_live_ key
@@ -44,7 +44,7 @@ The same variable is what the OpenAI SDK examples in these docs read. Viewers ca
 ## Call the API
 
 ```bash
-curl https://api.podstack.ai/v1/chat/completions \
+curl https://podstack.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -58,7 +58,7 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://api.podstack.ai/v1",
+    base_url="https://podstack.ai/api/v1",
     api_key=os.environ["PODSTACK_API_KEY"],
 )
 ```

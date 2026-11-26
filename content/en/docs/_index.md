@@ -4,7 +4,7 @@ description: "How Podstack GPU Cloud, Jobs, Inference, Endpoints, Functions, Dep
 keywords:
   - Podstack docs
   - GPU cloud
-  - api.podstack.ai
+  - podstack.ai/api/v1
   - prepaid wallet
 ---
 
@@ -16,7 +16,7 @@ Podstack is the console at [podstack.ai](https://podstack.ai). You rent GPUs, ru
 | --- | --- |
 | [GPU Cloud](/docs/gpu-cloud/) | Launch a dedicated machine. Billed per second from the hourly rate, from boot until you terminate it. |
 | [Jobs](/docs/jobs/) | Run a script on a GPU until it finishes. You pay for the time the job runs. |
-| [Inference](/docs/inference/) | Open models on an OpenAI-compatible API at `https://api.podstack.ai/v1`. Billed per token. |
+| [Inference](/docs/inference/) | Open models on an OpenAI-compatible API at `https://podstack.ai/api/v1`. Billed per token. |
 | [Endpoints](/docs/endpoints/) | A Hugging Face model on dedicated GPUs that can scale to zero. |
 | [Functions](/docs/functions/) | A Python function that runs on a GPU when you call it. |
 | [Deploy](/docs/deploy/) | Ready-to-run apps such as JupyterLab and ComfyUI on a dedicated GPU. |

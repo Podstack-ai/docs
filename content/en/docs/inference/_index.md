@@ -1,11 +1,11 @@
 ---
 title: Inference
 weight: 40
-description: "Call Podstack models with an OpenAI-compatible API at https://api.podstack.ai/v1. Authenticate with a ps_live_ key. Inference is billed per token from a prepaid wallet."
+description: "Call Podstack models with an OpenAI-compatible API at https://podstack.ai/api/v1. Authenticate with a ps_live_ key. Inference is billed per token from a prepaid wallet."
 keywords:
   - Podstack inference
   - OpenAI-compatible API
-  - api.podstack.ai
+  - podstack.ai/api/v1
   - ps_live_ key
   - chat completions API
   - per-token billing
@@ -14,14 +14,14 @@ keywords:
 
 # Inference
 
-Podstack serves models on an **OpenAI-compatible API**. Set the base URL to `https://api.podstack.ai/v1`, send a `ps_live_` API key, and set `model` to a catalog id such as `podstack/kimi-k3`.
+Podstack serves models on an **OpenAI-compatible API**. Set the base URL to `https://podstack.ai/api/v1`, send a `ps_live_` API key, and set `model` to a catalog id such as `podstack/kimi-k3`.
 
 Inference is billed **per token** from your prepaid wallet. There is no monthly or annual subscription.
 
 ## The endpoint
 
 ```
-https://api.podstack.ai/v1
+https://podstack.ai/api/v1
 ```
 
 ```
@@ -37,7 +37,7 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://api.podstack.ai/v1",
+    base_url="https://podstack.ai/api/v1",
     api_key=os.environ["PODSTACK_API_KEY"],
 )
 

@@ -39,7 +39,7 @@ The sidebar at [podstack.ai/app](https://podstack.ai/app) is grouped like this.
 | [Secrets](/docs/account/secrets/) | Store values jobs can read. |
 | [Billing](/docs/billing/) | See the wallet and add credits. |
 | [Team](/docs/account/team/) | Share a project. |
-| [API keys](/docs/account/api-tokens/) | Call `https://api.podstack.ai/v1`. |
+| [API keys](/docs/account/api-tokens/) | Call `https://podstack.ai/api/v1`. |
 | [Support](/docs/support/) | Open a ticket. |
 | [Settings](/docs/account/settings/) | Rename the project and set your location. |
 

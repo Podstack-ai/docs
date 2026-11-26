@@ -13,7 +13,7 @@ keywords:
 
 | Page | What it covers |
 | --- | --- |
-| [API keys](/docs/account/api-tokens/) | `ps_live_` keys for `https://api.podstack.ai/v1` |
+| [API keys](/docs/account/api-tokens/) | `ps_live_` keys for `https://podstack.ai/api/v1` |
 | [SSH keys](/docs/account/ssh-keys/) | Keys that can log into instances |
 | [Secrets](/docs/account/secrets/) | Values jobs and instances can read |
 | [Team](/docs/account/team/) | Projects, invites, and roles |
