@@ -10,7 +10,7 @@ keywords:
 
 # SDK wallet and pricing
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 Balance and transactions are read-only. They do not need `confirm`. Debits are negative. Do not invent a balance or convert currency in the client. Print the numbers the API returned.
 

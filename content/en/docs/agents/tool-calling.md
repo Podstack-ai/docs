@@ -10,7 +10,7 @@ keywords:
 
 # OpenAI and Anthropic tool-calling loop
 
-**requires podstack>=1.8.0 (releasing soon).**
+**requires podstack>=1.8.0.**
 
 ## Prompt to give the agent
 

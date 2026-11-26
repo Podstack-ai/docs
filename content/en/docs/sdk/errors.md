@@ -12,7 +12,7 @@ keywords:
 
 # SDK errors
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 Catch `podstack.PodstackError`. These subclasses are the ones to branch on:
 

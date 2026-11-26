@@ -10,7 +10,7 @@ keywords:
 
 # SDK inference
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 Chat, streaming, and embeddings go to `https://podstack.ai/api/v1`. Each of those calls spends wallet credits, so each one needs `confirm=True`. `dry_run=True` returns the JSON and sends nothing.
 

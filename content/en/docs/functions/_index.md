@@ -1,6 +1,6 @@
 ---
 title: Functions
-description: "Run a Python function on a Podstack GPU when it is called. The podstack package that deploys it is version 1.8.0, releasing soon."
+description: "Run a Python function on a Podstack GPU when it is called. Install podstack 1.8.0 or newer with pip install podstack."
 weight: 46
 keywords:
   - functions
@@ -16,9 +16,7 @@ Open [Functions](https://podstack.ai/app/functions). The page lists functions af
 
 ## Quick start
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
->
-> PyPI still serves podstack 1.7.0, which is the old notebook API. Do not use 1.7.0 for the snippets on this page. Version 1.8.0 replaces it. The full guide is [Python SDK](/docs/sdk/).
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/). The full guide is [Python SDK](/docs/sdk/).
 
 The console lists functions after the first call. Creating one is the Python package, not a separate CLI command. `podstack functions list` only lists functions that have already run.
 
@@ -28,7 +26,7 @@ The console lists functions after the first call. Creating one is the Python pac
 export PODSTACK_API_KEY=ps_live_...
 ```
 
-2. After 1.8.0 is on PyPI, decorate a function in a file and invoke it. The first call starts a GPU (2–4 minutes). Later calls take about 2 seconds. `confirm=True` is required before the call is sent.
+2. Decorate a function in a file and invoke it. The first call starts a GPU (2–4 minutes). Later calls take about 2 seconds. `confirm=True` is required before the call is sent.
 
 ```python
 import podstack

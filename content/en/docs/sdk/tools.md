@@ -10,7 +10,7 @@ keywords:
 
 # SDK tool calling
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 `podstack.tools()` returns three schema lists: `openai`, `anthropic`, and `mcp`. Names match the [CLI MCP tools](/docs/cli/mcp/). `execute_tool` runs one of them against a `Podstack` client.
 

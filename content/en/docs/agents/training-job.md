@@ -56,7 +56,7 @@ podstack jobs cancel <id> --yes
 
 `jobs logs` prints the text the API has. Run it again to see newer lines. There is no follow flag.
 
-**requires podstack>=1.8.0 (releasing soon):** `client.job_gpus.list()`, `client.jobs.submit(..., dry_run=True)`, then `confirm=True`, `client.jobs.logs(id)`, `client.jobs.cancel(id, confirm=True)`.
+**requires podstack>=1.8.0:** `client.job_gpus.list()`, `client.jobs.submit(..., dry_run=True)`, then `confirm=True`, `client.jobs.logs(id)`, `client.jobs.cancel(id, confirm=True)`.
 
 ## Expected output
 

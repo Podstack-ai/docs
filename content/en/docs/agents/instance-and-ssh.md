@@ -65,7 +65,7 @@ podstack gpu instances cp <id>:/workspace/result.txt ./result.txt
 podstack gpu instances delete <id>
 ```
 
-**requires podstack>=1.8.0 (releasing soon)** for the same sequence in Python: `instances.create(..., dry_run=True)`, then `confirm=True`, `instances.exec`, `instances.download`, `instances.terminate(..., confirm=True)`.
+**requires podstack>=1.8.0** for the same sequence in Python: `instances.create(..., dry_run=True)`, then `confirm=True`, `instances.exec`, `instances.download`, `instances.terminate(..., confirm=True)`.
 
 ## Expected output
 

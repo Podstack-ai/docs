@@ -1,7 +1,7 @@
 ---
 title: Install the Python SDK
 weight: 20
-description: "podstack 1.8.0 is releasing soon. PyPI still has 1.7.0, which is the old notebook API."
+description: "Install podstack 1.8.0 or newer from PyPI with pip install podstack."
 keywords:
   - pip install podstack
   - podstack 1.8.0
@@ -9,19 +9,13 @@ keywords:
 
 # Install the Python SDK
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
->
-> PyPI currently has podstack 1.7.0, the old notebook API. That package does not have the client, decorator, or tools on these pages. Wait for 1.8.0, or the install below will not match this documentation.
-
-When 1.8.0 is published:
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 ```bash
-python -m pip install "podstack>=1.8.0"
+pip install podstack
 python -c "import podstack; print(podstack.__version__)"
 ```
 
-Python 3.9 or newer. The only runtime dependency is `httpx`.
+Python 3.9 or newer. The only runtime dependency is `httpx`. The printed version is 1.8.0 or newer. If an older copy is already installed, upgrade with `pip install -U podstack`.
 
-The console command `podstack-mcp` and `python -m podstack.mcp` are the same MCP server. They are part of 1.8.0, not of 1.7.0.
-
-Check the version before you run a snippet. If it prints `1.7.0`, stop. That is the notebook API these pages replace.
+The console command `podstack-mcp` and `python -m podstack.mcp` are the same MCP server. Both ship in this package.

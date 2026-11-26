@@ -9,7 +9,7 @@ keywords:
 
 # Deploy a function and invoke it
 
-**requires podstack>=1.8.0 (releasing soon).** The CLI cannot create a function. `podstack functions list` and MCP `list_functions` only list functions that have already run. Do not use the podstack 1.7.0 notebook package.
+**requires podstack>=1.8.0.** The CLI cannot create a function. `podstack functions list` and MCP `list_functions` only list functions that have already run.
 
 ## Prompt to give the agent
 

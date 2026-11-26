@@ -1,7 +1,7 @@
 ---
 title: Python SDK
 weight: 80
-description: "The podstack Python package talks to https://podstack.ai/api/v1. Version 1.8.0 replaces the old notebook API and is releasing soon."
+description: "The podstack Python package talks to https://podstack.ai/api/v1. Install 1.8.0 or newer with pip install podstack."
 keywords:
   - podstack Python SDK
   - podstack 1.8.0
@@ -10,9 +10,9 @@ keywords:
 
 # Python SDK
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
->
-> PyPI currently has podstack 1.7.0, the old notebook API. Version 1.8.0 removes that surface. Do not install 1.7.0 for the pages in this section.
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
+
+Version 1.8.0 replaces the old notebook API. There is no compatibility shim.
 
 The 1.8.0 client calls `https://podstack.ai/api/v1`. GPU types, VRAM, regions, and prices come from the API. The package does not ship a catalogue or a price table.
 
@@ -30,7 +30,7 @@ Billable and destructive calls need `confirm=True`. `dry_run=True` returns the r
 
 | Page | What you can copy |
 | --- | --- |
-| [Install](/docs/sdk/install/) | The pip command, and why 1.7.0 is the wrong package |
+| [Install](/docs/sdk/install/) | `pip install podstack` |
 | [Authentication](/docs/sdk/authentication/) | `PODSTACK_API_KEY`, a client argument, or the CLI credentials file |
 | [Quickstart](/docs/sdk/quickstart/) | List GPUs, rates, and models. Nothing is billed |
 | [Functions](/docs/sdk/functions/) | Decorator, deploy, invoke, async invoke |
