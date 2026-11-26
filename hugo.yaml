@@ -68,10 +68,12 @@ languages:
     params:
       description: Modern GPU cloud platform for AI and machine learning workloads
 
-# To omit the Google Analytics script, put a ~ in place of the G-XXXXXXXXXX below.
+# GA4 property shared with podstack.ai. layouts/partials/analytics.html
+# loads it on the home page, section pages, and doc pages, and only runs
+# the tag when the hostname is docs.podstack.ai.
 services:
   googleAnalytics:
-    ID: G-XXXXXXXXXX
+    ID: G-864PRZ0KVJ
 
 markup:
   highlight:
