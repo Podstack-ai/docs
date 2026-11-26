@@ -86,6 +86,82 @@
     - title: Wallet
       slug: wallet
 
+- title: CLI
+  path: cli
+  pages:
+    - title: Install
+      slug: install
+    - title: Authentication
+      slug: authentication
+    - title: Command reference
+      slug: command-reference
+    - title: Connect an agent
+      slug: agents
+    - title: MCP server
+      slug: mcp
+    - title: Skills
+      slug: skills
+    - title: Troubleshooting
+      slug: troubleshooting
+
+- title: Python SDK
+  path: sdk
+  pages:
+    - title: Install
+      slug: install
+    - title: Authentication
+      slug: authentication
+    - title: Quickstart
+      slug: quickstart
+    - title: Functions
+      slug: functions
+    - title: GPU instances
+      slug: instances
+    - title: Jobs
+      slug: jobs
+    - title: Endpoints
+      slug: endpoints
+    - title: Inference
+      slug: inference
+    - title: Wallet and pricing
+      slug: wallet
+    - title: Tool calling
+      slug: tools
+    - title: MCP
+      slug: mcp
+    - title: Errors
+      slug: errors
+
+- title: Agent examples
+  path: agents
+  pages:
+    - title: Connect and verify
+      slug: connect-and-verify
+    - title: Pick a GPU
+      slug: pick-a-gpu
+    - title: Instance, exec, terminate
+      slug: instance-and-ssh
+    - title: Training job
+      slug: training-job
+    - title: Deploy a function
+      slug: deploy-function
+    - title: Endpoint and chat
+      slug: endpoint-and-chat
+    - title: Tool-calling loop
+      slug: tool-calling
+    - title: Wallet before and after
+      slug: wallet-check
+    - title: Clean up
+      slug: cleanup
+
+- title: Guides
+  path: guides
+  pages:
+    - title: CLI, SDK, or MCP
+      slug: cli-sdk-mcp
+    - title: Not available yet
+      slug: not-available
+
 - title: Support
   slug: support
   pages:

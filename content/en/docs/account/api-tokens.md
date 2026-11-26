@@ -2,9 +2,6 @@
 title: API keys
 description: "Create a ps_live_ Podstack API key and choose Full, Read only, Jobs, Functions and endpoints, or Inference."
 weight: 20
-aliases:
-  - /docs/cli/authentication/
-  - /docs/sdk/authentication/
 keywords:
   - ps_live_
   - API key

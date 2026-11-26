@@ -21,6 +21,9 @@ Podstack is the console at [podstack.ai](https://podstack.ai). You rent GPUs, ru
 | [Functions](/docs/functions/) | A Python function that runs on a GPU when you call it. |
 | [Deploy](/docs/deploy/) | Ready-to-run apps such as JupyterLab and ComfyUI on a dedicated GPU. |
 | [Reservations](/docs/reservations/) | A quoted cluster of 16 to 1,024 GPUs for a fixed term. |
+| [CLI](/docs/cli/) | The `podstack` command, version 1.2.0. Install, auth, GPU, jobs, agents, and MCP. |
+| [Python SDK](/docs/sdk/) | The `podstack` package, version 1.8.0, releasing soon. |
+| [Agent examples](/docs/agents/) | Recipes an agent can follow, with a confirm step before any spend. |
 
 GPU Cloud was formerly called QuickPod. Jobs was formerly called TrainPod. Older links under `/docs/quickpod/` and `/docs/trainpod/` still open those sections.
 
