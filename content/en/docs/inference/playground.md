@@ -1,7 +1,7 @@
 ---
 title: Playground
 weight: 70
-description: "Try Podstack models in the console at podstack.ai/app/models. The playground uses your signed-in session. API snippets call https://api.podstack.ai/v1 with a ps_live_ key."
+description: "Try Podstack models in the console at podstack.ai/app/models. The playground uses your signed-in session. API snippets call https://podstack.ai/api/v1 with a ps_live_ key."
 keywords:
   - inference playground
   - try a model
@@ -19,7 +19,7 @@ The console playground lets you try a model before you write a client. It runs a
 2. Open [Models](https://podstack.ai/app/models) and choose a model, or start from [Inference](https://podstack.ai/app/inference).
 3. Use the playground on that model. Chat models stream a reply. Image and video models take a prompt and return media.
 
-You do not paste an API key into the playground. The session is enough. To call the same model from code, create a `ps_live_` key and use the snippet on the model page. Those snippets use `https://api.podstack.ai/v1` and `PODSTACK_API_KEY`.
+You do not paste an API key into the playground. The session is enough. To call the same model from code, create a `ps_live_` key and use the snippet on the model page. Those snippets use `https://podstack.ai/api/v1` and `PODSTACK_API_KEY`.
 
 ## What you can compare
 

@@ -14,7 +14,7 @@ keywords:
 
 **How do I pay?** Razorpay, with cards, UPI, or netbanking. See [Wallet](/docs/billing/wallet/).
 
-**Is the API OpenAI-compatible?** Yes. Point an OpenAI SDK at `https://api.podstack.ai/v1` and send a `ps_live_` key. Model ids look like `podstack/kimi-k3`. See [Inference](/docs/inference/).
+**Is the API OpenAI-compatible?** Yes. Point an OpenAI SDK at `https://podstack.ai/api/v1` and send a `ps_live_` key. Model ids look like `podstack/kimi-k3`. See [Inference](/docs/inference/).
 
 **What is Secured versus Community?** Each GPU offer is one or the other. They are priced and stocked separately. An offer that does not name a class is Secured.
 

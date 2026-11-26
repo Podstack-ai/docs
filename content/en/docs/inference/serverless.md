@@ -4,23 +4,23 @@ aliases:
   - /docs/cli/models/
 title: Serverless Inference
 weight: 80
-description: "Podstack serverless inference is the OpenAI-compatible API at https://api.podstack.ai/v1. You do not manage GPUs. Usage is billed per token from the prepaid wallet."
+description: "Podstack serverless inference is the OpenAI-compatible API at https://podstack.ai/api/v1. You do not manage GPUs. Usage is billed per token from the prepaid wallet."
 keywords:
   - serverless inference
   - OpenAI-compatible API
   - per-token billing
-  - api.podstack.ai
+  - podstack.ai/api/v1
   - ps_live_ key
 ---
 
 # Serverless Inference
 
-Serverless inference is the hosted model API. You do not launch a GPU for it. Send an OpenAI-compatible request to `https://api.podstack.ai/v1` and Podstack serves the model. Usage is billed **per token** from your prepaid wallet.
+Serverless inference is the hosted model API. You do not launch a GPU for it. Send an OpenAI-compatible request to `https://podstack.ai/api/v1` and Podstack serves the model. Usage is billed **per token** from your prepaid wallet.
 
 There is one base URL. There is no separate inference host and no `/infer/v1` path.
 
 ```bash
-curl https://api.podstack.ai/v1/chat/completions \
+curl https://podstack.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{

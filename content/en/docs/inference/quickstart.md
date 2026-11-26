@@ -1,11 +1,11 @@
 ---
 title: Quickstart
 weight: 20
-description: "Create a ps_live_ API key and call https://api.podstack.ai/v1 with curl and the OpenAI Python and Node.js SDKs."
+description: "Create a ps_live_ API key and call https://podstack.ai/api/v1 with curl and the OpenAI Python and Node.js SDKs."
 keywords:
   - inference quickstart
   - OpenAI-compatible API
-  - api.podstack.ai
+  - podstack.ai/api/v1
   - ps_live_ key
   - podstack/kimi-k3
   - chat completions
@@ -18,7 +18,7 @@ Send a chat completion to Podstack. You need a funded wallet — inference is bi
 Base URL:
 
 ```
-https://api.podstack.ai/v1
+https://podstack.ai/api/v1
 ```
 
 ## Step 1 — Create an API key
@@ -38,7 +38,7 @@ See [Authentication](/docs/inference/authentication/) for access levels and revo
 The catalog changes. List it before you hardcode an id:
 
 ```bash
-curl https://api.podstack.ai/v1/models
+curl https://podstack.ai/api/v1/models
 ```
 
 Or open [podstack.ai/app/models](https://podstack.ai/app/models). Copy the `id` field. The examples below use `podstack/kimi-k3`.
@@ -48,7 +48,7 @@ Or open [podstack.ai/app/models](https://podstack.ai/app/models). Copy the `id` 
 ### curl
 
 ```bash
-curl https://api.podstack.ai/v1/chat/completions \
+curl https://podstack.ai/api/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -68,7 +68,7 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://api.podstack.ai/v1",
+    base_url="https://podstack.ai/api/v1",
     api_key=os.environ["PODSTACK_API_KEY"],
 )
 
@@ -93,7 +93,7 @@ npm install openai
 import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: "https://api.podstack.ai/v1",
+  baseURL: "https://podstack.ai/api/v1",
   apiKey: process.env.PODSTACK_API_KEY,
 });
 

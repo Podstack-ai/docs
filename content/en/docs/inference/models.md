@@ -1,7 +1,7 @@
 ---
 title: Models
 weight: 30
-description: "Find Podstack model ids. The live catalog is at podstack.ai/app/models and GET https://api.podstack.ai/v1/models. Example id: podstack/kimi-k3."
+description: "Find Podstack model ids. The live catalog is at podstack.ai/app/models and GET https://podstack.ai/api/v1/models. Example id: podstack/kimi-k3."
 keywords:
   - Podstack model catalog
   - list inference models
@@ -25,7 +25,7 @@ Open [podstack.ai/app/models](https://podstack.ai/app/models) or [podstack.ai/ap
 `GET /v1/models` is public:
 
 ```bash
-curl https://api.podstack.ai/v1/models
+curl https://podstack.ai/api/v1/models
 ```
 
 Use the `id` string from `data[]` as the `model` field. One model is `GET /v1/models/{id}`.

@@ -471,7 +471,7 @@ For each entry: set the **Shortcut** and **Message** exactly as listed.
 | Shortcut | Message |
 |---|---|
 | `finetune` | `To fine-tune a model: go to AI Studio → browse the model catalog → select a base model → create a fine-tuning job with your dataset and parameters. Need help choosing between Unsloth (fast LoRA) and Axolotl (full fine-tuning)?` |
-| `inference` | `Our Inference API is OpenAI-compatible at https://api.podstack.ai/v1. Create a ps_live_ key and point your OpenAI SDK at that base URL.` |
+| `inference` | `Our Inference API is OpenAI-compatible at https://podstack.ai/api/v1. Create a ps_live_ key and point your OpenAI SDK at that base URL.` |
 
 - [ ] **Documentation (10 responses)**
 

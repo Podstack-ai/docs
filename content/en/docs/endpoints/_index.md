@@ -28,4 +28,4 @@ Set min replicas to 0 to scale to zero. While replicas are up, they draw from th
 
 The card shows status, GPU, replica count, request count, and the URL when one is assigned. Deleting an endpoint removes it.
 
-Point an OpenAI client at that URL with a `ps_live_` key. Hosted catalog models, which you do not deploy yourself, are [Inference](/docs/inference/) at `https://api.podstack.ai/v1`.
+Point an OpenAI client at that URL with a `ps_live_` key. Hosted catalog models, which you do not deploy yourself, are [Inference](/docs/inference/) at `https://podstack.ai/api/v1`.
