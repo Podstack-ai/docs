@@ -103,12 +103,13 @@ languages:
     params:
       description: "Podstack docs for GPU cloud, jobs, inference, endpoints, functions, deploy, reservations, and the prepaid wallet."
 
-# GA4 property shared with podstack.ai. layouts/partials/analytics.html
-# loads it on the home page, section pages, and doc pages, and only runs
-# the tag when the hostname is docs.podstack.ai.
+# GA4 web stream shared with podstack.ai. layouts/partials/analytics.html
+# loads it on section pages and doc pages, and only runs the tag when
+# the hostname is docs.podstack.ai. The site root redirects to
+# /docs/getting-started/ and does not load the tag.
 services:
   googleAnalytics:
-    ID: G-864PRZ0KVJ
+    ID: G-CE2GTDM8W8
 
 markup:
   highlight:
