@@ -68,10 +68,12 @@ languages:
     params:
       description: Modern GPU cloud platform for AI and machine learning workloads
 
-# To omit the Google Analytics script, put a ~ in place of the G-XXXXXXXXXX below.
+# No GA4 measurement ID is published on podstack.ai. Leave this null so
+# layouts/partials/analytics.html does not load a placeholder gtag.
+# Set ID to a real G- measurement ID to enable it on every docs page.
 services:
   googleAnalytics:
-    ID: G-XXXXXXXXXX
+    ID: ~
 
 markup:
   highlight:
