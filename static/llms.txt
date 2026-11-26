@@ -4,10 +4,10 @@
 
 ## Products
 
-- [GPU Cloud](https://docs.podstack.ai/docs/gpu-cloud/): dedicated machines. Formerly QuickPod.
+- [GPU Cloud](https://docs.podstack.ai/docs/gpu-cloud/): dedicated machines.
 - [Launch an instance](https://docs.podstack.ai/docs/gpu-cloud/launch-a-pod/)
 - [Instances and SSH](https://docs.podstack.ai/docs/gpu-cloud/instances/): SSH hostnames that Podstack assigns are on cloud.podstack.ai.
-- [Jobs](https://docs.podstack.ai/docs/jobs/): a script on a GPU until it finishes. Formerly TrainPod.
+- [Jobs](https://docs.podstack.ai/docs/jobs/): a script on a GPU until it finishes.
 - [Inference](https://docs.podstack.ai/docs/inference/): base URL https://api.podstack.ai/v1, bearer ps_live_..., example model podstack/kimi-k3.
 - [Endpoints](https://docs.podstack.ai/docs/endpoints/): Hugging Face models on dedicated GPUs that scale to zero.
 - [Functions](https://docs.podstack.ai/docs/functions/): pip install podstack-sdk, PODSTACK_API_KEY=ps_live_...

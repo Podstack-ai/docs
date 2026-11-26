@@ -1,225 +1,85 @@
-{{/* JSON-LD Structured Data for SEO - Comprehensive Schema.org Implementation */}}
+{{- $description := site.Params.description -}}
+{{- $logo := absURL "images/logo.png" -}}
+{{- $og := site.Params.seo.ogImage | default "/images/og-image.png" | absURL -}}
+{{- $modified := .Lastmod -}}
+{{- $published := .Date -}}
+{{- if $published.IsZero -}}
+  {{- $published = $modified -}}
+{{- end -}}
+{{- $pageDescription := .Description | default .Params.description | default $description -}}
 
-{{/* Organization Schema with Enhanced Details */}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Podstack",
-  "alternateName": ["Podstack AI", "Podstack GPU Cloud", "PodStack"],
-  "url": "https://podstack.ai",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "{{ .Site.BaseURL }}images/logo.png",
-    "width": 512,
-    "height": 512
-  },
-  "description": "{{ .Site.Params.description }}",
-  "foundingDate": "2022",
-  "contactPoint": [
-    {
-      "@type": "ContactPoint",
-      "email": "support@podstack.ai",
-      "contactType": "customer support",
-      "availableLanguage": ["English"]
-    }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "IN"
-  },
-  "areaServed": "Worldwide",
-  "knowsAbout": [
-    "GPU Cloud Computing",
-    "Machine Learning Infrastructure",
-    "Deep Learning",
-    "Artificial Intelligence",
-    "NVIDIA GPU Servers",
-    "OpenAI-compatible inference",
-    "High Performance Computing"
-  ]
-}
+{{- dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "name" "Podstack"
+  "url" "https://podstack.ai"
+  "logo" (dict "@type" "ImageObject" "url" $logo)
+  "description" $description
+  "address" (dict "@type" "PostalAddress" "addressCountry" "IN")
+  "contactPoint" (dict "@type" "ContactPoint" "email" "support@podstack.ai" "contactType" "customer support" "availableLanguage" "English")
+  | jsonify | safeJS -}}
 </script>
 
-{{/* WebSite Schema */}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Podstack Documentation",
-  "url": "{{ .Site.BaseURL }}",
-  "description": "{{ .Site.Params.description }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Podstack"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "{{ .Site.BaseURL }}search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
+{{- dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" "Podstack Documentation"
+  "url" site.BaseURL
+  "description" $description
+  "publisher" (dict "@type" "Organization" "name" "Podstack")
+  | jsonify | safeJS -}}
 </script>
 
-{{/* TechArticle Schema for documentation pages */}}
-{{ if and .IsPage (ne .Kind "home") }}
+{{ if or .IsPage .IsSection }}
+{{- $article := dict
+  "@context" "https://schema.org"
+  "@type" "TechArticle"
+  "headline" .Title
+  "description" $pageDescription
+  "url" .Permalink
+  "image" $og
+  "author" (dict "@type" "Organization" "name" "Podstack")
+  "publisher" (dict "@type" "Organization" "name" "Podstack" "logo" (dict "@type" "ImageObject" "url" $logo))
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+-}}
+{{- if not $published.IsZero -}}
+  {{- $article = merge $article (dict "datePublished" ($published.Format "2006-01-02")) -}}
+{{- end -}}
+{{- if not $modified.IsZero -}}
+  {{- $article = merge $article (dict "dateModified" ($modified.Format "2006-01-02")) -}}
+{{- end -}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "{{ .Title }}",
-  "description": "{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
-  "url": "{{ .Permalink }}",
-  "datePublished": "{{ .Date.Format "2006-01-02" }}",
-  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-  "author": {
-    "@type": "Organization",
-    "name": "Podstack"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Podstack",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ .Site.BaseURL }}images/logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ .Permalink }}"
-  },
-  "keywords": "{{ with .Params.keywords }}{{ delimit . ", " }}{{ else }}{{ .Site.Params.seo.keywords }}{{ end }}",
-  "about": {
-    "@type": "SoftwareApplication",
-    "name": "Podstack",
-    "applicationCategory": "Cloud Computing Platform",
-    "operatingSystem": "Cloud"
-  }
-}
+{{- $article | jsonify | safeJS -}}
 </script>
 {{ end }}
 
-{{/* BreadcrumbList Schema */}}
-{{ if .Parent }}
+{{ if in .RelPermalink "/docs/" }}
+{{- $crumbs := slice (dict "name" "Documentation" "url" (absURL "docs/")) -}}
+{{- range .Ancestors.Reverse -}}
+  {{- if and (ne .Kind "home") (ne .RelPermalink "/docs/") -}}
+    {{- $crumbs = $crumbs | append (dict "name" .Title "url" .Permalink) -}}
+  {{- end -}}
+{{- end -}}
+{{- if ne .RelPermalink "/docs/" -}}
+  {{- $crumbs = $crumbs | append (dict "name" .Title "url" .Permalink) -}}
+{{- end -}}
+{{- $items := slice -}}
+{{- range $i, $crumb := $crumbs -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "name" $crumb.name "item" $crumb.url) -}}
+{{- end -}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Documentation",
-      "item": "{{ .Site.BaseURL }}docs/"
-    }
-    {{ $position := 2 }}
-    {{ range .Ancestors.Reverse }}
-    {{ if ne .Title "Documentation" }}
-    ,{
-      "@type": "ListItem",
-      "position": {{ $position }},
-      "name": "{{ .Title }}",
-      "item": "{{ .Permalink }}"
-    }
-    {{ $position = add $position 1 }}
-    {{ end }}
-    {{ end }}
-    ,{
-      "@type": "ListItem",
-      "position": {{ $position }},
-      "name": "{{ .Title }}",
-      "item": "{{ .Permalink }}"
-    }
-  ]
-}
+{{- dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items | jsonify | safeJS -}}
 </script>
 {{ end }}
 
+{{ with .Params.faq }}
+{{- $questions := slice -}}
+{{- range . -}}
+  {{- $questions = $questions | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) -}}
+{{- end -}}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Podstack",
-  "applicationCategory": "CloudApplication",
-  "operatingSystem": "Cloud",
-  "description": "Rent GPUs by the second, run jobs, and serve models on an OpenAI-compatible API. Prepaid wallet. Prices show in INR for India and USD elsewhere.",
-  "url": "https://podstack.ai",
-  "featureList": [
-    "GPU Cloud instances",
-    "Jobs",
-    "OpenAI-compatible inference",
-    "Endpoints",
-    "Functions",
-    "Deploy",
-    "Reservations",
-    "Prepaid wallet",
-    "Razorpay top-ups"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "Podstack"
-  }
-}
-</script>
-
-
-{{/* HowTo Schema for Documentation Pages */}}
-{{ if and .IsPage (eq .Section "docs") }}
-{{ if or (in .Title "Getting Started") (in .Title "Installation") (in .Title "Setup") (in .Title "Deploy") (in .Title "Tutorial") }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "{{ .Title }}",
-  "description": "{{ with .Params.description }}{{ . }}{{ else }}Learn how to {{ .Title | lower }} with Podstack GPU Cloud{{ end }}",
-  "image": "{{ .Site.BaseURL }}images/og-image.svg",
-  "totalTime": "PT10M",
-  "estimatedCost": {
-    "@type": "MonetaryAmount",
-    "currency": "USD",
-    "value": "0"
-  },
-  "tool": [
-    {
-      "@type": "HowToTool",
-      "name": "Podstack Account"
-    },
-    {
-      "@type": "HowToTool",
-      "name": "Web Browser"
-    }
-  ],
-  "supply": [
-    {
-      "@type": "HowToSupply",
-      "name": "GPU Credits"
-    }
-  ]
-}
-</script>
-{{ end }}
-{{ end }}
-
-{{/* ItemList Schema for Documentation Sections */}}
-{{ if .IsSection }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "{{ .Title }} Documentation",
-  "description": "{{ with .Params.description }}{{ . }}{{ else }}Podstack documentation for {{ .Title }}{{ end }}",
-  "numberOfItems": {{ len .Pages }},
-  "itemListElement": [
-    {{ range $index, $page := .Pages }}
-    {{ if $index }},{{ end }}
-    {
-      "@type": "ListItem",
-      "position": {{ add $index 1 }},
-      "name": "{{ $page.Title }}",
-      "url": "{{ $page.Permalink }}"
-    }
-    {{ end }}
-  ]
-}
+{{- dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $questions | jsonify | safeJS -}}
 </script>
 {{ end }}

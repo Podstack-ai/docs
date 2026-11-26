@@ -30,7 +30,6 @@
   <meta name="description" content="Page not found">
   <meta name="robots" content="noindex, nofollow">
   <title>404 - Page Not Found · {{ .Site.Title }}</title>
-  <link rel="canonical" href="{{ .Site.BaseURL }}">
 
   {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/home.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") (resources.Get "css/404.css") | resources.Concat "assets/css/404-page.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">

@@ -11,7 +11,6 @@ aliases:
   - /docs/cli/files/
 keywords:
   - Jobs
-  - TrainPod
   - GPU job
 ---
 

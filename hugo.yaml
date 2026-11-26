@@ -4,7 +4,7 @@
 # 
 # KEY SETTINGS:
 # - baseURL: Must match GitHub Pages URL including repo name
-# - enableGitInfo: False (not needed for this site)
+# - enableGitInfo: true so lastmod comes from git, not 0001-01-01
 # - defaultContentLanguage: en (English)
 # - permalinks.docs: Auto-generate URLs from folder structure
 # - outputs.home: HTML, RSS, JSON (for search index)
@@ -31,7 +31,19 @@
 # CRITICAL for GitHub Pages: Must include repository name in URL
 baseURL: https://docs.podstack.ai/
 
-enableGitInfo: false
+enableGitInfo: true
+
+# Prefer an explicit date, then the last git commit, then the file time.
+frontmatter:
+  date:
+    - date
+    - :git
+    - :fileModTime
+  lastmod:
+    - lastmod
+    - :git
+    - date
+    - :fileModTime
 
 defaultContentLanguage: en
 
@@ -66,7 +78,7 @@ languages:
     contentDir: content/en
     title: Podstack Docs
     params:
-      description: Modern GPU cloud platform for AI and machine learning workloads
+      description: "Podstack docs for GPU cloud, jobs, inference, endpoints, functions, deploy, reservations, and the prepaid wallet."
 
 # GA4 property shared with podstack.ai. layouts/partials/analytics.html
 # loads it on the home page, section pages, and doc pages, and only runs
@@ -87,11 +99,11 @@ markup:
         title: true
 
 params:
-  description: "Podstack - GPU cloud for AI and machine learning. Prepaid wallet, GPU time billed per second from the hourly rate. Prices in INR for India and USD elsewhere."
+  description: "Podstack docs for GPU cloud, jobs, inference, endpoints, functions, deploy, reservations, and the prepaid wallet. GPU time is billed per second. Prices show in INR for India and USD elsewhere."
 
   seo:
     keywords: "Podstack, GPU cloud, GPU instances, jobs, OpenAI-compatible inference, api.podstack.ai, ps_live_, endpoints, functions, deploy, reservations, prepaid wallet, per-second GPU billing, Razorpay"
-    ogImage: /images/og-image.svg
+    ogImage: /images/og-image.png
 
     # Competitor comparison keywords for rich snippets
     competitorKeywords:
@@ -115,8 +127,8 @@ params:
       - "GPU cloud benchmark"
 
   project:
-    # To omit the startYear, put a ~ in its place.
-    startYear: 2022
+    # Founding year is not published. Leave this unset rather than inventing one.
+    startYear: ~
     presentYear: 2025
     github:
       repo: username/repo
@@ -143,13 +155,13 @@ params:
     subtitle: GPU Cloud Platform
 
   home:
-    heading: Your next
-    headingSegment2: Theme
-    description: Description
+    heading: Podstack Docs
+    headingSegment2: ""
+    description: "GPU cloud, jobs, inference, and billing."
     getStartedPath: docs/
 
   enableOGXSEO: true # Enable OG and SEO meta tags
-  og_image: /images/logo.png # Default OG image for social sharing
+  og_image: /images/og-image.png
 
   # Custom CSS for color overrides
   custom_css:
@@ -167,8 +179,3 @@ menus:
       pre: <i aria-hidden>📖</i>
       pageRef: /docs
       weight: 20
-    - identifier: labs
-      name: Labs
-      pre: <i aria-hidden>🧪</i>
-      pageRef: /labs
-      weight: 30
