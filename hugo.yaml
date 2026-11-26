@@ -47,6 +47,23 @@ frontmatter:
 
 defaultContentLanguage: en
 
+# Agent Markdown copies. Hugo writes each one beside its HTML as index.md.
+# scripts/publish-agent-docs.py then moves leaf pages to slug.md, leaves
+# section roots as index.md, and writes pages.json, pages.yaml, llms.txt,
+# and llms-full.txt. The GitHub Pages workflow runs that script after Hugo.
+mediaTypes:
+  text/markdown:
+    suffixes:
+      - md
+
+outputFormats:
+  markdown:
+    mediaType: text/markdown
+    baseName: index
+    isPlainText: true
+    isHTML: false
+    notAlternative: true
+
 # Output formats for search and sitemap
 outputs:
   home:
@@ -54,6 +71,12 @@ outputs:
     - RSS
     - JSON
     - sitemap
+  page:
+    - HTML
+    - markdown
+  section:
+    - HTML
+    - markdown
 
 # Sitemap configuration
 sitemap:

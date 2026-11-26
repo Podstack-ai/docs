@@ -1,0 +1,5 @@
+{{- if .IsPage -}}
+{{- printf "%s.md" (strings.TrimSuffix "/" .RelPermalink) | absURL -}}
+{{- else -}}
+{{- printf "%sindex.md" .RelPermalink | absURL -}}
+{{- end -}}

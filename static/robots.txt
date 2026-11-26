@@ -133,8 +133,11 @@ Allow: /
 # Sitemaps - Primary
 Sitemap: https://docs.podstack.ai/sitemap.xml
 
-# LLM-friendly site index (llmstxt.org)
-# See: https://docs.podstack.ai/llms.txt
+# LLM-friendly indexes
+# https://docs.podstack.ai/llms.txt
+# https://docs.podstack.ai/llms-full.txt
+# https://docs.podstack.ai/pages.json
+# https://docs.podstack.ai/pages.yaml
 
 # Host directive for Yandex
 Host: https://docs.podstack.ai

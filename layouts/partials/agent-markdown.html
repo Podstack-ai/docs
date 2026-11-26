@@ -1,0 +1,35 @@
+{{- $desc := .Params.description | default .Description | default "" | plainify | replaceRE `\s+` " " | strings.TrimSpace -}}
+{{- $title := .Title | plainify -}}
+---
+title: {{ $title | jsonify }}
+description: {{ $desc | jsonify }}
+url: {{ .Permalink }}
+{{- if and .Lastmod (not .Lastmod.IsZero) }}
+lastmod: {{ .Lastmod.Format "2006-01-02" }}
+{{- end }}
+---
+
+{{- $base := strings.TrimSuffix "/" site.BaseURL -}}
+{{- $body := .RawContent -}}
+{{- $body = replace $body "](/" (printf "](%s/" $base) -}}
+{{- $body = replace $body "href=\"/" (printf "href=\"%s/" $base) -}}
+{{- $body = replaceRE `(?s)<!--.*?-->` "" $body | strings.TrimSpace -}}
+{{ print "\n\n" }}{{ $body }}
+{{- with .Params.faq }}
+
+## FAQ
+{{- range . }}
+
+### {{ .q }}
+
+{{ .a }}
+{{- end }}
+{{- end }}
+{{- $children := .Pages.ByWeight -}}
+{{- if and .IsSection $children }}
+
+## In this section
+{{- range $children }}
+- [{{ .Title }}]({{ .Permalink }})
+{{- end }}
+{{- end }}

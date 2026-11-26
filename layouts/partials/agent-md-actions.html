@@ -1,0 +1,27 @@
+{{- $md := partial "agent-md-url.html" . | strings.TrimSpace -}}
+<p class="agent-md">
+  <a href="{{ $md }}">View as Markdown</a>
+  <button type="button" data-copy-markdown="{{ $md }}">Copy for LLM</button>
+</p>
+<script>
+(function () {
+  document.querySelectorAll("[data-copy-markdown]").forEach(function (button) {
+    if (button.dataset.copyBound) return;
+    button.dataset.copyBound = "1";
+    button.addEventListener("click", function () {
+      var label = button.textContent;
+      fetch(button.getAttribute("data-copy-markdown"))
+        .then(function (response) {
+          if (!response.ok) throw new Error("missing");
+          return response.text();
+        })
+        .then(function (text) { return navigator.clipboard.writeText(text); })
+        .then(function () {
+          button.textContent = "Copied";
+          setTimeout(function () { button.textContent = label; }, 1600);
+        })
+        .catch(function () { button.textContent = "Copy failed"; });
+    });
+  });
+})();
+</script>
