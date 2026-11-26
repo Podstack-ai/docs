@@ -19,7 +19,6 @@ aliases:
   - /docs/advanced/ai-studio/
 keywords:
   - GPU Cloud
-  - QuickPod
   - instances
 ---
 

@@ -29,32 +29,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Redirect to Getting Started page -->
-  <meta http-equiv="refresh" content="0; url=/docs/getting-started/">
-  <link rel="canonical" href="/docs/getting-started/">
-
-  <meta name="description" content="{{ .Site.Params.description | .RenderString }}">
-  <meta name="author" content="{{ .Site.Params.author.name }}">
-  {{ with .Site.Params.keywords }}
-  <meta name="keywords" content="{{ delimit . ", " }}">
-  {{ end }}
-  <meta name="theme-color" content="{{ .Site.Params.project.themeColor.light }}" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="{{ .Site.Params.project.themeColor.dark }}" media="(prefers-color-scheme: dark)">
-  {{ with .Params.robots -}}
-  <meta name="robots" content="{{ . }}">
-  {{- else -}}
-  <meta name="robots" content="index, follow">
-  {{- end }}
-
-  <title>{{ .Site.Title | .RenderString }} · {{ .Site.Params.description | .RenderString }}</title>
+  <meta http-equiv="refresh" content="0; url={{ "docs/getting-started/" | absURL }}">
+  <link rel="canonical" href="{{ "docs/getting-started/" | absURL }}">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <title>{{ .Site.Title }}</title>
 
   {{- $css := slice (resources.Get "css/reset.css") (resources.Get "css/theme.css") (resources.Get "css/_btn.css") (resources.Get "css/home.css") (resources.Get "css/logo.css") (resources.Get "css/header.css") (resources.Get "css/footer.css") | resources.Concat "assets/css/home.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.integrity }}">
 
   {{ partial "favicons.html" . }}
   {{ partial "analytics.html" . }}
-  {{ partial "og-x-seo.html" . }}
-  {{ partial "structured-data.html" . }}
 </head>
 
 <body data-baseurl="{{ .Site.BaseURL }}">

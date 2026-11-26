@@ -16,6 +16,15 @@ aliases:
 keywords:
   - getting started
   - Podstack console
+faq:
+  - q: How do I create an account?
+    a: Sign in with Google, Microsoft, or GitHub.
+  - q: How do I add credits?
+    a: Open Billing and add credits. Cards, UPI, and netbanking go through Razorpay.
+  - q: Do I need an SSH key before I launch a GPU?
+    a: Yes. Add an SSH key on the project before you launch a machine.
+  - q: Is there a Podstack command-line reference?
+    a: No. GPU Cloud, Jobs, Endpoints, Functions, and Inference are used from the console and from https://api.podstack.ai/v1 with a ps_live_ key.
 ---
 
 # Getting started
