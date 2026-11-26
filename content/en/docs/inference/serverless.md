@@ -1,4 +1,7 @@
 ---
+aliases:
+  - /docs/advanced/serverless-gpu/
+  - /docs/cli/models/
 title: Serverless Inference
 weight: 80
 description: "Podstack serverless inference is the OpenAI-compatible API at https://api.podstack.ai/v1. You do not manage GPUs. Usage is billed per token from the prepaid wallet."

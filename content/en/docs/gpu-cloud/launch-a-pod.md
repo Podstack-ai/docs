@@ -1,145 +1,40 @@
 ---
+title: Launch an instance
+description: "Launch a GPU from the Podstack cloud board. Pick a region, disk, environment, and SSH key."
+weight: 30
 aliases:
-  - /docs/quickpod/launch-a-pod/
-title: Launch a Pod
-weight: 20
-description: "Click-by-click guide to launching a GPU pod on Podstack GPU Cloud — pick a GPU, choose a template, configure resources and storage, and connect over SSH, web terminal, or Jupyter."
+  - /docs/compute/pods/creating-pods/
+  - /docs/jobs/provision-a-gpu/
 keywords:
-  - launch GPU pod
-  - create pod
-  - deploy GPU container
-  - GPU Cloud launch
-  - select GPU instance
-  - fractional GPU
-  - pod SSH access
-  - Jupyter notebook GPU
-  - expose port pod
-  - pod configuration
+  - launch GPU
+  - instance
 ---
-# Launch a Pod
 
-This is the full click-by-click flow for launching a GPU Cloud from the customer portal. The launch wizard has three steps — **Instance Type**, **Template**, and **Configure** — shown as a progress indicator at the top of the page.
+# Launch an instance
 
-<!-- screenshot: the Launch Pod wizard header with the 3-step progress indicator -->
+You need a [wallet balance](/docs/billing/wallet/) that covers the first hour, and at least one [SSH key](/docs/account/ssh-keys/) in the project.
 
-## Before you start
+1. Open [GPU Cloud](https://podstack.ai/app).
+2. Filter by GPU model and type, search by region, and sort by price.
+3. Click **Launch** on a card.
+4. Walk through the wizard, then click **Launch**.
 
-You need:
+The instance shows up under [Instances](/docs/gpu-cloud/instances/) when it boots.
 
-- A **verified account** — launching a pod requires KYC verification. If you aren't verified, a verification prompt appears instead of the wizard. See [KYC](/docs/billing/kyc/).
-- A **project** to launch into. See [Creating Projects](/docs/projects/creating-projects/).
-- **Wallet balance** — pods bill per second while running. See [Wallet & Billing](/docs/billing/wallet/).
-- (Optional) An **SSH key** if you want shell access. Keys can only be added during pod creation, so add one first at **SSH Keys** if you don't have one. See [SSH Keys](/docs/account/ssh-keys/).
+## Wizard
 
-## Step 1 — Select Instance Type
+**Region.** Leave "Any region, cheapest price" on, or pick a region that has a free machine. The console already has labels for `ca-central`, `us-central`, `us-east`, `us-west`, `eu-west`, `eu-east`, `asia-pacific`, and `india-south`. Any other id is shown from its name. Only regions with stock appear.
 
-1. Go to **Pods** and click **Launch Pod**.
-2. On the **Select Instance Type** step, browse the available GPUs. Use the search box (**Search GPUs (e.g., A100, RTX, H100)...**) to filter.
-3. By default only GPUs with live availability are shown. Tick **Show All GPUs** to include everything, including sold-out types.
-4. Each GPU card shows its VRAM, CUDA/Tensor cores, the included CPU and RAM (e.g. *Includes 4 vCPU + 16GB RAM*), an availability badge (e.g. **3/8 Available**), and the live hourly rate. You are billed per second from that rate, from boot until you terminate the pod. Prices on [podstack.ai](https://podstack.ai/#pricing) are INR in India and USD elsewhere.
-5. Click **Select** on the GPU you want.
-   - If the GPU is sold out, the button reads **Join Waitlist** instead. Click it to queue for capacity; you'll be notified when it frees up. See [Troubleshooting](/docs/gpu-cloud/troubleshooting/).
+**Name.** Letters, numbers, dots, hyphens, and underscores. 63 characters at most. The name is what you see in Instances and on the bill.
 
-Selecting a GPU auto-fills sensible defaults: 1 GPU, 100% of the card, and the CPU/RAM included with that GPU.
+**Resources.** Pick a CPU and memory size, or the cheapest available. Disk starts at 100 GB in the wizard. On machines that allow a larger disk you can set 10 to 1,000 GB. Extra disk beyond what is included is added to the hourly price. Some machines have a fixed disk.
 
-> **Fractional GPUs.** You don't have to take a whole card. You'll set the exact GPU count and the percentage of each GPU in Step 3 — see [Fractional GPUs](/docs/gpu-cloud/manage-and-scale/#fractional-gpus).
+**Environment.** The list comes from the environments catalog, so it can change. When a framework id is one of `pytorch`, `cuda`, `cuda-devel`, `jupyter`, `tensorflow`, `jax`, or `vllm`, the console labels it PyTorch, CUDA, Jupyter, TensorFlow, JAX, or vLLM. **Base** is drivers and CUDA only. **VM** is a full root VM, and only if that GPU has a VM machine. You can pick a framework version or a VM operating system when the catalog offers one.
 
-## Step 2 — Choose a Template
+**Access.** Attach at least one SSH key from this project. Every key is attached unless you clear it.
 
-1. On the **Choose a Template** step, either:
-   - Click a **1-click template** to start from a pre-configured app (image, ports, and command already set), or
-   - Click **Custom Configuration** to configure everything manually.
-2. Filter templates with the search box (**Search templates by name, image, GPU...**) or the **All Categories** dropdown. Templates you've saved yourself appear under the **User Templates** category.
-3. Each template card shows its name, description, container image, and resource chips (vCPU, RAM, GPU type). Click one to pre-fill the configuration and jump to Step 3.
+You can also add a dedicated public IPv4. See [Disk and network](/docs/gpu-cloud/disk-and-network/). Port 22 is not forwarded. SSH stays on the instance SSH command.
 
-For the full catalog and how to save your own, see [Templates](/docs/gpu-cloud/templates/).
+**Review.** The price is the machine plus extra disk plus a dedicated IP if you asked for one. The launch is refused if the wallet does not cover the first hour, or if the price moved up since the wizard showed it.
 
-## Step 3 — Configure Your Pod
-
-The **Configure Your Pod** step is a set of cards on the left with a live **Summary** panel on the right.
-
-### Basic Info
-
-| Field | Notes |
-|---|---|
-| **Pod Name** | Required. A descriptive name, e.g. `my-training-pod`. |
-| **Project** | Required. The project this pod is billed to. |
-| **Container Image** | The Docker image. Pre-filled from your template, or defaults to a PyTorch image for custom configs. |
-| **Private Registry (requires authentication)** | Tick to reveal **Registry URL**, **Registry Username**, and **Registry Password/Token** for private images. |
-
-### Resources
-
-- **vCPU** and **Memory (GB)** — set each with the slider or the number box. When a GPU is selected, the amount included with it is free; anything above that adds cost. A live caption shows how much capacity is free right now.
-- **GPU Type** — read-only; shows the GPU you picked in Step 1.
-- **Number of GPUs** — how many GPUs to attach (1 up to what's available).
-- **GPU Memory/Cores per GPU** — the percentage of each GPU to use, from **5%** to **100%** in 5% steps. This is the fractional-GPU control. A donut chart shows what's already booked, your request, and what's free, and a summary line shows the effective VRAM.
-
-<!-- screenshot: the Resources card showing the vCPU/Memory sliders and the GPU percentage donut -->
-
-### NFS Volume (optional)
-
-Attach persistent storage so your work survives restarts:
-
-1. In the **NFS Volume** card, pick a volume from the list (or **No Volume** for ephemeral storage only).
-2. Set the **Mount Path Inside Pod** — defaults to `/data`, the path every Podstack image expects.
-3. No volume yet? Click **Create Volume** (a project must be selected first).
-
-See [Storage & Data](/docs/gpu-cloud/storage-and-data/) for details.
-
-### Configuration
-
-- **SSH Key Access** — pick an SSH key to enable shell access. Port 22 is exposed automatically. *SSH keys can only be added during pod creation*, so add one first if the list is empty. Choose **No SSH Access** to skip.
-- **Environment Variables** — click **+ Add Variable** to add `KEY` / `value` pairs.
-- **Entry Point Command** (optional) — override the container's default command, e.g. `python app.py`.
-- **Exposed Ports** — enter a port and click **Add Port** to make it reachable over HTTPS. Each container port is mapped to a public URL after launch. Jupyter/notebook images default to port `8888`.
-
-### Billing
-
-GPU time is billed **per second from the hourly rate**, from boot until you terminate the pod. Extra disk is billed per GB-hour. There is no per-minute, daily, monthly, quarterly, or annual plan. The summary shows the hourly rate the meter uses. Live prices are on [podstack.ai/#pricing](https://podstack.ai/#pricing).
-
-### Review and launch
-
-1. Check the **Summary** panel — it shows your GPU allocation, CPU, memory, and the hourly rate.
-2. Click **Launch Pod**. (The button stays disabled until Pod Name and Project are set.)
-3. You're taken to the **Pods** list, where the new pod appears and moves through **creating → pending → running**.
-
-> **Tip:** Want to reuse this exact setup? Click **Save as Template** in the Summary panel before launching. See [Templates](/docs/gpu-cloud/templates/#save-your-own-template).
-
-If you see an **insufficient balance** prompt, top up your wallet and try again. If the GPU became unavailable between Step 1 and launch, you'll be offered the waitlist.
-
-## Connect to your pod
-
-Open the pod from the **Pods** list to reach its detail page. Depending on how you configured it, you'll see:
-
-### Web Terminal
-
-On a running pod, click **Open Terminal** in the **Web Terminal** card for an interactive browser shell — no SSH client or keys required.
-
-### SSH
-
-If you attached an SSH key, the **SSH Access** card shows a ready-to-copy command:
-
-```bash
-ssh -i ~/.ssh/<key_name> podstack@ssh-<subdomain>.cloud.podstack.ai
-```
-
-Replace `<key_name>` with your private key file. Click **Configure SSH** for step-by-step setup on macOS, Linux, Windows PowerShell, or Windows Git Bash — first-time connections need a one-time SSH config entry. See [SSH & PowerShell](/docs/compute/pods/ssh-powershell/).
-
-### Jupyter / Notebook
-
-On notebook images, the **Notebook Access** card shows the **Notebook URL**, **Username** (default `podstack`), and an auto-generated **Password**. Copy the password now — it isn't shown again after you leave the page.
-
-### Exposed ports
-
-The **Exposed Ports & Endpoints** card lists every port and its public URL:
-
-- HTTP services: `https://<subdomain>-<port>.cloud.podstack.ai`
-- SSH (port 22): `ssh-<subdomain>.cloud.podstack.ai`
-
-Click **Edit** to add or remove ports on a running pod. See [Manage & Scale](/docs/gpu-cloud/manage-and-scale/#exposed-ports).
-
-## Next steps
-
-- [Templates](/docs/gpu-cloud/templates/) — the 1-click catalog.
-- [Storage & Data](/docs/gpu-cloud/storage-and-data/) — keep your data between runs.
-- [Manage & Scale](/docs/gpu-cloud/manage-and-scale/) — start/stop, logs, metrics, and fractional GPUs.
+Boot time depends on the machine and the image. The wizard shows an estimate. A machine marked instant boot is usually up in about a minute before the environment finishes loading.

@@ -1,22 +1,22 @@
 ---
-title: Your Account
-
-weight: 150
-description: "Manage your PodStack account — profile and currency, security and sessions, SSH keys, API tokens, and audit logs for GPU cloud access and automation."
+title: Account
+description: "API keys, SSH keys, secrets, team projects, and settings on Podstack."
+weight: 70
+aliases:
+  - /docs/account/audit-logs/
 keywords:
-  - GPU cloud account
-  - SSH key management
-  - API token management
-  - cloud security settings
-  - GPU access credentials
+  - account
+  - API keys
 ---
-# Your Account
 
-Everything tied to your identity and access lives here.
+# Account
 
-## In this section
+| Page | What it covers |
+| --- | --- |
+| [API keys](/docs/account/api-tokens/) | `ps_live_` keys for `https://api.podstack.ai/v1` |
+| [SSH keys](/docs/account/ssh-keys/) | Keys that can log into instances |
+| [Secrets](/docs/account/secrets/) | Values jobs and instances can read |
+| [Team](/docs/account/team/) | Projects, invites, and roles |
+| [Settings](/docs/account/settings/) | Project name and price location |
 
-- **[Settings](/docs/account/settings/)** — project name and the location that chooses INR or USD prices.
-- **[SSH Keys](/docs/account/ssh-keys/)** — add or generate the keys you use to connect to pods and VMs.
-- **[API Tokens](/docs/account/api-tokens/)** — create the `ps_live_...` keys used by the `podstack` CLI and the REST/OpenAI-compatible API.
-- **[Audit Logs](/docs/account/audit-logs/)** — review account and project activity.
+There is no audit-log page in the console. Billing activity is on [Billing](/docs/billing/).

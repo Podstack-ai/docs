@@ -1,57 +1,35 @@
-# ============================================================
-# SIDEBAR NAVIGATION DATA (data/en/docs/sidebar.yml)
-# PURPOSE: Defines the documentation sidebar structure.
-#
-# The docs have exactly FIVE top-level sections:
-#   GPU Cloud · Jobs · Inference · CLI · Support
-# Everything else (container image catalog, account, billing,
-# onboarding, SDK reference) is folded UNDER one of these five.
-#
-# ITEM PROPERTIES:
-# - title: Display name shown in sidebar (required)
-# - slug:  URL segment relative to the parent — builds
-#          /docs/<parent>/<slug>/. Use for a section's own pages.
-# - path:  ABSOLUTE path override — builds /docs/<path>/ and
-#          ignores the parent. Use to fold an existing section
-#          (e.g. /docs/account/) under a heading without moving files.
-# - pages: Array of child items (optional, nested section).
-#
-# Rendered recursively by layouts/partials/sidebar-item.html.
-# Every slug/path below MUST resolve to a page that exists.
-# ============================================================
+# Sidebar. Every slug or path must be a page under content/en/docs.
+
+- title: Getting started
+  path: getting-started
+  pages:
+    - title: Create an account
+      slug: creating-account
+    - title: Console
+      slug: console
 
 - title: GPU Cloud
   slug: gpu-cloud
   pages:
-    - title: Launch a Pod
+    - title: Launch an instance
       slug: launch-a-pod
-    - title: Templates
-      slug: templates
-    - title: Container Image Catalog
-      path: container-images
-    - title: Storage & Data
-      slug: storage-and-data
-    - title: MLOps
-      slug: mlops
-    - title: Manage & Scale
-      slug: manage-and-scale
-    - title: Use Cases & Scenarios
-      slug: scenarios
+    - title: Instances and SSH
+      slug: instances
+    - title: Disk and network
+      slug: disk-and-network
+    - title: Schedules
+      slug: schedules
+    - title: Watchlists
+      slug: watchlists
     - title: Troubleshooting
       slug: troubleshooting
 
 - title: Jobs
   slug: jobs
   pages:
-    - title: Provision a GPU
-      slug: provision-a-gpu
-    - title: SSH Access
-      slug: ssh-access
-    - title: Move Data
-      slug: move-data
-    - title: Fine-Tuning
-      slug: fine-tuning
-    - title: Pricing & Billing
+    - title: Submit a job
+      slug: submit-a-job
+    - title: Pricing and billing
       slug: pricing-and-billing
     - title: Troubleshooting
       slug: troubleshooting
@@ -71,58 +49,50 @@
       slug: serverless
     - title: Playground
       slug: playground
-    - title: Pricing & Usage
+    - title: Pricing and usage
       slug: pricing-and-usage
-    - title: Python SDK
-      path: sdk
     - title: FAQs
       slug: faqs
 
-- title: CLI
-  slug: cli
+- title: Endpoints
+  path: endpoints
+
+- title: Functions
+  path: functions
+
+- title: Deploy
+  path: deploy
+
+- title: Reservations
+  path: reservations
+
+- title: Account
+  path: account
   pages:
-    - title: Installation
-      slug: installation
-    - title: Authentication
-      slug: authentication
-    - title: Quick Start
-      slug: quickstart
-    - title: Coding Agent
-      slug: code
-    - title: Sandboxes
-      slug: sandbox
-    - title: Projects
-      slug: projects
-    - title: GPUs
-      slug: gpu
-    - title: Fine-Tuning
-      slug: train
-    - title: Files
-      slug: files
-    - title: Models
-      slug: models
+    - title: API keys
+      slug: api-tokens
+    - title: SSH keys
+      slug: ssh-keys
     - title: Secrets
       slug: secrets
-    - title: Send & Receive
-      slug: send-receive
-    - title: Configuration
-      slug: configuration
-    - title: FAQs & Scenarios
-      slug: faqs
+    - title: Team
+      slug: team
+    - title: Settings
+      slug: settings
+
+- title: Billing
+  path: billing
+  pages:
+    - title: Wallet
+      slug: wallet
 
 - title: Support
   slug: support
   pages:
-    - title: Getting Started
-      path: getting-started
-    - title: Getting Help
+    - title: Getting help
       slug: getting-help
-    - title: Account & Billing
+    - title: Account and billing
       slug: account-and-billing
-    - title: Account Settings
-      path: account
-    - title: Billing & Wallet
-      path: billing
     - title: Scenarios
       slug: scenarios
     - title: Troubleshooting

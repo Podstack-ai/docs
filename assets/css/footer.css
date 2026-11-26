@@ -27,7 +27,9 @@
 /* Docker-style Footer Styles */
 
 .site-footer {
-    background-color: #0a0a0f;
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+    color: var(--color-fade);
     padding: 48px 0;
     margin-top: auto;
     position: relative;

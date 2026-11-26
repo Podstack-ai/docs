@@ -1,33 +1,29 @@
-/* Import Inter and JetBrains Mono fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --font-sans: 'Inter', system-ui, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: 'Inter', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-brand: 'Inter', sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "IBM Plex Sans", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-brand: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
 
-  /* Light theme text colors */
-  --color: #0F172A;
-  /* primary text (near-black) */
-  --color-fade: #6B7280;
-  /* secondary text */
-  --color-nav: #374151;
-  /* nav text */
+  --color: #17202B;
+  --color-fade: #616A75;
+  --color-nav: #3A4553;
 
-  --background: #ffffff;
-  --background-grey: #f9f9f9;
-  --background-grey-embed: #f0f0f0;
+  --background: #FBF9F6;
+  --background-grey: #F4EFEA;
+  --background-grey-embed: #F3EFEB;
 
-  --foreground: rgba(247, 247, 247, .25);
-  --foreground-hover: rgba(220, 220, 220, .35);
+  --foreground: #FFE9D9;
+  --foreground-hover: #F4EFEA;
 
-  --foreground-highlight: #FDBA74;
-  --color-highlight: #130606;
+  --foreground-highlight: #FFE9D9;
+  --color-highlight: #17202B;
 
-  --model-background: #ffffff;
-  --model-foreground: rgba(247, 247, 247, .25);
-  --model-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, .37);
+  --model-background: #FFFFFF;
+  --model-foreground: #F4EFEA;
+  --model-box-shadow: 0 1px 2px rgba(23, 32, 43, 0.05), 0 4px 16px -8px rgba(23, 32, 43, 0.10);
 
   --padding: 12px;
   --padding_d2: 6px;
@@ -35,97 +31,85 @@
 
   --model-blur: 10px;
 
-  --border: #e5e7eb;
-  --border-nav: #d1d5db;
+  --border: #E5E0DC;
+  --border-nav: #DFDAD4;
 
-  --radius: 4px;
+  --radius: 8px;
 
-  /* Orange theme colors */
-  --anchor: #F97316;
-  --hover: #EA580C;
+  --anchor: #EC6107;
+  --hover: #BF4306;
 
-  /* Orange palette */
   --orange-50: #FFF7ED;
-  --orange-100: #FFEDD5;
-  --orange-200: #FED7AA;
-  --orange-300: #FDBA74;
-  --orange-400: #FB923C;
-  --orange-500: #F97316;
-  --orange-600: #EA580C;
-  --orange-700: #C2410C;
-  --orange-800: #9A3412;
+  --orange-100: #FFE9D9;
+  --orange-200: #F8C9A4;
+  --orange-300: #F3A15A;
+  --orange-400: #F4741E;
+  --orange-500: #EC6107;
+  --orange-600: #E44A08;
+  --orange-700: #BF4306;
+  --orange-800: #923002;
   --orange-900: #7C2D12;
 
-  /* Brand gradient - Orange */
-  --brand-gradient: linear-gradient(135deg, #FB923C 0%, #F97316 50%, #EA580C 100%);
+  --brand-gradient: linear-gradient(120deg, #F3821D, #E44A08);
+  --header-height: 64px;
 
-  /* base16 tomorrow - with orange accents */
-  --chroma-base00: #f9f9f9;
-  --chroma-base01: #e0e0e0;
-  --chroma-base02: rgba(249, 115, 22, .1);
-  --chroma-base03: #8e908c;
-  --chroma-base04: #969896;
-  --chroma-base05: #4d4d4c;
-  --chroma-base06: #282a2e;
-  --chroma-base07: #1d1f21;
-  --chroma-base08: #c82829;
-  --chroma-base09: #F97316;
-  --chroma-base0A: #eab700;
-  --chroma-base0B: #718c00;
-  --chroma-base0C: #FB923C;
-  --chroma-base0D: #F97316;
-  --chroma-base0E: #FDBA74;
-  --chroma-base0F: #a3685a;
+  --chroma-base00: #15202D;
+  --chroma-base01: #293442;
+  --chroma-base02: rgba(244, 116, 30, 0.16);
+  --chroma-base03: #8B95A1;
+  --chroma-base04: #CDD1D8;
+  --chroma-base05: #CDD1D8;
+  --chroma-base06: #E8EAED;
+  --chroma-base07: #FFFFFF;
+  --chroma-base08: #F2777A;
+  --chroma-base09: #F4741E;
+  --chroma-base0A: #E8C07A;
+  --chroma-base0B: #8FCBAA;
+  --chroma-base0C: #F3A15A;
+  --chroma-base0D: #F4741E;
+  --chroma-base0E: #F8C9A4;
+  --chroma-base0F: #C4A090;
 
-  /* shortcodes - Orange */
-  --callout-info-backgound: #F97316;
+  --callout-info-backgound: #EC6107;
   --callout-info-foreground: rgba(0, 0, 0, .08);
-  --callout-info-color: #ffffff;
-  --callout-info-anchor: #FDBA74;
+  --callout-info-color: #FEFBF8;
+  --callout-info-anchor: #FFE9D9;
   --callout-info-anchor-text-shadow: .4px 0 .8px black;
 }
 
 :root[data-color="dark"] {
-  --color: #FFFFFF;
-  --color-fade: #9CA3AF;
-  --color-nav: #D1D5DB;
+  --color: #F4F6F8;
+  --color-fade: #CDD1D8;
+  --color-nav: #CDD1D8;
 
-  --background: #0a0a0f;
-  --background-grey: rgba(30, 41, 59, 1);
-  --background-grey-embed: rgba(15, 23, 42, 1);
+  --background: #15202D;
+  --background-grey: #222F3F;
+  --background-grey-embed: #1B2836;
 
-  --foreground: rgba(30, 41, 59, 0.5);
-  --foreground-hover: rgba(51, 65, 85, 0.5);
+  --foreground: #222F3F;
+  --foreground-hover: #293442;
 
-  --model-background: rgba(17, 24, 39, 1);
-  --model-foreground: rgba(225, 225, 225, .05);
-  --model-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --model-background: #1B2836;
+  --model-foreground: rgba(255, 255, 255, 0.06);
+  --model-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 
-  --border: rgba(225, 225, 225, .1);
-  --border-nav: rgba(255, 255, 255, .2);
+  --border: #293442;
+  --border-nav: #3A4654;
 
-  /* Orange theme colors - Dark mode */
-  --anchor: #FB923C;
-  --hover: #F97316;
+  --anchor: #F4741E;
+  --hover: #F3821D;
 
-  /* Dark gradient with orange glow */
-  --dark-gradient: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(31, 41, 59, 0.8) 50%, rgba(10, 10, 15, 0.95) 100%);
+  --chroma-base00: #101820;
+  --chroma-base01: #293442;
+  --chroma-base02: rgba(244, 116, 30, 0.18);
+}
 
-  /* base16 tomorrow night - with orange accents */
-  --chroma-base00: var(--background-grey);
-  --chroma-base01: #393939;
-  --chroma-base02: rgba(249, 115, 22, .15);
-  --chroma-base03: #999999;
-  --chroma-base04: #b4b7b4;
-  --chroma-base05: #cccccc;
-  --chroma-base06: #e0e0e0;
-  --chroma-base07: #ffffff;
-  --chroma-base08: #f2777a;
-  --chroma-base09: #FB923C;
-  --chroma-base0A: #ffcc66;
-  --chroma-base0B: #99cc99;
-  --chroma-base0C: #FB923C;
-  --chroma-base0D: #F97316;
-  --chroma-base0E: #FDBA74;
-  --chroma-base0F: #a3685a;
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .logo-text {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }

@@ -1,146 +1,20 @@
 ---
-aliases:
-  - /docs/trainpod/pricing-and-billing/
-title: Pricing & Billing
-weight: 60
-description: "How Podstack bills GPU time and jobs from a prepaid wallet. Live prices are on podstack.ai, in INR for India and USD elsewhere."
+title: Pricing and billing
+description: "Podstack jobs are billed only while they run, from the prepaid wallet. Live GPU rates are on podstack.ai."
+weight: 30
 keywords:
-  - GPU pricing per hour
-  - spot vs on demand pricing
-  - podstack gpu pricing
-  - GPU cloud wallet
-  - cheap H100 price
-  - max price cap GPU
-  - GPU billing
-  - low balance warning
-  - fine-tuning budget
-  - pay per hour GPU
+  - job billing
+  - per second
 ---
 
-# Pricing & Billing
+# Pricing and billing
 
-Podstack uses a **prepaid wallet**. There are no monthly or annual subscriptions.
+Jobs draw from the same [prepaid wallet](/docs/billing/wallet/) as everything else.
 
-- **GPU instances** are billed per second from the hourly rate, from boot until you terminate them.
-- **Jobs** are billed only while they are running. Managed [fine-tuning](/docs/jobs/fine-tuning/) is a job: the meter runs while the job runs, and you can cap it with `--budget`.
-- **Extra disk** is billed per GB-hour.
-- **Inference** is billed per token. See [Pricing & Usage](/docs/inference/pricing-and-usage/).
+You pay for the time the job runs. The Jobs page shows the cost attributed to each job. There is no monthly plan and no charge after the job has finished, except the final slice of runtime.
 
-## Check live prices
+Live hourly rates are on the GPU you pick and on [podstack.ai/#pricing](https://podstack.ai/#pricing). India is shown in INR. Every other location is shown in USD. These docs do not copy those rates.
 
-Rates are not listed in these docs. Read them on [podstack.ai/#pricing](https://podstack.ai/#pricing). Prices are shown in **INR** for India and in **USD** everywhere else.
+The first jobs are free, up to $25. The console credits that cost back as the jobs run.
 
-`podstack gpu pricing` prints the same live offers (GPU type, region, tier, hourly rate, and what is available right now):
-
-```bash
-podstack gpu pricing
-podstack gpu pricing --gpu-type h100_sxm
-podstack gpu pricing --gpu-type h100_sxm --tier on_demand
-```
-
-The hourly figure is the rate the per-second meter uses. You are charged for elapsed time, not for a full hour up front.
-
-## Spot vs on-demand
-
-| Tier | Price | Behavior |
-|------|-------|----------|
-| `on_demand` | Higher | Runs until **you** terminate it. Best for jobs you can't afford to be interrupted. |
-| `spot` | Lower | Cheaper, but can be **reclaimed** when capacity is needed. Best for interruptible or checkpointed work. |
-
-Compare both for a GPU type before launching:
-
-```bash
-podstack gpu pricing --gpu-type h100
-```
-
-## Cap the price with `--max-price`
-
-When launching on `spot` (where prices can move), set a ceiling. The instance won't launch above your cap:
-
-```bash
-podstack gpu instances create --type h100_sxm --tier spot --max-price 2.00 \
-  --ssh-key-id sshkey_abc123
-```
-
-## Fund your wallet
-
-GPU time and fine-tuning jobs draw from your wallet balance. Add funds in the [Podstack dashboard](https://cloud.podstack.ai), and manage payment and balance from the [Wallet docs](/docs/billing/wallet/). From the CLI, see [Wallet & pricing](/docs/cli/gpu/).
-
-Keep enough balance to cover the full runtime of your instances — if the balance runs low, Podstack warns you and can stop instances to prevent a negative balance.
-
-## Low-balance warnings
-
-The CLI surfaces backend billing warnings when you list or inspect instances, so you see them even when piping output. For example:
-
-```bash
-podstack gpu instances list
-```
-
-```
-⚠  my-trainer: under 5 min of runtime left — recharge or this instance will stop
-```
-
-If you see a warning, top up your wallet before the instance is stopped for non-payment.
-
-## Stop paying: terminate instances
-
-Billing continues for as long as an instance is **running**. To stop charges, terminate it:
-
-```bash
-podstack gpu instances delete gpu-abc123
-```
-
-> Terminating wipes the instance's local disk. [Move results off the box first](/docs/jobs/move-data/).
-
-Verify nothing is still running (and racking up cost):
-
-```bash
-podstack gpu instances list --status running
-```
-
-## Fine-tuning budgets
-
-Managed [fine-tuning](/docs/jobs/fine-tuning/) jobs are billed only while they run. Cap the spend on a job with `--budget`:
-
-```bash
-podstack train create --model <MODEL_ID> \
-  --training-file file_123 --budget 25.00
-```
-
-## Cost-control checklist
-
-- **Right-size the GPU.** Match VRAM to your model with `podstack gpu types list`; don't rent an H100 for a job an L40S handles.
-- **Use spot for interruptible work**, with `--max-price` as a ceiling.
-- **Terminate promptly.** `podstack gpu instances delete <id>` the moment you're done.
-- **Watch for low-balance warnings** in `podstack gpu instances list`.
-- **Cap fine-tuning jobs** with `--budget`.
-- **Audit regularly:** `podstack gpu instances list --status running`.
-
-## FAQs
-
-**How am I charged for a GPU instance?**
-Per second from the hourly rate, from boot until you terminate it, drawn from your prepaid wallet.
-
-**Is the price shown the final price?**
-Yes. The hourly rate on [podstack.ai/#pricing](https://podstack.ai/#pricing) and in `podstack gpu pricing` is the rate you are metered against. India is shown in INR and every other location in USD.
-
-**What happens if my wallet runs out mid-run?**
-Podstack warns you (visible in `podstack gpu instances list`) and can stop the instance to prevent a negative balance. Top up before that happens; checkpoint spot/interruptible work.
-
-**Does `spot` cost less than `on_demand`?**
-Usually yes, but spot instances can be reclaimed. Compare both with `podstack gpu pricing --gpu-type <type>`.
-
-**How do I avoid overpaying on spot?**
-Pass `--max-price <usd>` on `podstack gpu instances create` so it won't launch above your ceiling.
-
-**How is fine-tuning billed differently?**
-A managed `podstack train` job is billed only while it is running, not as a GPU you leave up. Cap it with `--budget`.
-
-**Do data transfers cost extra?**
-There's no separate per-GB charge; transfers happen during the instance runtime you're already paying for.
-
-## Next steps
-
-- [Provision a GPU](/docs/jobs/provision-a-gpu/) — launch with the right tier and price cap.
-- [Wallet](/docs/billing/wallet/) — fund and manage your balance.
-- [CLI: Wallet & pricing](/docs/cli/gpu/) — pricing and balance from the terminal.
+If the wallet cannot cover the work, running jobs are cancelled along with the project's instances.
