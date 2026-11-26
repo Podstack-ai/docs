@@ -12,7 +12,7 @@ keywords:
 
 # SDK GPU instances
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 An instance is billed per second from the hourly rate until you terminate it. Terminate deletes the disk. There is no stop or start that keeps a machine.
 

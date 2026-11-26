@@ -10,11 +10,11 @@ keywords:
 
 # Examples for AI agents
 
-These recipes are for an agent that already has the Podstack MCP server, or that can run `podstack` and Python. They match CLI 1.2.0 and the Python SDK on the 1.8.0 branch.
+These recipes are for an agent that already has the Podstack MCP server, or that can run `podstack` and Python. They match CLI 1.2.0 and Python SDK 1.8.0 (`pip install podstack`).
 
 Give the agent the prompt in the recipe. The agent should show you the dry run and wait. It sets `confirm: true` or `confirm=True` only after you approve that spend.
 
-SDK steps are marked **requires podstack>=1.8.0 (releasing soon)**. Until that version is on PyPI, use the CLI or MCP steps in the same recipe.
+SDK steps need `podstack` 1.8.0 or newer.
 
 | Recipe | Spends money? |
 | --- | --- |

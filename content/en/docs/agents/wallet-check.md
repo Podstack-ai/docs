@@ -35,7 +35,7 @@ podstack billing
 podstack gpu pricing --gpu-type <gpu_type>
 ```
 
-**requires podstack>=1.8.0 (releasing soon):**
+**requires podstack>=1.8.0:**
 
 ```python
 from podstack import NotAvailableYet, Podstack

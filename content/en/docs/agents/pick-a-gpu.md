@@ -36,7 +36,7 @@ podstack gpu types list
 podstack gpu pricing --tier on_demand
 ```
 
-**requires podstack>=1.8.0 (releasing soon)** if the agent uses Python instead:
+**requires podstack>=1.8.0** if the agent uses Python instead:
 
 ```python
 from podstack import Podstack

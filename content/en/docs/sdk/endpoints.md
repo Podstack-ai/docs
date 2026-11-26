@@ -9,7 +9,7 @@ keywords:
 
 # SDK endpoints
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 An endpoint serves a model on dedicated GPUs and speaks the chat format on its own URL. Replicas are billed while they exist. `min_replicas=0` scales to zero.
 

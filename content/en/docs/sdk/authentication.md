@@ -10,7 +10,7 @@ keywords:
 
 # SDK authentication
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 The client sends `Authorization: Bearer` to `https://podstack.ai/api/v1`.
 

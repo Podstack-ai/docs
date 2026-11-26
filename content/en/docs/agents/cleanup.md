@@ -76,7 +76,7 @@ podstack endpoints delete <id> --yes
 podstack functions list
 ```
 
-**requires podstack>=1.8.0 (releasing soon)** to delete a function. The CLI cannot delete one.
+**requires podstack>=1.8.0** to delete a function. The CLI cannot delete one.
 
 ```python
 device_name.delete(confirm=True)

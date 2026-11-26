@@ -49,7 +49,7 @@ CLI one-shot, which also spends credits:
 podstack infer chat --model <model-id> --prompt "Say hello in one sentence."
 ```
 
-**requires podstack>=1.8.0 (releasing soon)** for streaming:
+**requires podstack>=1.8.0** for streaming:
 
 ```python
 stream = client.chat.stream(

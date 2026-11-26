@@ -9,7 +9,7 @@ keywords:
 
 # SDK MCP server
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 1.8.0 includes an MCP server that uses the same tool names as the CLI. It reads `PODSTACK_API_KEY` or the CLI credentials file.
 

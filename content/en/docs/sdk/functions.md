@@ -10,7 +10,7 @@ keywords:
 
 # SDK functions
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 A function is Python that runs on a GPU when you call it. You are billed only while it runs. The function has to be a top-level function in a file. Arguments must be JSON-serializable.
 

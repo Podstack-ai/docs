@@ -10,7 +10,7 @@ keywords:
 
 # SDK jobs
 
-> Releasing soon: `pip install "podstack>=1.8.0"`
+> `pip install podstack` (>=1.8.0). [podstack 1.8.0 on PyPI](https://pypi.org/project/podstack/1.8.0/).
 
 A job runs a script on a GPU until it finishes or you cancel it. You pay for the time it runs. There is no separate fine-tune API. Put the training script in the job.
 
