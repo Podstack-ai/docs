@@ -1,80 +1,35 @@
 ---
 title: Documentation
-description: "Podstack GPU cloud documentation. Prepaid wallet: GPU time billed per second from the hourly rate, jobs only while running, inference per token, extra disk per GB-hour."
+description: "How Podstack GPU Cloud, Jobs, Inference, Endpoints, Functions, Deploy, Reservations, and the prepaid wallet work."
 keywords:
-  - cheapest GPU cloud
-  - cheap GPU rental
-  - affordable GPU cloud
-  - budget GPU cloud
-  - pocket friendly GPU cloud
-  - GPU cloud for students
-  - student GPU cloud
-  - low cost GPU server
-  - GPU cloud no lock-in
-  - zero lock-in GPU
-  - no commitment GPU rental
-  - billed per second GPU
-  - pay for what you use GPU
-  - pay as you go GPU
-  - serverless GPU
-  - fractional GPU
-  - fractional GPU rental
-  - partial GPU cloud
-  - shared GPU
-  - on-demand GPU
-  - instant GPU access
-  - baremetal GPU rental
-  - dedicated GPU server
-  - RunPod alternative
-  - Vast.ai alternative
-  - Lambda Labs alternative
-  - CoreWeave alternative
-  - NeoCloud alternative
-  - Paperspace alternative
-  - NVIDIA A100 cheap
-  - H100 GPU affordable
-  - L40S GPU
-  - V100 budget
+  - Podstack docs
+  - GPU cloud
+  - api.podstack.ai
+  - prepaid wallet
 ---
 
-# Podstack Documentation
+# Podstack documentation
 
-Welcome to Podstack - your GPU cloud platform for AI/ML workloads, containerized applications, and high-performance computing.
+Podstack is the console at [podstack.ai](https://podstack.ai). You rent GPUs, run jobs, and call models. Billing is a prepaid wallet.
 
-## What is Podstack?
+| Product | What it does |
+| --- | --- |
+| [GPU Cloud](/docs/gpu-cloud/) | Launch a dedicated machine. Billed per second from the hourly rate, from boot until you terminate it. |
+| [Jobs](/docs/jobs/) | Run a script on a GPU until it finishes. You pay for the time the job runs. |
+| [Inference](/docs/inference/) | Open models on an OpenAI-compatible API at `https://api.podstack.ai/v1`. Billed per token. |
+| [Endpoints](/docs/endpoints/) | A Hugging Face model on dedicated GPUs that can scale to zero. |
+| [Functions](/docs/functions/) | A Python function that runs on a GPU when you call it. |
+| [Deploy](/docs/deploy/) | Ready-to-run apps such as JupyterLab and ComfyUI on a dedicated GPU. |
+| [Reservations](/docs/reservations/) | A quoted cluster of 16 to 1,024 GPUs for a fixed term. |
 
-Podstack is a GPU cloud platform that provides on-demand access to high-performance computing resources. Whether you're training machine learning models, running inference workloads, or deploying containerized applications, Podstack offers the infrastructure you need with pay-as-you-go pricing.
+GPU Cloud was formerly called QuickPod. Jobs was formerly called TrainPod. Older links under `/docs/quickpod/` and `/docs/trainpod/` still open those sections.
 
-### Platform Highlights
+Prices on [podstack.ai](https://podstack.ai/#pricing) and in the console are in INR for India and USD everywhere else. Live GPU rates are not copied into these pages.
 
-- **GPU Access** - NVIDIA A100, H100, V100, L40S, and more
-- **Flexible Compute** - Containers (Pods) and dedicated baremetal GPUs
-- **S3-Compatible Storage** - Object storage with public/private buckets
-- **NFS Volumes** - Persistent shared storage for your workloads
-- **Team Collaboration** - Projects with role-based access control
-- **Prepaid Billing** - Wallet-based system with transparent pricing
+## Start here
 
-## Quick Start
+1. [Create an account](/docs/getting-started/creating-account/) with Google, Microsoft, or GitHub.
+2. [Add credits](/docs/billing/wallet/) with Razorpay.
+3. [Add an SSH key](/docs/account/ssh-keys/), then [launch a GPU](/docs/gpu-cloud/launch-a-pod/).
 
-New to Podstack? Follow these steps:
-
-1. **[Create Your Account](/docs/getting-started/creating-account/)** - Sign up with email verification
-2. **[Add Funds](/docs/billing/wallet/)** - Top up your wallet to start deploying
-3. **[Create a Project](/docs/projects/creating-projects/)** - Organize your resources
-4. **[Deploy a Pod](/docs/compute/pods/creating-pods/)** - Launch your first GPU container
-
-## Documentation Sections
-
-| Section | Description |
-|---------|-------------|
-| [Getting Started](/docs/getting-started/) | Account setup and platform orientation |
-| [Projects](/docs/projects/) | Project management and team collaboration |
-| [Compute](/docs/compute/) | Pods and GPU marketplace |
-| [Storage](/docs/storage/) | Object storage and NFS volumes |
-| [Billing](/docs/billing/) | Wallet, invoices, and payments |
-| [Account](/docs/account/) | Settings, SSH keys, and API tokens |
-| [Advanced](/docs/advanced/) | Templates, Serverless GPU, AI Studio |
-
-## Support
-
-Need help? Visit the [Support](/docs/support/) section for troubleshooting guides and contact information.
+Sign in at [podstack.ai/auth](https://podstack.ai/auth). The console is [podstack.ai/app](https://podstack.ai/app).

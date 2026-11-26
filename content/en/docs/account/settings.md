@@ -1,37 +1,19 @@
 ---
 title: Settings
-
-weight: 10
-description: "Podstack settings — project name and the location that chooses INR or USD prices."
+description: "Rename a Podstack project and choose whether prices show in INR or USD."
+weight: 60
 keywords:
-  - Podstack settings
-  - location INR USD prices
-  - project name
+  - settings
+  - INR
+  - USD
 ---
+
 # Settings
 
-The console **Settings** page is per project.
+Open [Settings](https://podstack.ai/app/settings).
 
-## Project
+**Name.** Owners and admins can rename the project.
 
-Rename the current project. Owners and admins can save the name. A team project's owner can delete the project from this page after stopping anything still running. Deleting a project revokes its API keys. Billing records are kept, and any balance moves to the personal project.
+**Location.** Prices follow your location. India is shown in rupees. Every other location is shown in dollars. Automatic uses the country of this connection. You can change it here after you sign in. Amounts are stored in US cents and converted for display.
 
-## Location and prices
-
-Set **Location** on the same page.
-
-Prices follow that location. **India is shown in INR. Every other location is shown in USD.** Choose **Automatic** to use the country of the connection.
-
-There is no separate currency toggle, and there is no monthly or annual subscription price.
-
-The page also shows the email you are signed in with.
-
-## Verify it worked
-
-- A renamed project shows the new name in the project switcher.
-- Saving a location updates the currency shown on prices and the wallet: INR for India, USD otherwise.
-
-## Related
-
-- [API Tokens](/docs/account/api-tokens/)
-- [Billing & Wallet](/docs/billing/wallet/)
+There is no currency toggle separate from location, and no monthly or annual plan to select.

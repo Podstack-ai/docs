@@ -1,35 +1,24 @@
 /**
- * COLOR PREFERENCE MODULE (assets/js/color-preference.js)
- * PURPOSE: Manages dark/light theme switching and persistence
- * 
- * FEATURES:
- * - Detects system color scheme preference
- * - Persists user selection in localStorage
- * - Syncs theme across all pages
- * - Updates HTML data-color attribute
- * - Handles all theme toggle buttons in header and footer
- * 
- * HOW IT WORKS:
- * 1. Gets saved preference from localStorage or system default
- * 2. Sets data-color attribute on <html> element
- * 3. CSS uses [data-color="dark"]/[data-color="light"] selectors
- * 4. Toggle buttons switch between themes
- * 5. Choice is saved to localStorage for next visit
- * 
- * THEME COLORS:
- * - Light mode: White background, dark text
- * - Dark mode: Dark background, light text
- * 
- * RELATED:
- * - css/theme.css: CSS custom properties for both themes
- * - Buttons: .theme-toggle, .theme-toggle-header
+ * COLOR PREFERENCE
+ * The podstack.ai site is light. Docs default to that light theme.
+ * A header control switches to the console's dark navy and remembers the choice.
+ * The storage key is separate from the old forced-dark preference.
  */
 (function () {
     'use strict';
 
-    // Docs site is dark-only to match blog.podstack.ai.
-    // Light mode + theme switching disabled.
-    const lsKeyColorPreference = 'color-preference'
-    localStorage.setItem(lsKeyColorPreference, 'dark')
-    document.firstElementChild.setAttribute('data-color', 'dark')
+    var key = 'podstack-color';
+    var root = document.documentElement;
+    var stored = localStorage.getItem(key);
+    var pref = stored === 'dark' || stored === 'light' ? stored : 'light';
+    root.setAttribute('data-color', pref);
+
+    document.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-theme-toggle]');
+        if (!button) return;
+        var next = root.getAttribute('data-color') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-color', next);
+        localStorage.setItem(key, next);
+        button.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+    });
 })();

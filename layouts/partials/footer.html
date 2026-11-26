@@ -1,82 +1,21 @@
-<!--
-  FOOTER PARTIAL (layouts/partials/footer.html)
-  PURPOSE: Site footer with community resources, social media, and links
-  
-  FEATURES:
-  - Community section (only shown on homepage)
-  - Social media icon links (LinkedIn, Twitter, Instagram)
-  - Footer navigation links
-  - Copyright and legal information
-  - Dark background styling
-  - Responsive grid layout
-  - Theme toggle button (light/dark)
-  
-  SECTIONS:
-  - .community-section: Community resources (conditional .IsHome)
-  - .footer-bottom: Copyright, nav, social icons
-  - .social-icons: Linked social media icons
-  - .footer-nav: Links to product, pricing, about, etc.
-  
-  APPEARS ON:
-  - All pages: single.html, list.html, index.html, 404.html
-  
-  RELATED FILES:
-  - css/footer.css: Footer styling
-  - js/color-preference.js: Theme toggle
--->
 <footer class="site-footer">
   <div class="footer-container">
-    
-    {{ if .IsHome }}
-    <!-- Community Resources -->
-    <div class="community-section">
-      <h2>Community resources</h2>
-      <p>Find fellow {{ .Site.Title }} enthusiasts, engage in insightful discussions, share knowledge, and collaborate on projects. Our communities offer a rich online experience for developers to create valuable connections that challenge and inspire!</p>
-      
-      <div class="community-buttons">
-        <a href="https://discord.gg/jYmxD5Av9" class="btn-community" target="_blank" rel="noopener">Join our Discord</a>
-        <a href="https://www.reddit.com/r/PodstackAI/" class="btn-community" target="_blank" rel="noopener">Join us on Reddit</a>
-      </div>
-    </div>
-    {{ end }}
-
-    <!-- Bottom Bar -->
-    <div class="footer-divider"></div>
-    
     <div class="footer-bottom">
-      <!-- Social Icons -->
-      <div class="social-icons">
-        <a href="https://discord.gg/jYmxD5Av9" aria-label="Discord" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#5865F2">
-            <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
-          </svg>
-        </a>
-        <a href="https://www.reddit.com/r/PodstackAI/" aria-label="Reddit" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FF4500">
-            <path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.442-1.04c-.139-.032-.284.017-.379.129-.093.11-.128.259-.093.401l-1.652 5.194c-2.755.075-5.245.833-7.077 2.036-.478-.46-1.126-.746-1.841-.746C1.192 9.134 0 10.32 0 11.779c0 1.079.65 2.006 1.58 2.409-.041.267-.062.537-.062.811 0 4.104 4.783 7.437 10.667 7.437 5.884 0 10.667-3.333 10.667-7.437 0-.274-.021-.543-.062-.81.93-.403 1.58-1.33 1.58-2.41zm-17.219 1.949c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574s.709-1.575 1.581-1.575c.872 0 1.582.707 1.582 1.575s-.71 1.574-1.582 1.574z"/>
-          </svg>
-        </a>
+      <div class="copyright">
+        © {{ now.Year }} Podstack
       </div>
 
-      <!-- Center Navigation -->
       <nav class="footer-nav">
-        <a href="https://podstack.ai" target="_blank" rel="noopener">Product offerings</a>
-        <a href="https://podstack.ai/pricing" target="_blank" rel="noopener">Pricing</a>
-        <a href="https://podstack.ai/about" target="_blank" rel="noopener">About us</a>
+        <a href="/docs/">Docs</a>
+        <a href="https://modelperf.ai">ModelPerf</a>
+        <a href="https://podstack.ai/blog">Blog</a>
+        <a href="https://podstack.ai/trust">Trust</a>
+        <a href="https://podstack.ai/terms">Terms</a>
+        <a href="https://podstack.ai/privacy">Privacy</a>
+        <a href="https://podstack.ai/refund-policy">Refunds</a>
+        <a href="mailto:support@podstack.ai">Contact</a>
       </nav>
-
-      <!-- Right Legal Links -->
-      <div class="legal-links">
-        <a href="https://podstack.ai/privacy" target="_blank" rel="noopener">Privacy</a>
-        <span class="separator">|</span>
-        <a href="https://podstack.ai/terms" target="_blank" rel="noopener">Terms</a>
-      </div>
     </div>
-
-    <!-- Copyright -->
-    <div class="copyright">
-      Copyright © 2025-{{ now.Year }} Podstack Docs. All rights reserved.
-    </div>
-
+    <p class="copyright">This product includes GeoLite2 data created by MaxMind, available from <a href="https://www.maxmind.com/">https://www.maxmind.com/</a>.</p>
   </div>
 </footer>

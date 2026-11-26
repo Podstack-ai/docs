@@ -1,53 +1,46 @@
 ---
-title: API Tokens
-weight: 30
-description: "Create Podstack API keys (ps_live_) for the API, CLI, and SDK. The key is shown once. Revoke it from API Keys."
+title: API keys
+description: "Create a ps_live_ Podstack API key and choose Full, Read only, Jobs, Functions and endpoints, or Inference."
+weight: 20
+aliases:
+  - /docs/cli/authentication/
+  - /docs/sdk/authentication/
 keywords:
-  - Podstack API key
-  - ps_live_ key
-  - PODSTACK_API_KEY
-  - API key GPU cloud
-  - programmatic access
+  - ps_live_
+  - API key
 ---
 
-# API Tokens
+# API keys
 
-API keys let scripts, CI, and the OpenAI-compatible API act as your project. Every key starts with `ps_live_` and is billed to the project where you created it.
+Keys for the Podstack API start with `ps_live_`. Create one at [API Keys](https://podstack.ai/app/api-keys).
 
-## Create a key
-
-1. Open **API Keys** in the [console](https://podstack.ai/app/api-keys).
-2. Choose **Create key**.
-3. Enter a name and an access level (full, read only, jobs, functions and endpoints, or inference).
-4. **Copy the key now.** It starts with `ps_live_` and is shown only once.
-
-Viewers cannot create keys. Only project admins and owners can create a full-access key.
-
-## Use it
+1. Click **Create key**.
+2. Name it (up to 60 characters).
+3. Choose an access level:
+   - **Full** — any route. Only owners and admins can create this. A full key stops working as full access if its creator is no longer an owner or admin.
+   - **Read only** — `GET` only.
+   - **Jobs** — jobs and secrets, plus public reads.
+   - **Functions & endpoints** — functions and endpoints, plus public reads.
+   - **Inference** — chat, images, embeddings, models, video, and operations.
+4. Copy the key. It is shown once.
 
 ```bash
 export PODSTACK_API_KEY="ps_live_..."
+```
 
+A key is bound to the project where you created it. Spend is billed to that project's wallet. Viewers cannot create keys. Members cannot create a full-access key.
+
+Send it as a bearer token:
+
+```bash
 curl https://api.podstack.ai/v1/chat/completions \
   -H "Authorization: Bearer $PODSTACK_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"model":"podstack/kimi-k3","messages":[{"role":"user","content":"Hello"}]}'
 ```
 
-Listing models does not require a key:
+`GET /v1/models`, `GET /v1/pricing`, `GET /v1/gpu-types`, `GET /v1/templates`, and `GET /v1/environments` are public.
 
-```bash
-curl https://api.podstack.ai/v1/models
-```
+Revoke a key on the same page. The next request with that key fails.
 
-Details, access levels, and errors: [Inference authentication](/docs/inference/authentication/).
-
-## Revoke a key
-
-On **API Keys**, choose **Revoke**. The key stops working on the next request. If you lose the secret, revoke it and create another. It cannot be displayed again.
-
-## Related
-
-- [Inference authentication](/docs/inference/authentication/)
-- [CLI authentication](/docs/cli/authentication/)
-- [Settings](/docs/account/settings/)
+More on calling models: [Inference authentication](/docs/inference/authentication/).

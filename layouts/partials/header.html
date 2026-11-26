@@ -12,16 +12,19 @@
 
     <!-- Logo -->
     <a href="{{ .Site.BaseURL }}" class="logo">
-      <img src="{{ "favicon/logo.svg" | relURL }}" alt="{{ .Site.Title }}" class="logo-icon" />
-      <span class="logo-text">{{ .Site.Title }}</span>
+      <img src="{{ "favicon/logo.svg" | relURL }}" alt="" class="logo-icon" />
+      <span class="logo-text">Podstack</span>
+      <span class="logo-docs">Docs</span>
     </a>
 
     <!-- Main Navigation -->
     <nav class="main-nav" id="main-nav">
-      <a href="/docs/getting-started/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "getting-started" }}active{{ end }}{{ end }}">Get Started</a>
-      <a href="/docs/sdk/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "sdk" }}active{{ end }}{{ end }}">SDK</a>
-      <a href="/docs/cli/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "cli" }}active{{ end }}{{ end }}">CLI</a>
-      <a href="/docs/support/" class="{{ if eq .Section "docs" }}{{ if in .RelPermalink "support" }}active{{ end }}{{ end }}">Customer Support</a>
+      <a href="/docs/gpu-cloud/" class="{{ if in .RelPermalink "gpu-cloud" }}active{{ end }}">GPU Cloud</a>
+      <a href="/docs/jobs/" class="{{ if in .RelPermalink "jobs" }}active{{ end }}">Jobs</a>
+      <a href="/docs/inference/" class="{{ if in .RelPermalink "inference" }}active{{ end }}">Inference</a>
+      <a href="/docs/endpoints/" class="{{ if in .RelPermalink "endpoints" }}active{{ end }}">Endpoints</a>
+      <a href="/docs/functions/" class="{{ if in .RelPermalink "functions" }}active{{ end }}">Functions</a>
+      <a href="/docs/deploy/" class="{{ if in .RelPermalink "deploy" }}active{{ end }}">Deploy</a>
     </nav>
 
     <!-- Right Utilities -->
@@ -60,6 +63,17 @@
         <div class="search-results" id="search-results"></div>
       </div>
 
+      <button type="button" class="theme-toggle-header" data-theme-toggle aria-label="Switch light or dark theme" aria-pressed="false">
+        <svg class="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+      </button>
+      <a class="btn-console" href="https://podstack.ai/auth">Open console</a>
+
     </div>
   </div>
 
@@ -92,10 +106,13 @@
       </nav>
     {{ else }}
       <nav>
-        <a href="/docs/getting-started/">Get Started</a>
-        <a href="/docs/sdk/">SDK</a>
-        <a href="/docs/cli/">CLI</a>
-        <a href="/docs/support/">Customer Support</a>
+        <a href="/docs/gpu-cloud/">GPU Cloud</a>
+        <a href="/docs/jobs/">Jobs</a>
+        <a href="/docs/inference/">Inference</a>
+        <a href="/docs/endpoints/">Endpoints</a>
+        <a href="/docs/functions/">Functions</a>
+        <a href="/docs/deploy/">Deploy</a>
+        <a href="https://podstack.ai/auth">Open console</a>
       </nav>
     {{ end }}
   </div>

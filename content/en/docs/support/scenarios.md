@@ -1,102 +1,25 @@
 ---
-title: Support Scenarios
-weight: 40
-description: "Step-by-step walkthroughs for the most common Podstack support situations — stuck KYC, understanding a charge, an unavailable GPU type, and losing account access."
+title: Scenarios
+description: "What to do for a Podstack charge you do not recognize, a missing GPU, or a locked-out account."
+weight: 30
 keywords:
-  - KYC stuck
-  - understand GPU bill
-  - GPU unavailable
-  - lost account access
-  - Podstack support walkthrough
+  - support scenarios
 ---
-# Support Scenarios
 
-Concrete, start-to-finish walkthroughs for the situations users contact support about most. Each one lists what to try first and exactly what to send us if it doesn't resolve.
+# Scenarios
 
-Before contacting support, have your **account email** and any relevant **resource or transaction IDs** ready — see [Getting Help](/docs/support/getting-help/) for what to include.
+## A charge I do not recognize
 
-## My KYC is stuck or was rejected
+1. Open [Billing](https://podstack.ai/app/billing) and set the period that covers the charge.
+2. Match the amount to a service chip: GPU Cloud, Jobs, Inference, Endpoints, Functions, or Deploy.
+3. GPU Cloud time runs from boot until terminate, per second from the hourly rate. Extra disk is per GB-hour. A dedicated IP adds its own hourly fee and transfer.
+4. Jobs charge only while they run. Inference charges per token.
+5. If the row still does not match, email [support@podstack.ai](mailto:support@podstack.ai) with the project name and the time of the row.
 
-**Symptoms:** KYC sits in **Pending** / **In Progress** longer than expected, shows **Rejected**, or the session shows **Expired**.
+## The GPU I want is not on the board
 
-**Try this first:**
+The cloud board only lists machines that are free. Create a [watchlist](/docs/gpu-cloud/watchlists/) for that GPU, or pick another region in the launch wizard. For 16 or more GPUs, [request a reservation](/docs/reservations/).
 
-1. Open **Billing > KYC** and read the **status and any rejection reason** shown per method.
-2. Match the expected time to your method:
-   - **Didit** — seconds to a few minutes (automated). If it's stuck, your session may have expired — click **Resume Verification** or restart.
-   - **Government ID** — manual review, typically within 24 hours.
-   - **WhatsApp** — minutes once you complete the chat flow.
-3. If rejected, the usual causes are a data/document mismatch, an expired document, a blurry image, or a failed liveness check. Correct the detail and **resubmit**, or **switch to a different method** — you can change methods any time before approval.
+## I cannot get into the account
 
-**If it's still stuck**, contact support with:
-
-- Your account email and KYC type (individual or business).
-- The verification method you used and the exact status/rejection message.
-- Whether it's blocking resource creation (KYC enforcement).
-
-Reference: [KYC Verification](/docs/billing/kyc/).
-
-## I was charged and want to understand my bill
-
-**Symptoms:** The wallet balance dropped more than expected, or you see a charge you don't recognize.
-
-**Try this first:**
-
-1. Open **Billing > Wallet** and read the **run rate** — the hourly rate of everything running right now. A forgotten running pod or extra disk is the most common surprise.
-2. Check the **expenditure breakdown** to see which resource type (pods, NFS storage, object storage, inference) is driving the cost.
-3. Scroll to **Transaction History** — every debit has a description and the balance after it. **Export** the range to CSV if you want to reconcile.
-4. Remember how the meter works:
-   - **GPU time** is billed per second from the hourly rate, from boot until you terminate the instance.
-   - **Jobs** are billed only while they are running.
-   - **Inference** is billed per token.
-   - **Extra disk** is billed per GB-hour.
-   - There is no monthly or annual plan, and nothing renews on an anniversary date.
-5. Stop anything you're not using to halt further charges.
-
-**If a charge is still unexplained or looks wrong**, contact support (or, for a formal invoice, do **not** pay a disputed invoice). Include:
-
-- The transaction date/time and amount, or the invoice number.
-- What you expected and why.
-
-Reference: [Wallet](/docs/billing/wallet/) · [Invoices](/docs/billing/invoices/).
-
-## A GPU type I want is unavailable
-
-**Symptoms:** The GPU you want isn't listed in the marketplace, or a pod stays in **Pending** because the requested GPU isn't available.
-
-**Try this first:**
-
-1. Availability varies by GPU type and region. Check the [GPU Marketplace](/docs/compute/gpu-marketplace/) for what's currently on offer and its price.
-2. If your pod is stuck **Pending**, confirm your **wallet balance** is sufficient and you haven't hit a **quota** — both can block scheduling. See [Pod stuck in pending](/docs/support/troubleshooting/#pod-stuck-in-pending).
-3. Try an **alternative that fits the workload** — a different GPU tier or a different region often has capacity immediately.
-4. Retry after a short wait; capacity is released continuously as other users stop instances.
-
-**If you specifically need a type that isn't available**, contact support to request access or register interest. Include:
-
-- The exact GPU model and quantity you need.
-- Your region preference and rough timeline / expected duration.
-- Whether an alternative GPU would work in the meantime.
-
-For terminal-first provisioning across available GPUs, see [Jobs](/docs/jobs/) and the [CLI](/docs/cli/gpu/).
-
-## I lost access to my account
-
-**Symptoms:** You can't receive the sign-in code, lost access to the email on the account, or a session ended unexpectedly.
-
-**Try this first:**
-
-1. Podstack is **passwordless** — there's no password to reset. Sign-in uses a 6-digit email code (single-use, expires in 10 minutes) or a social login.
-2. **Code not arriving?** Check spam/junk, wait 2-3 minutes for delivery, confirm the email is spelled correctly, then click **Resend**. See [Not receiving OTP](/docs/support/troubleshooting/#not-receiving-otp).
-3. **Signed out unexpectedly?** Sessions expire after extended inactivity — just sign in again. You can review and revoke sessions in [Account Settings](/docs/account/settings/).
-4. If you normally use a **social login** (Google/GitHub/SSO), make sure you're choosing the same provider you originally signed up with.
-
-**If you've genuinely lost access to the account email**, contact support from an address you control and include:
-
-- The email address on the Podstack account.
-- Any details that help prove ownership — recent resource IDs, invoice numbers, or the approximate signup date.
-
-For security, account-recovery requests may require additional verification before access is restored. Reference: [Account Settings](/docs/account/settings/) · [Creating an account](/docs/getting-started/creating-account/).
-
-## Still need help?
-
-If none of these match your situation, see [Getting Help](/docs/support/getting-help/) for how to reach support, or the [FAQs](/docs/support/faqs/) and [Troubleshooting](/docs/support/troubleshooting/) pages.
+Sign in again with Google, Microsoft, or GitHub at [podstack.ai/auth](https://podstack.ai/auth). If the account was suspended, the API returns a message telling you to contact support@podstack.ai.

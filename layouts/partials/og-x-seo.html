@@ -1,7 +1,7 @@
 {{ if site.Params.enableOGXSEO }}
 
 {{- $title := .Title -}}
-{{- $fullTitle := printf "%s | Podstack Docs - Cheapest GPU Cloud" .Title -}}
+{{- $fullTitle := printf "%s | Podstack Docs" .Title -}}
 {{- $description := .Description | default .Params.description | default (printf "%s - %s" .Title .Site.Params.description) -}}
 {{- $image := .Params.og_image | default .Params.featured_image | default .Site.Params.og_image | default (print .Permalink "og.png") | absURL -}}
 {{- $author := .Site.Params.author -}}
@@ -28,8 +28,8 @@
 <meta http-equiv="content-language" content="en-US">
 
 <!-- Theme and App Meta -->
-<meta name="theme-color" content="#0a0a0f">
-<meta name="msapplication-TileColor" content="#F97316">
+<meta name="theme-color" content="#FBF9F6">
+<meta name="msapplication-TileColor" content="#EC6107">
 <meta name="application-name" content="Podstack Docs">
 <meta name="apple-mobile-web-app-title" content="Podstack">
 <meta name="apple-mobile-web-app-capable" content="yes">

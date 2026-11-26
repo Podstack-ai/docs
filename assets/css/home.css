@@ -23,7 +23,7 @@ body {
 /* Header */
 #content-wrapper>header {
   padding: 5px 20px;
-  background: #0a0a0f;
+  background: var(--background);
   backdrop-filter: blur(17.5px);
   display: flex;
   align-items: center;

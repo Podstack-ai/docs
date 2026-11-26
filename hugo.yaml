@@ -88,7 +88,7 @@ params:
   description: "Podstack - GPU cloud for AI and machine learning. Prepaid wallet, GPU time billed per second from the hourly rate. Prices in INR for India and USD elsewhere."
 
   seo:
-    keywords: "cheapest GPU cloud, cheap GPU rental, affordable GPU cloud, budget GPU cloud, pocket friendly GPU cloud, pocket friendly cloud, GPU cloud for students, student GPU discount, student GPU cloud, academic GPU cloud, research GPU cloud, low cost GPU server, cheap cloud GPU, best GPU cloud pricing, GPU cloud no lock-in, zero lock-in GPU, zero lockin period, no commitment GPU rental, no contract GPU, flexible GPU rental, hourly GPU rental, billed per second GPU, pay per use GPU, pay for what you use, pay as you go GPU, serverless GPU, GPU as a service, fractional GPU, fractional GPU rental, partial GPU, shared GPU, GPU slicing, MIG GPU, multi-instance GPU, baremetal GPU rental, baremetal rental, dedicated GPU rental, bare metal GPU server, GPU server rental, on-demand GPU, instant GPU access, GPU cloud India, cheap GPU India, NVIDIA GPU cloud, A100 GPU cheap, H100 GPU rental, H100 affordable, L40S GPU cheap, L40S rental, V100 affordable, V100 budget, T4 GPU cheap, RunPod alternative, Vast.ai alternative, Lambda Labs alternative, CoreWeave alternative, NeoCloud alternative, Paperspace alternative, cheap ML training, affordable deep learning, budget AI infrastructure, startup GPU cloud, cheap LLM training, affordable fine-tuning, GPU for machine learning, GPU for deep learning, PyTorch GPU cloud, TensorFlow GPU cloud, Jupyter GPU notebook, containerized GPU, Kubernetes GPU, cheap inference GPU, Thunder Compute alternative, Jarvis Labs alternative, SaladCloud alternative, Fluidstack alternative, Shadeform alternative, Tensordock alternative, Oblivus Cloud alternative, E2E Networks alternative, Hyperstack alternative, Crusoe Cloud alternative, DigitalOcean GPU alternative, Vultr GPU alternative, Genesis Cloud alternative, AWS GPU alternative, GCP GPU alternative, Azure GPU alternative, Oracle Cloud GPU alternative, cheap NVIDIA rental, GPU spot instances, preemptible GPU, interruptible GPU, GPU marketplace, decentralized GPU cloud, distributed GPU computing, GPU computing platform, cloud GPU rental, rent GPU online, GPU instance, GPU VM, GPU virtual machine, GPU container, Docker GPU, Kubernetes GPU workloads, GPU orchestration, ML infrastructure, AI infrastructure, deep learning infrastructure, neural network training, model training GPU, LLM fine-tuning GPU, Stable Diffusion GPU, ComfyUI GPU, image generation GPU, AI art GPU, text to image GPU, generative AI GPU, transformer training, BERT training GPU, GPT training GPU, Llama training GPU, Mistral training GPU, open source LLM GPU, Hugging Face GPU, ML Ops GPU, AI deployment, model inference GPU, real-time inference, batch inference GPU, GPU API, REST API GPU, serverless inference, auto-scaling GPU, GPU cluster, multi-GPU training, distributed training, data parallel training, model parallel training, CUDA cloud, cuDNN cloud, TensorRT cloud, RAPIDS GPU, GPU data science, data analytics GPU, scientific computing GPU, HPC cloud, high performance computing, computational science GPU, simulation GPU, rendering GPU, 3D rendering cloud, Blender GPU cloud, video encoding GPU, transcoding GPU, NVIDIA A100 80GB, NVIDIA H100 80GB, NVIDIA L40S 48GB, NVIDIA V100 32GB, NVIDIA T4 16GB, NVIDIA RTX 4090, NVIDIA RTX 3090, AMD MI300X, AMD GPU cloud, Intel GPU cloud, GPU benchmark, GPU performance, GPU FLOPS, tensor cores, GPU memory bandwidth, NVLink GPU, GPU interconnect, InfiniBand GPU, GPU networking, low latency GPU, GPU colocation, GPU dedicated server, managed GPU, GPU hosting, cloud computing GPU, IaaS GPU, PaaS GPU, GPU platform, AI cloud platform, ML cloud platform, deep learning platform, neural network platform, affordable AI compute, cheap compute, budget compute, economical GPU, cost effective GPU, GPU cost optimization, GPU spot pricing, GPU reserved instances, GPU savings plan, enterprise GPU cloud, startup GPU credits, free GPU trial, GPU free tier"
+    keywords: "Podstack, GPU cloud, GPU instances, jobs, OpenAI-compatible inference, api.podstack.ai, ps_live_, endpoints, functions, deploy, reservations, prepaid wallet, per-second GPU billing, Razorpay"
     ogImage: /images/og-image.svg
 
     # Competitor comparison keywords for rich snippets
@@ -119,11 +119,11 @@ params:
     github:
       repo: username/repo
     themeColor:
-      light: '#F97316'
-      dark: '#0a0a0f'
+      light: '#EC6107'
+      dark: '#15202D'
 
   author:
-    name: PodStack Team
+    name: Podstack
     url: https://podstack.ai
     email: support@podstack.ai
 
@@ -132,12 +132,12 @@ params:
     - gpu cloud
     - machine learning
     - ai platform
-    - kubernetes
+    - inference
     - documentation
 
   logo:
     image: /images/favicon.ico
-    title: PodStack
+    title: Podstack
     subtitle: GPU Cloud Platform
 
   home:
